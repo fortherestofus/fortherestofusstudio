@@ -1,9 +1,7 @@
 // Infinite marquee strip of our apps — two duplicated sets for a seamless loop.
 // Boxed to the page width (matches the rest of the layout) with soft edge fades.
-// Logos are placeholders (PlaceholderIcon); swap for real logos in /public/logos later.
-
 import { apps } from "@/lib/apps";
-import PlaceholderIcon from "@/components/ui/PlaceholderIcon";
+import AppIcon from "@/components/ui/AppIcon";
 
 // Repeat the apps so a single strip comfortably exceeds the container width.
 const strip = Array.from({ length: 5 }, () => apps).flat();
@@ -17,7 +15,8 @@ function MarqueeContent() {
           className="flex items-center gap-10 whitespace-nowrap"
         >
           <span className="flex items-center gap-3">
-            <PlaceholderIcon
+            <AppIcon
+              icon={app.icon}
               color={app.accentColor}
               label={app.name}
               size={32}

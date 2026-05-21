@@ -14,6 +14,7 @@ import {
 import { Menu, X } from "lucide-react";
 import { apps, type App } from "@/lib/apps";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
+import AppIcon from "@/components/ui/AppIcon";
 import DarkModeToggle from "@/components/ui/DarkModeToggle";
 
 // Single dock item — scales + lifts based on cursor proximity (macOS Dock).
@@ -68,11 +69,21 @@ function DockLink({
           }}
           aria-hidden="true"
         />
-        <span
-          className="relative h-1.5 w-1.5 shrink-0 rounded-full"
-          style={{ backgroundColor: app.accentColor }}
-          aria-hidden="true"
-        />
+        {app.icon ? (
+          <AppIcon
+            icon={app.icon}
+            color={app.accentColor}
+            label={app.name}
+            size={22}
+            className="relative rounded-md"
+          />
+        ) : (
+          <span
+            className="relative h-1.5 w-1.5 shrink-0 rounded-full"
+            style={{ backgroundColor: app.accentColor }}
+            aria-hidden="true"
+          />
+        )}
         <span className="relative">{app.name}</span>
       </Link>
     </motion.div>
@@ -190,13 +201,13 @@ export default function Navbar() {
                       href={`/apps/${app.slug}`}
                       className="flex items-center gap-3 rounded-xl px-3 py-3 transition-colors hover:bg-surface"
                     >
-                      <span
-                        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg font-display text-sm font-semibold text-white"
-                        style={{ backgroundColor: app.accentColor }}
-                        aria-hidden="true"
-                      >
-                        {app.name.charAt(0)}
-                      </span>
+                      <AppIcon
+                        icon={app.icon}
+                        color={app.accentColor}
+                        label={app.name}
+                        size={36}
+                        className="rounded-lg"
+                      />
                       <span className="flex flex-col">
                         <span className="text-sm font-semibold text-ink">
                           {app.name}

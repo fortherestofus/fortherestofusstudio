@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { App } from "@/lib/apps";
 import Badge from "@/components/ui/Badge";
-import PlaceholderIcon from "@/components/ui/PlaceholderIcon";
+import AppIcon from "@/components/ui/AppIcon";
 import PlaceholderImage from "@/components/ui/PlaceholderImage";
 
 export default function AppCard({ app }: { app: App }) {
@@ -58,7 +58,6 @@ export default function AppCard({ app }: { app: App }) {
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="group relative h-full"
     >
-      {/* Tilt wrapper — receives mouse events and applies 3D transform */}
       <div
         ref={tiltRef}
         onMouseMove={handleMouseMove}
@@ -74,7 +73,6 @@ export default function AppCard({ app }: { app: App }) {
           href={`/apps/${app.slug}`}
           className="relative flex h-full flex-col rounded-2xl border border-border bg-surface p-6 shadow-card overflow-hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
         >
-          {/* Accent gradient top edge */}
           <span
             className="pointer-events-none absolute inset-x-0 top-0 h-px"
             style={{
@@ -83,7 +81,6 @@ export default function AppCard({ app }: { app: App }) {
             aria-hidden="true"
           />
 
-          {/* Radial glow that follows the cursor */}
           <div
             ref={glowRef}
             className="pointer-events-none absolute h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 blur-3xl"
@@ -94,7 +91,6 @@ export default function AppCard({ app }: { app: App }) {
             aria-hidden="true"
           />
 
-          {/* Preview image — auto-swaps to app.screenshots[0] once added */}
           <PlaceholderImage
             src={app.screenshots[0]}
             alt={`${app.name} preview`}
@@ -104,9 +100,13 @@ export default function AppCard({ app }: { app: App }) {
             sizes="(max-width: 768px) 80vw, 30vw"
           />
 
-          {/* Card content */}
           <div className="relative flex items-start justify-between">
-            <PlaceholderIcon color={app.accentColor} label={app.name} size={64} />
+            <AppIcon
+              icon={app.icon}
+              color={app.accentColor}
+              label={app.name}
+              size={64}
+            />
             <ArrowUpRight
               className="h-5 w-5 text-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
               aria-hidden="true"

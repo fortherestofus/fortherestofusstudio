@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import type { App } from "@/lib/apps";
 import Badge from "@/components/ui/Badge";
-import PlaceholderIcon from "@/components/ui/PlaceholderIcon";
+import AppIcon from "@/components/ui/AppIcon";
 
 export default function AppDetailHero({ app }: { app: App }) {
   return (
@@ -16,7 +16,8 @@ export default function AppDetailHero({ app }: { app: App }) {
       </Link>
 
       <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-start">
-        <PlaceholderIcon
+        <AppIcon
+          icon={app.icon}
           color={app.accentColor}
           label={app.name}
           size={88}
