@@ -59,25 +59,52 @@
   }
 }
 
+/* ============================================================
+   MARQUEE — infinite horizontal scroll
+   ============================================================ */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation-play-state: paused;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 
-  /* Subtle grain texture for hero — replaces generic gradient blobs */
+  /* SVG feTurbulence noise — richer than dot-grid */
   .grain {
-    background-image: radial-gradient(
-      rgba(18, 53, 36, 0.05) 1px,
-      transparent 1px
-    );
-    background-size: 4px 4px;
+    position: relative;
   }
 
-  .dark .grain {
-    background-image: radial-gradient(
-      rgba(247, 245, 240, 0.05) 1px,
-      transparent 1px
-    );
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    mix-blend-mode: overlay;
+    z-index: 0;
+  }
+
+  .dark .grain::after {
+    opacity: 0.055;
   }
 
   .no-scrollbar::-webkit-scrollbar {

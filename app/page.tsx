@@ -1,4 +1,5 @@
 import Hero from "@/components/home/Hero";
+import MarqueeBanner from "@/components/home/MarqueeBanner";
 import StudioIntro from "@/components/home/StudioIntro";
 import AppCarousel from "@/components/home/AppCarousel";
 import Principles from "@/components/home/Principles";
@@ -9,6 +10,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <MarqueeBanner />
       <StudioIntro />
       <AppCarousel />
       <Principles />

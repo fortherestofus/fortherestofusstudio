@@ -33,7 +33,11 @@ const config: Config = {
       },
       boxShadow: {
         card: "0 1px 2px rgba(18,53,36,0.06), 0 8px 24px rgba(18,53,36,0.08)",
-        "card-hover": "0 4px 8px rgba(18,53,36,0.10), 0 18px 48px rgba(18,53,36,0.16)",
+        "card-hover":
+          "0 4px 8px rgba(18,53,36,0.10), 0 18px 48px rgba(18,53,36,0.18)",
+        "card-glow":
+          "0 8px 32px rgba(18,53,36,0.14), 0 32px 64px rgba(18,53,36,0.20)",
+        "gold-glow": "0 6px 24px rgba(240,179,49,0.32)",
       },
       maxWidth: {
         content: "1200px",
