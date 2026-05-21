@@ -54,7 +54,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${fraunces.variable} ${inter.variable} ${dmSans.variable}`}
     >
-      <body className="font-body">
+      <body className="font-body" suppressHydrationWarning>
         <Providers>
           <Navbar />
           <main>{children}</main>
