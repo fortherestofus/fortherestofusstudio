@@ -1,42 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg: #f7f5f0;
+  --color-surface: #ffffff;
+  --color-text: #111111;
+  --color-text-muted: #555555;
+  --color-primary: #123524;
+  --color-accent: #90a842;
+  --color-gold: #f0b331;
+  --color-footer-bg: #123524;
+  --color-border: #e6e2d8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.dark {
+  --color-bg: #0c2218;
+  --color-surface: #123524;
+  --color-text: #f7f5f0;
+  --color-text-muted: #9ca3af;
+  --color-primary: #90a842;
+  --color-accent: #90a842;
+  --color-gold: #f0b331;
+  --color-footer-bg: #0c2218;
+  --color-border: rgba(247, 245, 240, 0.12);
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-inter), system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: #111111;
   }
 }
 
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+  /* Subtle grain texture for hero — replaces generic gradient blobs */
+  .grain {
+    background-image: radial-gradient(
+      rgba(18, 53, 36, 0.05) 1px,
+      transparent 1px
+    );
+    background-size: 4px 4px;
+  }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
+  .dark .grain {
+    background-image: radial-gradient(
+      rgba(247, 245, 240, 0.05) 1px,
+      transparent 1px
+    );
+  }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
