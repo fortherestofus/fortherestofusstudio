@@ -1,6 +1,16 @@
-import { Mail } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Mail } from "lucide-react";
+import { apps } from "@/lib/apps";
 
-// Lucide 1.x dropped brand marks, so social glyphs are inline SVGs.
+// Lucide dropped brand marks, so social glyphs are inline SVGs.
+function XMark(props: React.SVGProps<SVGSVGElement>) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+    </svg>
+  );
+}
+
 function GitHubMark(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
@@ -17,40 +27,151 @@ function LinkedInMark(props: React.SVGProps<SVGSVGElement>) {
   );
 }
 
+// TODO: swap "#" for Alroy's real profile URLs.
 const socials = [
-  { label: "GitHub", href: "https://github.com", Icon: GitHubMark },
-  { label: "LinkedIn", href: "https://linkedin.com", Icon: LinkedInMark },
-  { label: "Newsletter", href: "#", Icon: Mail },
+  { label: "X (Twitter)", href: "#", Icon: XMark },
+  { label: "LinkedIn", href: "#", Icon: LinkedInMark },
+  { label: "GitHub", href: "#", Icon: GitHubMark },
+  { label: "Email", href: "mailto:hello@alroyndhlovu.com", Icon: Mail },
 ];
 
-export default function Footer() {
+const studioLinks = [
+  { label: "What we're building", href: "/#apps" },
+  { label: "The studio", href: "/#studio" },
+  { label: "Get in touch", href: "mailto:hello@alroyndhlovu.com" },
+];
+
+function FooterColumn({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
   return (
-    <footer className="bg-footer-bg text-offwhite">
-      <div className="mx-auto max-w-content px-5 py-14 sm:px-8">
-        <div className="flex flex-col gap-10 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <p className="font-display text-2xl italic">For The Rest Of Us</p>
-            <p className="mt-2 max-w-xs text-sm text-offwhite/70">
-              Apps made for real people.
+    <div>
+      <h3 className="text-xs font-semibold uppercase tracking-widest text-offwhite/50">
+        {title}
+      </h3>
+      <ul className="mt-5 space-y-3.5">{children}</ul>
+    </div>
+  );
+}
+
+function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+  const external = href.startsWith("http") || href.startsWith("mailto");
+  return (
+    <li>
+      <Link
+        href={href}
+        {...(href.startsWith("http")
+          ? { target: "_blank", rel: "noopener noreferrer" }
+          : {})}
+        className="group inline-flex items-center text-[15px] text-offwhite/70 transition-colors hover:text-offwhite"
+      >
+        <span className="relative">
+          {children}
+          <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-lime transition-all duration-300 group-hover:w-full" />
+        </span>
+        {external && (
+          <ArrowUpRight className="ml-1 h-3.5 w-3.5 opacity-0 transition-all duration-300 group-hover:opacity-60" />
+        )}
+      </Link>
+    </li>
+  );
+}
+
+export default function Footer() {
+  const year = new Date().getFullYear();
+
+  return (
+    <footer className="relative overflow-hidden bg-footer-bg text-offwhite">
+      {/* Top hairline */}
+      <div
+        className="h-px w-full bg-gradient-to-r from-transparent via-lime/40 to-transparent"
+        aria-hidden="true"
+      />
+      {/* Ambient glow */}
+      <div
+        className="pointer-events-none absolute -top-24 right-0 h-64 w-2/3"
+        aria-hidden="true"
+        style={{
+          background:
+            "radial-gradient(55% 60% at 75% 0%, rgba(144,168,66,0.14), transparent 70%)",
+        }}
+      />
+
+      <div className="relative mx-auto max-w-content px-5 py-16 sm:px-8 sm:py-20">
+        <div className="grid gap-12 md:grid-cols-12">
+          {/* Brand block */}
+          <div className="md:col-span-5">
+            <p className="font-display text-xl italic">For The Rest Of Us</p>
+            <p className="mt-4 max-w-sm font-display text-[1.75rem] leading-[1.15] tracking-tight sm:text-3xl">
+              Apps made for <span className="text-lime">real people.</span>
             </p>
+            <a
+              href="mailto:hello@alroyndhlovu.com"
+              className="group mt-7 inline-flex items-center gap-2 rounded-full bg-offwhite/10 px-5 py-2.5 text-sm font-medium text-offwhite ring-1 ring-inset ring-offwhite/15 transition-all duration-300 hover:bg-offwhite/15 hover:ring-lime/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+            >
+              Get in touch
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            </a>
           </div>
-          <div className="flex items-center gap-3">
-            {socials.map(({ label, href, Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                aria-label={label}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-offwhite/20 text-offwhite/80 transition-colors hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-              >
-                <Icon className="h-5 w-5" />
-              </a>
-            ))}
+
+          {/* Apps column */}
+          <div className="md:col-span-3">
+            <FooterColumn title="Apps">
+              {apps.map((app) => (
+                <FooterLink key={app.slug} href={`/apps/${app.slug}`}>
+                  {app.name}
+                </FooterLink>
+              ))}
+            </FooterColumn>
+          </div>
+
+          {/* Studio column */}
+          <div className="md:col-span-2">
+            <FooterColumn title="Studio">
+              {studioLinks.map((l) => (
+                <FooterLink key={l.label} href={l.href}>
+                  {l.label}
+                </FooterLink>
+              ))}
+            </FooterColumn>
+          </div>
+
+          {/* Connect / socials */}
+          <div className="md:col-span-2">
+            <h3 className="text-xs font-semibold uppercase tracking-widest text-offwhite/50">
+              Connect
+            </h3>
+            <div className="mt-5 flex flex-wrap items-center gap-2.5">
+              {socials.map(({ label, href, Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  aria-label={label}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-offwhite/15 bg-offwhite/[0.04] text-offwhite/75 transition-all duration-300 hover:-translate-y-0.5 hover:border-lime/40 hover:bg-offwhite/10 hover:text-offwhite focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
+                >
+                  <Icon className="h-[18px] w-[18px]" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
-        <div className="mt-12 border-t border-offwhite/15 pt-6 text-sm text-offwhite/60">
-          © 2025 For The Rest Of Us. Built in Johannesburg.
+
+        {/* Bottom bar */}
+        <div className="mt-16 flex flex-col gap-3 border-t border-offwhite/15 pt-6 text-sm text-offwhite/55 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {year} For The Rest Of Us. All rights reserved.</p>
+          <p className="inline-flex items-center gap-2">
+            <span
+              className="h-1.5 w-1.5 rounded-full bg-lime"
+              aria-hidden="true"
+            />
+            Built by one person in Johannesburg
+          </p>
         </div>
       </div>
     </footer>

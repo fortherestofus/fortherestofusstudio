@@ -93,7 +93,8 @@ export default function StudioStory() {
   return (
     <section
       ref={sectionRef}
-      className="py-20 sm:py-28"
+      id="studio"
+      className="scroll-mt-24 py-20 sm:py-28"
       aria-labelledby="story-heading"
     >
       <div className="mx-auto max-w-content px-5 sm:px-8">

@@ -137,17 +137,9 @@ export default function Hero() {
 
           {/* ── Left: Text content ── */}
           <div>
-            {/* Studio label */}
-            <div className="hero-text-item">
-              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3.5 py-1.5 text-[11px] font-medium uppercase tracking-widest text-muted backdrop-blur-sm">
-                <span className="block h-1.5 w-1.5 rounded-full bg-lime animate-pulse" aria-hidden="true" />
-                A one-person studio · Johannesburg
-              </span>
-            </div>
-
             {/* Headline */}
             <h1
-              className="hero-text-item mt-6 font-display font-semibold leading-[0.92] tracking-tight text-ink"
+              className="hero-text-item font-display font-semibold leading-[0.92] tracking-tight text-ink"
               style={{ fontSize: "clamp(3.4rem, 8.5vw, 8.5rem)" }}
             >
               Apps made
@@ -156,12 +148,6 @@ export default function Hero() {
               <br />
               <em className="not-italic text-pthalo dark:text-lime">people.</em>
             </h1>
-
-            {/* Subline */}
-            <p className="hero-text-item mt-7 max-w-[28ch] text-lg leading-relaxed text-muted">
-              Built by one person.{" "}
-              <span className="text-ink">For the rest of us.</span>
-            </p>
 
             {/* CTA */}
             <div className="hero-text-item mt-10 flex flex-wrap items-center gap-4">
