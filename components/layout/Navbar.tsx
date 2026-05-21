@@ -53,16 +53,27 @@ function DockLink({
     >
       <Link
         href={`/apps/${app.slug}`}
-        className={`group flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
+        className={`group relative flex items-center gap-2 rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
           active ? "text-ink" : "text-muted hover:text-ink"
         }`}
       >
+        {/* Button-like pill — appears on hover, persists for the active app */}
         <span
-          className="h-1.5 w-1.5 shrink-0 rounded-full"
+          className={`absolute inset-0 rounded-full border transition-opacity duration-200 ${
+            active ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+          }`}
+          style={{
+            backgroundColor: `${app.accentColor}1F`,
+            borderColor: `${app.accentColor}3D`,
+          }}
+          aria-hidden="true"
+        />
+        <span
+          className="relative h-1.5 w-1.5 shrink-0 rounded-full"
           style={{ backgroundColor: app.accentColor }}
           aria-hidden="true"
         />
-        {app.name}
+        <span className="relative">{app.name}</span>
       </Link>
     </motion.div>
   );
@@ -103,8 +114,8 @@ export default function Navbar() {
         <nav
           className={`flex h-14 items-center justify-between rounded-2xl pl-5 pr-3 transition-all duration-300 ${
             scrolled || menuOpen
-              ? "border border-border/70 bg-bg/70 shadow-[0_12px_40px_-14px_rgba(12,34,24,0.3)] backdrop-blur-xl"
-              : "border border-border/40 bg-bg/45 shadow-[0_8px_30px_-18px_rgba(12,34,24,0.2)] backdrop-blur-md"
+              ? "border border-border bg-surface/95 shadow-[0_14px_44px_-12px_rgba(12,34,24,0.4)] backdrop-blur-2xl"
+              : "border border-border/70 bg-surface/90 shadow-[0_10px_34px_-14px_rgba(12,34,24,0.28)] backdrop-blur-xl"
           }`}
         >
           <Link

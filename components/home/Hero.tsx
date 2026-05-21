@@ -140,7 +140,7 @@ export default function Hero() {
             {/* Headline */}
             <h1
               className="hero-text-item font-display font-semibold leading-[0.92] tracking-tight text-ink"
-              style={{ fontSize: "clamp(3.4rem, 8.5vw, 8.5rem)" }}
+              style={{ fontSize: "clamp(3rem, 7vw, 7rem)" }}
             >
               Apps made
               <br />
@@ -153,7 +153,7 @@ export default function Hero() {
             <div className="hero-text-item mt-10 flex flex-wrap items-center gap-4">
               <a
                 href="#apps"
-                className="group relative overflow-hidden inline-flex items-center gap-2 rounded-full bg-pthalo px-7 py-3.5 font-heading text-sm font-medium text-offwhite transition-shadow duration-300 hover:shadow-[0_6px_28px_rgba(18,53,36,0.38)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-bg dark:bg-lime dark:text-forest"
+                className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full bg-pthalo px-8 py-4 font-heading text-base font-semibold text-offwhite shadow-[0_12px_30px_-10px_rgba(18,53,36,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_-12px_rgba(18,53,36,0.65)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-bg dark:bg-lime dark:text-forest dark:shadow-[0_12px_30px_-10px_rgba(144,168,66,0.5)]"
               >
                 {/* Sliding highlight layer */}
                 <span
@@ -161,14 +161,8 @@ export default function Hero() {
                   aria-hidden="true"
                 />
                 <span className="relative">See what we&apos;re building</span>
-                <ArrowDown className="relative h-4 w-4 transition-transform group-hover:translate-y-0.5" aria-hidden="true" />
+                <ArrowDown className="relative h-[18px] w-[18px] transition-transform group-hover:translate-y-0.5" aria-hidden="true" />
               </a>
-            </div>
-
-            {/* Scroll hint */}
-            <div className="hero-text-item mt-16 flex items-center gap-3 text-xs text-muted/50">
-              <div className="h-8 w-px bg-border" aria-hidden="true" />
-              Scroll to explore
             </div>
           </div>
 

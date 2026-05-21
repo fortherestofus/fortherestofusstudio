@@ -1,45 +1,17 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import dynamic from "next/dynamic";
+import { motion } from "framer-motion";
 import { ArrowRight, Mail } from "lucide-react";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
-// Decorative floating orb — parallaxes on scroll
-function FloatOrb({
-  size,
-  color,
-  style,
-}: {
-  size: number;
-  color: string;
-  style: React.CSSProperties;
-}) {
-  return (
-    <div
-      className="pointer-events-none absolute rounded-full blur-3xl"
-      style={{
-        width: size,
-        height: size,
-        background: color,
-        ...style,
-      }}
-      aria-hidden="true"
-    />
-  );
-}
+// WebGL shader is client-only — never rendered during static export.
+const ShaderGradientBg = dynamic(() => import("./ShaderGradientBg"), {
+  ssr: false,
+});
 
 export default function CallToAction() {
-  const panelRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: panelRef,
-    offset: ["start end", "end start"],
-  });
-
-  // Orbs move at different scroll rates for a parallax layering effect
-  const orbY1 = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const orbY2 = useTransform(scrollYProgress, [0, 1], [-20, 60]);
-  const orbY3 = useTransform(scrollYProgress, [0, 1], [60, -20]);
+  const reduced = useReducedMotion();
 
   return (
     <section className="px-5 pb-24 sm:px-8" aria-labelledby="cta-heading">
@@ -51,37 +23,32 @@ export default function CallToAction() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
           <div
-            ref={panelRef}
-            className="relative overflow-hidden rounded-3xl bg-pthalo px-7 py-14 text-offwhite sm:px-14 sm:py-20"
+            className="relative overflow-hidden rounded-3xl px-7 py-14 text-offwhite sm:px-14 sm:py-20"
+            style={{
+              background:
+                "linear-gradient(135deg, #0c2218 0%, #123524 50%, #0f3d2a 100%)",
+            }}
           >
-            {/* Noise grain */}
-            <div
-              className="grain pointer-events-none absolute inset-0 opacity-30"
-              aria-hidden="true"
-            />
+            {/* ShaderGradient background (skipped under reduced motion — the
+                base gradient above remains as the fallback). */}
+            {!reduced && (
+              <div
+                className="pointer-events-none absolute inset-0"
+                aria-hidden="true"
+              >
+                <ShaderGradientBg />
+              </div>
+            )}
 
-            {/* Parallax floating orbs */}
-            <motion.div style={{ y: orbY1 }} className="absolute" aria-hidden="true">
-              <FloatOrb
-                size={260}
-                color="rgba(144,168,66,0.18)"
-                style={{ top: -80, right: 60 }}
-              />
-            </motion.div>
-            <motion.div style={{ y: orbY2 }} className="absolute" aria-hidden="true">
-              <FloatOrb
-                size={180}
-                color="rgba(240,179,49,0.12)"
-                style={{ bottom: -40, left: 80 }}
-              />
-            </motion.div>
-            <motion.div style={{ y: orbY3 }} className="absolute" aria-hidden="true">
-              <FloatOrb
-                size={120}
-                color="rgba(144,168,66,0.10)"
-                style={{ top: "40%", left: "55%" }}
-              />
-            </motion.div>
+            {/* Contrast wash so text/buttons stay legible over the shader */}
+            <div
+              className="pointer-events-none absolute inset-0"
+              aria-hidden="true"
+              style={{
+                background:
+                  "linear-gradient(105deg, rgba(8,28,20,0.62) 0%, rgba(8,28,20,0.28) 42%, rgba(8,28,20,0) 75%)",
+              }}
+            />
 
             {/* Thin accent line top */}
             <span
@@ -91,7 +58,7 @@ export default function CallToAction() {
 
             {/* Content */}
             <div className="relative max-w-2xl">
-              <p className="font-heading text-sm font-semibold uppercase tracking-widest text-lime/70">
+              <p className="font-heading text-sm font-semibold uppercase tracking-widest text-lime/80">
                 What&apos;s next
               </p>
               <h2
@@ -100,7 +67,7 @@ export default function CallToAction() {
               >
                 More on the way.
               </h2>
-              <p className="mt-5 text-lg leading-relaxed text-offwhite/75">
+              <p className="mt-5 text-lg leading-relaxed text-offwhite/80">
                 New apps are always in the works. Got an idea for something
                 that&apos;d make life easier — or just want to follow along as
                 each one ships?
@@ -116,7 +83,7 @@ export default function CallToAction() {
                 </a>
                 <a
                   href="#apps"
-                  className="group inline-flex items-center gap-2 rounded-full border border-offwhite/25 px-7 py-3.5 font-heading text-sm font-medium text-offwhite transition-all duration-200 hover:border-offwhite/60 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offwhite focus-visible:ring-offset-2 focus-visible:ring-offset-pthalo"
+                  className="group inline-flex items-center gap-2 rounded-full border border-offwhite/30 px-7 py-3.5 font-heading text-sm font-medium text-offwhite backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-offwhite/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offwhite focus-visible:ring-offset-2 focus-visible:ring-offset-pthalo"
                 >
                   Browse the apps
                   <ArrowRight
@@ -127,7 +94,7 @@ export default function CallToAction() {
               </div>
 
               {/* System status indicator */}
-              <div className="mt-12 flex items-center gap-2 text-xs text-offwhite/40">
+              <div className="mt-12 flex items-center gap-2 text-xs text-offwhite/50">
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime/60" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-lime/80" />

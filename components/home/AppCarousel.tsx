@@ -6,7 +6,7 @@ import AppCard from "@/components/ui/AppCard";
 
 export default function AppCarousel() {
   return (
-    <section id="apps" className="scroll-mt-20 py-20 sm:py-28">
+    <section id="apps" className="scroll-mt-20 pt-12 pb-20 sm:pb-28">
       <div className="mx-auto max-w-content px-5 sm:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

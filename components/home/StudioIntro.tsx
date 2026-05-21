@@ -7,7 +7,7 @@ const ease = [0.22, 1, 0.36, 1] as const;
 
 export default function StudioIntro() {
   return (
-    <section className="border-t border-border py-20 sm:py-28">
+    <section className="border-t border-border pt-20 pb-12 sm:pt-28">
       <div className="mx-auto max-w-content px-5 sm:px-8">
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
           {/* Left — mission */}
