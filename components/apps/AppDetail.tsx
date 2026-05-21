@@ -21,12 +21,31 @@ export default function AppDetail({ app }: { app: App }) {
           <h2 className="font-heading text-sm font-semibold uppercase tracking-widest text-muted">
             Overview
           </h2>
-          <p className="mt-4 text-xl leading-relaxed text-ink">
-            {app.description}
-          </p>
+          <div className="mt-4 space-y-4">
+            {app.overview.map((paragraph, i) => (
+              <p
+                key={i}
+                className={
+                  i === 0
+                    ? "text-xl leading-relaxed text-ink"
+                    : "leading-relaxed text-muted"
+                }
+              >
+                {paragraph}
+              </p>
+            ))}
+          </div>
         </div>
 
         <dl className="grid h-fit grid-cols-2 gap-x-6 gap-y-5 rounded-2xl border border-border bg-surface p-6 shadow-card">
+          <div>
+            <dt className="text-xs uppercase tracking-wide text-muted">
+              Category
+            </dt>
+            <dd className="mt-1 font-heading text-sm font-semibold text-ink">
+              {app.category}
+            </dd>
+          </div>
           <div>
             <dt className="text-xs uppercase tracking-wide text-muted">
               Platform
@@ -46,15 +65,7 @@ export default function AppDetail({ app }: { app: App }) {
           <div>
             <dt className="text-xs uppercase tracking-wide text-muted">Price</dt>
             <dd className="mt-1 font-heading text-sm font-semibold text-ink">
-              Free
-            </dd>
-          </div>
-          <div>
-            <dt className="text-xs uppercase tracking-wide text-muted">
-              Studio
-            </dt>
-            <dd className="mt-1 font-heading text-sm font-semibold text-ink">
-              For The Rest Of Us
+              {app.price}
             </dd>
           </div>
         </dl>

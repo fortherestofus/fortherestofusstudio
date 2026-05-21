@@ -5,11 +5,8 @@ import AppDetail from "@/components/apps/AppDetail";
 const app = getApp("inspiritintruth")!;
 
 export const metadata: Metadata = {
-  title: {
-    absolute: "InSpiritInTruth — Daily devotionals. No noise.",
-  },
-  description:
-    "A mobile app companion to the InSpiritInTruth newsletter. iOS and Android.",
+  title: { absolute: app.seo.title },
+  description: app.seo.description,
 };
 
 export default function InSpiritInTruthPage() {

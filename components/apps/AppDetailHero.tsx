@@ -24,6 +24,9 @@ export default function AppDetailHero({ app }: { app: App }) {
         />
 
         <div className="flex-1">
+          <p className="mb-2 text-xs font-medium uppercase tracking-widest text-muted">
+            {app.category}
+          </p>
           <div className="flex flex-wrap items-center gap-3">
             <h1 className="font-display text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
               {app.name}

@@ -5,11 +5,8 @@ import AppDetail from "@/components/apps/AppDetail";
 const app = getApp("recipeai")!;
 
 export const metadata: Metadata = {
-  title: {
-    absolute: "RecipeAI — What can I cook with this?",
-  },
-  description:
-    "Enter your ingredients. Get a real recipe. No stories, no subscriptions.",
+  title: { absolute: app.seo.title },
+  description: app.seo.description,
 };
 
 export default function RecipeAIPage() {

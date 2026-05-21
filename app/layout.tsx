@@ -32,11 +32,11 @@ export const metadata: Metadata = {
     template: "%s — For The Rest Of Us",
   },
   description:
-    "A studio building apps for everyday people. See what we're making.",
+    "A small studio building honest, genuinely useful apps for everyday people — tools that make navigating life a little easier. See what we're making.",
   openGraph: {
     title: "For The Rest Of Us — Apps made for real people",
     description:
-      "A studio building apps for everyday people. See what we're making.",
+      "A small studio building honest, genuinely useful apps for everyday people — tools that make navigating life a little easier. See what we're making.",
     url: "https://fortherestofus.studio",
     siteName: "For The Rest Of Us",
     type: "website",

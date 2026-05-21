@@ -38,7 +38,10 @@ export default function AppCard({ app }: { app: App }) {
           <ArrowUpRight className="h-5 w-5 text-muted transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink" />
         </div>
 
-        <h3 className="mt-5 font-heading text-xl font-bold text-ink">
+        <p className="mt-5 text-xs font-medium uppercase tracking-widest text-muted">
+          {app.category}
+        </p>
+        <h3 className="mt-1 font-heading text-xl font-bold text-ink">
           {app.name}
         </h3>
 
@@ -49,8 +52,8 @@ export default function AppCard({ app }: { app: App }) {
           </Badge>
         </div>
 
-        <p className="mt-4 line-clamp-2 text-sm leading-relaxed text-muted">
-          {app.tagline}
+        <p className="mt-4 line-clamp-3 text-sm leading-relaxed text-muted">
+          {app.shortDescription}
         </p>
 
         <span className="mt-auto pt-5 text-sm font-medium font-heading text-ink">

@@ -8,15 +8,20 @@ export default function AppCarousel() {
   return (
     <section id="apps" className="scroll-mt-20 py-20 sm:py-28">
       <div className="mx-auto max-w-content px-5 sm:px-8">
-        <motion.h2
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5 }}
-          className="font-heading text-3xl font-bold text-ink sm:text-4xl"
         >
-          What we&apos;re building
-        </motion.h2>
+          <h2 className="font-heading text-3xl font-bold text-ink sm:text-4xl">
+            What we&apos;re building
+          </h2>
+          <p className="mt-4 max-w-2xl text-lg text-muted">
+            Three apps, three everyday problems — each made to take a little
+            friction out of daily life.
+          </p>
+        </motion.div>
 
         <motion.div
           variants={{
