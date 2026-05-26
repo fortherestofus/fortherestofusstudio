@@ -106,7 +106,7 @@ export const apps: App[] = [
     status: "In Development",
     platform: ["iOS", "Android"],
     price: "Free · Premium from $6.99/mo",
-    icon: "/icons/inspiritintruth.png",
+    icon: "/icons/inspiritintruth-dark.png",
     accentColor: "#90A842",
     features: [
       {
@@ -169,7 +169,7 @@ export const apps: App[] = [
     status: "In Development",
     platform: ["iOS", "Android"],
     price: "Free · Pro from $2.99/mo",
-    icon: "/icons/recipeai.png",
+    icon: "",
     accentColor: "#CC5833",
     features: [
       {
