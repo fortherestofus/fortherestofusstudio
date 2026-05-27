@@ -32,13 +32,13 @@ const socials = [
   { label: "X (Twitter)", href: "#", Icon: XMark },
   { label: "LinkedIn", href: "#", Icon: LinkedInMark },
   { label: "GitHub", href: "#", Icon: GitHubMark },
-  { label: "Email", href: "mailto:hello@alroyndhlovu.com", Icon: Mail },
+  { label: "Email", href: "mailto:hello@fortherestofus.app", Icon: Mail },
 ];
 
 const studioLinks = [
   { label: "What we're building", href: "/#apps" },
   { label: "The studio", href: "/#studio" },
-  { label: "Get in touch", href: "mailto:hello@alroyndhlovu.com" },
+  { label: "Get in touch", href: "mailto:hello@fortherestofus.app" },
 ];
 
 function FooterColumn({
@@ -110,7 +110,7 @@ export default function Footer() {
               Apps made for <span className="text-lime">real people.</span>
             </p>
             <a
-              href="mailto:hello@alroyndhlovu.com"
+              href="mailto:hello@fortherestofus.app"
               className="group mt-7 inline-flex items-center gap-2 rounded-full bg-offwhite/10 px-5 py-2.5 text-sm font-medium text-offwhite ring-1 ring-inset ring-offwhite/15 transition-all duration-300 hover:bg-offwhite/15 hover:ring-lime/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
             >
               Get in touch
