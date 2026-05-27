@@ -93,6 +93,17 @@ export default function CallToAction() {
                 </a>
               </div>
 
+              {/* Visible email — fallback for users without a mailto handler */}
+              <p className="mt-5 text-sm text-offwhite/65">
+                Or email{" "}
+                <a
+                  href="mailto:hello@fortherestofus.app"
+                  className="text-offwhite underline decoration-offwhite/30 underline-offset-4 transition-colors hover:decoration-lime"
+                >
+                  hello@fortherestofus.app
+                </a>
+              </p>
+
               {/* System status indicator */}
               <div className="mt-12 flex items-center gap-2 text-xs text-offwhite/50">
                 <span className="relative flex h-2 w-2">

@@ -116,6 +116,15 @@ export default function Footer() {
               Get in touch
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
+            <p className="mt-4 text-sm text-offwhite/60">
+              or{" "}
+              <a
+                href="mailto:hello@fortherestofus.app"
+                className="text-offwhite/90 underline decoration-offwhite/30 underline-offset-4 transition-colors hover:text-offwhite hover:decoration-lime"
+              >
+                hello@fortherestofus.app
+              </a>
+            </p>
           </div>
 
           {/* Apps column */}
