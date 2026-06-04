@@ -206,11 +206,11 @@ export function PhoneInSpiritInTruth({ src }: { src?: string }) {
   );
 }
 
-export function PhoneRecipeAI({ src }: { src?: string }) {
+export function PhoneTapa({ src }: { src?: string }) {
   return (
     <PhoneShell
       src={src}
-      alt="RecipeAI app preview"
+      alt="tapa. app preview"
       sizes="188px"
       className="w-[188px] h-[340px] rounded-[22px] shadow-2xl ring-1 ring-black/10 bg-white"
     >
@@ -227,7 +227,7 @@ export function PhoneRecipeAI({ src }: { src?: string }) {
       {/* Header with search */}
       <div className="px-4 py-3 bg-gradient-to-b from-[#CC5833] to-[#CC5833]/5">
         <p className="text-white/70 text-[7px] uppercase tracking-widest mb-1.5">
-          RecipeAI
+          tapa.
         </p>
         <div className="h-6 bg-white/25 rounded-full flex items-center px-3 gap-1.5">
           <span className="text-[8px]">🔍</span>

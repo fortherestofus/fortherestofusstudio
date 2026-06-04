@@ -156,20 +156,20 @@ export const apps: App[] = [
     },
   },
   {
-    slug: "recipeai",
-    name: "RecipeAI",
+    slug: "tapa",
+    name: "tapa.",
     category: "Food & Cooking",
     tagline: "What can I cook with this?",
     shortDescription:
       "Tell it what's in your fridge. Get a real recipe back — no stories, no subscriptions.",
     overview: [
-      "RecipeAI starts where every weeknight actually starts: with whatever you already have. List a few ingredients — or snap a photo of your fridge — and it asks a quick question or two before handing you a real, cookable recipe.",
+      "tapa. starts where every weeknight actually starts: with whatever you already have. List a few ingredients — or snap a photo of your fridge — and it asks a quick question or two before handing you a real, cookable recipe.",
       "No endless food-blogger backstory, no twenty-tab search. Just clear steps with built-in timers, an ingredient checklist, and the freedom to save recipes for offline. Set dietary needs once and they're treated as hard rules every time, so what comes back is always safe to cook.",
     ],
     status: "In Development",
     platform: ["iOS", "Android"],
     price: "Free · Pro from $2.99/mo",
-    icon: "",
+    icon: "/icons/tapa.png",
     accentColor: "#CC5833",
     features: [
       {
@@ -188,7 +188,7 @@ export const apps: App[] = [
         icon: "Camera",
         title: "Snap your fridge",
         description:
-          "Point your camera, and RecipeAI identifies what's inside and turns it into options. (Pro)",
+          "Point your camera, and tapa. identifies what's inside and turns it into options. (Pro)",
       },
       {
         icon: "ShieldCheck",
@@ -213,7 +213,7 @@ export const apps: App[] = [
     ctaLabel: "Try It Free",
     ctaHref: "#",
     seo: {
-      title: "RecipeAI — What can I cook with this?",
+      title: "tapa. — What can I cook with this?",
       description:
         "Enter your ingredients or snap your fridge and get a real recipe — with timers, dietary guardrails, and offline saving. No stories, no subscriptions.",
     },

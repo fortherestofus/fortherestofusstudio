@@ -7,7 +7,7 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 import {
   PhoneCaughtSlipping,
   PhoneInSpiritInTruth,
-  PhoneRecipeAI,
+  PhoneTapa,
 } from "@/components/home/HeroPhonesMockup";
 
 export default function Hero() {
@@ -200,7 +200,7 @@ export default function Hero() {
                 <PhoneInSpiritInTruth />
               </div>
 
-              {/* RecipeAI — back right */}
+              {/* tapa. — back right */}
               <div
                 className="hero-phone hero-phone-c absolute opacity-0"
                 style={{
@@ -211,8 +211,8 @@ export default function Hero() {
                   filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.12))",
                 }}
               >
-                {/* Real screenshot? -> <PhoneRecipeAI src="/screenshots/recipeai.png" /> */}
-                <PhoneRecipeAI />
+                {/* Real screenshot? -> <PhoneTapa src="/screenshots/tapa.png" /> */}
+                <PhoneTapa />
               </div>
             </div>
           </div>
