@@ -109,9 +109,9 @@ export default function Footer() {
             <Image
               src="/icons/logo-dark.png"
               alt="For The Rest Of Us"
-              width={200}
-              height={80}
-              className="h-9 w-auto"
+              width={750}
+              height={110}
+              className="h-8 w-auto"
             />
             <p className="mt-4 max-w-sm font-display text-[1.75rem] leading-[1.15] tracking-tight sm:text-3xl">
               Apps made for <span className="text-lime">real people.</span>

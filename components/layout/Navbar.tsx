@@ -139,19 +139,19 @@ export default function Navbar() {
             <Image
               src="/icons/logo-light.png"
               alt="For The Rest Of Us"
-              width={150}
-              height={60}
+              width={750}
+              height={110}
               priority
-              className="h-8 w-auto dark:hidden"
+              className="h-7 w-auto dark:hidden"
             />
             {/* cream wordmark for dark mode */}
             <Image
               src="/icons/logo-dark.png"
               alt="For The Rest Of Us"
-              width={150}
-              height={60}
+              width={750}
+              height={110}
               priority
-              className="hidden h-8 w-auto dark:block"
+              className="hidden h-7 w-auto dark:block"
             />
           </Link>
 
