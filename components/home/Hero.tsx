@@ -4,15 +4,11 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ArrowDown } from "lucide-react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import {
-  PhoneCaughtSlipping,
-  PhoneInSpiritInTruth,
-  PhoneTapa,
-} from "@/components/home/HeroPhonesMockup";
+import HeroAppChat from "@/components/home/HeroAppChat";
 
 export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
-  const phonesContainerRef = useRef<HTMLDivElement>(null);
+  const compositionRef = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
 
   // GSAP entrance sequence
@@ -33,46 +29,6 @@ export default function Hero() {
           delay: 0.08,
         }
       );
-
-      // Phones enter, then start floating
-      gsap.fromTo(
-        ".hero-phone",
-        { opacity: 0, y: 55, scale: 0.88 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 1.1,
-          stagger: 0.18,
-          ease: "power3.out",
-          delay: 0.5,
-          onComplete() {
-            gsap.to(".hero-phone-a", {
-              y: -14,
-              duration: 3.8,
-              repeat: -1,
-              yoyo: true,
-              ease: "power1.inOut",
-            });
-            gsap.to(".hero-phone-b", {
-              y: -10,
-              duration: 4.4,
-              repeat: -1,
-              yoyo: true,
-              ease: "power1.inOut",
-              delay: 0.7,
-            });
-            gsap.to(".hero-phone-c", {
-              y: -9,
-              duration: 3.5,
-              repeat: -1,
-              yoyo: true,
-              ease: "power1.inOut",
-              delay: 1.2,
-            });
-          },
-        }
-      );
     }, heroRef);
 
     return () => ctx.revert();
@@ -81,8 +37,8 @@ export default function Hero() {
   // Smooth mouse parallax on the phone composition
   useEffect(() => {
     if (reduced) return;
-    const phones = phonesContainerRef.current;
-    if (!phones) return;
+    const composition = compositionRef.current;
+    if (!composition) return;
 
     let rafId: number;
     let targetX = 0,
@@ -100,7 +56,7 @@ export default function Hero() {
     const tick = () => {
       currentX += (targetX - currentX) * 0.055;
       currentY += (targetY - currentY) * 0.055;
-      phones.style.transform = `translate(${currentX}px, ${currentY}px)`;
+      composition.style.transform = `translate(${currentX}px, ${currentY}px)`;
       rafId = requestAnimationFrame(tick);
     };
 
@@ -139,18 +95,24 @@ export default function Hero() {
           <div>
             {/* Headline */}
             <h1
-              className="hero-text-item font-display font-semibold leading-[0.92] tracking-tight text-ink"
-              style={{ fontSize: "clamp(3rem, 7vw, 7rem)" }}
+              className="hero-text-item font-display font-semibold leading-[0.95] tracking-tight text-ink"
+              style={{ fontSize: "clamp(2.5rem, 5.4vw, 5.5rem)" }}
             >
-              Apps made
+              Everyday apps,
               <br />
-              for real
+              for every day
               <br />
               <em className="not-italic text-pthalo dark:text-lime">people.</em>
             </h1>
 
+            {/* Subhead — the studio philosophy in one line */}
+            <p className="hero-text-item mt-7 max-w-md text-lg leading-relaxed text-muted">
+              Built to solve real problems — making technology genuinely useful
+              and genuinely accessible, for everyday people and businesses alike.
+            </p>
+
             {/* CTA */}
-            <div className="hero-text-item mt-10 flex flex-wrap items-center gap-4">
+            <div className="hero-text-item mt-9 flex flex-wrap items-center gap-4">
               <a
                 href="#apps"
                 className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full bg-pthalo px-8 py-4 font-heading text-base font-semibold text-offwhite shadow-[0_12px_30px_-10px_rgba(18,53,36,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_-12px_rgba(18,53,36,0.65)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-bg dark:bg-lime dark:text-forest dark:shadow-[0_12px_30px_-10px_rgba(144,168,66,0.5)]"
@@ -166,54 +128,10 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* ── Right: App phone mockup composition (desktop only) ── */}
+          {/* ── Right: Floating app avatars in conversation (desktop only) ── */}
           <div className="relative hidden lg:block" style={{ height: "580px" }}>
-            <div ref={phonesContainerRef} className="absolute inset-0">
-
-              {/* CaughtSlipping — back left, rotated */}
-              <div
-                className="hero-phone hero-phone-b absolute opacity-0"
-                style={{
-                  left: "10px",
-                  top: "110px",
-                  transform: "rotate(-8deg)",
-                  zIndex: 1,
-                  filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.15))",
-                }}
-              >
-                {/* Real screenshot? -> <PhoneCaughtSlipping src="/screenshots/caught-slipping.png" /> */}
-                <PhoneCaughtSlipping />
-              </div>
-
-              {/* InSpiritInTruth — center, front */}
-              <div
-                className="hero-phone hero-phone-a absolute opacity-0"
-                style={{
-                  left: "50%",
-                  top: "30px",
-                  transform: "translateX(-44%) rotate(-2.5deg)",
-                  zIndex: 10,
-                  filter: "drop-shadow(0 32px 64px rgba(0,0,0,0.22))",
-                }}
-              >
-                {/* Real screenshot? -> <PhoneInSpiritInTruth src="/screenshots/inspiritintruth.png" /> */}
-                <PhoneInSpiritInTruth />
-              </div>
-
-              {/* tapa. — back right */}
-              <div
-                className="hero-phone hero-phone-c absolute opacity-0"
-                style={{
-                  right: "4px",
-                  top: "120px",
-                  transform: "rotate(9deg)",
-                  zIndex: 1,
-                  filter: "drop-shadow(0 24px 48px rgba(0,0,0,0.12))",
-                }}
-              >
-                {/* Real screenshot? -> <PhoneTapa src="/screenshots/tapa.png" /> */}
-                <PhoneTapa />
-              </div>
+            <div ref={compositionRef} className="absolute inset-0">
+              <HeroAppChat />
             </div>
           </div>
         </div>

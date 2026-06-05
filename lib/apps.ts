@@ -33,12 +33,12 @@ export const apps: App[] = [
     slug: "caught-slipping",
     name: "CaughtSlipping",
     category: "Focus & Productivity",
-    tagline: "The browser extension that calls you out.",
+    tagline: "The browser extension that calls you out — out loud.",
     shortDescription:
-      "Tracks the time you lose to social media and serves it back to you — without mercy.",
+      "Tracks where your work hours really go — distraction or burnout — and calls you out without the sugar-coating.",
     overview: [
-      "CaughtSlipping is a Chrome extension that quietly tracks how long you spend on the internet's biggest time sinks — YouTube, Facebook, X, and LinkedIn — and then tells you the truth about it.",
-      "Some days it shows you clean productivity stats. Other days it switches to Shame Mode and delivers a dark-humour verdict on your scrolling. It's honest, a little embarrassing, and surprisingly effective. Everything is tracked on your own device — no account, no servers, no data leaving your browser.",
+      "Your phone already nags you about screen time. But the real damage — and the real work — happens on the computer you sit at all day. CaughtSlipping lives there, quietly tracking the hours you lose to YouTube, X, and the rest, and the hours you actually pour into work.",
+      "Use it two ways: catch yourself slipping into the time sinks, or flip it around and track focused time so it can warn you when 'productive' has quietly turned into overworking. It's a no-nonsense companion with a sarcastic streak — it'll deliver the verdict on screen and, when you need it, say it out loud. Everything stays on your own device: no account, no servers, nothing leaving your browser.",
     ],
     status: "In Development",
     platform: ["Chrome Extension"],
@@ -48,39 +48,45 @@ export const apps: App[] = [
     features: [
       {
         icon: "Clock",
-        title: "Real-time tracking",
+        title: "Built for your work machine",
         description:
-          "Live stats on YouTube, Facebook, X, and LinkedIn — with idle detection so only real attention counts.",
+          "Lives on the device where the real work — and the real procrastination — happens. Live tracking with idle detection, so only genuine attention counts.",
+      },
+      {
+        icon: "BarChart2",
+        title: "Distraction or focus — your call",
+        description:
+          "Track the time you bleed into YouTube, X, and LinkedIn, or flip it around and measure focused hours instead. Either way you get the honest numbers.",
       },
       {
         icon: "Skull",
         title: "Shame Mode",
         description:
-          "A tiered, dark-humour verdict on your day. Spend four hours scrolling and the app will let you know exactly how it feels about that.",
+          "A tiered, dark-humour verdict on your day. Spend four hours scrolling and it'll tell you exactly how it feels about that.",
       },
       {
-        icon: "BarChart2",
-        title: "Productivity stats",
+        icon: "Volume2",
+        title: "It calls you out, out loud",
         description:
-          "Flip to a clean view: percentage of focused time, a weekly trend line, and your longest distraction-free streak.",
+          "CaughtSlipping doesn't just log your slip-ups — it says them. A blunt, sarcastic voice that won't let 'just five more minutes' slide.",
+      },
+      {
+        icon: "Activity",
+        title: "Overwork guard",
+        description:
+          "Productive isn't always healthy. Track your work hours and it'll warn you when focus has quietly tipped over into burnout.",
       },
       {
         icon: "ShieldBan",
         title: "Aggressive blocking",
         description:
-          "Set a daily limit per site and CaughtSlipping blocks it once you hit the wall — with a single 10-minute snooze if you really mean it. (Pro)",
-      },
-      {
-        icon: "Share2",
-        title: "One-tap sharing",
-        description:
-          "Generate a branded card of your shame score and post it — or flex on the friends doing worse than you.",
+          "Set a daily limit per site and CaughtSlipping blocks it once you hit the wall — with a single 10-minute snooze, if you really mean it. (Pro)",
       },
       {
         icon: "Lock",
         title: "Private by default",
         description:
-          "All tracking lives in your browser. No sign-up, no cloud, nothing to leak.",
+          "All tracking lives on your device. No sign-up, no cloud, nothing to leak.",
       },
     ],
     screenshots: [],
@@ -89,19 +95,19 @@ export const apps: App[] = [
     seo: {
       title: "CaughtSlipping — The browser extension that calls you out",
       description:
-        "Track your social media time and face the truth. A free, private Chrome extension with shame stats, productivity insights, and site blocking.",
+        "Track where your work hours really go — distraction or overwork — on the device that matters. A private browser extension with Shame Mode, vocal callouts, and site blocking.",
     },
   },
   {
     slug: "inspiritintruth",
     name: "InSpiritInTruth",
     category: "Faith & Devotion",
-    tagline: "A devotional for real life and imperfect journeys.",
+    tagline: "Take your faith into your own hands.",
     shortDescription:
-      "Daily devotionals and a full Bible — empathetic, grounded, and free of the noise.",
+      "A weekly devotional, AI-written ones for whatever you're carrying, and the whole Bible — faith at the pace of real life.",
     overview: [
-      "InSpiritInTruth is the mobile companion to the InSpiritInTruth newsletter — a real-life devotional for imperfect journeys. It's made for the busy, the curious, the inconsistent, and the devoted alike: anyone seeking a quiet moment of truth in a noisy day.",
-      "Every morning brings a short, structured devotional paired with scripture you can tap to read in full context. A complete in-app Bible, verse bookmarks, personal notes, and a gentle reading streak keep your practice close — without the algorithm, the ads, or the pressure to be perfect.",
+      "InSpiritInTruth puts your faith back in your own hands. It's the companion to the InSpiritInTruth devotional — true-to-life reflections for the modern Christian who can't always make it to church or read the Bible cover to cover, but still wants to stay close to it.",
+      "Each week brings one devotional, written to be digested slowly rather than rushed through. And when you need something for right now, the AI writes a personal, scripture-rooted devotional from whatever you're feeling or going through. A full in-app Bible, a daily verse or quote to keep you connected, bookmarks, and notes hold your practice together the rest of the week — no algorithm, no ads, no pressure to be perfect.",
     ],
     status: "In Development",
     platform: ["iOS", "Android"],
@@ -111,48 +117,48 @@ export const apps: App[] = [
     features: [
       {
         icon: "BookOpen",
-        title: "Daily devotionals",
+        title: "A devotional a week",
         description:
-          "Short, grounded reflections delivered every morning. Deep and relatable, never preachy.",
+          "One grounded, true-to-life devotional each week — meant to be read slowly and sat with, not rushed. Faith at the pace of a real life.",
+      },
+      {
+        icon: "Sparkles",
+        title: "Devotions on what you're carrying",
+        description:
+          "Tell it what you're feeling or facing and the AI writes a personal, scripture-rooted devotional for exactly that moment. Your faith, in your own hands. (Premium)",
+      },
+      {
+        icon: "Quote",
+        title: "Daily verses & quotes",
+        description:
+          "A short verse or quote each day to keep you connected between devotionals — a small anchor in a loud, distracting world.",
       },
       {
         icon: "Search",
-        title: "Full in-app Bible",
+        title: "The whole Bible, in-app",
         description:
-          "Read any passage with multiple translations and tap any verse for instant context — powered by API.Bible.",
+          "Read any passage across multiple translations and tap any verse for instant context — powered by API.Bible.",
       },
       {
         icon: "Bookmark",
         title: "Bookmarks & notes",
         description:
-          "Highlight verses, save devotionals, and keep your own reflections together in one library.",
-      },
-      {
-        icon: "Flame",
-        title: "Gentle streaks",
-        description:
-          "A quiet nudge to keep showing up — without guilt when life gets in the way.",
+          "Highlight verses, save devotionals, and keep your own reflections together in one quiet library.",
       },
       {
         icon: "Bell",
-        title: "Daily reminders",
+        title: "A gentle nudge",
         description:
-          "A single notification at a time you choose: start your day with purpose.",
-      },
-      {
-        icon: "Sparkles",
-        title: "Custom devotionals",
-        description:
-          "Tell it what you're carrying and receive a personal, scripture-rooted devotional written for the moment. (Premium)",
+          "One reminder at a time you choose — for the modern Christian who can't always get to church or open the Book, but wants to make the time.",
       },
     ],
     screenshots: [],
     ctaLabel: "Join the Waitlist",
     ctaHref: "#",
     seo: {
-      title: "InSpiritInTruth — A devotional for real life",
+      title: "InSpiritInTruth — Take your faith into your own hands",
       description:
-        "Daily devotionals, a full in-app Bible, verse bookmarks, and notes. The mobile companion to the InSpiritInTruth newsletter — for iOS and Android.",
+        "A weekly devotional, AI-written devotions for whatever you're going through, the full Bible, and daily verses. Built for the modern Christian — for iOS and Android.",
     },
   },
   {
@@ -161,10 +167,10 @@ export const apps: App[] = [
     category: "Food & Cooking",
     tagline: "What can I cook with this?",
     shortDescription:
-      "Tell it what's in your fridge. Get a real recipe back — no stories, no subscriptions.",
+      "Takes the daily 'what's for dinner' off your plate — tell it what you've got, get a real recipe back.",
     overview: [
-      "tapa. starts where every weeknight actually starts: with whatever you already have. List a few ingredients — or snap a photo of your fridge — and it asks a quick question or two before handing you a real, cookable recipe.",
-      "No endless food-blogger backstory, no twenty-tab search. Just clear steps with built-in timers, an ingredient checklist, and the freedom to save recipes for offline. Set dietary needs once and they're treated as hard rules every time, so what comes back is always safe to cook.",
+      "tapa. exists to delete one very specific kind of mental load: figuring out what to eat. Tell it what's in the fridge — by typing, talking, or snapping a photo — and it hands back a real, cookable recipe built around your tastes. No food-blog life story, no twenty open tabs.",
+      "It's for people tired of thinking about meals every single day — busy professionals, the ones hosting, and anyone who'd rather spend that energy elsewhere. Get a fresh idea each morning, discover new ways to cook what you already have, scale up for visitors and group dinners, and save the winners to cook again or share. Set your dietary needs once and they're enforced as hard rules, every recipe.",
     ],
     status: "In Development",
     platform: ["iOS", "Android"],
@@ -174,39 +180,45 @@ export const apps: App[] = [
     features: [
       {
         icon: "Refrigerator",
-        title: "Ingredient-first",
+        title: "Cook what you've already got",
         description:
-          "Start from what you have, not what you wish you had. Add ingredients as quick tags and go.",
+          "Start from what's in the fridge, not another shopping trip. A couple of smart questions and tapa. builds a real recipe around it.",
+      },
+      {
+        icon: "Mic",
+        title: "Type, speak, or snap",
+        description:
+          "Add ingredients however suits the moment — tap them in, say them out loud, or point your camera and let tapa. read the shelf. (camera on Pro)",
       },
       {
         icon: "Sparkles",
-        title: "Real AI recipes",
+        title: "Recipes that learn you",
         description:
-          "A couple of smart follow-up questions, then a complete recipe built around your ingredients.",
+          "Set your tastes once and tapa. works around them every time — getting sharper at your kind of cooking the more you use it.",
       },
       {
-        icon: "Camera",
-        title: "Snap your fridge",
+        icon: "Shuffle",
+        title: "A new meal every day",
         description:
-          "Point your camera, and tapa. identifies what's inside and turns it into options. (Pro)",
+          "Beat the 'what's for dinner' spiral with a fresh suggestion each day, plus new ways to cook the things you already love.",
+      },
+      {
+        icon: "Users",
+        title: "Cooking for a crowd",
+        description:
+          "Friends coming over? Feeding the group chat? Scale a recipe up for visitors and events without the mental math.",
       },
       {
         icon: "ShieldCheck",
         title: "Dietary guardrails",
         description:
-          "Vegan, halal, gluten-free, allergies — set them once and they're enforced as hard constraints, every recipe.",
+          "Vegan, halal, gluten-free, allergies — set them once and they're enforced as hard constraints on every recipe.",
       },
       {
-        icon: "Timer",
-        title: "Step timers built in",
+        icon: "Share2",
+        title: "Save & share",
         description:
-          "Tap any step to start a countdown, with a checklist so you never lose your place mid-cook.",
-      },
-      {
-        icon: "WifiOff",
-        title: "Save & cook offline",
-        description:
-          "Keep the recipes you love on your device and pull them up with no signal needed.",
+          "Keep your favourites in one place — offline included — and send the good ones to the people who'll actually make them.",
       },
     ],
     screenshots: [],
@@ -215,7 +227,7 @@ export const apps: App[] = [
     seo: {
       title: "tapa. — What can I cook with this?",
       description:
-        "Enter your ingredients or snap your fridge and get a real recipe — with timers, dietary guardrails, and offline saving. No stories, no subscriptions.",
+        "Type, speak, or snap your ingredients and get a real recipe built around your tastes — a fresh idea daily, easy scaling for guests, dietary guardrails, and offline saving.",
     },
   },
 ];

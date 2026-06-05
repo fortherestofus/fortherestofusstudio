@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
+import EditorialVisual from "@/components/ui/EditorialVisual";
 
 const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -21,13 +21,20 @@ export default function StudioIntro() {
               The studio
             </p>
             <h2 className="mt-5 max-w-xl text-balance font-display text-3xl font-semibold leading-tight tracking-tight text-ink sm:text-4xl md:text-5xl">
-              Software shouldn&apos;t make life harder.
+              We build to solve. And to learn.
             </h2>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
-              For The Rest Of Us is a small studio building honest, genuinely
-              useful apps for everyday people — the kind of tools that quietly
-              make navigating life a little easier. No bloat, no dark patterns,
-              no twenty-step setup. Each app does one real job, and does it well.
+              For The Rest Of Us is the studio of Alroy Ndhlovu — a consultant
+              who&apos;d rather build the solution than just advise on it. The
+              throughline is simple: make technology genuinely useful and
+              genuinely accessible, for everyday people and the businesses that
+              serve them, across tech, media, design, and marketing.
+            </p>
+            <p className="mt-4 max-w-xl text-lg leading-relaxed text-muted">
+              Some of that work ships as the apps below — built in the open, to
+              solve a real frustration and to learn something on the way. No
+              bloat, no dark patterns, no twenty-step setup. Each one does one
+              real job, and does it well.
             </p>
           </motion.div>
 
@@ -48,16 +55,12 @@ export default function StudioIntro() {
                   "radial-gradient(58% 50% at 72% 28%, rgba(144,168,66,0.12), transparent 70%)",
               }}
             />
-            {/* To use a real image: drop it in /public/studio and set src below. */}
-            <PlaceholderImage
-              // src="/studio/everyday.jpg"
-              alt="Everyday life — the people For The Rest Of Us builds for"
-              label="Image coming soon"
-              accentColor="#90A842"
-              className="aspect-[4/3]"
-              rounded="rounded-3xl"
-              sizes="(max-width: 1024px) 100vw, 45vw"
-            />
+            {/* Editorial brand visual. To swap in real photography later,
+                replace this with:
+                <PlaceholderImage src="/studio/everyday.jpg" alt="…"
+                  className="aspect-[4/3]" rounded="rounded-3xl"
+                  sizes="(max-width: 1024px) 100vw, 45vw" /> */}
+            <EditorialVisual variant="intro" className="aspect-[4/3]" />
           </motion.div>
         </div>
       </div>
