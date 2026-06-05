@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -131,9 +132,27 @@ export default function Navbar() {
         >
           <Link
             href="/"
-            className="font-display text-lg italic tracking-tight text-ink"
+            aria-label="For The Rest Of Us — home"
+            className="relative flex items-center"
           >
-            For The Rest Of Us
+            {/* dark-ink wordmark for light mode */}
+            <Image
+              src="/icons/logo-light.png"
+              alt="For The Rest Of Us"
+              width={150}
+              height={60}
+              priority
+              className="h-8 w-auto dark:hidden"
+            />
+            {/* cream wordmark for dark mode */}
+            <Image
+              src="/icons/logo-dark.png"
+              alt="For The Rest Of Us"
+              width={150}
+              height={60}
+              priority
+              className="hidden h-8 w-auto dark:block"
+            />
           </Link>
 
           {/* Desktop dock */}

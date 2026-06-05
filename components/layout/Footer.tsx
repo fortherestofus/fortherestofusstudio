@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Mail } from "lucide-react";
 import { apps } from "@/lib/apps";
@@ -105,7 +106,13 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-12">
           {/* Brand block */}
           <div className="md:col-span-5">
-            <p className="font-display text-xl italic">For The Rest Of Us</p>
+            <Image
+              src="/icons/logo-dark.png"
+              alt="For The Rest Of Us"
+              width={200}
+              height={80}
+              className="h-9 w-auto"
+            />
             <p className="mt-4 max-w-sm font-display text-[1.75rem] leading-[1.15] tracking-tight sm:text-3xl">
               Apps made for <span className="text-lime">real people.</span>
             </p>
