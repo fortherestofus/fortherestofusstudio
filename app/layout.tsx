@@ -25,21 +25,39 @@ const dmSans = DM_Sans({
   display: "swap",
 });
 
+const SITE_DESCRIPTION =
+  "A build-to-solve studio by consultant Alroy Ndhlovu — making technology genuinely useful and accessible, for everyday people and businesses alike. See what we're building.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://fortherestofus.studio"),
   title: {
-    default: "For The Rest Of Us — Apps made for real people",
+    default: "For The Rest Of Us — Everyday apps for every day people",
     template: "%s — For The Rest Of Us",
   },
-  description:
-    "A small studio building honest, genuinely useful apps for everyday people — tools that make navigating life a little easier. See what we're making.",
+  description: SITE_DESCRIPTION,
+  keywords: [
+    "For The Rest Of Us",
+    "Alroy Ndhlovu",
+    "app studio",
+    "everyday apps",
+    "accessible technology",
+    "product design",
+    "build to solve",
+  ],
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "For The Rest Of Us — Apps made for real people",
-    description:
-      "A small studio building honest, genuinely useful apps for everyday people — tools that make navigating life a little easier. See what we're making.",
+    title: "For The Rest Of Us — Everyday apps for every day people",
+    description: SITE_DESCRIPTION,
     url: "https://fortherestofus.studio",
     siteName: "For The Rest Of Us",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "For The Rest Of Us — Everyday apps for every day people",
+    description: SITE_DESCRIPTION,
   },
 };
 

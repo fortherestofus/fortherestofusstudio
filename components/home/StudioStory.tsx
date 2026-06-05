@@ -5,31 +5,26 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
+import EditorialVisual from "@/components/ui/EditorialVisual";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
-  { display: "3", numeric: 3, label: "Apps in development" },
-  { display: "3", numeric: 3, label: "Platforms covered" },
-  { display: "1", numeric: 1, label: "Builder. That's it." },
+  { display: "3", numeric: 3, label: "Apps in the works" },
+  { display: "4", numeric: 4, label: "Fields: tech, media, design & marketing" },
+  { display: "1", numeric: 1, label: "Consultant who'd rather build" },
 ];
 
-// "Founder at work" visual — a real photo slot with a frosted code chip overlay.
+// "Founder at work" visual — an editorial brand panel with a frosted code chip.
 function StudioVisual() {
   return (
     <div className="relative">
-      {/* Studio / founder photo.
-          To use a real photo: drop it in /public/studio and set src below,
-          e.g. src="/studio/founder.jpg" */}
-      <PlaceholderImage
-        // src="/studio/founder.jpg"
-        alt="The builder behind For The Rest Of Us, at work in Johannesburg"
-        label="Studio photo coming soon"
-        accentColor="#90A842"
-        className="aspect-[4/3] shadow-card"
-        sizes="(max-width: 1024px) 100vw, 40vw"
-      />
+      {/* Editorial brand visual. To swap in a real studio/founder photo later,
+          replace this with:
+          <PlaceholderImage src="/studio/founder.jpg" alt="…"
+            className="aspect-[4/3] shadow-card"
+            sizes="(max-width: 1024px) 100vw, 40vw" /> */}
+      <EditorialVisual variant="story" className="aspect-[4/3] shadow-card" />
 
       {/* Floating frosted code chip — keeps the dev-studio character */}
       <div className="absolute bottom-4 left-4 rounded-xl border border-border bg-bg/85 px-4 py-3 shadow-card backdrop-blur-md">
@@ -108,7 +103,7 @@ export default function StudioStory() {
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           >
             <p className="font-heading text-sm font-semibold uppercase tracking-widest text-accent">
-              Built by one person
+              The person behind it
             </p>
             <h2
               id="story-heading"
@@ -118,15 +113,17 @@ export default function StudioStory() {
             </h2>
             <div className="mt-6 space-y-4 text-lg leading-relaxed text-muted">
               <p>
-                For The Rest Of Us is the work of a single builder in
-                Johannesburg. Every app here started as a small frustration with
-                ordinary life — too much time lost to scrolling, a fridge full
-                of random ingredients, a faith practice that&apos;s hard to
-                keep up.
+                Behind For The Rest Of Us is Alroy Ndhlovu — a consultant in
+                Johannesburg who loves building and solving things far too much
+                to stop at advice. Every app here began as a small frustration
+                with ordinary life: time lost to scrolling, a fridge full of
+                random ingredients, a faith practice that&apos;s hard to keep up.
               </p>
               <p>
-                The goal is simple: ship genuinely helpful tools, one at a time,
-                and make each one feel like it was made for you. Because it was.
+                The approach is the same whether the problem is personal or a
+                business one, and whether it lives in tech, media, design, or
+                marketing: start with a real need, build to solve it, learn, and
+                make the result feel like it was made for you. Because it was.
               </p>
             </div>
 

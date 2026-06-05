@@ -114,7 +114,12 @@ export default function Footer() {
               className="h-8 w-auto"
             />
             <p className="mt-4 max-w-sm font-display text-[1.75rem] leading-[1.15] tracking-tight sm:text-3xl">
-              Apps made for <span className="text-lime">real people.</span>
+              Everyday apps, for{" "}
+              <span className="text-lime">every day people.</span>
+            </p>
+            <p className="mt-4 max-w-sm text-sm leading-relaxed text-offwhite/60">
+              A build-to-solve studio making technology genuinely useful and
+              accessible — for everyday people and businesses alike.
             </p>
             <a
               href="mailto:hello@fortherestofus.app"
@@ -186,7 +191,7 @@ export default function Footer() {
               className="h-1.5 w-1.5 rounded-full bg-lime"
               aria-hidden="true"
             />
-            Built by one person in Johannesburg
+            Built by Alroy Ndhlovu in Johannesburg
           </p>
         </div>
       </div>
