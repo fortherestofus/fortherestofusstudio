@@ -26,6 +26,10 @@ export interface App {
     title: string;
     description: string;
   };
+  legal?: {
+    privacy: string;
+    terms: string;
+  };
 }
 
 export const apps: App[] = [
@@ -42,7 +46,7 @@ export const apps: App[] = [
     ],
     status: "In Development",
     platform: ["Chrome Extension"],
-    price: "Free · Pro from $1.99/mo",
+    price: "Free · Pro (one-time)",
     icon: "/icons/caught-slipping.png",
     accentColor: "#F0B331",
     features: [
@@ -96,6 +100,10 @@ export const apps: App[] = [
       title: "CaughtSlipping — The browser extension that calls you out",
       description:
         "Track where your work hours really go — distraction or overwork — on the device that matters. A private browser extension with Shame Mode, vocal callouts, and site blocking.",
+    },
+    legal: {
+      privacy: "/apps/caught-slipping/privacy/",
+      terms: "/apps/caught-slipping/terms/",
     },
   },
   {

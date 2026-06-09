@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { App } from "@/lib/apps";
 import { getOtherApps } from "@/lib/apps";
 import AppDetailHero from "@/components/apps/AppDetailHero";
@@ -83,6 +84,24 @@ export default function AppDetail({ app }: { app: App }) {
           ))}
         </div>
       </section>
+
+      {app.legal && (
+        <div className="mt-16 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-border pt-8 text-sm text-muted">
+          <span>Legal</span>
+          <Link
+            href={app.legal.privacy}
+            className="font-medium transition-colors hover:text-ink"
+          >
+            Privacy Policy
+          </Link>
+          <Link
+            href={app.legal.terms}
+            className="font-medium transition-colors hover:text-ink"
+          >
+            Terms &amp; Conditions
+          </Link>
+        </div>
+      )}
     </article>
   );
 }
