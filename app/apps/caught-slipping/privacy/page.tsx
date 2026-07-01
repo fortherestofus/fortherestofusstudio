@@ -19,7 +19,7 @@ export default function CaughtSlippingPrivacyPage() {
       backLabel="Back to CaughtSlipping"
       intro={[
         "CaughtSlipping is built to respect your privacy by default. It tracks your time on websites entirely on your own device. Your browsing history and activity are never sent to us, never stored on a server, and never sold to anyone.",
-        "This policy explains exactly what the extension stores, the few external services it talks to, and why it needs the permissions it asks for.",
+        "This policy explains exactly what the extension stores, the one external service it talks to, and why it needs the permissions it asks for.",
       ]}
       sections={[
         {
@@ -42,10 +42,10 @@ export default function CaughtSlippingPrivacyPage() {
             "All of the following is saved locally in your browser using Chrome's storage. It stays on your device and is readable only by the extension:",
           ],
           bullets: [
-            "Time spent on the sites it tracks (YouTube, Facebook, X/Twitter, LinkedIn, and any custom sites you add).",
+            "Time spent on the sites it tracks (YouTube, Facebook, X/Twitter, LinkedIn, Reddit, and any custom sites you add).",
             "Daily and weekly totals, your productivity percentage, focus streaks, and short session records used to calculate them.",
             "Per-website time, but only if you switch on Work Mode. This is off by default and collects nothing until you enable it.",
-            "Your settings: which sites are tracked, time limits, site classifications, feature toggles, and your Pro license key.",
+            "Your settings: which sites are tracked, time limits, site classifications, and feature toggles.",
           ],
         },
         {
@@ -64,9 +64,9 @@ export default function CaughtSlippingPrivacyPage() {
           ],
         },
         {
-          heading: "The few external requests",
+          heading: "The one external request",
           body: [
-            "CaughtSlipping is local-first, but two features make limited outside requests:",
+            "CaughtSlipping is local-first. Only one feature makes an outside request:",
           ],
           bullets: [
             <>
@@ -74,14 +74,6 @@ export default function CaughtSlippingPrivacyPage() {
               add yourself, the extension fetches a favicon from Google&rsquo;s
               public icon service, which receives only the domain name (for
               example &ldquo;netflix.com&rdquo;). No personal data is sent.
-            </>,
-            <>
-              <strong className="text-ink">License checks (Pro only).</strong>{" "}
-              When you enter a Pro license key, the key is sent to Lemon Squeezy
-              to confirm it is valid. Lemon Squeezy is our payment provider and
-              merchant of record; if you buy Pro, it processes your purchase
-              details (such as email and payment) under its own privacy policy.
-              We receive only whether a key is valid.
             </>,
           ],
         },
@@ -102,7 +94,7 @@ export default function CaughtSlippingPrivacyPage() {
             </>,
             <>
               <strong className="text-ink">declarativeNetRequest</strong> — to
-              block a site once you hit a limit you set (Pro).
+              block a site once you hit a limit you set.
             </>,
             <>
               <strong className="text-ink">Scripting &amp; offscreen</strong> —
@@ -125,7 +117,7 @@ export default function CaughtSlippingPrivacyPage() {
         {
           heading: "Your rights",
           body: [
-            "Because your activity data never leaves your device, you are already in full control of it. For any purchase information held by our payment provider, or to ask a privacy question, contact us and we will help. Depending on where you live, you may have rights under laws such as POPIA or the GDPR; we are happy to honour them.",
+            "Because your activity data never leaves your device, you are already in full control of it. To ask a privacy question, contact us and we will help. Depending on where you live, you may have rights under laws such as POPIA or the GDPR; we are happy to honour them.",
           ],
         },
         {
