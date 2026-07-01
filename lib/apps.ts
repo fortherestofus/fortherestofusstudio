@@ -37,16 +37,16 @@ export const apps: App[] = [
     slug: "caught-slipping",
     name: "CaughtSlipping",
     category: "Focus & Productivity",
-    tagline: "The browser extension that calls you out — out loud.",
+    tagline: "The browser extension that calls you out.",
     shortDescription:
-      "Tracks where your work hours really go — distraction or burnout — and calls you out without the sugar-coating.",
+      "Tracks where your day online really goes — the scrolling and the overworking — and serves it back to you, without mercy.",
     overview: [
-      "Your phone already nags you about screen time. But the real damage — and the real work — happens on the computer you sit at all day. CaughtSlipping lives there, quietly tracking the hours you lose to YouTube, X, and the rest, and the hours you actually pour into work.",
-      "Use it two ways: catch yourself slipping into the time sinks, or flip it around and track focused time so it can warn you when 'productive' has quietly turned into overworking. It's a no-nonsense companion with a sarcastic streak — it'll deliver the verdict on screen and, when you need it, say it out loud. Everything stays on your own device: no account, no servers, nothing leaving your browser.",
+      "Your phone already nags you about screen time. But the real damage — and the real work — happens on the computer you sit at all day. CaughtSlipping lives there, quietly tracking where your hours go across YouTube, Reddit, X, Facebook, LinkedIn, and any site you add, then telling you the truth about it. It even counts the shows you watch hands-off, so an hour of video reads as an hour, not three minutes, and it stops the moment you're genuinely away.",
+      "It has two personalities. Most days it's Caught Slipping: a dark-humour verdict on your scrolling and a shame meter you'd rather not see. But if your problem is the opposite — never logging off — flip on Caught Grinding and it tracks your focused time and warns you when 'productive' has quietly turned into overworking. Everything lives on your own device. No account, no servers, nothing leaving your browser — and every feature is free.",
     ],
     status: "In Development",
     platform: ["Chrome Extension"],
-    price: "Free · Pro (one-time)",
+    price: "Free",
     icon: "/icons/caught-slipping.png",
     accentColor: "#F0B331",
     features: [
@@ -54,13 +54,13 @@ export const apps: App[] = [
         icon: "Clock",
         title: "Built for your work machine",
         description:
-          "Lives on the device where the real work — and the real procrastination — happens. Live tracking with idle detection, so only genuine attention counts.",
+          "Lives on the device where the real work — and the real procrastination — happens. It tracks YouTube, Reddit, X, Facebook, LinkedIn, and any site you add — and counts the video you're actually watching, so an hour-long show reads as an hour. It pauses the moment you go idle, lock the screen, or leave the browser.",
       },
       {
         icon: "BarChart2",
         title: "Distraction or focus — your call",
         description:
-          "Track the time you bleed into YouTube, X, and LinkedIn, or flip it around and measure focused hours instead. Either way you get the honest numbers.",
+          "Catch the time you bleed into the feeds, or flip to the clean view: your percentage of focused time, a 7-day trend, and your longest distraction-free streak today.",
       },
       {
         icon: "Skull",
@@ -69,22 +69,22 @@ export const apps: App[] = [
           "A tiered, dark-humour verdict on your day. Spend four hours scrolling and it'll tell you exactly how it feels about that.",
       },
       {
-        icon: "Volume2",
-        title: "It calls you out, out loud",
+        icon: "Flame",
+        title: "Work Mode — Caught Grinding",
         description:
-          "CaughtSlipping doesn't just log your slip-ups — it says them. A blunt, sarcastic voice that won't let 'just five more minutes' slide.",
-      },
-      {
-        icon: "Activity",
-        title: "Overwork guard",
-        description:
-          "Productive isn't always healthy. Track your work hours and it'll warn you when focus has quietly tipped over into burnout.",
+          "Overwork is a problem too. Flip it on and CaughtSlipping flags the late nights, weekend grind, and 90-minute no-break streaks — then tells you, plainly, to log off. Off by default, and never leaves your device.",
       },
       {
         icon: "ShieldBan",
-        title: "Aggressive blocking",
+        title: "Limits, blocking & a speed bump",
         description:
-          "Set a daily limit per site and CaughtSlipping blocks it once you hit the wall — with a single 10-minute snooze, if you really mean it. (Pro)",
+          "Set a daily limit and the site hits a wall once you cross it, with a single 10-minute snooze. Re-open a rabbit hole you've already overdone and a three-second pause makes you choose to continue.",
+      },
+      {
+        icon: "Share2",
+        title: "One-tap sharing",
+        description:
+          "Turn today's damage into a branded card and post it — accountability, or a flex on the friends doing worse than you.",
       },
       {
         icon: "Lock",
@@ -99,7 +99,7 @@ export const apps: App[] = [
     seo: {
       title: "CaughtSlipping — The browser extension that calls you out",
       description:
-        "Track where your work hours really go — distraction or overwork — on the device that matters. A private browser extension with Shame Mode, vocal callouts, and site blocking.",
+        "Track where your day online really goes — distraction or overwork — on the device that matters. A free, private Chrome extension with dark-humour Shame Mode, focus stats, a Work Mode, and site blocking.",
     },
     legal: {
       privacy: "/apps/caught-slipping/privacy/",
