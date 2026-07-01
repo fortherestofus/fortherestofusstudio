@@ -39,22 +39,22 @@ export const apps: App[] = [
     category: "Focus & Productivity",
     tagline: "The browser extension that calls you out.",
     shortDescription:
-      "Tracks the time you lose to social media and serves it back to you — without mercy.",
+      "Tracks where your day online really goes — the scrolling and the overworking — and serves it back to you, without mercy.",
     overview: [
-      "CaughtSlipping is a Chrome extension that quietly tracks how long you spend on the internet's biggest time sinks — YouTube, Facebook, X, and LinkedIn — and then tells you the truth about it.",
-      "Some days it shows you clean productivity stats. Other days it switches to Shame Mode and delivers a dark-humour verdict on your scrolling. It's honest, a little embarrassing, and surprisingly effective. Everything is tracked on your own device — no account, no servers, no data leaving your browser.",
+      "CaughtSlipping is a Chrome extension that quietly tracks where your day online actually goes — YouTube, Reddit, X, Facebook, LinkedIn, and any site you add — then tells you the truth about it. It even counts the shows you watch hands-off, so an hour of video reads as an hour, not three minutes, and it stops the moment you're genuinely away.",
+      "It has two personalities. Most days it's Caught Slipping: a dark-humour verdict on your scrolling and a shame meter you'd rather not see. But if your problem is the opposite — never logging off — flip on Caught Grinding and it patrols your overwork instead. Everything lives on your own device. No account, no servers, nothing leaving your browser — and every feature is free.",
     ],
     status: "In Development",
     platform: ["Chrome Extension"],
-    price: "Free · Pro (one-time)",
+    price: "Free",
     icon: "/icons/caught-slipping.png",
     accentColor: "#F0B331",
     features: [
       {
         icon: "Clock",
-        title: "Real-time tracking",
+        title: "Honest tracking",
         description:
-          "Live stats on YouTube, Facebook, X, and LinkedIn — with idle detection so only real attention counts.",
+          "Live time on YouTube, Reddit, X, Facebook, LinkedIn, and any custom site you add. It counts the video you're actually watching — so an hour-long show reads as an hour — and stops the moment you go idle, lock the screen, or leave the browser.",
       },
       {
         icon: "Skull",
@@ -66,19 +66,25 @@ export const apps: App[] = [
         icon: "BarChart2",
         title: "Productivity stats",
         description:
-          "Flip to a clean view: percentage of focused time, a weekly trend line, and your longest distraction-free streak.",
+          "Flip to a clean view: your percentage of focused time, a 7-day trend, and your longest distraction-free streak today.",
+      },
+      {
+        icon: "Flame",
+        title: "Work Mode — Caught Grinding",
+        description:
+          "Overwork is a problem too. Turn it on and CaughtSlipping flags the late nights, weekend grind, and 90-minute no-break streaks — then tells you, plainly, to log off. Off by default, and never leaves your device.",
       },
       {
         icon: "ShieldBan",
-        title: "Aggressive blocking",
+        title: "Limits, blocking & a speed bump",
         description:
-          "Set a daily limit per site and CaughtSlipping blocks it once you hit the wall — with a single 10-minute snooze if you really mean it. (Pro)",
+          "Set a daily limit and the site hits a wall once you cross it, with a single 10-minute snooze. Re-open a rabbit hole you've already overdone and a three-second pause makes you choose to continue.",
       },
       {
         icon: "Share2",
         title: "One-tap sharing",
         description:
-          "Generate a branded card of your shame score and post it — or flex on the friends doing worse than you.",
+          "Turn today's damage into a branded card and post it — accountability, or a flex on the friends doing worse than you.",
       },
       {
         icon: "Lock",
@@ -93,7 +99,7 @@ export const apps: App[] = [
     seo: {
       title: "CaughtSlipping — The browser extension that calls you out",
       description:
-        "Track your social media time and face the truth. A free, private Chrome extension with shame stats, productivity insights, and site blocking.",
+        "Track where your day online really goes and face the truth. A free, private Chrome extension with dark-humour shame stats, focus insights, site blocking, and a Work Mode that flags overwork.",
     },
     legal: {
       privacy: "/apps/caught-slipping/privacy/",

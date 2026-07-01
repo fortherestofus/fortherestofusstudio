@@ -4,7 +4,7 @@ import LegalDocument from "@/components/legal/LegalDocument";
 export const metadata: Metadata = {
   title: { absolute: "CaughtSlipping — Terms & Conditions" },
   description:
-    "The terms for using CaughtSlipping, including the Pro license, payments, and refunds.",
+    "The terms for using CaughtSlipping — a free, private browser extension.",
 };
 
 const LAST_UPDATED = "9 June 2026";
@@ -30,39 +30,19 @@ export default function CaughtSlippingTermsPage() {
         {
           heading: "A note on the humour",
           body: [
-            "CaughtSlipping is deliberately blunt and sarcastic. Its roasts, shame meters, and voice lines are meant as light entertainment to nudge your habits, not as genuine judgement, advice, or anything to be taken to heart. If that's not your style, it may not be the tool for you.",
+            "CaughtSlipping is deliberately blunt and sarcastic. Its roasts and shame meters are meant as light entertainment to nudge your habits, not as genuine judgement, advice, or anything to be taken to heart. If that's not your style, it may not be the tool for you.",
           ],
         },
         {
           heading: "Your licence to use it",
           body: [
-            "We grant you a personal, non-exclusive, non-transferable licence to use CaughtSlipping for your own use. The free version is available at no cost. The Pro version unlocks additional features and is unlocked with a licence key after purchase.",
-          ],
-        },
-        {
-          heading: "Pro purchases and payments",
-          body: [
-            "Pro is a one-time purchase that unlocks Pro features on your devices, subject to a per-key activation limit shown at checkout. Payments are handled by our payment provider and merchant of record, Lemon Squeezy, which collects and processes payment details and applicable taxes under its own terms. The price shown at checkout is the price you pay.",
-          ],
-        },
-        {
-          heading: "Licence keys",
-          bullets: [
-            "Your key is for your own use. Sharing or reselling it is not permitted and may cause it to stop working once its activation limit is reached.",
-            "A valid key unlocks Pro. If a key is refunded, charged back, or found to be invalid, it will be deactivated and Pro access will end.",
-            "You are responsible for keeping your key safe.",
-          ],
-        },
-        {
-          heading: "Refunds",
-          body: [
-            "If Pro isn't right for you, contact us within 14 days of purchase and we'll arrange a refund through Lemon Squeezy. Refunded keys are deactivated. Some jurisdictions grant additional statutory refund rights, which we honour.",
+            "CaughtSlipping is free to use, with no paid tiers, subscriptions, or in-app purchases. We grant you a personal, non-exclusive, non-transferable licence to use it for your own use.",
           ],
         },
         {
           heading: "Acceptable use",
           body: [
-            "You agree not to reverse-engineer, tamper with, resell, or redistribute the extension, circumvent its licensing, or use it to break any law or any third-party website's terms.",
+            "You agree not to reverse-engineer, tamper with, resell, or redistribute the extension, or use it to break any law or any third-party website's terms.",
           ],
         },
         {
@@ -80,13 +60,13 @@ export default function CaughtSlippingTermsPage() {
         {
           heading: "Limitation of liability",
           body: [
-            "To the maximum extent permitted by law, we are not liable for any indirect or consequential loss arising from your use of the extension. Our total liability to you is limited to the amount you paid for Pro (if any) in the 12 months before the claim.",
+            "To the maximum extent permitted by law, we are not liable for any indirect or consequential loss arising from your use of the extension. Because CaughtSlipping is provided free of charge, our total liability to you for any claim is limited to the fullest extent the law allows.",
           ],
         },
         {
           heading: "Termination",
           body: [
-            "You can stop using CaughtSlipping at any time by uninstalling it. We may suspend access tied to a licence key that is misused, shared in breach of these terms, or refunded.",
+            "You can stop using CaughtSlipping at any time by uninstalling it. We may discontinue the extension, or suspend access, if it is misused in breach of these terms.",
           ],
         },
         {
