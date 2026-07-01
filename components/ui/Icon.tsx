@@ -1,10 +1,10 @@
 import {
-  Activity,
   BarChart2,
   Bell,
   BookOpen,
   Bookmark,
   Clock,
+  Flame,
   Lock,
   Mic,
   Quote,
@@ -17,19 +17,18 @@ import {
   Skull,
   Sparkles,
   Users,
-  Volume2,
   type LucideIcon,
   type LucideProps,
 } from "lucide-react";
 
 // Explicit map keeps the bundle lean (only icons referenced in lib/apps.ts).
 const registry: Record<string, LucideIcon> = {
-  Activity,
   BarChart2,
   Bell,
   BookOpen,
   Bookmark,
   Clock,
+  Flame,
   Lock,
   Mic,
   Quote,
@@ -42,7 +41,6 @@ const registry: Record<string, LucideIcon> = {
   Skull,
   Sparkles,
   Users,
-  Volume2,
 };
 
 interface IconProps extends LucideProps {
