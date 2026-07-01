@@ -18,8 +18,9 @@ export default function AppCarousel() {
             What we&apos;re building
           </h2>
           <p className="mt-4 max-w-2xl text-lg text-muted">
-            Three apps, three everyday problems — each made to take a little
-            friction out of daily life.
+            Three apps, three everyday problems. Each one started as a real
+            frustration and became a way to build, learn, and prove technology
+            can actually make life easier.
           </p>
         </motion.div>
 

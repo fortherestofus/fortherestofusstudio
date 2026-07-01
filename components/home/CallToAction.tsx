@@ -65,12 +65,13 @@ export default function CallToAction() {
                 id="cta-heading"
                 className="mt-4 font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl md:text-5xl"
               >
-                More on the way.
+                Got a problem worth solving?
               </h2>
               <p className="mt-5 text-lg leading-relaxed text-offwhite/80">
-                New apps are always in the works. Got an idea for something
-                that&apos;d make life easier — or just want to follow along as
-                each one ships?
+                New apps are always in the works — and the studio takes on a few
+                outside problems too, across tech, media, design, and marketing.
+                Whether you have something to build or just want to follow along
+                as each one ships, let&apos;s talk.
               </p>
 
               <div className="mt-10 flex flex-wrap gap-4">
