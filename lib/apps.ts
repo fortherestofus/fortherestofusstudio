@@ -99,7 +99,7 @@ export const apps: App[] = [
     seo: {
       title: "CaughtSlipping — The browser extension that calls you out",
       description:
-        "Track where your day online really goes — distraction or overwork — on the device that matters. A free, private Chrome extension with dark-humour Shame Mode, focus stats, a Work Mode, and site blocking.",
+        "Track where your time online really goes. A free, private Chrome extension with focus stats, daily limits, site blocking, and dark-humour roasts.",
     },
     legal: {
       privacy: "/apps/caught-slipping/privacy/",

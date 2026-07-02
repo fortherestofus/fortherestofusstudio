@@ -29,7 +29,7 @@ const SITE_DESCRIPTION =
   "A build-to-solve studio by consultant Alroy Ndhlovu — making technology genuinely useful and accessible, for everyday people and businesses alike. See what we're building.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://fortherestofus.studio"),
+  metadataBase: new URL("https://fortherestofus.app"),
   title: {
     default: "For The Rest Of Us — Everyday apps for everyday people",
     template: "%s — For The Rest Of Us",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "For The Rest Of Us — Everyday apps for everyday people",
     description: SITE_DESCRIPTION,
-    url: "https://fortherestofus.studio",
+    url: "https://fortherestofus.app",
     siteName: "For The Rest Of Us",
     type: "website",
   },

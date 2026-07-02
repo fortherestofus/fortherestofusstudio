@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     "How CaughtSlipping handles your data. Short version: your browsing stays on your device. No accounts, no servers, no tracking.",
 };
 
-const LAST_UPDATED = "9 June 2026";
+const LAST_UPDATED = "2 July 2026";
 const CONTACT = "hello@alroyndhlovu.com";
 
 export default function CaughtSlippingPrivacyPage() {
@@ -83,6 +83,10 @@ export default function CaughtSlippingPrivacyPage() {
             <>
               <strong className="text-ink">Tabs &amp; host access</strong> — to
               see which site is in your active tab so it can measure time on it.
+              By default this covers only the built-in platforms (YouTube,
+              Facebook, X/Twitter, LinkedIn, Reddit). Access to any other site is
+              requested only if you add that site yourself, and Chrome asks your
+              permission at that moment.
             </>,
             <>
               <strong className="text-ink">Idle detection</strong> — to pause
@@ -93,12 +97,26 @@ export default function CaughtSlippingPrivacyPage() {
               and settings on your device.
             </>,
             <>
+              <strong className="text-ink">Alarms</strong> — to periodically save
+              your latest totals and reset the day&rsquo;s counters at midnight.
+            </>,
+            <>
               <strong className="text-ink">declarativeNetRequest</strong> — to
               block a site once you hit a limit you set.
             </>,
             <>
               <strong className="text-ink">Scripting</strong> — to show the
               on-site pause screen when you reach a limit you set.
+            </>,
+            <>
+              <strong className="text-ink">Offscreen</strong> — reserved for an
+              optional spoken line on your most extreme days. No audio ships by
+              default, and this collects no data.
+            </>,
+            <>
+              <strong className="text-ink">Clipboard</strong> — only used when you
+              tap &ldquo;Copy&rdquo; on a share card, to place that image on your
+              clipboard.
             </>,
           ],
         },
