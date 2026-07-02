@@ -1,6 +1,7 @@
 "use client";
 
 import { ThemeProvider } from "next-themes";
+import { MotionConfig } from "framer-motion";
 import type { ReactNode } from "react";
 
 export function Providers({ children }: { children: ReactNode }) {
@@ -11,7 +12,9 @@ export function Providers({ children }: { children: ReactNode }) {
       enableSystem={false}
       disableTransitionOnChange
     >
-      {children}
+      {/* Honour prefers-reduced-motion for all framer-motion animations
+          (the GSAP sections already gate on the useReducedMotion hook). */}
+      <MotionConfig reducedMotion="user">{children}</MotionConfig>
     </ThemeProvider>
   );
 }

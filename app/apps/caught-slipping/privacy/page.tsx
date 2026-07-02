@@ -97,8 +97,8 @@ export default function CaughtSlippingPrivacyPage() {
               block a site once you hit a limit you set.
             </>,
             <>
-              <strong className="text-ink">Scripting &amp; offscreen</strong> —
-              to show the on-site pause screen and play optional voice clips.
+              <strong className="text-ink">Scripting</strong> — to show the
+              on-site pause screen when you reach a limit you set.
             </>,
           ],
         },

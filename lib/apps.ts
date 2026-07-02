@@ -200,9 +200,9 @@ export const apps: App[] = [
       },
       {
         icon: "Sparkles",
-        title: "Recipes that learn you",
+        title: "Made to your taste",
         description:
-          "Set your tastes once and tapa. works around them every time — getting sharper at your kind of cooking the more you use it.",
+          "Set your tastes, cooking skill, and the time you've got — and every recipe works within them, so what comes back fits how you actually cook.",
       },
       {
         icon: "Shuffle",

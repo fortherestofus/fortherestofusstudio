@@ -100,7 +100,7 @@ export default function Hero() {
             >
               Everyday apps,
               <br />
-              for every day
+              for everyday
               <br />
               <em className="not-italic text-pthalo dark:text-lime">people.</em>
             </h1>

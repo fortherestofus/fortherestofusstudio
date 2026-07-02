@@ -31,7 +31,7 @@ const SITE_DESCRIPTION =
 export const metadata: Metadata = {
   metadataBase: new URL("https://fortherestofus.studio"),
   title: {
-    default: "For The Rest Of Us — Everyday apps for every day people",
+    default: "For The Rest Of Us — Everyday apps for everyday people",
     template: "%s — For The Rest Of Us",
   },
   description: SITE_DESCRIPTION,
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "For The Rest Of Us — Everyday apps for every day people",
+    title: "For The Rest Of Us — Everyday apps for everyday people",
     description: SITE_DESCRIPTION,
     url: "https://fortherestofus.studio",
     siteName: "For The Rest Of Us",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "For The Rest Of Us — Everyday apps for every day people",
+    title: "For The Rest Of Us — Everyday apps for everyday people",
     description: SITE_DESCRIPTION,
   },
 };
