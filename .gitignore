@@ -30,6 +30,9 @@
 # local design reference material (not part of the site)
 /Design Reference/
 
+# full downloaded font source package (only the .otf files are used)
+/fonts/apfel-grotezk-main/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
