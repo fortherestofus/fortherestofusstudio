@@ -237,6 +237,10 @@ export const apps: App[] = [
       description:
         "Type, speak, or snap your ingredients and get a real recipe built around your tastes — a fresh idea daily, easy scaling for guests, dietary guardrails, and offline saving.",
     },
+    legal: {
+      privacy: "/apps/tapa/privacy/",
+      terms: "/apps/tapa/terms/",
+    },
   },
 ];
 
