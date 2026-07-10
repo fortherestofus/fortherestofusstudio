@@ -26,6 +26,7 @@ export interface App {
     title: string;
     description: string;
   };
+  giving?: string; // path to the app's giving page, if it accepts gifts
   legal?: {
     privacy: string;
     terms: string;
@@ -168,6 +169,7 @@ export const apps: App[] = [
       description:
         "A weekly devotional, AI-written devotions for whatever you're going through, the full Bible, and daily verses. Built for the modern Christian — for iOS and Android.",
     },
+    giving: "/apps/inspiritintruth/giving",
   },
   {
     slug: "tapa",

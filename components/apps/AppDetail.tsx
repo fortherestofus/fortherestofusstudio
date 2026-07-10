@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import type { App } from "@/lib/apps";
 import { getOtherApps } from "@/lib/apps";
 import AppDetailHero from "@/components/apps/AppDetailHero";
@@ -75,6 +76,29 @@ export default function AppDetail({ app }: { app: App }) {
       <div className="mt-16">
         <AppFeatureList app={app} />
       </div>
+
+      {app.giving && (
+        <section className="mt-20 overflow-hidden rounded-3xl border border-border bg-surface p-8 shadow-card sm:p-10">
+          <p className="text-xs font-medium uppercase tracking-widest text-accent">
+            Giving
+          </p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-ink sm:text-3xl">
+            Help keep it going
+          </h2>
+          <p className="mt-3 max-w-2xl leading-relaxed text-muted">
+            Gifts fund the work behind {app.name} — new features, quality, and the devotional
+            content itself — and 10% of all giving goes to acts of kindness. Giving lives in the
+            app.
+          </p>
+          <Link
+            href={app.giving}
+            className="mt-6 inline-flex items-center gap-2 rounded-full bg-pthalo px-6 py-3 font-heading text-sm font-medium text-offwhite transition-all hover:shadow-card-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold dark:bg-lime dark:text-forest"
+          >
+            Learn about giving
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </section>
+      )}
 
       <section className="mt-20 border-t border-border pt-12">
         <h2 className="font-heading text-2xl font-bold text-ink">More apps</h2>
