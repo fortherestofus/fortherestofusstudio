@@ -2,21 +2,44 @@
  * Service registry — the consulting and build-for-you arm.
  *
  * Same philosophy as lib/apps.ts: pages render from this data, so copy changes
- * happen here rather than inside page components.
+ * happen here rather than inside page components. Each service also has its
+ * own detail page at /services/[slug].
  */
+
+export interface ServiceSection {
+  heading: string;
+  body: string;
+}
 
 export interface Service {
   slug: string;
   /** "build" = things we make for you. "advise" = product direction work. */
   arm: "build" | "advise";
-  icon: string; // Lucide icon name (see components/ui/Icon.tsx)
+  /** Lucide icon name — used in the quieter card row and in lists. */
+  icon: string;
   title: string;
   /** One-line benefit statement, not a feature list. */
   summary: string;
-  /** Longer paragraph for the services page. */
+  /** Longer paragraph for the services index. */
   description: string;
   /** Concrete deliverables. Keep to 4-5, phrased as nouns. */
   includes: string[];
+  /** Detail-page hero. */
+  page: {
+    /** Ink first line of the headline. */
+    title: string;
+    /** Muted second line. */
+    titleMuted: string;
+    lead: string;
+    /** Two or three explainer sections. */
+    sections: ServiceSection[];
+    /** Who this is usually for. */
+    goodFit: string[];
+  };
+  seo: {
+    title: string;
+    description: string;
+  };
 }
 
 export const services: Service[] = [
@@ -28,13 +51,42 @@ export const services: Service[] = [
     summary:
       "From an idea in a doc to something real people can use on their phone or in a browser.",
     description:
-      "We take a product from first sketch to shipped: mobile apps, web apps, and subscription software with the billing, accounts, and admin that make them a business rather than a demo. You get one person who has shipped this before, not a handoff chain.",
+      "We take a product from first sketch to shipped: mobile apps, web apps, and subscription software with the billing, accounts, and admin that make them a business rather than a demo.",
     includes: [
       "Product scoping and a build plan you can read",
       "iOS, Android, and web builds",
       "Accounts, payments, and subscriptions",
       "Launch support and store submission",
     ],
+    page: {
+      title: "Software that ships.",
+      titleMuted: "Not software that demos.",
+      lead: "Most app projects die somewhere between the idea and the store listing. We build the whole path — the product, the plumbing underneath it, and the launch at the end.",
+      sections: [
+        {
+          heading: "We start by cutting the scope",
+          body: "The first version of anything should be small enough to finish and useful enough to matter. Before writing code we work out the shortest route to something real people can hold, and we tell you plainly which of your ideas belong in version two.",
+        },
+        {
+          heading: "The unglamorous parts are the product",
+          body: "Accounts, payments, subscriptions, receipts, admin screens, error states. These are what separate a business from a prototype, and they are where most builds run out of budget. We plan for them from the start rather than discovering them in month three.",
+        },
+        {
+          heading: "You own what we build",
+          body: "Clean code in your repository, on mainstream tooling other developers know, documented well enough to hand over. We would rather you could leave than have you locked in.",
+        },
+      ],
+      goodFit: [
+        "You have an idea validated by something other than enthusiasm",
+        "You want one accountable builder, not an agency handoff chain",
+        "You would rather ship a small real thing than plan a big one",
+      ],
+    },
+    seo: {
+      title: "Custom app & SaaS development",
+      description:
+        "Mobile and web apps built end to end — product scoping, iOS, Android and web builds, payments and subscriptions, and launch support. A solutions studio in Johannesburg.",
+    },
   },
   {
     slug: "websites",
@@ -44,13 +96,42 @@ export const services: Service[] = [
     summary:
       "Fast, well-written sites that look like you take your work seriously.",
     description:
-      "Marketing sites, landing pages, and product sites built on modern tooling and designed around what you actually need visitors to do. Fast by default, easy to edit, and set up so search engines and social previews behave.",
+      "Marketing sites, landing pages, and product sites built on modern tooling and designed around what you actually need visitors to do.",
     includes: [
       "Design and build, mobile first",
       "Copy direction and page structure",
       "SEO, analytics, and social previews",
       "Handover so you can edit it yourself",
     ],
+    page: {
+      title: "A site that earns its traffic.",
+      titleMuted: "And loads before people leave.",
+      lead: "A website is the one piece of marketing you fully control. It should be quick, say something specific, and make the next step obvious.",
+      sections: [
+        {
+          heading: "Structure before decoration",
+          body: "We start with what a visitor needs to understand and what you need them to do, then build the page order around that. Design follows the argument rather than the other way round.",
+        },
+        {
+          heading: "Words are part of the build",
+          body: "Most sites fail on copy, not visuals. We write or direct the writing alongside the design, so the headline and the layout are solving the same problem instead of fighting.",
+        },
+        {
+          heading: "Fast by default, yours to edit",
+          body: "Modern tooling, images that do not stall the page, sensible SEO and social previews, analytics that answer real questions. Handover includes showing you how to change things without calling us.",
+        },
+      ],
+      goodFit: [
+        "Your current site is slow, dated, or says nothing specific",
+        "You are launching something and need a home for it",
+        "You want to be able to edit copy yourself afterwards",
+      ],
+    },
+    seo: {
+      title: "Website design & development",
+      description:
+        "Fast, well-written marketing sites and product sites — design, copy direction, SEO and analytics, built mobile first and handed over so you can edit them yourself.",
+    },
   },
   {
     slug: "product-and-growth",
@@ -60,13 +141,42 @@ export const services: Service[] = [
     summary:
       "Deciding what to build next, who it is for, and how people will find it.",
     description:
-      "The product-management work that usually goes missing in small teams: turning a rough ambition into a roadmap, choosing what to cut, and building the marketing motion that gets it in front of the right people. Useful whether you are pre-launch or stuck after one.",
+      "The product-management work that usually goes missing in small teams: turning a rough ambition into a roadmap, choosing what to cut, and building the marketing motion that gets it in front of the right people.",
     includes: [
       "Positioning and audience definition",
       "Roadmap and release planning",
       "Marketing and channel strategy",
       "Launch plans and measurement",
     ],
+    page: {
+      title: "Know what to build next.",
+      titleMuted: "And who it is actually for.",
+      lead: "Ten years of running campaigns and shipping products, applied to the two questions that decide whether yours works: what goes in the next release, and how anyone hears about it.",
+      sections: [
+        {
+          heading: "Positioning comes first",
+          body: "Most growth problems are positioning problems wearing a disguise. If you cannot say who the product is for and what it replaces, no channel strategy will fix it. We start there, in plain language, and everything downstream gets easier.",
+        },
+        {
+          heading: "A roadmap you can defend",
+          body: "Not a wish list. A short, ordered set of releases with a reason each one exists and something measurable at the end. Just as importantly, an explicit list of what you are choosing not to build yet.",
+        },
+        {
+          heading: "Marketing that matches the product",
+          body: "Channel choice, message, and cadence built around how your buyers actually decide — informed by campaign work for organisations from Meta to the IFC, and by shipping our own products to real users.",
+        },
+      ],
+      goodFit: [
+        "You are pre-launch and unsure what version one should contain",
+        "You launched, and it went quieter than you expected",
+        "You have a team building but nobody deciding",
+      ],
+    },
+    seo: {
+      title: "Product & growth consulting",
+      description:
+        "Positioning, roadmap, and go-to-market direction for small teams — deciding what to build next, who it is for, and how the right people will find it.",
+    },
   },
   {
     slug: "brand-and-content",
@@ -76,13 +186,42 @@ export const services: Service[] = [
     summary:
       "A look and a voice that stay consistent everywhere you show up.",
     description:
-      "Visual direction and content direction handled together, because they fail together. We set the design language, the tone, and the content rhythm, then leave you with something repeatable instead of a folder of one-off assets.",
+      "Visual direction and content direction handled together, because they fail together. We set the design language, the tone, and the content rhythm, then leave you with something repeatable.",
     includes: [
       "Visual identity and design system",
       "Tone of voice and messaging",
       "Content strategy and calendars",
       "Templates your team can reuse",
     ],
+    page: {
+      title: "Look like yourself.",
+      titleMuted: "Everywhere, without thinking about it.",
+      lead: "Brand falls apart in the gap between the logo file and the Tuesday afternoon social post. We close that gap with a system, not a mood board.",
+      sections: [
+        {
+          heading: "Identity as a working system",
+          body: "Type, colour, spacing, and imagery rules defined tightly enough that someone who is not a designer can make something on-brand. A logo is the smallest part of this.",
+        },
+        {
+          heading: "Voice written down",
+          body: "How you sound, what you never say, and how you handle the awkward moments — pricing, apologies, launches. Written as examples people can copy rather than adjectives they have to interpret.",
+        },
+        {
+          heading: "A rhythm you can keep",
+          body: "Content strategy sized to the team you actually have. Formats, a calendar, and reusable templates, so publishing consistently stops depending on someone feeling inspired.",
+        },
+      ],
+      goodFit: [
+        "Every asset looks like it came from a different company",
+        "You have a logo but no system around it",
+        "Content happens in bursts and then stops",
+      ],
+    },
+    seo: {
+      title: "Brand, design & content direction",
+      description:
+        "Visual identity, tone of voice, and content strategy built as one system — with templates your team can actually reuse.",
+    },
   },
   {
     slug: "tech-and-automation",
@@ -92,13 +231,42 @@ export const services: Service[] = [
     summary:
       "Getting the manual, repetitive parts of your business off your plate.",
     description:
-      "An audit of how work actually moves through your business, then the tooling to make the tedious parts run themselves: connected systems, automated handoffs, and sensible use of AI where it genuinely saves time rather than adding a new thing to manage.",
+      "An audit of how work actually moves through your business, then the tooling to make the tedious parts run themselves — including sensible use of AI where it genuinely saves time.",
     includes: [
       "Workflow and tooling audit",
       "System integrations and automations",
       "Practical AI where it earns its place",
       "Documentation and team training",
     ],
+    page: {
+      title: "Stop doing it by hand.",
+      titleMuted: "Especially the parts nobody enjoys.",
+      lead: "Most small businesses run on copy-paste between four tools and one person's memory. We map what is actually happening, then remove the steps that should never have been manual.",
+      sections: [
+        {
+          heading: "Audit before automation",
+          body: "Automating a broken process just breaks it faster. We start by following real work through your business end to end and finding where time actually disappears, which is rarely where people assume.",
+        },
+        {
+          heading: "Connect what you already pay for",
+          body: "Usually the answer is not new software. It is making the tools you own talk to each other, so a form fills a sheet, a sheet raises an invoice, and nobody retypes anything.",
+        },
+        {
+          heading: "AI where it earns its place",
+          body: "Useful for drafting, summarising, classifying, and answering repeat questions. Not useful as a replacement for a process you have not defined. We are honest about which of your problems is which.",
+        },
+      ],
+      goodFit: [
+        "The same data gets typed into more than one system",
+        "Reporting takes a day that should take a minute",
+        "You are curious about AI but wary of buying a toy",
+      ],
+    },
+    seo: {
+      title: "Business tech & automation consulting",
+      description:
+        "Workflow audits, system integrations, and practical automation — including AI where it genuinely saves time — for small teams drowning in manual work.",
+    },
   },
 ];
 
@@ -107,25 +275,30 @@ export const PROCESS_STEPS = [
     step: 1,
     title: "Understand",
     description:
-      "We start with the problem, the people it affects, and what success would actually look like. No proposal until that is clear.",
-    wash: "peach" as const,
+      "The problem, the people it affects, and what success would look like. No proposal until that is clear.",
   },
   {
     step: 2,
     title: "Build",
     description:
-      "Short cycles with something visible at the end of each one. You see progress as it happens instead of waiting for a reveal.",
-    wash: "sky" as const,
+      "Short cycles with something visible at the end of each one, so you see progress as it happens.",
   },
   {
     step: 3,
     title: "Grow",
     description:
-      "Launch is the middle, not the end. We measure what happens next and keep improving the parts that move.",
-    wash: "lilac" as const,
+      "Launch is the middle, not the end. We measure what happens next and improve the parts that move.",
   },
 ];
 
 export function getServicesByArm(arm: Service["arm"]): Service[] {
   return services.filter((service) => service.arm === arm);
+}
+
+export function getService(slug: string): Service | undefined {
+  return services.find((service) => service.slug === slug);
+}
+
+export function getOtherServices(slug: string): Service[] {
+  return services.filter((service) => service.slug !== slug);
 }

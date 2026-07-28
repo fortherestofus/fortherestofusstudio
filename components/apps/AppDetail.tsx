@@ -1,111 +1,205 @@
 /**
  * AppDetail — the shared template for every app page.
  *
- * The app's accent is scoped here via AppThemeProvider, so the section
- * components below can use accent tokens without knowing which app they are
- * rendering.
+ * Editorial, not carded: a centred hero with one hero screenshot rising from
+ * the fold, alternating full-width story bands, a hairline spec strip, and a
+ * closing CTA. The app's accent is scoped by AppThemeProvider and appears only
+ * in imagery and small marks — the type and buttons stay on the studio system.
  */
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import type { App } from "@/lib/apps";
 import { getOtherApps } from "@/lib/apps";
 import AppThemeProvider from "@/components/apps/AppThemeProvider";
-import AppDetailHero from "@/components/apps/AppDetailHero";
-import AppScreenshots from "@/components/apps/AppScreenshots";
-import AppFeatureList from "@/components/apps/AppFeatureList";
+import AppStorySection from "@/components/apps/AppStorySection";
+import AppIcon from "@/components/ui/AppIcon";
+import Badge from "@/components/ui/Badge";
+import PillButton from "@/components/ui/PillButton";
+import PlaceholderBlock from "@/components/ui/PlaceholderBlock";
 import Section, { SectionHeading } from "@/components/ui/Section";
-import { Card } from "@/components/ui/Card";
 import AppCard from "@/components/ui/AppCard";
 import CallToAction from "@/components/home/CallToAction";
 
-function SpecList({ app }: { app: App }) {
+function SpecStrip({ app }: { app: App }) {
   const specs = [
-    { label: "Category", value: app.category },
-    { label: "Platform", value: app.platform.join(", ") },
-    { label: "Status", value: app.status },
+    { label: "Platform", value: app.platform.join(" · ") },
     { label: "Price", value: app.price },
+    { label: "Status", value: app.status },
+    { label: "Category", value: app.category },
   ];
 
   return (
-    <Card className="h-fit p-6">
-      <dl className="divide-y divide-border">
+    <div className="mx-auto w-full max-w-content px-5 sm:px-8">
+      <dl className="grid grid-cols-2 border-y border-border sm:grid-cols-4">
         {specs.map((spec, i) => (
           <div
             key={spec.label}
-            className={`flex items-baseline justify-between gap-4 ${
-              i === 0 ? "pb-3" : "py-3 last:pb-0"
-            }`}
+            className={`px-4 py-6 text-center ${
+              i > 0 ? "border-border sm:border-l" : ""
+            } ${i === 1 ? "border-l border-border" : ""} ${
+              i === 2 ? "border-t border-border sm:border-t-0" : ""
+            } ${i === 3 ? "border-l border-t border-border sm:border-t-0" : ""}`}
           >
-            <dt className="text-[0.8125rem] uppercase tracking-[0.14em] text-faint">
+            <dt className="text-[0.6875rem] uppercase tracking-[0.14em] text-faint">
               {spec.label}
             </dt>
-            <dd className="text-right text-[0.9375rem] font-medium text-ink">
+            <dd className="mt-2 text-[0.9375rem] font-medium text-ink">
               {spec.value}
             </dd>
           </div>
         ))}
       </dl>
-    </Card>
+    </div>
   );
 }
 
 export default function AppDetail({ app }: { app: App }) {
   const others = getOtherApps(app.slug);
+  const heroShot = app.screenshots[0];
+  const isPhoneApp = app.platform.some((p) => /iOS|Android/i.test(p));
 
   return (
     <AppThemeProvider app={app}>
-      <AppDetailHero app={app} />
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-bg pt-28 sm:pt-36">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute left-1/2 top-0 h-[440px] w-[720px] -translate-x-1/2 rounded-full opacity-40 blur-3xl"
+          style={{
+            background: `radial-gradient(circle, color-mix(in srgb, ${app.accentColor} 26%, transparent), transparent 70%)`,
+          }}
+        />
 
-      {/* Screenshots */}
-      <section className="bg-bg pb-4">
-        <div className="mx-auto w-full max-w-content px-5 sm:px-8">
-          <AppScreenshots app={app} />
-        </div>
-      </section>
+        <div className="relative mx-auto w-full max-w-content px-5 sm:px-8">
+          <Link
+            href="/apps"
+            className="inline-flex items-center gap-1.5 text-[0.9375rem] text-muted transition-colors hover:text-ink"
+          >
+            <ArrowLeft className="h-4 w-4" />
+            All apps
+          </Link>
 
-      {/* Overview + specs */}
-      <Section tone="canvas">
-        <div className="grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:gap-14">
-          <div>
-            <h2 className="text-[0.8125rem] uppercase tracking-[0.14em] text-faint">
-              Overview
-            </h2>
-            <div className="mt-5 space-y-5">
-              {app.overview.map((paragraph, i) => (
-                <p
-                  key={i}
-                  className={
-                    i === 0
-                      ? "text-pretty text-lg leading-relaxed text-ink sm:text-xl"
-                      : "text-pretty leading-relaxed text-muted"
-                  }
-                >
-                  {paragraph}
-                </p>
-              ))}
+          <div className="mx-auto mt-12 max-w-2xl text-center">
+            <span
+              className="mx-auto grid h-16 w-16 place-items-center rounded-[20px] border border-border"
+              style={{
+                backgroundColor: `color-mix(in srgb, ${app.accentColor} 15%, #ffffff)`,
+              }}
+            >
+              <AppIcon
+                icon={app.icon}
+                color={app.accentColor}
+                label={app.name}
+                size={44}
+                className="rounded-xl"
+              />
+            </span>
+
+            <div className="mt-6 flex items-center justify-center gap-2.5">
+              <span className="text-[0.8125rem] uppercase tracking-[0.14em] text-faint">
+                {app.name}
+              </span>
+              <Badge variant="status" status={app.status}>
+                {app.status}
+              </Badge>
+            </div>
+
+            <h1 className="mt-4 text-balance text-[2.25rem] font-medium leading-[1.05] tracking-[-0.03em] text-ink sm:text-[3.25rem]">
+              {app.tagline}
+            </h1>
+            <p className="mx-auto mt-6 max-w-[52ch] text-pretty leading-relaxed text-muted sm:text-lg">
+              {app.shortDescription}
+            </p>
+
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+              <PillButton
+                href={app.ctaHref}
+                external={app.ctaExternal}
+                size="lg"
+              >
+                {app.ctaLabel}
+              </PillButton>
             </div>
           </div>
 
-          <SpecList app={app} />
+          {/* Hero screenshot rising from the fold */}
+          <div className="mt-16 sm:mt-20">
+            {heroShot ? (
+              <div
+                className={`relative mx-auto overflow-hidden rounded-t-well border border-b-0 border-border bg-surface ${
+                  isPhoneApp ? "max-w-[320px]" : "max-w-4xl"
+                }`}
+                style={{ aspectRatio: isPhoneApp ? "9 / 14" : "16 / 9" }}
+              >
+                <Image
+                  src={heroShot}
+                  alt={`${app.name} screenshot`}
+                  fill
+                  sizes="(max-width: 768px) 90vw, 900px"
+                  className="object-cover object-top"
+                  priority
+                />
+              </div>
+            ) : (
+              <PlaceholderBlock
+                ratio={isPhoneApp ? "phone" : "browser"}
+                tint={app.accentColor}
+                label={`${app.name} — hero screenshot`}
+                className={`mx-auto rounded-t-well border-b-0 ${
+                  isPhoneApp ? "max-w-[320px]" : "max-w-4xl"
+                }`}
+              />
+            )}
+          </div>
         </div>
-      </Section>
+      </section>
 
-      {/* Features */}
+      <SpecStrip app={app} />
+
+      {/* Story bands */}
+      {app.story?.map((story, i) => (
+        <AppStorySection
+          key={story.title}
+          story={story}
+          app={app}
+          flipped={i % 2 === 1}
+          index={i}
+        />
+      ))}
+
+      {/* Everything else it does */}
       <Section tone="sunken">
-        <AppFeatureList app={app} />
+        <SectionHeading
+          align="left"
+          eyebrow="Everything else"
+          title={`The rest of what ${app.name} does`}
+        />
+        <ul className="mt-10 grid gap-x-12 gap-y-8 md:grid-cols-2">
+          {app.features.map((feature) => (
+            <li key={feature.title} className="border-t border-border pt-6">
+              <h3 className="text-base font-medium tracking-[-0.01em] text-ink">
+                {feature.title}
+              </h3>
+              <p className="mt-2 max-w-[46ch] text-[0.9375rem] leading-relaxed text-muted">
+                {feature.description}
+              </p>
+            </li>
+          ))}
+        </ul>
       </Section>
 
       {/* Giving (InSpiritInTruth only) */}
       {app.giving && (
         <Section tone="canvas" size="sm">
-          <Card className="overflow-hidden p-8 sm:p-10">
-            <p className="text-[0.8125rem] uppercase tracking-[0.14em] text-faint">
+          <div className="mx-auto max-w-reading text-center">
+            <span className="text-[0.8125rem] uppercase tracking-[0.14em] text-faint">
               Giving
-            </p>
-            <h2 className="mt-3 text-[1.75rem] font-medium tracking-[-0.02em] text-ink sm:text-[2.25rem]">
+            </span>
+            <h2 className="mt-4 text-balance text-[1.75rem] font-medium tracking-[-0.02em] text-ink sm:text-[2.25rem]">
               Help keep it going
             </h2>
-            <p className="mt-4 max-w-2xl text-pretty leading-relaxed text-muted">
+            <p className="mt-4 text-pretty leading-relaxed text-muted">
               Gifts fund the work behind {app.name} — new features, quality, and
               the devotional content itself — and 10% of all giving goes to acts
               of kindness. Giving lives in the app, and a gift never unlocks
@@ -118,13 +212,17 @@ export default function AppDetail({ app }: { app: App }) {
               Learn about giving
               <ArrowRight className="h-4 w-4" />
             </Link>
-          </Card>
+          </div>
         </Section>
       )}
 
       {/* More apps */}
       <Section tone="canvas">
-        <SectionHeading align="left" eyebrow="More from the studio" title="Our other apps" />
+        <SectionHeading
+          align="left"
+          eyebrow="More from the studio"
+          title="Our other apps"
+        />
         <div className="mt-10 grid gap-3 sm:gap-4 md:grid-cols-3">
           {others.map((other) => (
             <AppCard key={other.slug} app={other} />

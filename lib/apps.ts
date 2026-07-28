@@ -32,6 +32,19 @@ export interface App {
    */
   accentDeep?: string;
   features: AppFeature[];
+  /**
+   * Story sections for the editorial detail page. Each gets a full-width
+   * alternating band with a real screenshot beside it. Order matters.
+   */
+  story?: {
+    eyebrow: string;
+    title: string;
+    body: string;
+    /** Screenshot path; falls back to a placeholder block until supplied. */
+    image?: string;
+    /** Frame shape for the image slot. */
+    shape?: "phone" | "browser";
+  }[];
   screenshots: string[]; // paths: /screenshots/[slug]-1.png
   ctaLabel: string;
   ctaHref: string;
@@ -112,6 +125,26 @@ export const apps: App[] = [
           "All tracking lives on your device. No sign-up, no cloud, nothing to leak.",
       },
     ],
+    story: [
+      {
+        eyebrow: "The honest number",
+        title: "It counts the hours you would rather not count.",
+        body: "CaughtSlipping lives on the machine where the real work and the real procrastination both happen. It tracks YouTube, Reddit, X, Facebook, LinkedIn and anything you add, counts video you are actually watching so an hour-long show reads as an hour, and stops the moment you go idle.",
+        shape: "browser" as const,
+      },
+      {
+        eyebrow: "Two personalities",
+        title: "Slipping, or grinding. Both are a problem.",
+        body: "Most days it delivers a dark-humour verdict on your scrolling and a shame meter you would rather not see. Flip on Caught Grinding and it does the opposite job: flagging the late nights, the weekend work, and the ninety-minute stretches without a break.",
+        shape: "browser" as const,
+      },
+      {
+        eyebrow: "Nothing leaves the browser",
+        title: "No account. No servers. No trail.",
+        body: "Every hour it records stays on your own device. There is nothing to sign up for, nothing syncing in the background, and nothing to leak. Every feature is free.",
+        shape: "browser" as const,
+      },
+    ],
     screenshots: [],
     ctaLabel: "Get Early Access",
     ctaHref: "#",
@@ -178,6 +211,26 @@ export const apps: App[] = [
         title: "A gentle nudge",
         description:
           "One reminder at a time you choose — for the modern Christian who can't always get to church or open the Book, but wants to make the time.",
+      },
+    ],
+    story: [
+      {
+        eyebrow: "One a week",
+        title: "A devotional you can actually finish.",
+        body: "One grounded, true-to-life reflection each week, written to be read slowly and sat with rather than rushed through. Faith at the pace of a life that already has enough going on.",
+        shape: "phone" as const,
+      },
+      {
+        eyebrow: "For what you are carrying",
+        title: "Tell it what is going on. It writes for that.",
+        body: "When the weekly devotional is not the thing you need, describe what you are feeling or facing and get a personal, scripture-rooted reflection written for that moment.",
+        shape: "phone" as const,
+      },
+      {
+        eyebrow: "The whole Bible, in hand",
+        title: "Verses, bookmarks, and notes that stay yours.",
+        body: "A full in-app Bible, a daily verse to keep you connected between devotionals, and somewhere to keep the passages and thoughts you return to. No algorithm, no ads, no pressure to perform.",
+        shape: "phone" as const,
       },
     ],
     screenshots: [],
@@ -249,6 +302,26 @@ export const apps: App[] = [
         title: "Save & share",
         description:
           "Keep your favourites in one place — offline included — and send the good ones to the people who'll actually make them.",
+      },
+    ],
+    story: [
+      {
+        eyebrow: "Start with what you have",
+        title: "Your kitchen is the search bar.",
+        body: "Type it, say it, or photograph it. tapa. builds the recipe around what is actually in front of you rather than handing you a shopping list and a lecture.",
+        shape: "phone" as const,
+      },
+      {
+        eyebrow: "Guardrails, not suggestions",
+        title: "Set your diet once. It holds everywhere.",
+        body: "Vegan, halal, gluten-free, allergies. Set them a single time and they are enforced as hard constraints on every recipe it will ever give you.",
+        shape: "phone" as const,
+      },
+      {
+        eyebrow: "Cook for whoever turned up",
+        title: "Scale it, save it, send it.",
+        body: "Adjust for two or for ten without redoing the maths, keep the good ones offline, and share the winners with the people who will actually make them.",
+        shape: "phone" as const,
       },
     ],
     screenshots: [],
@@ -324,6 +397,26 @@ export const apps: App[] = [
         title: "AI visibility",
         description:
           "For brand studies, see how often AI answer engines name you and which sources those answers are citing.",
+      },
+    ],
+    story: [
+      {
+        eyebrow: "One question, everywhere",
+        title: "It reads the conversation where it happens.",
+        body: "Give Hakkan a question and it sweeps the platforms the discussion actually lives on — Reddit, X, YouTube, TikTok, LinkedIn, Hacker News, reviews, news, the open web — showing you exactly which sources it read and which failed.",
+        shape: "browser" as const,
+      },
+      {
+        eyebrow: "Receipts, not vibes",
+        title: "Every claim opens into who said it.",
+        body: "Click any theme, sentiment bar, or key point and the verbatim quotes appear with platform, author, and link. Nothing is asserted without something behind it, including an honest note on where coverage was thin.",
+        shape: "browser" as const,
+      },
+      {
+        eyebrow: "In your voice",
+        title: "Research becomes work you can publish.",
+        body: "Turn one study into posts, threads, carousels, blogs, newsletters, or scripts — written through a voice profile learned from your own samples rather than a generic house style.",
+        shape: "browser" as const,
       },
     ],
     screenshots: [],

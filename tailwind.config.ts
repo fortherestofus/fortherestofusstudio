@@ -32,11 +32,6 @@ const config: Config = {
         "ink-muted": "var(--color-ink-text-muted)",
         "ink-border": "var(--color-ink-border)",
 
-        // Pastel washes
-        "wash-sky": "var(--wash-sky)",
-        "wash-peach": "var(--wash-peach)",
-        "wash-lilac": "var(--wash-lilac)",
-        "wash-mint": "var(--wash-mint)",
       },
       fontFamily: {
         // One family sitewide. Aliases kept so legacy classes resolve to Apfel.

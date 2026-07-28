@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Check } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { apps } from "@/lib/apps";
-import { getServicesByArm, PROCESS_STEPS, type Service } from "@/lib/services";
+import { services, PROCESS_STEPS } from "@/lib/services";
+import { VIGNETTES, type VignetteKey } from "@/components/services/Vignettes";
 import PageHero from "@/components/layout/PageHero";
 import Section, { SectionHeading } from "@/components/ui/Section";
-import { Card, StepCard } from "@/components/ui/Card";
-import Icon from "@/components/ui/Icon";
+import { Well, VignetteCard, ProcessStrip } from "@/components/ui/Card";
 import AppIcon from "@/components/ui/AppIcon";
 import PillButton from "@/components/ui/PillButton";
 import CallToAction from "@/components/home/CallToAction";
@@ -26,51 +26,7 @@ export const metadata: Metadata = {
   },
 };
 
-function ServiceRow({ service }: { service: Service }) {
-  return (
-    <Card className="p-6 sm:p-8">
-      <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
-        <div className="lg:col-span-7">
-          <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent-soft text-accent-deep">
-            <Icon name={service.icon} className="h-5 w-5" />
-          </span>
-          <h3 className="mt-5 text-xl font-medium tracking-[-0.01em] text-ink sm:text-2xl">
-            {service.title}
-          </h3>
-          <p className="mt-2 text-pretty text-[0.9375rem] font-medium text-ink/70">
-            {service.summary}
-          </p>
-          <p className="mt-4 text-pretty leading-relaxed text-muted">
-            {service.description}
-          </p>
-        </div>
-
-        <div className="lg:col-span-5">
-          <div className="rounded-card border border-border bg-sunken p-5">
-            <h4 className="text-xs font-medium uppercase tracking-[0.14em] text-faint">
-              What that includes
-            </h4>
-            <ul className="mt-4 space-y-3">
-              {service.includes.map((item) => (
-                <li key={item} className="flex gap-2.5">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent-deep" />
-                  <span className="text-[0.9375rem] leading-snug text-muted">
-                    {item}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </Card>
-  );
-}
-
 export default function ServicesPage() {
-  const build = getServicesByArm("build");
-  const advise = getServicesByArm("advise");
-
   return (
     <>
       <PageHero
@@ -84,7 +40,7 @@ export default function ServicesPage() {
             Start a project
           </PillButton>
           <PillButton
-            href="#build"
+            href="#what-we-do"
             variant="ghost"
             size="lg"
             withArrow={false}
@@ -94,69 +50,47 @@ export default function ServicesPage() {
         </div>
       </PageHero>
 
-      {/* Build */}
-      <Section id="build" tone="sunken">
-        <SectionHeading
-          align="left"
-          eyebrow="We build"
-          title="Things we make for you."
-          subtitle="Design and engineering handled by the same people who ship our own products, so nothing gets lost in a handoff."
-        />
-        <div className="mt-10 grid gap-3 sm:gap-4">
-          {build.map((service) => (
-            <ServiceRow key={service.slug} service={service} />
-          ))}
-        </div>
+      <Section id="what-we-do" tone="canvas" size="sm">
+        <Well>
+          <div className="grid gap-3 sm:gap-4 lg:grid-cols-3">
+            {services.map((service) => {
+              const Vignette = VIGNETTES[service.slug as VignetteKey];
+              return (
+                <VignetteCard
+                  key={service.slug}
+                  visual={<Vignette />}
+                  title={service.title}
+                  description={service.summary}
+                  href={`/services/${service.slug}`}
+                  linkLabel="See how it works"
+                />
+              );
+            })}
+          </div>
+        </Well>
       </Section>
 
-      {/* Advise */}
-      <Section id="advise" tone="canvas">
-        <SectionHeading
-          align="left"
-          eyebrow="We advise"
-          title="Product direction, not slide decks."
-          subtitle="The product-management work that usually goes missing in small teams: what to build, how it should look and sound, and how the business around it runs."
-        />
-        <div className="mt-10 grid gap-3 sm:gap-4">
-          {advise.map((service) => (
-            <ServiceRow key={service.slug} service={service} />
-          ))}
-        </div>
-      </Section>
-
-      {/* Process */}
       <Section tone="sunken">
         <SectionHeading
           eyebrow="How we work"
           title="Understand, build, grow."
           subtitle="Three steps, run the same way whether the project is ours or yours."
         />
-        <div className="mt-12 grid gap-3 sm:gap-4 md:grid-cols-3">
-          {PROCESS_STEPS.map((step) => (
-            <StepCard
-              key={step.step}
-              step={step.step}
-              title={step.title}
-              description={step.description}
-              wash={step.wash}
-            />
-          ))}
-        </div>
+        <ProcessStrip steps={PROCESS_STEPS} className="mt-12 border-t-0 pt-0" />
       </Section>
 
-      {/* Proof — we walk the walk */}
       <Section tone="canvas">
         <SectionHeading
           eyebrow="Proof"
           title="We walk the walk."
-          subtitle="We do not have a wall of client logos yet. What we do have is our own shelf of products, built end to end with the same hands that would build yours."
+          subtitle="Our own shelf of products, built end to end with the same hands that would build yours."
         />
         <div className="mt-12 grid gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-4">
           {apps.map((app) => (
             <Link
               key={app.slug}
               href={`/apps/${app.slug}`}
-              className="group flex items-center gap-3 rounded-card border border-border bg-surface p-4 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
+              className="group flex items-center gap-3 rounded-card border border-border bg-surface p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
             >
               <span
                 className="grid h-11 w-11 shrink-0 place-items-center rounded-xl"
@@ -172,7 +106,7 @@ export default function ServicesPage() {
                   className="rounded-lg"
                 />
               </span>
-              <span className="min-w-0">
+              <span className="min-w-0 flex-1">
                 <span className="block truncate font-medium text-ink">
                   {app.name}
                 </span>
@@ -180,6 +114,7 @@ export default function ServicesPage() {
                   {app.category}
                 </span>
               </span>
+              <ArrowRight className="h-4 w-4 shrink-0 text-faint transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-ink" />
             </Link>
           ))}
         </div>

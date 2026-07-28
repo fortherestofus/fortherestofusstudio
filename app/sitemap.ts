@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { apps } from "@/lib/apps";
+import { services } from "@/lib/services";
 
 const BASE = "https://fortherestofus.app";
 
@@ -21,6 +22,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  const serviceRoutes = services.map((service) => ({
+    path: `/services/${service.slug}/`,
+    priority: 0.8,
+  }));
+
   // Legal and giving pages hosted here (external ones are skipped).
   const supportingRoutes = apps.flatMap((app) => {
     const routes: { path: string; priority: number }[] = [];
@@ -38,7 +44,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const lastModified = new Date();
 
-  return [...staticRoutes, ...appRoutes, ...supportingRoutes].map((route) => ({
+  return [
+    ...staticRoutes,
+    ...appRoutes,
+    ...serviceRoutes,
+    ...supportingRoutes,
+  ].map((route) => ({
     url: `${BASE}${route.path}`,
     lastModified,
     priority: route.priority,

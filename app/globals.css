@@ -3,64 +3,60 @@
 @tailwind utilities;
 
 /* ============================================================
-   DESIGN TOKENS
-   Cream canvas, ink type, one accent. Per-app pages override
-   --color-accent / --color-accent-soft / --color-accent-ink only.
+   DESIGN TOKENS — monotone system
+   ------------------------------------------------------------
+   The studio palette is deliberately neutral: warm off-white
+   canvas, ink type, ink buttons. Colour enters the page only
+   through imagery (screenshots, placeholder art) and through an
+   app's own accent on that app's pages.
+
+   --color-accent is a restrained ember, used for small live
+   moments only (focus rings, live dots, link hover). It is NOT a
+   section colour. Per-app pages override the accent group via
+   components/apps/AppThemeProvider.
    ============================================================ */
 :root {
-  --color-bg: #f7f5f0;
+  --color-bg: #f6f5f1;
   --color-surface: #ffffff;
-  --color-surface-sunken: #efece4;
-  --color-text: #16150f;
-  --color-text-muted: #6e6a5e;
-  --color-text-faint: #a8a499;
-  --color-border: #e7e3d8;
+  --color-surface-sunken: #eeebe3;
+  --color-text: #17150f;
+  --color-text-muted: #6f6a5e;
+  --color-text-faint: #a5a197;
+  --color-border: #e6e2d8;
 
-  /* Studio accent */
-  --color-accent: #ee5b2e;
-  --color-accent-soft: #fbe9da;
+  /* Restrained accent — small moments only */
+  --color-accent: #c4552f;
+  --color-accent-soft: #f4e7de;
   --color-accent-ink: #ffffff;
-  /* Darkened accent for text and icons on light surfaces (contrast safe) */
-  --color-accent-deep: #c2451f;
+  --color-accent-deep: #a8431f;
 
   /* Ink surfaces (dark CTA block, footer) */
-  --color-ink-surface: #16150f;
-  --color-ink-surface-raised: #23211a;
-  --color-ink-text: #f7f5f0;
-  --color-ink-text-muted: #a5a196;
-  --color-ink-border: rgba(247, 245, 240, 0.12);
-
-  /* Pastel washes — max 2-3 moments per page */
-  --wash-sky: #e4eef7;
-  --wash-peach: #fbe9da;
-  --wash-lilac: #efe7f7;
-  --wash-mint: #e3f1e8;
+  --color-ink-surface: #141310;
+  --color-ink-surface-raised: #211e18;
+  --color-ink-text: #f4f2ec;
+  --color-ink-text-muted: #a49f92;
+  --color-ink-border: rgba(244, 242, 236, 0.12);
 }
 
 .dark {
-  --color-bg: #121210;
-  --color-surface: #1b1a16;
-  --color-surface-sunken: #16150f;
-  --color-text: #f7f5f0;
-  --color-text-muted: #a5a196;
-  --color-text-faint: #6e6a5e;
-  --color-border: rgba(247, 245, 240, 0.1);
+  --color-bg: #141310;
+  --color-surface: #1d1b16;
+  --color-surface-sunken: #0f0e0c;
+  --color-text: #f4f2ec;
+  --color-text-muted: #a49f92;
+  --color-text-faint: #6f6a5e;
+  --color-border: rgba(244, 242, 236, 0.1);
 
-  --color-accent: #ff7a4d;
-  --color-accent-soft: rgba(238, 91, 46, 0.16);
-  --color-accent-ink: #16150f;
-  --color-accent-deep: #ff8f66;
+  --color-accent: #e07a52;
+  --color-accent-soft: rgba(224, 122, 82, 0.16);
+  --color-accent-ink: #141310;
+  --color-accent-deep: #ef906a;
 
-  --color-ink-surface: #0d0c0a;
-  --color-ink-surface-raised: #1b1a16;
-  --color-ink-text: #f7f5f0;
-  --color-ink-text-muted: #a5a196;
-  --color-ink-border: rgba(247, 245, 240, 0.1);
-
-  --wash-sky: rgba(228, 238, 247, 0.08);
-  --wash-peach: rgba(251, 233, 218, 0.08);
-  --wash-lilac: rgba(239, 231, 247, 0.08);
-  --wash-mint: rgba(227, 241, 232, 0.08);
+  --color-ink-surface: #0b0a08;
+  --color-ink-surface-raised: #191712;
+  --color-ink-text: #f4f2ec;
+  --color-ink-text-muted: #a49f92;
+  --color-ink-border: rgba(244, 242, 236, 0.1);
 }
 
 @layer base {

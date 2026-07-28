@@ -49,15 +49,15 @@ export default function Navbar() {
     pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 sm:pt-5">
-      <nav
-        className={cn(
-          "mx-auto flex w-full max-w-content items-center justify-between gap-4",
-          "rounded-full border border-border bg-surface/85 px-4 py-2.5 backdrop-blur-md",
-          "transition-shadow duration-300 sm:px-5",
-          scrolled ? "shadow-nav" : "shadow-none"
-        )}
-      >
+    <header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        scrolled
+          ? "border-b border-border bg-bg/80 backdrop-blur-md"
+          : "border-b border-transparent"
+      )}
+    >
+      <nav className="mx-auto flex w-full max-w-content items-center justify-between gap-4 px-5 py-4 sm:px-8">
         <Link
           href="/"
           className="flex shrink-0 items-center"
@@ -69,7 +69,7 @@ export default function Navbar() {
             width={164}
             height={24}
             priority
-            className="h-6 w-auto dark:hidden"
+            className="h-[22px] w-auto dark:hidden"
           />
           <Image
             src="/icons/logo-dark.png"
@@ -77,7 +77,7 @@ export default function Navbar() {
             width={164}
             height={24}
             priority
-            className="hidden h-6 w-auto dark:block"
+            className="hidden h-[22px] w-auto dark:block"
           />
         </Link>
 
@@ -121,7 +121,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto mt-2 w-full max-w-content overflow-hidden rounded-well border border-border bg-surface p-3 shadow-nav lg:hidden"
+            className="mx-4 overflow-hidden rounded-well border border-border bg-surface p-3 shadow-nav sm:mx-8 lg:hidden"
           >
             <ul className="flex flex-col">
               {NAV_LINKS.map((link) => (
