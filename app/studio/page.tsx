@@ -5,6 +5,7 @@ import Section, { SectionHeading } from "@/components/ui/Section";
 import { Card } from "@/components/ui/Card";
 import PlaceholderBlock from "@/components/ui/PlaceholderBlock";
 import CallToAction from "@/components/home/CallToAction";
+import { HELLO_EMAIL } from "@/lib/contact";
 
 const DESCRIPTION =
   "For The Rest Of Us is a solutions studio in Johannesburg run by Alroy Ndhlovu — building its own apps, and building and advising for other people.";
@@ -116,10 +117,10 @@ export default function StudioPage() {
                   Johannesburg, South Africa.
                 </p>
                 <a
-                  href="mailto:hello@fortherestofus.app"
+                  href={`mailto:${HELLO_EMAIL}`}
                   className="mt-4 inline-block text-[0.9375rem] font-medium text-accent-deep transition-colors hover:text-ink"
                 >
-                  hello@fortherestofus.app
+                  {HELLO_EMAIL}
                 </a>
               </div>
             </div>

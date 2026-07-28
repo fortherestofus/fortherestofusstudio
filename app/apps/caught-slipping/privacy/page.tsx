@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import LegalDocument from "@/components/legal/LegalDocument";
+import { LEGAL_EMAIL } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: { absolute: "CaughtSlipping — Privacy Policy" },
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const LAST_UPDATED = "2 July 2026";
-const CONTACT = "hello@alroyndhlovu.com";
+const CONTACT = LEGAL_EMAIL;
 
 export default function CaughtSlippingPrivacyPage() {
   return (

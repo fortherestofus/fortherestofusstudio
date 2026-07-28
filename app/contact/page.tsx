@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import { Mail, MapPin, Clock } from "lucide-react";
 import { services, PROCESS_STEPS } from "@/lib/services";
+import { HELLO_EMAIL } from "@/lib/contact";
 import PageHero from "@/components/layout/PageHero";
 import Section from "@/components/ui/Section";
 import { Card } from "@/components/ui/Card";
 import PillButton from "@/components/ui/PillButton";
 import Icon from "@/components/ui/Icon";
 
-const EMAIL = "hello@fortherestofus.app";
+const EMAIL = HELLO_EMAIL;
 
 const DESCRIPTION =
   "Start a project with For The Rest Of Us. Tell us what you are trying to build or fix and we will tell you honestly what it takes.";

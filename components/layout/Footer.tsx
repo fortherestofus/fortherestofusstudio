@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import { apps } from "@/lib/apps";
+import { HELLO_EMAIL } from "@/lib/contact";
 
 // Lucide dropped brand marks, so social glyphs are inline SVGs (simple-icons).
 function InstagramMark(props: React.SVGProps<SVGSVGElement>) {
@@ -29,7 +30,7 @@ function TikTokMark(props: React.SVGProps<SVGSVGElement>) {
 const SOCIALS = [
   { label: "Instagram", href: "#", Icon: InstagramMark },
   { label: "TikTok", href: "#", Icon: TikTokMark },
-  { label: "Email", href: "mailto:hello@fortherestofus.app", Icon: Mail },
+  { label: "Email", href: `mailto:${HELLO_EMAIL}`, Icon: Mail },
 ];
 
 const SERVICE_LINKS = [
@@ -42,7 +43,7 @@ const SERVICE_LINKS = [
 const STUDIO_LINKS = [
   { label: "The studio", href: "/studio" },
   { label: "Start a project", href: "/contact" },
-  { label: "Email us", href: "mailto:hello@fortherestofus.app" },
+  { label: "Email us", href: `mailto:${HELLO_EMAIL}` },
 ];
 
 function FooterColumn({
@@ -156,7 +157,7 @@ export default function Footer() {
           <p className="text-sm text-ink-text/40">
             Studio of{" "}
             <a
-              href="mailto:hello@fortherestofus.app"
+              href={`mailto:${HELLO_EMAIL}`}
               className="transition-colors hover:text-ink-text"
             >
               Alroy Ndhlovu

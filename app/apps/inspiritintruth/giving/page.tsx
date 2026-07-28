@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft, ArrowRight, Sprout } from "lucide-react";
 import { getApp } from "@/lib/apps";
 import AppThemeProvider from "@/components/apps/AppThemeProvider";
+import { HELLO_EMAIL, LEGAL_EMAIL } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: { absolute: "InSpiritInTruth — Giving" },
@@ -141,9 +142,9 @@ export default function GivingPage() {
             nothing more. Ask us to remove your details anytime at{" "}
             <a
               className="text-accent-deep underline"
-              href="mailto:hello@fortherestofus.app"
+              href={`mailto:${LEGAL_EMAIL}`}
             >
-              hello@fortherestofus.app
+              {LEGAL_EMAIL}
             </a>
             .
           </p>
@@ -162,7 +163,7 @@ export default function GivingPage() {
             </Link>
             <a
               className="text-[0.9375rem] text-muted transition-colors hover:text-ink"
-              href="mailto:hello@fortherestofus.app?subject=Giving%20support"
+              href={`mailto:${HELLO_EMAIL}?subject=Giving%20support`}
             >
               Email giving support
             </a>

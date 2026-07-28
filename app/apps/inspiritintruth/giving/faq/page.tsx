@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import LegalDocument from "@/components/legal/LegalDocument";
+import { HELLO_EMAIL } from "@/lib/contact";
 
 export const metadata: Metadata = {
   title: { absolute: "InSpiritInTruth — Giving FAQs" },
@@ -8,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/apps/inspiritintruth/giving/faq/" },
 };
 
-const CONTACT = "hello@fortherestofus.app";
+const CONTACT = HELLO_EMAIL;
 
 export default function GivingFaqPage() {
   return (
