@@ -12,10 +12,10 @@ Next.js 15 (App Router), React 19.
 
 - **Design reference is authoritative.** `Design Reference/` (currently
   `IMG_7712.JPG`) is the spec — analyse the composition rather than
-  approximating. The current direction is clean editorial SaaS: cream canvas,
-  rounded white cards, one warm accent, ink pill buttons, big grotesk
-  headlines, dark closing block + footer. Treat any screenshots or links the
-  user shares as the spec.
+  approximating. The direction is clean, monotone editorial SaaS: off-white
+  canvas, rounded white cards inside a sunken well, ink pill buttons, big
+  grotesk headlines, dark closing block + footer. Treat any screenshots or
+  links the user shares as the spec.
 - **`lib/apps.ts` is the single source of truth** for everything app-related:
   card + detail-page content, features, screenshots, status, accent colors,
   CTA, SEO, giving/legal paths. **`lib/services.ts`** does the same for the
@@ -26,8 +26,10 @@ Next.js 15 (App Router), React 19.
   Hakkan), its listing/legal/giving pages here must follow. Giving copy is
   voluntary-gift only — a gift must never be said to unlock anything. Hakkan
   is in private beta; never describe it as launched.
-- **Only real claims.** No invented stats, testimonials, or client logos. The
-  studio's own products are the proof.
+- **Only real claims.** No invented stats, testimonials, or client logos.
+  `lib/testimonials.ts` holds real quotes from real named people — never add an
+  entry that was not actually said, and never invent a name, title, or company.
+  Client names there are real engagements.
 - **Keep the docs current** — update this file and `docs/REDESIGN.md` after
   meaningful changes.
 - **Commit + push after a coherent change** once gates are green. Repo:
@@ -57,6 +59,12 @@ Next.js 15 (App Router), React 19.
 
 ## Design system
 
+**The system is monotone.** Warm off-white canvas, ink type, ink buttons.
+Colour enters a page only through *imagery* (screenshots, placeholder art) and
+through an app's own accent on that app's pages. There is no section-level
+brand colour and no pastel washes. `--color-accent` is a restrained ember kept
+for small live moments (focus rings, hover, status dots) — never a background.
+
 Tokens live as CSS variables in `app/globals.css` and are mapped to Tailwind
 colors in `tailwind.config.ts`. Use tokens, never raw palette hex.
 
@@ -67,8 +75,6 @@ colors in `tailwind.config.ts`. Use tokens, never raw palette hex.
   (text on a solid accent fill), **`accent-deep`** (text and icons on a pale
   wash — always use this for accent-coloured text; raw `accent` fails contrast
   on light surfaces).
-- Pastel washes `wash-sky|peach|lilac|mint` for step cards. Max 2–3 pastel
-  moments per page.
 - **At most two ink (dark) moments per page, and never in the same viewport.**
   On most pages that budget is spent on the closing `CallToAction` block and
   the footer, so keep everything above them light.
@@ -85,18 +91,33 @@ dark tint.
 
 **Placeholders.** `components/ui/PlaceholderBlock.tsx` renders grainy
 accent-tinted blocks at fixed aspect ratios, standing in for screenshots and
-photography until real assets exist.
+photography until real assets exist. Every image slot is sized for the real
+asset, so dropping one in shifts no layout.
+
+**Vignettes vs screenshots.** `components/services/Vignettes.tsx` holds
+miniature product UI built in HTML/CSS. These are used *only* on service cards
+and service hero slots, where there is no real artefact to show. App pages must
+use real screenshots (or a placeholder awaiting one) — never simulated UI.
+
+**Territories.** Cards belong to the studio side (home, services). App pages
+are editorial: full-bleed alternating bands, big type, screenshots bleeding off
+the outer edge, a hairline spec strip, no card stacks. Keeping each language in
+its own territory is what stops the site reading as two designs.
 
 ## Layout
 
 - `app/page.tsx` — home; `app/apps/` — apps index; `app/apps/<slug>/` —
   per-app pages (`caught-slipping`, `hakkan`, `inspiritintruth` incl. giving +
-  giving-faq, `tapa` incl. privacy + terms); `app/services/`, `app/studio/`,
-  `app/contact/`; `app/not-found.tsx`, `app/sitemap.ts`, `app/robots.ts`.
+  giving-faq, `tapa` incl. privacy + terms); `app/services/` and
+  `app/services/[slug]/` (five SEO detail pages from `lib/services.ts`);
+  `app/studio/`, `app/contact/`; `app/not-found.tsx`, `app/sitemap.ts`,
+  `app/robots.ts`.
 - `components/` — `home/` (page sections), `apps/`, `layout/` (Navbar, Footer,
-  PageHero), `legal/`, `ui/` (the kit: PillButton, EyebrowChip, Section,
-  Card/Well/FeatureCard/StepCard, PlaceholderBlock, Badge, AppCard, Icon).
-- `lib/apps.ts`, `lib/services.ts`, `lib/cn.ts`.
+  PageHero), `legal/`, `services/` (Vignettes), `ui/` (the kit: PillButton,
+  EyebrowChip, Section, Card/Well/VignetteCard/IconCard/ProcessStrip,
+  PlaceholderBlock, Badge, AppCard, Icon).
+- `lib/apps.ts`, `lib/services.ts`, `lib/testimonials.ts`, `lib/contact.ts`,
+  `lib/cn.ts`.
 - `public/` — icons (`/icons/[slug].png|svg`), screenshots
   (`/screenshots/[slug]-N.png`), OG images.
 
