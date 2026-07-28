@@ -96,7 +96,7 @@ export default function TapaTermsPage() {
           body: [
             <>
               Questions about these terms? Email{" "}
-              <a className="text-accent underline" href={`mailto:${CONTACT}`}>
+              <a className="text-accent-deep underline" href={`mailto:${CONTACT}`}>
                 {CONTACT}
               </a>
               .

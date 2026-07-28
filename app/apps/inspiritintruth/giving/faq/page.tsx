@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: { absolute: "InSpiritInTruth — Giving FAQs" },
   description:
     "Answers about giving to InSpiritInTruth — where gifts go, what a Keeper is, recurring gifts, receipts, security, and tax.",
-  alternates: { canonical: "/apps/inspiritintruth/giving/faq" },
+  alternates: { canonical: "/apps/inspiritintruth/giving/faq/" },
 };
 
 const CONTACT = "hello@fortherestofus.app";
@@ -45,7 +45,7 @@ export default function GivingFaqPage() {
             <>
               Anytime — there&rsquo;s no lock-in and no penalty. If you&rsquo;d like
               a hand, email us at{" "}
-              <a className="text-accent underline" href={`mailto:${CONTACT}`}>
+              <a className="text-accent-deep underline" href={`mailto:${CONTACT}`}>
                 {CONTACT}
               </a>
               .
@@ -76,7 +76,7 @@ export default function GivingFaqPage() {
             <>
               InSpiritInTruth is built by For The Rest Of Us. Any question about
               giving? Email{" "}
-              <a className="text-accent underline" href={`mailto:${CONTACT}`}>
+              <a className="text-accent-deep underline" href={`mailto:${CONTACT}`}>
                 {CONTACT}
               </a>
               .

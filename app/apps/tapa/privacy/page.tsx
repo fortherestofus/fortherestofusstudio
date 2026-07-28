@@ -29,7 +29,7 @@ export default function TapaPrivacyPage() {
               tapa. is published by For The Rest Of Us, operated by Alroy
               Ndhlovu (&ldquo;we&rdquo;, &ldquo;us&rdquo;). For any privacy
               question, contact us at{" "}
-              <a className="text-accent underline" href={`mailto:${CONTACT}`}>
+              <a className="text-accent-deep underline" href={`mailto:${CONTACT}`}>
                 {CONTACT}
               </a>
               .
@@ -155,7 +155,7 @@ export default function TapaPrivacyPage() {
           body: [
             <>
               Questions about your privacy? Email{" "}
-              <a className="text-accent underline" href={`mailto:${CONTACT}`}>
+              <a className="text-accent-deep underline" href={`mailto:${CONTACT}`}>
                 {CONTACT}
               </a>
               .

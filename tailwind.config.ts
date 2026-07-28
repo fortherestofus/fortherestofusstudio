@@ -23,6 +23,7 @@ const config: Config = {
         accent: "var(--color-accent)",
         "accent-soft": "var(--color-accent-soft)",
         "accent-ink": "var(--color-accent-ink)",
+        "accent-deep": "var(--color-accent-deep)",
 
         // Ink surfaces (dark CTA block, footer)
         "ink-surface": "var(--color-ink-surface)",

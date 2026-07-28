@@ -12,14 +12,22 @@ export default function DarkModeToggle() {
 
   const isDark = resolvedTheme === "dark";
 
+  // The resolved theme is unknown during SSR, so both the label and the icon
+  // stay neutral until mount. Anything derived from the theme before then is a
+  // hydration mismatch.
+  const label = !mounted
+    ? "Toggle colour theme"
+    : isDark
+      ? "Switch to light mode"
+      : "Switch to dark mode";
+
   return (
     <button
       type="button"
-      aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      aria-label={label}
       onClick={() => setTheme(isDark ? "light" : "dark")}
       className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-ink transition-colors hover:bg-sunken focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
     >
-      {/* Render a stable placeholder until mounted to avoid hydration mismatch */}
       {mounted ? (
         isDark ? (
           <Sun className="h-5 w-5" strokeWidth={1.75} />

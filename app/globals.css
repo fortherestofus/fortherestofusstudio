@@ -20,6 +20,8 @@
   --color-accent: #ee5b2e;
   --color-accent-soft: #fbe9da;
   --color-accent-ink: #ffffff;
+  /* Darkened accent for text and icons on light surfaces (contrast safe) */
+  --color-accent-deep: #c2451f;
 
   /* Ink surfaces (dark CTA block, footer) */
   --color-ink-surface: #16150f;
@@ -47,6 +49,7 @@
   --color-accent: #ff7a4d;
   --color-accent-soft: rgba(238, 91, 46, 0.16);
   --color-accent-ink: #16150f;
+  --color-accent-deep: #ff8f66;
 
   --color-ink-surface: #0d0c0a;
   --color-ink-surface-raised: #1b1a16;

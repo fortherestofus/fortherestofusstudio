@@ -7,7 +7,7 @@ const app = getApp("caught-slipping")!;
 export const metadata: Metadata = {
   title: { absolute: app.seo.title },
   description: app.seo.description,
-  alternates: { canonical: `/apps/${app.slug}` },
+  alternates: { canonical: `/apps/${app.slug}/` },
   icons: {
     icon: [
       { url: "/icons/caught-slipping-16.png", sizes: "16x16", type: "image/png" },
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: app.seo.title,
     description: app.seo.description,
-    url: `/apps/${app.slug}`,
+    url: `/apps/${app.slug}/`,
     type: "website",
     images: [{ url: "/icons/caught-slipping-512.png", width: 512, height: 512 }],
   },

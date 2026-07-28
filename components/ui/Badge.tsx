@@ -44,7 +44,7 @@ export default function Badge({
   if (variant === "accent") {
     return (
       <span
-        className={cn(base, "border-transparent bg-accent-soft text-accent", className)}
+        className={cn(base, "border-transparent bg-accent-soft text-accent-deep", className)}
       >
         {children}
       </span>

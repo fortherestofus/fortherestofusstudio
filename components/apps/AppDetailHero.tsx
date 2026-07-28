@@ -34,7 +34,7 @@ export default function AppDetailHero({ app }: { app: App }) {
           <span
             className="grid h-24 w-24 shrink-0 place-items-center rounded-[28px] border border-border"
             style={{
-              backgroundColor: `color-mix(in srgb, ${app.accentColor} 14%, var(--color-surface))`,
+              backgroundColor: `color-mix(in srgb, ${app.accentColor} 15%, #ffffff)`,
             }}
           >
             <AppIcon

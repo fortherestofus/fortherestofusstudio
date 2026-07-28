@@ -39,7 +39,7 @@ export default function AppCard({ app, className }: AppCardProps) {
         <span
           className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl"
           style={{
-            backgroundColor: `color-mix(in srgb, ${app.accentColor} 16%, transparent)`,
+            backgroundColor: `color-mix(in srgb, ${app.accentColor} 15%, #ffffff)`,
           }}
         >
           <AppIcon

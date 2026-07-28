@@ -1,64 +1,114 @@
 # ForTheRestOfUs (studio website) — agent guide
 
-Marketing/portfolio website for the **fortherestofus** app studio
-(`fortherestofus-studio`). Showcases the studio's apps (currently
-CaughtSlipping, InSpiritInTruth, tapa.) and hosts each app's public pages:
-listings, privacy/terms, and InSpiritInTruth's Giving + Giving FAQ pages.
+Website for the **fortherestofus** solutions studio (`fortherestofus-studio`).
+The studio has two arms and the site sells both: it **builds** (its own apps —
+CaughtSlipping, InSpiritInTruth, tapa., Hakkan — plus custom apps, SaaS, and
+websites for clients) and it **advises** (product and growth direction, brand
+and content, business tech and automation). It also hosts each app's public
+pages: listings, privacy/terms, and InSpiritInTruth's Giving + Giving FAQ.
 Next.js 15 (App Router), React 19.
 
 ## Ways of working (read first)
 
-- **Design reference is authoritative.** `Design Reference/` (Home Page,
-  App Description Page JPGs) is the spec — analyse the composition rather than
-  approximating. For new UI, research current best practice first; treat any
-  screenshots/links the user shares as the spec.
+- **Design reference is authoritative.** `Design Reference/` (currently
+  `IMG_7712.JPG`) is the spec — analyse the composition rather than
+  approximating. The current direction is clean editorial SaaS: cream canvas,
+  rounded white cards, one warm accent, ink pill buttons, big grotesk
+  headlines, dark closing block + footer. Treat any screenshots or links the
+  user shares as the spec.
 - **`lib/apps.ts` is the single source of truth** for everything app-related:
   card + detail-page content, features, screenshots, status, accent colors,
-  CTA, SEO, giving/legal paths. Add or change app content there — don't
-  hand-edit page components with per-app copy.
+  CTA, SEO, giving/legal paths. **`lib/services.ts`** does the same for the
+  consulting arm and the shared process steps. Add or change content there —
+  don't hand-edit page components with per-app or per-service copy.
 - **Keep app pages in sync with the app repos.** When an app's behaviour,
-  pricing, or data handling changes (tapa, CaughtSlipping, InSpiritInTruth),
-  its listing/legal/giving pages here must follow. Giving copy is
-  voluntary-gift only — a gift must never be said to unlock anything.
-- **Keep the docs current** — update this file after meaningful changes.
+  pricing, or data handling changes (tapa, CaughtSlipping, InSpiritInTruth,
+  Hakkan), its listing/legal/giving pages here must follow. Giving copy is
+  voluntary-gift only — a gift must never be said to unlock anything. Hakkan
+  is in private beta; never describe it as launched.
+- **Only real claims.** No invented stats, testimonials, or client logos. The
+  studio's own products are the proof.
+- **Keep the docs current** — update this file and `docs/REDESIGN.md` after
+  meaningful changes.
 - **Commit + push after a coherent change** once gates are green. Repo:
   `github.com/fortherestofus/fortherestofusstudio`.
 
 ## Stack
 
 - **Next.js 15 App Router** (`app/`), React 19, TypeScript, **Tailwind 3**
-  (`tailwind.config.ts`), `next-themes` for light/dark.
-- Motion/visuals: **@shadergradient/react + three / @react-three/fiber**
-  (WebGL gradient hero), **gsap**, **framer-motion**, lucide icons (via the
-  `components/ui/Icon.tsx` registry — icon names in `lib/apps.ts` map to it).
-- Fonts: self-hosted **Apfel Grotezk** (Regular/Mittel) in `fonts/` — the
-  studio brand face across all fortherestofus products. Don't add Google-hosted
-  fonts.
-- **Server-mode build** (`next build` + `next start`, for Hostinger /
-  @netlify/next). `next.config.ts` sets baseline security headers —
-  intentionally **no CSP yet** (inline styles + WebGL shader need a tested
-  pass first); `headers()` is ignored if the site is ever switched to
+  (`tailwind.config.ts`), `next-themes` for light/dark (manual toggle,
+  `enableSystem: false`, light default).
+- Motion: **framer-motion** only, used sparingly (nav sheet, reveals). The
+  WebGL shader, `three`, and `gsap` were removed in the redesign — do not
+  reintroduce heavy visual dependencies without a reason.
+- Icons: lucide via the `components/ui/Icon.tsx` registry — icon-name strings
+  in `lib/apps.ts` / `lib/services.ts` map to it.
+- Fonts: self-hosted **Apfel Grotezk** (Regular 400 / Mittel 500 / Fett 700,
+  SIL Open Font License) in `fonts/`, loaded with `next/font/local` in
+  `app/layout.tsx`. It is the only typeface sitewide. **No Google-hosted
+  fonts.** The family has no italics — `globals.css` neutralises `<i>`/`<em>`.
+- **Server-mode build** (`next build` + `next start`). `next.config.ts` sets
+  baseline security headers — intentionally **no CSP yet** (accent theming
+  uses inline `style` for CSS variables, so a CSP needs `style-src
+  'unsafe-inline'` or a nonce pass); `headers()` is ignored under
   `output: "export"`, so revisit them together.
-- No backend of its own — the site is content-only. App backends live in
-  their own repos (payments/giving run through the apps, not this site).
+- No backend of its own — the site is content-only. App backends live in their
+  own repos (payments/giving run through the apps, not this site).
+
+## Design system
+
+Tokens live as CSS variables in `app/globals.css` and are mapped to Tailwind
+colors in `tailwind.config.ts`. Use tokens, never raw palette hex.
+
+- Surfaces: `bg` (cream canvas), `surface` (white cards), `sunken` (section
+  tint / wells), `ink-surface` + `ink-raised` (dark blocks and footer).
+- Text: `ink`, `muted`, `faint`; on dark: `ink-text`, `ink-muted`.
+- Accent: `accent` (fills, hairlines), `accent-soft` (washes), `accent-ink`
+  (text on a solid accent fill), **`accent-deep`** (text and icons on a pale
+  wash — always use this for accent-coloured text; raw `accent` fails contrast
+  on light surfaces).
+- Pastel washes `wash-sky|peach|lilac|mint` for step cards. Max 2–3 pastel
+  moments per page.
+- **At most two ink (dark) moments per page, and never in the same viewport.**
+  On most pages that budget is spent on the closing `CallToAction` block and
+  the footer, so keep everything above them light.
+
+**Per-app theming.** Global surfaces, type, and ink buttons never change. Only
+the accent slot varies, scoped by `components/apps/AppThemeProvider.tsx`, which
+sets `--color-accent`, `--color-accent-soft`, `--color-accent-ink`, and
+`--color-accent-deep` from the registry. Wrap any page that belongs to an app
+(detail, giving) in it.
+
+**App icon tiles** use a light backdrop (`color-mix(accent 15%, #ffffff)`) in
+both themes — the app icons are drawn for light backgrounds and disappear on a
+dark tint.
+
+**Placeholders.** `components/ui/PlaceholderBlock.tsx` renders grainy
+accent-tinted blocks at fixed aspect ratios, standing in for screenshots and
+photography until real assets exist.
 
 ## Layout
 
-- `app/page.tsx` — home; `app/apps/<slug>/` — per-app pages
-  (`caught-slipping`, `inspiritintruth` incl. giving + giving-faq, `tapa`
-  incl. privacy + terms).
-- `components/` — `home/`, `apps/`, `layout/`, `legal/`, `ui/`.
-- `lib/apps.ts` — the app registry (see above).
-- `public/` — icons (`/icons/[slug].png`), screenshots
+- `app/page.tsx` — home; `app/apps/` — apps index; `app/apps/<slug>/` —
+  per-app pages (`caught-slipping`, `hakkan`, `inspiritintruth` incl. giving +
+  giving-faq, `tapa` incl. privacy + terms); `app/services/`, `app/studio/`,
+  `app/contact/`; `app/not-found.tsx`, `app/sitemap.ts`, `app/robots.ts`.
+- `components/` — `home/` (page sections), `apps/`, `layout/` (Navbar, Footer,
+  PageHero), `legal/`, `ui/` (the kit: PillButton, EyebrowChip, Section,
+  Card/Well/FeatureCard/StepCard, PlaceholderBlock, Badge, AppCard, Icon).
+- `lib/apps.ts`, `lib/services.ts`, `lib/cn.ts`.
+- `public/` — icons (`/icons/[slug].png|svg`), screenshots
   (`/screenshots/[slug]-N.png`), OG images.
 
 ## Conventions
 
 - TypeScript everywhere; keep `npx tsc --noEmit` clean.
-- One component per file; PascalCase components.
-- Keep file/function header comments.
-- Wide/heavy visuals must degrade gracefully — the shader hero should not
-  block content rendering; test reduced-motion.
+- One component per file; PascalCase components; keep file header comments.
+- Copy voice: second person, active, short sentences, verb-first buttons,
+  concrete numbers. Avoid "unlock / supercharge / seamless / empower / delve".
+- The site is served with `trailingSlash: true` — canonicals, `alternates`,
+  OG `url`s, sitemap entries, and registry paths must all end in a slash.
+- Motion stays calm and must respect reduced-motion.
 
 ## Verify
 
@@ -67,9 +117,14 @@ Static gates (run before every commit):
 - Lint: `npm run lint`
 - Build: `npm run build` (catches App Router + prerender errors)
 
+**Stop the dev server before running `npm run build`** — both write to `.next`
+and running them together corrupts the dev cache (missing-module and
+missing-CSS errors). If that happens, `rm -rf .next` and restart.
+
 Runtime:
-- `npm run dev` → check home, one app detail page, a legal page, and the
-  giving pages in both light and dark themes, desktop + mobile widths.
+- `npm run dev` → check home, the apps index, one app detail page, services,
+  studio, contact, a legal page, and the giving pages in both light and dark
+  themes, desktop + mobile widths.
 
 ## Related repos
 
@@ -78,3 +133,5 @@ Runtime:
 - `fortherestofus/tapa` — mobile app; privacy/terms pages live here.
 - `fortherestofus/caught-slipping` — Chrome extension; its
   `docs/store-listing.md` should match the listing page here.
+- `Hakkan` (local: `~/Documents/CODING/Hakkan`) — web app, private beta;
+  its privacy/terms live on hakkan.app, linked externally from the listing.

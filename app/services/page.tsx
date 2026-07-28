@@ -31,7 +31,7 @@ function ServiceRow({ service }: { service: Service }) {
     <Card className="p-6 sm:p-8">
       <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-7">
-          <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent-soft text-accent">
+          <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent-soft text-accent-deep">
             <Icon name={service.icon} className="h-5 w-5" />
           </span>
           <h3 className="mt-5 text-xl font-medium tracking-[-0.01em] text-ink sm:text-2xl">
@@ -53,7 +53,7 @@ function ServiceRow({ service }: { service: Service }) {
             <ul className="mt-4 space-y-3">
               {service.includes.map((item) => (
                 <li key={item} className="flex gap-2.5">
-                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent-deep" />
                   <span className="text-[0.9375rem] leading-snug text-muted">
                     {item}
                   </span>
@@ -161,7 +161,7 @@ export default function ServicesPage() {
               <span
                 className="grid h-11 w-11 shrink-0 place-items-center rounded-xl"
                 style={{
-                  backgroundColor: `color-mix(in srgb, ${app.accentColor} 16%, transparent)`,
+                  backgroundColor: `color-mix(in srgb, ${app.accentColor} 15%, #ffffff)`,
                 }}
               >
                 <AppIcon

@@ -12,7 +12,7 @@ interface EyebrowChipProps {
 
 const TONES = {
   default: "border-border text-muted bg-surface",
-  accent: "border-transparent bg-accent-soft text-accent",
+  accent: "border-transparent bg-accent-soft text-accent-deep",
   onInk: "border-ink-border text-ink-muted bg-transparent",
 } as const;
 

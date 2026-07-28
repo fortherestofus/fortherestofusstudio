@@ -117,7 +117,7 @@ export default function StudioPage() {
                 </p>
                 <a
                   href="mailto:hello@fortherestofus.app"
-                  className="mt-4 inline-block text-[0.9375rem] font-medium text-accent transition-colors hover:text-ink"
+                  className="mt-4 inline-block text-[0.9375rem] font-medium text-accent-deep transition-colors hover:text-ink"
                 >
                   hello@fortherestofus.app
                 </a>

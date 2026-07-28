@@ -62,7 +62,7 @@ export default function Hero() {
                     key={app.slug}
                     className="grid h-10 w-10 place-items-center rounded-full border-2 border-bg"
                     style={{
-                      backgroundColor: `color-mix(in srgb, ${app.accentColor} 18%, var(--color-surface))`,
+                      backgroundColor: `color-mix(in srgb, ${app.accentColor} 15%, #ffffff)`,
                     }}
                   >
                     <AppIcon

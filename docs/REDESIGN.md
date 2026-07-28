@@ -278,7 +278,22 @@ app pages via a shared helper (fixes current inconsistency).
 
 ---
 
-## 7. Build phases (action step by step)
+## 7. Progress
+
+- [x] **Phase 1 — Foundation.** Tokens, Apfel Grotezk via `next/font/local`,
+      removed shader/three/gsap, UI kit, Navbar + Footer, rebuilt home page.
+- [x] **Phase 2 — Pages.** `/apps`, `/services`, `/studio`, `/contact`, 404,
+      restyled app detail template, per-app accent scoping, Hakkan page.
+- [x] **Phase 3 — Polish.** Legal + giving pages restyled, `accent-deep`
+      contrast token, dark-mode and mobile pass, hydration fix in the theme
+      toggle, `sitemap.ts` + `robots.ts`, trailing-slash canonicals, image
+      cleanup (icons 5 MB → 392 KB), AGENTS.md rewritten.
+
+Remaining (see §8 and the checklist in §6): per-app OG images, JSON-LD for all
+four apps, CSP attempt, real screenshots and studio photography, and the open
+items awaiting Alroy.
+
+## 7b. Original phase plan (for reference)
 
 Each phase ends green on `npx tsc --noEmit` + `npm run lint` + `npm run build`,
 a dev-server visual check (light + dark, mobile + desktop), then commit + push.

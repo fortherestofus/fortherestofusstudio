@@ -65,7 +65,7 @@ export function FeatureCard({
   return (
     <Card hover={Boolean(href)} className={cn("flex flex-col p-6", className)}>
       {icon && (
-        <span className="mb-5 grid h-11 w-11 place-items-center rounded-xl bg-accent-soft text-accent">
+        <span className="mb-5 grid h-11 w-11 place-items-center rounded-xl bg-accent-soft text-accent-deep">
           <Icon name={icon} className="h-5 w-5" />
         </span>
       )}
@@ -78,7 +78,7 @@ export function FeatureCard({
       {href && (
         <Link
           href={href}
-          className="mt-5 inline-flex items-center gap-1.5 text-[0.9375rem] font-medium text-accent transition-colors hover:text-ink"
+          className="mt-5 inline-flex items-center gap-1.5 text-[0.9375rem] font-medium text-accent-deep transition-colors hover:text-ink"
         >
           {linkLabel}
           <ArrowRight className="h-3.5 w-3.5" />

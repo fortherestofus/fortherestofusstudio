@@ -7,11 +7,11 @@ const app = getApp("inspiritintruth")!;
 export const metadata: Metadata = {
   title: { absolute: app.seo.title },
   description: app.seo.description,
-  alternates: { canonical: `/apps/${app.slug}` },
+  alternates: { canonical: `/apps/${app.slug}/` },
   openGraph: {
     title: app.seo.title,
     description: app.seo.description,
-    url: `/apps/${app.slug}`,
+    url: `/apps/${app.slug}/`,
     type: "website",
   },
   twitter: {

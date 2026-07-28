@@ -23,6 +23,7 @@ export default function AppThemeProvider({
     "--color-accent": app.accentColor,
     "--color-accent-soft": `color-mix(in srgb, ${app.accentColor} 16%, transparent)`,
     "--color-accent-ink": app.accentInk ?? "#ffffff",
+    "--color-accent-deep": app.accentDeep ?? app.accentColor,
   } as CSSProperties;
 
   return (

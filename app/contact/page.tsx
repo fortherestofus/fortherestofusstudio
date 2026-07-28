@@ -89,7 +89,7 @@ export default function ContactPage() {
               <dl className="space-y-6">
                 {DETAILS.map(({ icon: DetailIcon, label, value, href }) => (
                   <div key={label} className="flex gap-4">
-                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-accent-soft text-accent-deep">
                       <DetailIcon className="h-4 w-4" />
                     </span>
                     <div className="min-w-0">
@@ -100,7 +100,7 @@ export default function ContactPage() {
                         {href ? (
                           <a
                             href={href}
-                            className="break-all transition-colors hover:text-accent"
+                            className="break-all transition-colors hover:text-accent-deep"
                           >
                             {value}
                           </a>
@@ -147,7 +147,7 @@ export default function ContactPage() {
               key={service.slug}
               className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-4 py-2 text-[0.9375rem] text-muted"
             >
-              <Icon name={service.icon} className="h-4 w-4 text-accent" />
+              <Icon name={service.icon} className="h-4 w-4 text-accent-deep" />
               {service.title}
             </span>
           ))}
