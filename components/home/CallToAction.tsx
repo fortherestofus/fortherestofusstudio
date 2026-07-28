@@ -1,121 +1,64 @@
-"use client";
+/**
+ * CallToAction — the full-width dark rounded block that closes a page. This is
+ * the page's ink moment; nothing else above it should be dark.
+ */
+import PillButton from "@/components/ui/PillButton";
+import EyebrowChip from "@/components/ui/EyebrowChip";
 
-import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
-import { ArrowRight, Mail } from "lucide-react";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
+interface CallToActionProps {
+  eyebrow?: string;
+  title?: string;
+  body?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
 
-// WebGL shader is client-only — never rendered during static export.
-const ShaderGradientBg = dynamic(() => import("./ShaderGradientBg"), {
-  ssr: false,
-});
-
-export default function CallToAction() {
-  const reduced = useReducedMotion();
-
+export default function CallToAction({
+  eyebrow = "Start here",
+  title = "Have an idea worth building?",
+  body = "Tell us what you are trying to make or fix. If we are the right studio for it, we will say so. If we are not, we will tell you that too.",
+  primaryLabel = "Start a project",
+  primaryHref = "/contact",
+  secondaryLabel = "See what we build",
+  secondaryHref = "/apps",
+}: CallToActionProps) {
   return (
-    <section className="px-5 pb-24 sm:px-8" aria-labelledby="cta-heading">
-      <div className="mx-auto max-w-content">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div
-            className="relative overflow-hidden rounded-3xl px-7 py-14 text-offwhite sm:px-14 sm:py-20"
-            style={{
-              background:
-                "linear-gradient(135deg, #0c2218 0%, #123524 50%, #0f3d2a 100%)",
-            }}
-          >
-            {/* ShaderGradient background (skipped under reduced motion — the
-                base gradient above remains as the fallback). */}
-            {!reduced && (
-              <div
-                className="pointer-events-none absolute inset-0"
-                aria-hidden="true"
-              >
-                <ShaderGradientBg />
-              </div>
-            )}
+    <section className="bg-bg px-4 pb-20 pt-4 sm:px-6 sm:pb-28">
+      <div className="grain relative mx-auto w-full max-w-content overflow-hidden rounded-block bg-ink-surface px-6 py-16 text-center sm:px-12 sm:py-24">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-20 -top-24 h-[360px] w-[360px] rounded-full opacity-25 blur-3xl"
+          style={{
+            background:
+              "radial-gradient(circle, color-mix(in srgb, var(--color-accent) 60%, transparent), transparent 70%)",
+          }}
+        />
 
-            {/* Contrast wash so text/buttons stay legible over the shader */}
-            <div
-              className="pointer-events-none absolute inset-0"
-              aria-hidden="true"
-              style={{
-                background:
-                  "linear-gradient(105deg, rgba(8,28,20,0.62) 0%, rgba(8,28,20,0.28) 42%, rgba(8,28,20,0) 75%)",
-              }}
-            />
+        <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-6">
+          <EyebrowChip tone="onInk">{eyebrow}</EyebrowChip>
 
-            {/* Thin accent line top */}
-            <span
-              className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-lime/50 to-transparent"
-              aria-hidden="true"
-            />
+          <h2 className="text-balance text-[2rem] font-medium leading-[1.1] tracking-[-0.02em] text-ink-text sm:text-[3rem]">
+            {title}
+          </h2>
 
-            {/* Content */}
-            <div className="relative max-w-2xl">
-              <p className="font-heading text-sm font-semibold uppercase tracking-widest text-lime/80">
-                What&apos;s next
-              </p>
-              <h2
-                id="cta-heading"
-                className="mt-4 font-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl md:text-5xl"
-              >
-                Got a problem worth solving?
-              </h2>
-              <p className="mt-5 text-lg leading-relaxed text-offwhite/80">
-                New apps are always in the works — and the studio takes on a few
-                outside problems too, across tech, media, design, and marketing.
-                Whether you have something to build or just want to follow along
-                as each one ships, let&apos;s talk.
-              </p>
+          <p className="max-w-xl text-pretty leading-relaxed text-ink-muted">
+            {body}
+          </p>
 
-              <div className="mt-10 flex flex-wrap gap-4">
-                <a
-                  href="mailto:hello@fortherestofus.app"
-                  className="group inline-flex items-center gap-2 rounded-full bg-gold px-7 py-3.5 font-heading text-sm font-semibold text-[#111111] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(240,179,49,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offwhite focus-visible:ring-offset-2 focus-visible:ring-offset-pthalo"
-                >
-                  <Mail className="h-4 w-4" aria-hidden="true" />
-                  Get in touch
-                </a>
-                <a
-                  href="#apps"
-                  className="group inline-flex items-center gap-2 rounded-full border border-offwhite/30 px-7 py-3.5 font-heading text-sm font-medium text-offwhite backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-offwhite/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offwhite focus-visible:ring-offset-2 focus-visible:ring-offset-pthalo"
-                >
-                  Browse the apps
-                  <ArrowRight
-                    className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5"
-                    aria-hidden="true"
-                  />
-                </a>
-              </div>
-
-              {/* Visible email — fallback for users without a mailto handler */}
-              <p className="mt-5 text-sm text-offwhite/65">
-                Or email{" "}
-                <a
-                  href="mailto:hello@fortherestofus.app"
-                  className="text-offwhite underline decoration-offwhite/30 underline-offset-4 transition-colors hover:decoration-lime"
-                >
-                  hello@fortherestofus.app
-                </a>
-              </p>
-
-              {/* System status indicator */}
-              <div className="mt-12 flex items-center gap-2 text-xs text-offwhite/50">
-                <span className="relative flex h-2 w-2">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-lime/60" />
-                  <span className="relative inline-flex h-2 w-2 rounded-full bg-lime/80" />
-                </span>
-                All systems building
-              </div>
-            </div>
+          <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+            <PillButton href={primaryHref} variant="onInk" size="lg">
+              {primaryLabel}
+            </PillButton>
+            <a
+              href={secondaryHref}
+              className="rounded-full border border-ink-border px-6 py-3 text-base text-ink-text transition-colors hover:bg-ink-raised"
+            >
+              {secondaryLabel}
+            </a>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

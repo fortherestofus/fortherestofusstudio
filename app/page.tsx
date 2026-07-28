@@ -1,18 +1,20 @@
 import Hero from "@/components/home/Hero";
-import MarqueeBanner from "@/components/home/MarqueeBanner";
-import StudioIntro from "@/components/home/StudioIntro";
-import AppCarousel from "@/components/home/AppCarousel";
-import StudioStory from "@/components/home/StudioStory";
+import ProofStrip from "@/components/home/ProofStrip";
+import AppsSection from "@/components/home/AppsSection";
+import ServicesSection from "@/components/home/ServicesSection";
+import ProcessSection from "@/components/home/ProcessSection";
+import StudioBand from "@/components/home/StudioBand";
 import CallToAction from "@/components/home/CallToAction";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <MarqueeBanner />
-      <StudioIntro />
-      <AppCarousel />
-      <StudioStory />
+      <ProofStrip />
+      <AppsSection />
+      <ServicesSection />
+      <ProcessSection />
+      <StudioBand />
       <CallToAction />
     </>
   );

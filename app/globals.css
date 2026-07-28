@@ -2,28 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ============================================================
+   DESIGN TOKENS
+   Cream canvas, ink type, one accent. Per-app pages override
+   --color-accent / --color-accent-soft / --color-accent-ink only.
+   ============================================================ */
 :root {
   --color-bg: #f7f5f0;
   --color-surface: #ffffff;
-  --color-text: #111111;
-  --color-text-muted: #555555;
-  --color-primary: #123524;
-  --color-accent: #90a842;
-  --color-gold: #f0b331;
-  --color-footer-bg: #123524;
-  --color-border: #e6e2d8;
+  --color-surface-sunken: #efece4;
+  --color-text: #16150f;
+  --color-text-muted: #6e6a5e;
+  --color-text-faint: #a8a499;
+  --color-border: #e7e3d8;
+
+  /* Studio accent */
+  --color-accent: #ee5b2e;
+  --color-accent-soft: #fbe9da;
+  --color-accent-ink: #ffffff;
+
+  /* Ink surfaces (dark CTA block, footer) */
+  --color-ink-surface: #16150f;
+  --color-ink-surface-raised: #23211a;
+  --color-ink-text: #f7f5f0;
+  --color-ink-text-muted: #a5a196;
+  --color-ink-border: rgba(247, 245, 240, 0.12);
+
+  /* Pastel washes — max 2-3 moments per page */
+  --wash-sky: #e4eef7;
+  --wash-peach: #fbe9da;
+  --wash-lilac: #efe7f7;
+  --wash-mint: #e3f1e8;
 }
 
 .dark {
-  --color-bg: #0c2218;
-  --color-surface: #123524;
+  --color-bg: #121210;
+  --color-surface: #1b1a16;
+  --color-surface-sunken: #16150f;
   --color-text: #f7f5f0;
-  --color-text-muted: #9ca3af;
-  --color-primary: #90a842;
-  --color-accent: #90a842;
-  --color-gold: #f0b331;
-  --color-footer-bg: #0c2218;
-  --color-border: rgba(247, 245, 240, 0.12);
+  --color-text-muted: #a5a196;
+  --color-text-faint: #6e6a5e;
+  --color-border: rgba(247, 245, 240, 0.1);
+
+  --color-accent: #ff7a4d;
+  --color-accent-soft: rgba(238, 91, 46, 0.16);
+  --color-accent-ink: #16150f;
+
+  --color-ink-surface: #0d0c0a;
+  --color-ink-surface-raised: #1b1a16;
+  --color-ink-text: #f7f5f0;
+  --color-ink-text-muted: #a5a196;
+  --color-ink-border: rgba(247, 245, 240, 0.1);
+
+  --wash-sky: rgba(228, 238, 247, 0.08);
+  --wash-peach: rgba(251, 233, 218, 0.08);
+  --wash-lilac: rgba(239, 231, 247, 0.08);
+  --wash-mint: rgba(227, 241, 232, 0.08);
 }
 
 @layer base {
@@ -42,7 +76,7 @@
     overflow-x: hidden;
     background-color: var(--color-bg);
     color: var(--color-text);
-    font-family: var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-apfel), system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition: background-color 0.3s ease, color 0.3s ease;
@@ -54,8 +88,14 @@
   }
 
   ::selection {
-    background-color: var(--color-gold);
-    color: #111111;
+    background-color: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+
+  /* Apfel Grotezk has no italics — never synthesise them */
+  i,
+  em {
+    font-style: normal;
   }
 }
 
@@ -72,58 +112,7 @@
 }
 
 .animate-marquee {
-  animation: marquee 30s linear infinite;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-marquee {
-    animation-play-state: paused;
-  }
-}
-
-/* ============================================================
-   HERO APP CHAT — spinning gradient rings + chat bubbles
-   ============================================================ */
-@keyframes ring-spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes bubble-in {
-  0% {
-    opacity: 0;
-    transform: translateY(10px) scale(0.95);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-@keyframes typing-bounce {
-  0%,
-  70%,
-  100% {
-    transform: translateY(0);
-    opacity: 0.35;
-  }
-  35% {
-    transform: translateY(-3px);
-    opacity: 1;
-  }
-}
-
-.animate-ring-spin {
-  animation: ring-spin 9s linear infinite;
-}
-
-.animate-bubble-in {
-  animation: bubble-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-.animate-typing-dot {
-  animation: typing-bounce 1.1s ease-in-out infinite;
+  animation: marquee 38s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -131,9 +120,7 @@
     scroll-behavior: auto;
   }
 
-  .animate-ring-spin,
-  .animate-bubble-in,
-  .animate-typing-dot,
+  .animate-marquee,
   .animate-ping {
     animation: none;
   }
@@ -144,7 +131,17 @@
     text-wrap: balance;
   }
 
-  /* SVG feTurbulence noise — richer than dot-grid */
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Tabular figures for stats and step numerals */
+  .nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  /* SVG feTurbulence noise — used on placeholder art and ink blocks only */
   .grain {
     position: relative;
   }
@@ -154,15 +151,10 @@
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.04;
+    opacity: 0.055;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
     background-size: 180px 180px;
-    mix-blend-mode: overlay;
     z-index: 0;
-  }
-
-  .dark .grain::after {
-    opacity: 0.055;
   }
 
   .no-scrollbar::-webkit-scrollbar {

@@ -1,54 +1,66 @@
+/**
+ * Root layout — fonts, metadata, and the persistent shell (nav + footer).
+ *
+ * Typography is Apfel Grotezk sitewide (SIL Open Font License, Collletttivo),
+ * self-hosted from /fonts. The family has no italics; globals.css neutralises
+ * <i>/<em> so the browser never synthesises a slant.
+ */
 import type { Metadata } from "next";
-import { DM_Sans, Fraunces, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Providers } from "./providers";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
+const apfel = localFont({
+  variable: "--font-apfel",
   display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-// Apfel Groteszk is not on Google Fonts and needs a commercial license check;
-// the build plan names DM Sans as the heading/UI fallback until it's self-hosted.
-const dmSans = DM_Sans({
-  variable: "--font-heading",
-  subsets: ["latin"],
-  display: "swap",
+  src: [
+    {
+      path: "../fonts/ApfelGrotezk-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../fonts/ApfelGrotezk-Mittel.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../fonts/ApfelGrotezk-Fett.woff2",
+      weight: "700",
+      style: "normal",
+    },
+  ],
 });
 
 const SITE_DESCRIPTION =
-  "A build-to-solve studio by consultant Alroy Ndhlovu — making technology genuinely useful and accessible, for everyday people and businesses alike. See what we're building.";
+  "For The Rest Of Us is a solutions studio in Johannesburg. We design and build digital products — apps, SaaS and websites — for our clients and for our own ideas, and advise on product, marketing and automation.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fortherestofus.app"),
   title: {
-    default: "For The Rest Of Us — Everyday apps for everyday people",
+    default: "For The Rest Of Us — A solutions studio that builds and advises",
     template: "%s — For The Rest Of Us",
   },
   description: SITE_DESCRIPTION,
   keywords: [
     "For The Rest Of Us",
     "Alroy Ndhlovu",
-    "app studio",
-    "everyday apps",
-    "accessible technology",
-    "product design",
-    "build to solve",
+    "solutions studio",
+    "app development",
+    "SaaS development",
+    "website studio",
+    "product consulting",
+    "digital marketing",
+    "business automation",
+    "Johannesburg",
   ],
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "For The Rest Of Us — Everyday apps for everyday people",
+    title: "For The Rest Of Us — A solutions studio that builds and advises",
     description: SITE_DESCRIPTION,
     url: "https://fortherestofus.app",
     siteName: "For The Rest Of Us",
@@ -56,7 +68,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "For The Rest Of Us — Everyday apps for everyday people",
+    title: "For The Rest Of Us — A solutions studio that builds and advises",
     description: SITE_DESCRIPTION,
   },
 };
@@ -67,11 +79,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      suppressHydrationWarning
-      className={`${fraunces.variable} ${inter.variable} ${dmSans.variable}`}
-    >
+    <html lang="en" suppressHydrationWarning className={apfel.variable}>
       <body className="font-body" suppressHydrationWarning>
         <Providers>
           <Navbar />

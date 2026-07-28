@@ -1,137 +1,119 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import { gsap } from "gsap";
-import { ArrowDown } from "lucide-react";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
-import HeroAppChat from "@/components/home/HeroAppChat";
+/**
+ * Hero — eyebrow, two-line headline (third line muted), sub, CTA pair, and a
+ * collage of app frames. Mirrors the design reference: cream canvas, generous
+ * space, accent used only on the soft bleed behind the headline.
+ */
+import Link from "next/link";
+import { apps } from "@/lib/apps";
+import PillButton from "@/components/ui/PillButton";
+import EyebrowChip from "@/components/ui/EyebrowChip";
+import AppIcon from "@/components/ui/AppIcon";
+import PlaceholderBlock from "@/components/ui/PlaceholderBlock";
 
 export default function Hero() {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const compositionRef = useRef<HTMLDivElement>(null);
-  const reduced = useReducedMotion();
-
-  // GSAP entrance sequence
-  useEffect(() => {
-    if (reduced || !heroRef.current) return;
-
-    const ctx = gsap.context(() => {
-      // Text elements stagger in
-      gsap.fromTo(
-        ".hero-text-item",
-        { opacity: 0, y: 28 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.85,
-          stagger: 0.1,
-          ease: "power3.out",
-          delay: 0.08,
-        }
-      );
-    }, heroRef);
-
-    return () => ctx.revert();
-  }, [reduced]);
-
-  // Smooth mouse parallax on the phone composition
-  useEffect(() => {
-    if (reduced) return;
-    const composition = compositionRef.current;
-    if (!composition) return;
-
-    let rafId: number;
-    let targetX = 0,
-      targetY = 0,
-      currentX = 0,
-      currentY = 0;
-
-    const handleMouse = (e: MouseEvent) => {
-      const cx = window.innerWidth / 2;
-      const cy = window.innerHeight / 2;
-      targetX = ((e.clientX - cx) / cx) * 14;
-      targetY = ((e.clientY - cy) / cy) * 8;
-    };
-
-    const tick = () => {
-      currentX += (targetX - currentX) * 0.055;
-      currentY += (targetY - currentY) * 0.055;
-      composition.style.transform = `translate(${currentX}px, ${currentY}px)`;
-      rafId = requestAnimationFrame(tick);
-    };
-
-    window.addEventListener("mousemove", handleMouse, { passive: true });
-    rafId = requestAnimationFrame(tick);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouse);
-      cancelAnimationFrame(rafId);
-    };
-  }, [reduced]);
+  const featured = apps.slice(0, 3);
 
   return (
-    <section
-      ref={heroRef}
-      className="relative flex min-h-screen items-center overflow-hidden"
-      aria-label="Hero"
-    >
-      {/* Noise grain overlay */}
-      <div className="grain pointer-events-none absolute inset-0 opacity-60" aria-hidden="true" />
-
-      {/* Ambient gradient bleed */}
+    <section className="relative overflow-hidden bg-bg pt-32 sm:pt-36 lg:pt-40">
       <div
-        className="pointer-events-none absolute inset-0"
-        aria-hidden="true"
+        aria-hidden
+        className="pointer-events-none absolute -left-32 -top-24 h-[420px] w-[420px] rounded-full opacity-40 blur-3xl"
         style={{
           background:
-            "radial-gradient(72% 55% at 76% 18%, rgba(144,168,66,0.11), transparent 65%), radial-gradient(45% 45% at 15% 80%, rgba(18,53,36,0.07), transparent 70%)",
+            "radial-gradient(circle, color-mix(in srgb, var(--color-accent) 26%, transparent), transparent 70%)",
         }}
       />
 
-      <div className="relative mx-auto w-full max-w-content px-5 sm:px-8">
-        <div className="grid items-center gap-14 pb-24 pt-28 lg:grid-cols-[1fr_1.2fr] lg:gap-12 lg:min-h-screen lg:pb-16 lg:pt-24">
+      <div className="relative mx-auto w-full max-w-content px-5 pb-16 sm:px-8 sm:pb-24">
+        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-6">
+            <EyebrowChip>Solutions studio · Johannesburg</EyebrowChip>
 
-          {/* ── Left: Text content ── */}
-          <div>
-            {/* Headline */}
-            <h1
-              className="hero-text-item font-display font-semibold leading-[0.95] tracking-tight text-ink"
-              style={{ fontSize: "clamp(2.5rem, 5.4vw, 5.5rem)" }}
-            >
-              Everyday apps,
-              <br />
-              for everyday
-              <br />
-              <em className="not-italic text-pthalo dark:text-lime">people.</em>
+            <h1 className="mt-6 text-balance text-[2.5rem] font-medium leading-[1.05] tracking-[-0.03em] sm:text-[3.5rem] lg:text-[4rem]">
+              <span className="block text-ink">We build apps for</span>
+              <span className="block text-ink">the rest of us.</span>
+              <span className="block text-muted">And help you ship yours.</span>
             </h1>
 
-            {/* Subhead — the studio philosophy in one line */}
-            <p className="hero-text-item mt-7 max-w-md text-lg leading-relaxed text-muted">
-              Built to solve real problems — making technology genuinely useful
-              and genuinely accessible, for everyday people and businesses alike.
+            <p className="mt-6 max-w-lg text-pretty text-base leading-relaxed text-muted sm:text-lg">
+              We design and build digital products — apps, SaaS, and websites —
+              for our clients and for our own ideas. And we advise on the parts
+              around them: product, marketing, brand, and automation.
             </p>
 
-            {/* CTA */}
-            <div className="hero-text-item mt-9 flex flex-wrap items-center gap-4">
-              <a
-                href="#apps"
-                className="group relative inline-flex items-center gap-2.5 overflow-hidden rounded-full bg-pthalo px-8 py-4 font-heading text-base font-semibold text-offwhite shadow-[0_12px_30px_-10px_rgba(18,53,36,0.55)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_18px_44px_-12px_rgba(18,53,36,0.65)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-bg dark:bg-lime dark:text-forest dark:shadow-[0_12px_30px_-10px_rgba(144,168,66,0.5)]"
+            <div className="mt-9 flex flex-wrap items-center gap-3">
+              <PillButton href="/contact" size="lg">
+                Start a project
+              </PillButton>
+              <PillButton
+                href="/apps"
+                variant="ghost"
+                size="lg"
+                withArrow={false}
               >
-                {/* Sliding highlight layer */}
-                <span
-                  className="absolute inset-0 translate-x-[-101%] bg-lime transition-transform duration-300 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:translate-x-0 dark:bg-pthalo"
-                  aria-hidden="true"
-                />
-                <span className="relative">See what we&apos;re building</span>
-                <ArrowDown className="relative h-[18px] w-[18px] transition-transform group-hover:translate-y-0.5" aria-hidden="true" />
-              </a>
+                See our apps
+              </PillButton>
+            </div>
+
+            <div className="mt-12 flex items-center gap-4">
+              <div className="flex -space-x-2.5">
+                {apps.map((app) => (
+                  <span
+                    key={app.slug}
+                    className="grid h-10 w-10 place-items-center rounded-full border-2 border-bg"
+                    style={{
+                      backgroundColor: `color-mix(in srgb, ${app.accentColor} 18%, var(--color-surface))`,
+                    }}
+                  >
+                    <AppIcon
+                      icon={app.icon}
+                      color={app.accentColor}
+                      label={app.name}
+                      size={24}
+                      className="rounded-lg"
+                    />
+                  </span>
+                ))}
+              </div>
+              <p className="max-w-[16rem] text-[0.8125rem] leading-snug text-muted">
+                {apps.length} products of our own, in build and in beta.
+              </p>
             </div>
           </div>
 
-          {/* ── Right: Floating app avatars in conversation (desktop only) ── */}
-          <div className="relative hidden lg:block" style={{ height: "580px" }}>
-            <div ref={compositionRef} className="absolute inset-0">
-              <HeroAppChat />
+          <div className="lg:col-span-6">
+            <div className="relative mx-auto grid max-w-md grid-cols-2 gap-4 sm:max-w-lg lg:ml-auto lg:mr-0">
+              {featured.map((app, i) => (
+                <Link
+                  key={app.slug}
+                  href={`/apps/${app.slug}`}
+                  className={
+                    i === 0
+                      ? "group col-span-1 row-span-2 self-center"
+                      : "group col-span-1"
+                  }
+                >
+                  <div className="overflow-hidden rounded-well border border-border bg-surface p-3 shadow-card transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-card-hover">
+                    <PlaceholderBlock
+                      ratio={i === 0 ? "phone" : "square"}
+                      tint={app.accentColor}
+                      className="rounded-xl border-0"
+                    />
+                    <div className="flex items-center gap-2.5 px-1 pb-1 pt-3">
+                      <AppIcon
+                        icon={app.icon}
+                        color={app.accentColor}
+                        label={app.name}
+                        size={22}
+                        className="rounded-md"
+                      />
+                      <span className="truncate text-[0.8125rem] font-medium text-ink">
+                        {app.name}
+                      </span>
+                    </div>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </div>

@@ -17,11 +17,19 @@ export interface App {
   platform: string[];
   price: string;
   icon: string; // path: /icons/[slug].png
-  accentColor: string; // per-app tint color
+  /**
+   * Per-app tint. Drives --color-accent on that app's pages only; global
+   * surfaces, type, and ink buttons never change.
+   */
+  accentColor: string;
+  /** Readable text/icon color on an accentColor fill. Defaults to white. */
+  accentInk?: string;
   features: AppFeature[];
   screenshots: string[]; // paths: /screenshots/[slug]-1.png
   ctaLabel: string;
   ctaHref: string;
+  /** Set when ctaHref points off-site (opens in a new tab). */
+  ctaExternal?: boolean;
   seo: {
     title: string;
     description: string;
@@ -30,6 +38,8 @@ export interface App {
   legal?: {
     privacy: string;
     terms: string;
+    /** True when the legal pages live on the app's own domain. */
+    external?: boolean;
   };
 }
 
@@ -242,6 +252,82 @@ export const apps: App[] = [
     legal: {
       privacy: "/apps/tapa/privacy/",
       terms: "/apps/tapa/terms/",
+    },
+  },
+  {
+    slug: "hakkan",
+    name: "Hakkan",
+    category: "Research & Content",
+    tagline: "Worth listening to.",
+    shortDescription:
+      "Researches the real conversation across social and the web, hands you a report with receipts, and turns it into thought leadership in your voice.",
+    overview: [
+      "Most AI writing tools start with a blank page and guess. Hakkan starts with research. Give it a question and it reads the conversation where it actually happens — Reddit, X, YouTube, TikTok, LinkedIn, Hacker News, reviews, news, and the open web — then returns a full report: the themes, the sentiment split, the voices, and where the evidence and the feelings diverge.",
+      "Every claim in that report carries receipts. Click any bar, theme, or line and you get the verbatim quotes with platform, author, and link. From there Hakkan turns the research into publishable work — posts, threads, carousels, blogs, newsletters, video scripts — written in a voice profile learned from your own samples, not a generic house style.",
+    ],
+    status: "Beta",
+    platform: ["Web"],
+    price: "Free to start · from $39/mo",
+    icon: "/icons/hakkan.svg",
+    accentColor: "#D8F34E",
+    accentInk: "#3A4409",
+    features: [
+      {
+        icon: "Search",
+        title: "One question, every platform",
+        description:
+          "A single study sweeps social platforms and the open web at once, with a live pipeline showing exactly which sources were read and which failed.",
+      },
+      {
+        icon: "Quote",
+        title: "Receipts on every claim",
+        description:
+          "Nothing is asserted without a source. Every theme, sentiment bar, and key point opens into the real quotes behind it, with author and link.",
+      },
+      {
+        icon: "BarChart2",
+        title: "A report you can defend",
+        description:
+          "Themes, voices, sentiment split, timeline, and angles — plus an honest note on what was searched and where coverage was thin.",
+      },
+      {
+        icon: "PenTool",
+        title: "Eight content formats",
+        description:
+          "Turn one study into LinkedIn and X posts, threads, carousels, infographics, blog posts, newsletters, and short video scripts.",
+      },
+      {
+        icon: "Mic",
+        title: "Your voice, learned",
+        description:
+          "Paste a few samples and Hakkan builds a voice profile with tone, rhythm, and phrasing you can tune. Raw samples are never stored.",
+      },
+      {
+        icon: "Radar",
+        title: "Topic Radar",
+        description:
+          "Track the subjects you care about, watch interest move over time, and get a weekly shortlist of what is worth researching next.",
+      },
+      {
+        icon: "Compass",
+        title: "AI visibility",
+        description:
+          "For brand studies, see how often AI answer engines name you and which sources those answers are citing.",
+      },
+    ],
+    screenshots: [],
+    ctaLabel: "Join the beta",
+    ctaHref: "https://hakkan.app",
+    ctaExternal: true,
+    seo: {
+      title: "Hakkan — Research-led thought leadership",
+      description:
+        "Hakkan researches the real conversation across social and the web, returns a cited report you can defend, and turns it into thought leadership written in your voice.",
+    },
+    legal: {
+      privacy: "https://hakkan.app/privacy",
+      terms: "https://hakkan.app/terms",
+      external: true,
     },
   },
 ];

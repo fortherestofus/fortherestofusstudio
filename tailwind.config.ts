@@ -10,37 +10,62 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Brand palette (fixed values)
-        pthalo: "#123524",
-        lime: "#90A842",
-        gold: "#F0B331",
-        offwhite: "#F7F5F0",
-        forest: "#0C2218",
         // Theme-aware tokens (driven by CSS custom properties in globals.css)
         bg: "var(--color-bg)",
         surface: "var(--color-surface)",
+        sunken: "var(--color-surface-sunken)",
         ink: "var(--color-text)",
         muted: "var(--color-text-muted)",
-        primary: "var(--color-primary)",
-        accent: "var(--color-accent)",
-        "footer-bg": "var(--color-footer-bg)",
+        faint: "var(--color-text-faint)",
         border: "var(--color-border)",
+
+        // Accent — overridden per app page
+        accent: "var(--color-accent)",
+        "accent-soft": "var(--color-accent-soft)",
+        "accent-ink": "var(--color-accent-ink)",
+
+        // Ink surfaces (dark CTA block, footer)
+        "ink-surface": "var(--color-ink-surface)",
+        "ink-raised": "var(--color-ink-surface-raised)",
+        "ink-text": "var(--color-ink-text)",
+        "ink-muted": "var(--color-ink-text-muted)",
+        "ink-border": "var(--color-ink-border)",
+
+        // Pastel washes
+        "wash-sky": "var(--wash-sky)",
+        "wash-peach": "var(--wash-peach)",
+        "wash-lilac": "var(--wash-lilac)",
+        "wash-mint": "var(--wash-mint)",
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "Georgia", "serif"],
-        heading: ["var(--font-heading)", "system-ui", "sans-serif"],
-        body: ["var(--font-inter)", "system-ui", "sans-serif"],
+        // One family sitewide. Aliases kept so legacy classes resolve to Apfel.
+        sans: ["var(--font-apfel)", "system-ui", "sans-serif"],
+        display: ["var(--font-apfel)", "system-ui", "sans-serif"],
+        heading: ["var(--font-apfel)", "system-ui", "sans-serif"],
+        body: ["var(--font-apfel)", "system-ui", "sans-serif"],
+        mono: [
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "Consolas",
+          "monospace",
+        ],
+      },
+      borderRadius: {
+        card: "16px",
+        well: "24px",
+        block: "32px",
       },
       boxShadow: {
-        card: "0 1px 2px rgba(18,53,36,0.06), 0 8px 24px rgba(18,53,36,0.08)",
+        card: "0 1px 2px rgba(22,21,15,0.04), 0 6px 20px rgba(22,21,15,0.06)",
         "card-hover":
-          "0 4px 8px rgba(18,53,36,0.10), 0 18px 48px rgba(18,53,36,0.18)",
-        "card-glow":
-          "0 8px 32px rgba(18,53,36,0.14), 0 32px 64px rgba(18,53,36,0.20)",
-        "gold-glow": "0 6px 24px rgba(240,179,49,0.32)",
+          "0 2px 6px rgba(22,21,15,0.06), 0 14px 36px rgba(22,21,15,0.10)",
+        pill: "0 1px 2px rgba(22,21,15,0.10), 0 8px 20px rgba(22,21,15,0.14)",
+        nav: "0 1px 2px rgba(22,21,15,0.04), 0 8px 30px rgba(22,21,15,0.08)",
       },
       maxWidth: {
         content: "1200px",
+        reading: "720px",
       },
     },
   },

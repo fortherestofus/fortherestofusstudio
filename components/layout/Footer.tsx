@@ -1,6 +1,11 @@
+/**
+ * Footer — the dark ink block that closes every page (per the design
+ * reference): brand block with a display statement on the left, link columns
+ * on the right, legal strip underneath.
+ */
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import { apps } from "@/lib/apps";
 
 // Lucide dropped brand marks, so social glyphs are inline SVGs (simple-icons).
@@ -21,16 +26,23 @@ function TikTokMark(props: React.SVGProps<SVGSVGElement>) {
 }
 
 // TODO: swap "#" for the real @fortherestofus profile URLs once the accounts are live.
-const socials = [
+const SOCIALS = [
   { label: "Instagram", href: "#", Icon: InstagramMark },
   { label: "TikTok", href: "#", Icon: TikTokMark },
   { label: "Email", href: "mailto:hello@fortherestofus.app", Icon: Mail },
 ];
 
-const studioLinks = [
-  { label: "What we're building", href: "/#apps" },
-  { label: "The studio", href: "/#studio" },
-  { label: "Get in touch", href: "mailto:hello@fortherestofus.app" },
+const SERVICE_LINKS = [
+  { label: "Custom apps & SaaS", href: "/services#build" },
+  { label: "Websites", href: "/services#build" },
+  { label: "Product & growth", href: "/services#advise" },
+  { label: "Tech & automation", href: "/services#advise" },
+];
+
+const STUDIO_LINKS = [
+  { label: "The studio", href: "/studio" },
+  { label: "Start a project", href: "/contact" },
+  { label: "Email us", href: "mailto:hello@fortherestofus.app" },
 ];
 
 function FooterColumn({
@@ -42,7 +54,7 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="text-xs font-semibold uppercase tracking-widest text-offwhite/50">
+      <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-ink-text/45">
         {title}
       </h3>
       <ul className="mt-5 space-y-3.5">{children}</ul>
@@ -50,8 +62,13 @@ function FooterColumn({
   );
 }
 
-function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
-  const external = href.startsWith("http") || href.startsWith("mailto");
+function FooterLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
   return (
     <li>
       <Link
@@ -59,15 +76,9 @@ function FooterLink({ href, children }: { href: string; children: React.ReactNod
         {...(href.startsWith("http")
           ? { target: "_blank", rel: "noopener noreferrer" }
           : {})}
-        className="group inline-flex items-center text-[15px] text-offwhite/70 transition-colors hover:text-offwhite"
+        className="text-[0.9375rem] text-ink-muted transition-colors hover:text-ink-text"
       >
-        <span className="relative">
-          {children}
-          <span className="absolute -bottom-0.5 left-0 h-px w-0 bg-lime transition-all duration-300 group-hover:w-full" />
-        </span>
-        {external && (
-          <ArrowUpRight className="ml-1 h-3.5 w-3.5 opacity-0 transition-all duration-300 group-hover:opacity-60" />
-        )}
+        {children}
       </Link>
     </li>
   );
@@ -77,61 +88,41 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-footer-bg text-offwhite">
-      {/* Top hairline */}
-      <div
-        className="h-px w-full bg-gradient-to-r from-transparent via-lime/40 to-transparent"
-        aria-hidden="true"
-      />
-      {/* Ambient glow */}
-      <div
-        className="pointer-events-none absolute -top-24 right-0 h-64 w-2/3"
-        aria-hidden="true"
-        style={{
-          background:
-            "radial-gradient(55% 60% at 75% 0%, rgba(144,168,66,0.14), transparent 70%)",
-        }}
-      />
-
-      <div className="relative mx-auto max-w-content px-5 py-16 sm:px-8 sm:py-20">
-        <div className="grid gap-12 md:grid-cols-12">
+    <footer className="bg-ink-surface text-ink-text">
+      <div className="mx-auto w-full max-w-content px-5 py-16 sm:px-8 sm:py-20">
+        <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Brand block */}
-          <div className="md:col-span-5">
+          <div className="lg:col-span-5">
             <Image
               src="/icons/logo-dark.png"
               alt="For The Rest Of Us"
-              width={750}
-              height={110}
-              className="h-8 w-auto"
+              width={191}
+              height={28}
+              className="h-7 w-auto"
             />
-            <p className="mt-4 max-w-sm font-display text-[1.75rem] leading-[1.15] tracking-tight sm:text-3xl">
-              Everyday apps, for{" "}
-              <span className="text-lime">everyday people.</span>
+            <p className="mt-6 max-w-sm text-pretty text-[0.9375rem] leading-relaxed text-ink-muted">
+              A solutions studio in Johannesburg. We design and build digital
+              products for our clients, and for our own ideas.
             </p>
-            <p className="mt-4 max-w-sm text-sm leading-relaxed text-offwhite/60">
-              A build-to-solve studio making technology genuinely useful and
-              accessible — for everyday people and businesses alike.
-            </p>
-            <a
-              href="mailto:hello@fortherestofus.app"
-              className="group mt-7 inline-flex items-center gap-2 rounded-full bg-offwhite/10 px-5 py-2.5 text-sm font-medium text-offwhite ring-1 ring-inset ring-offwhite/15 transition-all duration-300 hover:bg-offwhite/15 hover:ring-lime/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-            >
-              Get in touch
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </a>
-            <p className="mt-4 text-sm text-offwhite/60">
-              or{" "}
-              <a
-                href="mailto:hello@fortherestofus.app"
-                className="text-offwhite/90 underline decoration-offwhite/30 underline-offset-4 transition-colors hover:text-offwhite hover:decoration-lime"
-              >
-                hello@fortherestofus.app
-              </a>
-            </p>
+            <div className="mt-8 flex items-center gap-3">
+              {SOCIALS.map(({ label, href, Icon: Mark }) => (
+                <a
+                  key={label}
+                  href={href}
+                  aria-label={label}
+                  {...(href.startsWith("http")
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className="grid h-10 w-10 place-items-center rounded-full border border-ink-border text-ink-muted transition-colors hover:border-ink-text/30 hover:text-ink-text"
+                >
+                  <Mark className="h-4 w-4" />
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Apps column */}
-          <div className="md:col-span-3">
+          {/* Link columns */}
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
             <FooterColumn title="Apps">
               {apps.map((app) => (
                 <FooterLink key={app.slug} href={`/apps/${app.slug}`}>
@@ -139,50 +130,37 @@ export default function Footer() {
                 </FooterLink>
               ))}
             </FooterColumn>
-          </div>
 
-          {/* Studio column */}
-          <div className="md:col-span-2">
+            <FooterColumn title="Services">
+              {SERVICE_LINKS.map((link) => (
+                <FooterLink key={link.label} href={link.href}>
+                  {link.label}
+                </FooterLink>
+              ))}
+            </FooterColumn>
+
             <FooterColumn title="Studio">
-              {studioLinks.map((l) => (
-                <FooterLink key={l.label} href={l.href}>
-                  {l.label}
+              {STUDIO_LINKS.map((link) => (
+                <FooterLink key={link.label} href={link.href}>
+                  {link.label}
                 </FooterLink>
               ))}
             </FooterColumn>
           </div>
-
-          {/* Connect / socials */}
-          <div className="md:col-span-2">
-            <h3 className="text-xs font-semibold uppercase tracking-widest text-offwhite/50">
-              Connect
-            </h3>
-            <div className="mt-5 flex flex-wrap items-center gap-2.5">
-              {socials.map(({ label, href, Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  aria-label={label}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-offwhite/15 bg-offwhite/[0.04] text-offwhite/75 transition-all duration-300 hover:-translate-y-0.5 hover:border-lime/40 hover:bg-offwhite/10 hover:text-offwhite focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
-                >
-                  <Icon className="h-[18px] w-[18px]" />
-                </a>
-              ))}
-            </div>
-          </div>
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-16 flex flex-col gap-3 border-t border-offwhite/15 pt-6 text-sm text-offwhite/55 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} For The Rest Of Us. All rights reserved.</p>
-          <p className="inline-flex items-center gap-2">
-            <span
-              className="h-1.5 w-1.5 rounded-full bg-lime"
-              aria-hidden="true"
-            />
-            Built by Alroy Ndhlovu in Johannesburg
+        <div className="mt-16 flex flex-col gap-4 border-t border-ink-border pt-8 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm text-ink-text/40">
+            © {year} For The Rest Of Us. Built in Johannesburg.
+          </p>
+          <p className="text-sm text-ink-text/40">
+            Studio of{" "}
+            <a
+              href="mailto:hello@fortherestofus.app"
+              className="transition-colors hover:text-ink-text"
+            >
+              Alroy Ndhlovu
+            </a>
           </p>
         </div>
       </div>

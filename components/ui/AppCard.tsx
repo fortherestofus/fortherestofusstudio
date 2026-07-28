@@ -1,144 +1,78 @@
-"use client";
-
-import { useRef, useCallback } from "react";
+/**
+ * AppCard — an app summary tile. Used on the home page and the apps index.
+ *
+ * The app's accent appears only as a top hairline, the icon backdrop, and the
+ * hover arrow; everything else stays on the global system so a grid of cards
+ * still reads as one set.
+ */
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import type { App } from "@/lib/apps";
+import { cn } from "@/lib/cn";
 import Badge from "@/components/ui/Badge";
 import AppIcon from "@/components/ui/AppIcon";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
 
-export default function AppCard({ app }: { app: App }) {
-  const tiltRef = useRef<HTMLDivElement>(null);
-  const glowRef = useRef<HTMLDivElement>(null);
+interface AppCardProps {
+  app: App;
+  className?: string;
+}
 
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLDivElement>) => {
-      const card = tiltRef.current;
-      const glow = glowRef.current;
-      if (!card) return;
-
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const cx = rect.width / 2;
-      const cy = rect.height / 2;
-      const rotX = ((y - cy) / cy) * -7;
-      const rotY = ((x - cx) / cx) * 7;
-
-      card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) scale(1.025)`;
-      card.style.boxShadow = `0 ${12 + Math.abs(rotX)}px ${40 + Math.abs(rotY) * 2}px rgba(18,53,36,0.18)`;
-
-      if (glow) {
-        glow.style.left = `${x}px`;
-        glow.style.top = `${y}px`;
-        glow.style.opacity = "1";
-      }
-    },
-    []
-  );
-
-  const handleMouseLeave = useCallback(() => {
-    const card = tiltRef.current;
-    const glow = glowRef.current;
-    if (card) {
-      card.style.transform = "";
-      card.style.boxShadow = "";
-    }
-    if (glow) glow.style.opacity = "0";
-  }, []);
-
+export default function AppCard({ app, className }: AppCardProps) {
   return (
-    <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 24 },
-        show: { opacity: 1, y: 0 },
-      }}
-      transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative h-full"
+    <Link
+      href={`/apps/${app.slug}`}
+      className={cn(
+        "group relative flex flex-col overflow-hidden rounded-card border border-border bg-surface p-6",
+        "shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+        className
+      )}
     >
-      <div
-        ref={tiltRef}
-        onMouseMove={handleMouseMove}
-        onMouseLeave={handleMouseLeave}
-        className="relative h-full"
-        style={{
-          transition: "transform 0.18s ease-out, box-shadow 0.18s ease-out",
-          transformStyle: "preserve-3d",
-          willChange: "transform",
-        }}
-      >
-        <Link
-          href={`/apps/${app.slug}`}
-          className="relative flex h-full flex-col rounded-2xl border border-border bg-surface p-6 shadow-card overflow-hidden transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+      {/* Accent hairline */}
+      <span
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-[3px]"
+        style={{ backgroundColor: app.accentColor }}
+      />
+
+      <div className="flex items-start justify-between gap-4">
+        <span
+          className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl"
+          style={{
+            backgroundColor: `color-mix(in srgb, ${app.accentColor} 16%, transparent)`,
+          }}
         >
-          <span
-            className="pointer-events-none absolute inset-x-0 top-0 h-px"
-            style={{
-              background: `linear-gradient(90deg, transparent 0%, ${app.accentColor} 50%, transparent 100%)`,
-            }}
-            aria-hidden="true"
+          <AppIcon
+            icon={app.icon}
+            color={app.accentColor}
+            label={app.name}
+            size={38}
+            className="rounded-xl"
           />
-
-          <div
-            ref={glowRef}
-            className="pointer-events-none absolute h-48 w-48 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-0 blur-3xl"
-            style={{
-              background: `radial-gradient(circle, ${app.accentColor}35, transparent 70%)`,
-              transition: "opacity 0.3s ease",
-            }}
-            aria-hidden="true"
-          />
-
-          <PlaceholderImage
-            src={app.screenshots[0]}
-            alt={`${app.name} preview`}
-            label="Preview coming soon"
-            accentColor={app.accentColor}
-            className="relative mb-5 aspect-[16/10]"
-            sizes="(max-width: 768px) 80vw, 30vw"
-          />
-
-          <div className="relative flex items-start justify-between">
-            <AppIcon
-              icon={app.icon}
-              color={app.accentColor}
-              label={app.name}
-              size={64}
-            />
-            <ArrowUpRight
-              className="h-5 w-5 text-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink"
-              aria-hidden="true"
-            />
-          </div>
-
-          <p className="relative mt-5 text-xs font-medium uppercase tracking-widest text-muted">
-            {app.category}
-          </p>
-          <h3 className="relative mt-1 font-heading text-xl font-bold text-ink">
-            {app.name}
-          </h3>
-
-          <div className="relative mt-3 flex flex-wrap gap-2">
-            <Badge variant="platform">{app.platform.join(" · ")}</Badge>
-            <Badge variant="status" status={app.status}>
-              {app.status}
-            </Badge>
-          </div>
-
-          <p className="relative mt-4 line-clamp-3 text-sm leading-relaxed text-muted">
-            {app.shortDescription}
-          </p>
-
-          <span className="relative mt-auto pt-5 text-sm font-medium font-heading text-ink transition-colors group-hover:text-pthalo dark:group-hover:text-lime">
-            Learn more
-            <span className="ml-1 inline-block transition-transform duration-300 group-hover:translate-x-1">
-              →
-            </span>
-          </span>
-        </Link>
+        </span>
+        <ArrowUpRight className="h-5 w-5 shrink-0 text-faint transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink" />
       </div>
-    </motion.div>
+
+      <h3 className="mt-5 text-lg font-medium tracking-[-0.01em] text-ink">
+        {app.name}
+      </h3>
+
+      <div className="mt-2 flex flex-wrap items-center gap-2">
+        <span className="text-[0.9375rem] text-muted">{app.category}</span>
+        <Badge variant="status" status={app.status}>
+          {app.status}
+        </Badge>
+      </div>
+
+      <p className="mt-4 flex-1 text-pretty text-[0.9375rem] leading-relaxed text-muted">
+        {app.shortDescription}
+      </p>
+
+      <div className="mt-6 flex flex-wrap items-center gap-1.5 border-t border-border pt-4">
+        {app.platform.map((p) => (
+          <Badge key={p}>{p}</Badge>
+        ))}
+      </div>
+    </Link>
   );
 }
