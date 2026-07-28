@@ -54,7 +54,7 @@ export default function ContactPage() {
       </PageHero>
 
       <Section tone="canvas" size="sm">
-        <div className="grid gap-3 sm:gap-4 lg:grid-cols-12">
+        <div className="grid items-start gap-3 sm:gap-4 lg:grid-cols-12">
           {/* What to include */}
           <Card className="p-6 sm:p-8 lg:col-span-7">
             <h2 className="text-xl font-medium tracking-[-0.01em] text-ink">
