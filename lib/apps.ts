@@ -22,8 +22,15 @@ export interface App {
    * surfaces, type, and ink buttons never change.
    */
   accentColor: string;
-  /** Readable text/icon color on an accentColor fill. Defaults to white. */
+  /** Readable text/icon color on a solid accentColor fill. Defaults to white. */
   accentInk?: string;
+  /**
+   * A darkened accent used for text and icons sitting on a pale accent wash.
+   * Several brand accents (gold, acid yellow) are unreadable at body sizes on
+   * a light tint of themselves, so pages use this instead. Defaults to
+   * accentColor.
+   */
+  accentDeep?: string;
   features: AppFeature[];
   screenshots: string[]; // paths: /screenshots/[slug]-1.png
   ctaLabel: string;
@@ -60,6 +67,7 @@ export const apps: App[] = [
     price: "Free",
     icon: "/icons/caught-slipping.png",
     accentColor: "#F0B331",
+    accentDeep: "#8A6400",
     features: [
       {
         icon: "Clock",
@@ -133,6 +141,7 @@ export const apps: App[] = [
     price: "Free · Premium from $6.99/mo",
     icon: "/icons/inspiritintruth-social.png",
     accentColor: "#90A842",
+    accentDeep: "#4D6010",
     features: [
       {
         icon: "BookOpen",
@@ -197,6 +206,7 @@ export const apps: App[] = [
     price: "Free · Pro from $2.99/mo",
     icon: "/icons/tapa.png",
     accentColor: "#CC5833",
+    accentDeep: "#A8431F",
     features: [
       {
         icon: "Refrigerator",
@@ -270,6 +280,7 @@ export const apps: App[] = [
     price: "Free to start · from $39/mo",
     icon: "/icons/hakkan.svg",
     accentColor: "#D8F34E",
+    accentDeep: "#3A4409",
     accentInk: "#3A4409",
     features: [
       {
