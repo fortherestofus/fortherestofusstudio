@@ -1,88 +1,30 @@
 /**
- * Hero — headline, sub, CTAs, and an honest proof row on the left; a stack of
- * the studio's own product frames on the right.
+ * Hero — headline and CTAs beside the studio's own app marks, presented as
+ * objects on the canvas.
  *
- * The frames are real image slots (placeholder until designed screenshots
- * exist), not simulated UI — the apps should show themselves. The proof row
- * uses real people from lib/testimonials.ts; nothing here is invented.
+ * The icons are real, finished assets, which is the point: no invented UI, no
+ * placeholder rectangles standing in for screens that do not exist yet, and no
+ * avatar cluster we cannot fill honestly (three testimonials, no photos). The
+ * marks are also the only colour on the page, which is exactly what the
+ * monotone system asks for.
+ *
+ * When real screenshots land, the right place for them is the app pages and
+ * the app cards — not here.
  */
-import Image from "next/image";
 import Link from "next/link";
 import { apps } from "@/lib/apps";
-import { testimonials } from "@/lib/testimonials";
+import { clients } from "@/lib/testimonials";
 import { cn } from "@/lib/cn";
 import PillButton from "@/components/ui/PillButton";
 import EyebrowChip from "@/components/ui/EyebrowChip";
 import AppIcon from "@/components/ui/AppIcon";
-import PlaceholderBlock from "@/components/ui/PlaceholderBlock";
-
-/** One product frame. Real screenshot when supplied, placeholder until then. */
-function AppFrame({
-  app,
-  className,
-  ratio,
-}: {
-  app: (typeof apps)[number];
-  className?: string;
-  ratio: "phone" | "browser";
-}) {
-  const shot = app.screenshots[0];
-
-  return (
-    <Link
-      href={`/apps/${app.slug}`}
-      className={cn(
-        "group block overflow-hidden rounded-well border border-border bg-surface p-2.5 shadow-card",
-        "transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover",
-        className
-      )}
-    >
-      <div className="overflow-hidden rounded-xl">
-        {shot ? (
-          <div
-            className="relative w-full"
-            style={{ aspectRatio: ratio === "phone" ? "9 / 16" : "16 / 10" }}
-          >
-            <Image
-              src={shot}
-              alt={`${app.name} screenshot`}
-              fill
-              sizes="(max-width: 1024px) 45vw, 260px"
-              className="object-cover object-top"
-              priority
-            />
-          </div>
-        ) : (
-          <PlaceholderBlock
-            ratio={ratio === "phone" ? "portrait" : "browser"}
-            tint={app.accentColor}
-            className="rounded-none border-0"
-          />
-        )}
-      </div>
-      <div className="flex items-center gap-2 px-1 pb-0.5 pt-2.5">
-        <AppIcon
-          icon={app.icon}
-          color={app.accentColor}
-          label={app.name}
-          size={18}
-          className="rounded-md"
-        />
-        <span className="truncate text-[0.75rem] font-medium text-ink">
-          {app.name}
-        </span>
-      </div>
-    </Link>
-  );
-}
+import Badge from "@/components/ui/Badge";
 
 export default function Hero() {
-  const [lead, second, third] = apps;
-
   return (
     <section className="relative overflow-hidden bg-bg pt-32 sm:pt-36 lg:pt-40">
       <div className="relative mx-auto w-full max-w-content px-5 pb-20 sm:px-8 sm:pb-28">
-        <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-12">
+        <div className="grid items-center gap-16 lg:grid-cols-12 lg:gap-14">
           {/* Copy */}
           <div className="lg:col-span-6">
             <EyebrowChip>Solutions studio · Johannesburg</EyebrowChip>
@@ -113,37 +55,58 @@ export default function Hero() {
               </PillButton>
             </div>
 
-            {/* Proof — real people, real engagements */}
-            <div className="mt-12 flex items-center gap-4 border-t border-border pt-8">
-              <div className="flex -space-x-2">
-                {testimonials.map((t) => (
-                  <span
-                    key={t.name}
-                    title={`${t.name} — ${t.company}`}
-                    className="grid h-9 w-9 place-items-center rounded-full border-2 border-bg bg-ink text-[0.6875rem] font-medium text-bg"
+            {/* Named work, not a trust badge. "Featured engagements" describes
+                what was done rather than claiming an endorsement, and the
+                names stay as text — a logo is a trademark. */}
+            <div className="mt-12 border-t border-border pt-8">
+              <h2 className="text-xs font-medium uppercase tracking-[0.14em] text-faint">
+                Featured engagements
+              </h2>
+              <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+                {clients.slice(0, 4).map((client) => (
+                  <li
+                    key={client}
+                    className="text-[0.9375rem] font-medium text-muted"
                   >
-                    {t.initials}
-                  </span>
+                    {client}
+                  </li>
                 ))}
-              </div>
-              <p className="max-w-[30ch] text-[0.8125rem] leading-snug text-muted">
-                Ten years of client work — for Meta, the IFC, Digify Africa and
-                more.
-              </p>
+              </ul>
             </div>
           </div>
 
-          {/* Product frames */}
+          {/* The studio's own marks, as objects */}
           <div className="lg:col-span-6">
-            <div className="relative mx-auto grid max-w-[520px] grid-cols-2 gap-4 lg:ml-auto lg:mr-0">
-              <AppFrame
-                app={lead}
-                ratio="phone"
-                className="col-span-1 row-span-2 self-center"
-              />
-              <AppFrame app={second} ratio="browser" className="col-span-1" />
-              <AppFrame app={third} ratio="browser" className="col-span-1" />
-            </div>
+            <ul className="mx-auto grid max-w-[440px] grid-cols-2 gap-4 sm:gap-5 lg:ml-auto lg:mr-0">
+              {apps.map((app, i) => (
+                <li key={app.slug} className={cn(i % 2 === 1 && "lg:mt-10")}>
+                  <Link
+                    href={`/apps/${app.slug}`}
+                    className="group flex flex-col items-start gap-4 rounded-well p-1 transition-transform duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
+                  >
+                    <span className="drop-shadow-[0_12px_28px_rgba(23,21,15,0.14)] transition-[filter] duration-300 group-hover:drop-shadow-[0_18px_36px_rgba(23,21,15,0.2)]">
+                      <AppIcon
+                        icon={app.icon}
+                        color={app.accentColor}
+                        label={app.name}
+                        size={92}
+                        className="rounded-[22px]"
+                      />
+                    </span>
+                    <span>
+                      <span className="block text-[0.9375rem] font-medium text-ink">
+                        {app.name}
+                      </span>
+                      <span className="mt-1.5 block">
+                        <Badge variant="status" status={app.status}>
+                          {app.status}
+                        </Badge>
+                      </span>
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </div>

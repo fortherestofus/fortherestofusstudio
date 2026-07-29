@@ -1,62 +1,58 @@
 /**
  * Testimonials — real quotes from people Alroy has worked with.
  *
- * Presented as plain bordered quotes rather than floating cards: with three
- * testimonials, a wall of chrome reads as padding. Copy comes from
- * lib/testimonials.ts and must never be invented.
+ * With only three, spreading them into equal cards reads as padding. One is
+ * promoted to near-headline scale and the other two support it: as the count
+ * goes down, prominence has to go up. Names, titles, and companies are always
+ * shown in full — an unattributed quote is worth less than none.
+ *
+ * Copy lives in lib/testimonials.ts and must never be invented.
  */
-import { testimonials, clients } from "@/lib/testimonials";
-import Section, { SectionHeading } from "@/components/ui/Section";
+import { testimonials } from "@/lib/testimonials";
+import Section from "@/components/ui/Section";
+import EyebrowChip from "@/components/ui/EyebrowChip";
 
 export default function Testimonials() {
+  const [lead, ...rest] = testimonials;
+
   return (
     <Section tone="sunken">
-      <SectionHeading
-        eyebrow="Proof"
-        title="Ten years of other people's deadlines."
-        subtitle="The studio is new. The work behind it is not — here is what the people who hired Alroy say about it."
-      />
+      <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+        <div className="lg:col-span-7">
+          <EyebrowChip>In their words</EyebrowChip>
 
-      <div className="mt-12 grid gap-3 sm:gap-4 md:grid-cols-3">
-        {testimonials.map((t) => (
-          <figure
-            key={t.name}
-            className="flex flex-col rounded-card border border-border bg-surface p-6"
-          >
-            <blockquote className="flex-1 text-pretty text-[0.9375rem] leading-relaxed text-ink">
-              {t.quote}
+          <figure className="mt-8">
+            <blockquote className="text-balance text-[1.5rem] font-medium leading-[1.25] tracking-[-0.02em] text-ink sm:text-[2rem]">
+              &ldquo;{lead.quote}&rdquo;
             </blockquote>
-            <figcaption className="mt-6 flex items-center gap-3 border-t border-border pt-5">
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-ink text-[0.75rem] font-medium text-bg">
-                {t.initials}
+            <figcaption className="mt-7 flex items-center gap-3.5">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-ink text-[0.8125rem] font-medium text-bg">
+                {lead.initials}
               </span>
               <span className="min-w-0">
-                <span className="block truncate text-[0.9375rem] font-medium text-ink">
-                  {t.name}
-                </span>
-                <span className="block truncate text-[0.8125rem] text-muted">
-                  {t.title}, {t.company}
+                <span className="block font-medium text-ink">{lead.name}</span>
+                <span className="block text-[0.875rem] text-muted">
+                  {lead.title}, {lead.company}
                 </span>
               </span>
             </figcaption>
           </figure>
-        ))}
-      </div>
+        </div>
 
-      <div className="mt-12 border-t border-border pt-8">
-        <p className="text-center text-[0.8125rem] text-faint">
-          Work delivered for
-        </p>
-        <ul className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-          {clients.map((client) => (
-            <li
-              key={client}
-              className="text-[0.9375rem] font-medium text-muted"
-            >
-              {client}
-            </li>
+        <div className="flex flex-col justify-center gap-8 lg:col-span-5">
+          {rest.map((t) => (
+            <figure key={t.name} className="border-t border-border pt-7">
+              <blockquote className="text-pretty text-[0.9375rem] leading-relaxed text-ink">
+                {t.quote}
+              </blockquote>
+              <figcaption className="mt-4 text-[0.875rem] text-muted">
+                <span className="font-medium text-ink">{t.name}</span>
+                {" — "}
+                {t.title}, {t.company}
+              </figcaption>
+            </figure>
           ))}
-        </ul>
+        </div>
       </div>
     </Section>
   );

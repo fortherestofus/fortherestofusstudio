@@ -90,7 +90,7 @@ export function VignetteCard({
     "group flex flex-col overflow-hidden rounded-card border border-border bg-surface",
     "transition-all duration-300",
     href && "hover:-translate-y-1 hover:shadow-card-hover",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
     className
   );
 
@@ -145,7 +145,7 @@ export function IconCard({
     "group flex flex-col rounded-card border border-border bg-surface p-6",
     "transition-all duration-300",
     href && "hover:-translate-y-1 hover:shadow-card-hover",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
     className
   );
 

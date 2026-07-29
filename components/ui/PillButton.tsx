@@ -61,7 +61,7 @@ export default function PillButton({
   const classes = cn(
     "inline-flex items-center justify-center rounded-full font-medium",
     "transition-all duration-200 hover:-translate-y-0.5",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent",
+    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
     VARIANTS[variant],
     withArrow ? SIZES[size] : SIZES_NO_ARROW[size],
     className

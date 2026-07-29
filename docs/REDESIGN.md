@@ -60,8 +60,15 @@ We adopt it as the studio system so every fortherestofus surface matches.
 | `--ink` | `#16150F` | text + black pill buttons + dark blocks |
 | `--muted` | `#6E6A5E` | secondary text, muted headline line 2 |
 | `--border` | `#E7E3D8` | hairlines |
-| `--accent` | `#EE5B2E` | studio accent (Design Reference orange) |
-| `--accent-soft` | `#FBE9DA` | washes, chips |
+| `--accent` | `#C4552F` | restrained ember, small live moments only |
+| `--accent-soft` | `#F4E7DE` | rare washes |
+| `--accent-deep` | `#A8431F` | accent text/icons on light surfaces |
+
+> **Superseded (v2).** The system is now **monotone**: there is no
+> section-level brand colour. Colour enters a page only through imagery and
+> through an app's own accent on that app's pages. The accent above is kept
+> for focus rings, hover, and status dots — never a background or a section
+> fill. Pastel washes were removed entirely.
 
 - **Dark mode**: keep the `next-themes` toggle; dark tokens become ink-canvas
   (`bg #121210`, `surface #1B1A16`, borders `rgba(247,245,240,.1)`). Everything is
@@ -277,6 +284,36 @@ app pages via a shared helper (fixes current inconsistency).
 - [ ] Update `AGENTS.md` (new IA, services registry, design tokens) at the end.
 
 ---
+
+## 6b. v2 design pass (after client review)
+
+Seven critiques drove a second pass. What changed and why:
+
+1. **Services section** rebuilt to the reference exactly — a sunken well with
+   one row of cards carrying CSS mini-UI vignettes, then a quieter icon row.
+2. **Apps shown once.** The marquee proof strip was saying the same thing as
+   the apps grid; it is gone, and app cards gained their own artwork slot.
+3. **App pages went editorial** — alternating full-bleed bands, big type, real
+   screenshot slots, a hairline spec strip. No card stacks.
+4. **Nav** is a plain transparent bar that gains blur and a hairline on scroll.
+5. **Process** shrank from a pastel card section to a slim numbered strip.
+6. **Studio page** rewritten around Alroy's real background, clients, and
+   testimonials. Stat cards deleted.
+7. **Services link to five real pages** (`/services/[slug]`) built for SEO.
+
+**Hero direction (researched).** Floating avatar clusters were rejected: only
+three testimonials exist, none have photographs, and the quotes are personal
+praise rather than outcome claims — the pattern's payload is "there are many of
+us", which we cannot honestly supply. Placeholder rectangles standing in for
+screens that do not exist were also rejected as the simulated-UI problem in
+another form. The hero instead shows **the studio's own app marks as objects**:
+real finished assets, and the only colour on the page. Client names appear as
+text under the heading "Featured engagements" — describing work done rather
+than claiming endorsement, and avoiding trademark use.
+
+**Outstanding:** written permission before any client logo is reproduced as a
+mark; real screenshots and a studio portrait; per-app OG images; JSON-LD for
+all four apps; a CSP attempt.
 
 ## 7. Progress
 
