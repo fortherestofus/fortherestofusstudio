@@ -1,24 +1,17 @@
 /**
- * Hero — headline and CTAs beside the studio's own app marks, presented as
- * objects on the canvas.
+ * Hero — headline and CTAs beside a moving collage of what the studio does
+ * (the SMS Portal pattern, built our way — see HeroCollage).
  *
- * The icons are real, finished assets, which is the point: no invented UI, no
- * placeholder rectangles standing in for screens that do not exist yet, and no
- * avatar cluster we cannot fill honestly (three testimonials, no photos). The
- * marks are also the only colour on the page, which is exactly what the
- * monotone system asks for.
- *
- * When real screenshots land, the right place for them is the app pages and
- * the app cards — not here.
+ * The collage tiles are real artefacts (an app screen, the Hakkan window, an
+ * app mark) plus two small animated service tiles. Screenshot slots fall back
+ * to placeholders until designed images land, so assets drop in without
+ * layout shift. Client names below the CTAs are real engagements, shown as
+ * text — a logo is a trademark.
  */
-import Link from "next/link";
-import { apps } from "@/lib/apps";
 import { clients } from "@/lib/testimonials";
-import { cn } from "@/lib/cn";
 import PillButton from "@/components/ui/PillButton";
 import EyebrowChip from "@/components/ui/EyebrowChip";
-import AppIcon from "@/components/ui/AppIcon";
-import Badge from "@/components/ui/Badge";
+import HeroCollage from "@/components/home/HeroCollage";
 
 export default function Hero() {
   return (
@@ -55,9 +48,7 @@ export default function Hero() {
               </PillButton>
             </div>
 
-            {/* Named work, not a trust badge. "Featured engagements" describes
-                what was done rather than claiming an endorsement, and the
-                names stay as text — a logo is a trademark. */}
+            {/* Named work, not a trust badge. */}
             <div className="mt-12 border-t border-border pt-8">
               <h2 className="text-xs font-medium uppercase tracking-[0.14em] text-faint">
                 Featured engagements
@@ -75,38 +66,9 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* The studio's own marks, as objects */}
+          {/* The collage */}
           <div className="lg:col-span-6">
-            <ul className="mx-auto grid max-w-[440px] grid-cols-2 gap-4 sm:gap-5 lg:ml-auto lg:mr-0">
-              {apps.map((app, i) => (
-                <li key={app.slug} className={cn(i % 2 === 1 && "lg:mt-10")}>
-                  <Link
-                    href={`/apps/${app.slug}`}
-                    className="group flex flex-col items-start gap-4 rounded-well p-1 transition-transform duration-300 hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ink"
-                  >
-                    <span className="drop-shadow-[0_12px_28px_rgba(23,21,15,0.14)] transition-[filter] duration-300 group-hover:drop-shadow-[0_18px_36px_rgba(23,21,15,0.2)]">
-                      <AppIcon
-                        icon={app.icon}
-                        color={app.accentColor}
-                        label={app.name}
-                        size={92}
-                        className="rounded-[22px]"
-                      />
-                    </span>
-                    <span>
-                      <span className="block text-[0.9375rem] font-medium text-ink">
-                        {app.name}
-                      </span>
-                      <span className="mt-1.5 block">
-                        <Badge variant="status" status={app.status}>
-                          {app.status}
-                        </Badge>
-                      </span>
-                    </span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <HeroCollage />
           </div>
         </div>
       </div>
