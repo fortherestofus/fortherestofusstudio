@@ -1,41 +1,65 @@
 # Assets needed from Alroy
 
-Every slot below already exists in the layout at the right size — dropping a
-file in shifts nothing. Name files exactly as listed and put them in
-`public/screenshots/`, then add the path to that app's `screenshots` array in
-`lib/apps.ts` (first entry = the one used in the hero collage and app cards).
+Every slot below already exists at the right size — dropping a file in shifts
+nothing.
 
-## Hero collage (home page)
+**Rule:** real screenshots and photography appear on the **home hero collage
+only**. App pages stay editorial with placeholder art until we deliberately
+decide otherwise. Home media is registered in `lib/homeMedia.ts`; app media
+would go in `lib/apps.ts`.
 
-| File | What | Size / shape |
+## 1. Content collage — the outstanding piece
+
+The content tile shows two work samples plus a line of copy typing itself.
+The samples are currently placeholders.
+
+| What | Where to put it | Shape |
 |---|---|---|
-| `tapa-1.png` | One tapa. phone screen, current build. No device frame — the site frames it. Light mode. | Portrait 9:16, ≥ 900×1600 |
-| `hakkan-1.png` | Hakkan report view (Overview tab is strongest). Crop out the browser chrome — the site draws its own. Light mode. | Landscape ~16:11, ≥ 1600×1100 |
+| One photograph you shot | `public/media/content-photo.jpg` | Landscape 4:3, ≥ 800×600 |
+| One piece of graphic design work | `public/media/content-design.jpg` | Landscape 4:3, ≥ 800×600 |
 
-## App pages (editorial story bands + hero)
+Then add them to `contentSamples` in `lib/homeMedia.ts`:
 
-Per app, 3–4 screenshots covering the story sections in `lib/apps.ts`:
+```ts
+export const contentSamples: ContentSample[] = [
+  { src: "/media/content-photo.jpg", alt: "Photography for <client>" },
+  { src: "/media/content-design.jpg", alt: "Brand work for <client>" },
+];
+```
 
-| App | Files | Shape |
+Pick images that read at thumbnail size — strong shape and contrast beat fine
+detail here. They are the only photographic colour on the page, so they set
+the temperature of the whole hero.
+
+The typed lines are in `contentTypedLines` in the same file; change the wording
+there if you want different copy.
+
+## 2. Already wired (home hero collage)
+
+| Slot | File | Status |
 |---|---|---|
-| tapa. | `tapa-1.png` … `tapa-4.png` | phone 9:19.5 |
-| InSpiritInTruth | `inspiritintruth-1.png` … | phone 9:19.5 |
-| CaughtSlipping | `caught-slipping-1.png` … | browser/popup 16:10 |
-| Hakkan | `hakkan-1.png` … | browser 16:10 |
+| Desktop window | `/screenshots/hakkan-report.jpg` | ✅ done |
+| Phone screen | `/screenshots/tapa-home.jpg` | ✅ done |
+| App marks | CaughtSlipping + InSpiritInTruth icons | ✅ done |
 
-Export at 2×, PNG. Keep any personal data out of frame (real emails, tokens,
-client names inside the product).
-
-## Studio / about
+## 3. Studio portrait
 
 | File | What |
 |---|---|
-| `public/studio/portrait.jpg` | A portrait of Alroy, 4:5, ≥ 1200×1500. Used on /studio and the home studio band. |
+| `public/studio/portrait.jpg` | Portrait of Alroy, 4:5, ≥ 1200×1500. Used on `/studio` and the home studio band. |
 
-## Later (not blocking)
+## 4. Later, not blocking
 
+- CaughtSlipping and InSpiritInTruth screens, if we ever decide app pages
+  should carry real screenshots.
 - Testimonial headshots (with each person's permission) — would upgrade the
   quotes from monograms to faces.
 - Written permission from Meta / IFC before any client *logo* is used as an
-  image; names as text are fine.
+  image. Names as text are fine and are what the site uses today.
 - Per-app OG images, 1200×630.
+
+## Unused originals
+
+`public/screenshots/tapa/` and `public/screenshots/hakkan/` hold the original
+uploads with spaces in the filenames. They are untracked and unused — the site
+reads the kebab-case copies. Delete them or keep them as source files.

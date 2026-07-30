@@ -1,34 +1,47 @@
 "use client";
 
 /**
- * HeroCollage — the "moving mosaic of what we do" (SMS Portal pattern, our way).
+ * HeroCollage — a moving mosaic of what the studio does (the SMS Portal
+ * pattern, built with the framer-motion we already ship rather than a Lottie).
  *
- * SMS Portal's version is an After Effects Lottie: photos as raster layers,
- * UI as animated vectors. Ours is the same recipe without the 250KB runtime:
- * real screenshots in framed tiles where an artefact exists (an app screen,
- * the Hakkan window), and small animated vector tiles where the "artefact" is
- * a service (marketing data, content). Motion is framer-motion only — gentle
- * floats and one count-up — and stops entirely under reduced motion.
+ * Composition, largest to smallest:
+ *   1. Desktop window  — the real Hakkan report view, the anchor tile
+ *   2. Marketing dashboard — three KPIs and a bar chart, animated vectors
+ *   3. Phone screen    — the real tapa home screen, deliberately small
+ *   4. Content collage — photography and design work, plus copy being typed
+ *   5. App marks       — CaughtSlipping and InSpiritInTruth as objects
  *
- * Tiles read real assets from lib/apps.ts screenshot slots and fall back to
- * labelled placeholders, so designed images drop in without layout shift.
+ * Real artefacts carry the two products that have screens. The dashboard and
+ * the typing line are vector because the services they stand for have no
+ * screenshot to take — the same boundary the service vignettes use.
+ *
+ * All motion is gentle, desynced, and disabled under reduced motion.
  */
 import Image from "next/image";
 import Link from "next/link";
 import {
+  animate,
   motion,
+  useInView,
   useMotionValue,
   useReducedMotion,
-  animate,
-  useInView,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { getApp } from "@/lib/apps";
+import {
+  contentSamples,
+  contentTypedLines,
+  desktopShot,
+  phoneShot,
+} from "@/lib/homeMedia";
 import { cn } from "@/lib/cn";
 import AppIcon from "@/components/ui/AppIcon";
 import PlaceholderBlock from "@/components/ui/PlaceholderBlock";
 
-/** Wraps a tile with an idle float. Different delays de-sync the tiles. */
+const TILE =
+  "rounded-card border border-border bg-surface shadow-[0_10px_30px_rgba(23,21,15,0.07)]";
+
+/** Idle float wrapper. Staggered delays keep the tiles out of lockstep. */
 function Float({
   children,
   delay = 0,
@@ -43,16 +56,28 @@ function Float({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 14 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.5, delay: delay * 0.12, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 0.5,
+        delay: delay * 0.1,
+        ease: [0.22, 1, 0.36, 1],
+      }}
     >
       <motion.div
         animate={
           reduced
             ? undefined
-            : { y: [0, -7, 0], transition: { duration: 6 + delay, repeat: Infinity, ease: "easeInOut", delay } }
+            : {
+                y: [0, -6, 0],
+                transition: {
+                  duration: 7 + delay,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay,
+                },
+              }
         }
       >
         {children}
@@ -61,213 +86,296 @@ function Float({
   );
 }
 
-/** Marketing-results tile: count-up metric over a drawing sparkline. */
-function StatTile() {
+/** A single counting KPI. */
+function Kpi({
+  label,
+  value,
+  suffix = "",
+  prefix = "",
+  play,
+}: {
+  label: string;
+  value: number;
+  suffix?: string;
+  prefix?: string;
+  play: boolean;
+}) {
+  const reduced = useReducedMotion();
+  const mv = useMotionValue(0);
+  const [shown, setShown] = useState(0);
+
+  useEffect(() => {
+    if (!play) return;
+    if (reduced) {
+      setShown(value);
+      return;
+    }
+    const controls = animate(mv, value, {
+      duration: 1.4,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate: (v) => setShown(Math.round(v)),
+    });
+    return () => controls.stop();
+  }, [play, reduced, value, mv]);
+
+  return (
+    <div>
+      <p className="text-[0.625rem] uppercase tracking-[0.12em] text-faint">
+        {label}
+      </p>
+      <p className="nums mt-0.5 text-[1.0625rem] font-medium leading-none tracking-[-0.02em] text-ink">
+        {prefix}
+        {shown}
+        {suffix}
+      </p>
+    </div>
+  );
+}
+
+/** Marketing dashboard: three KPIs over a small growing bar chart. */
+function DashboardTile() {
   const reduced = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
-  const value = useMotionValue(0);
-  const [display, setDisplay] = useState(0);
+  const bars = [38, 52, 44, 68, 80, 96];
+
+  return (
+    <div ref={ref} className={cn(TILE, "p-4")}>
+      <div className="flex items-center justify-between">
+        <p className="text-[0.6875rem] font-medium text-ink">Campaign</p>
+        <span className="rounded-full border border-border px-2 py-0.5 text-[0.5625rem] text-muted">
+          90 days
+        </span>
+      </div>
+
+      <div className="mt-3 grid grid-cols-3 gap-2">
+        <Kpi label="Reach" value={128} prefix="+" suffix="%" play={inView} />
+        <Kpi label="Leads" value={412} play={inView} />
+        <Kpi label="CPA" value={37} prefix="−" suffix="%" play={inView} />
+      </div>
+
+      <div className="mt-3.5 flex h-[46px] items-end gap-1.5">
+        {bars.map((h, i) => (
+          <motion.span
+            key={i}
+            className={cn(
+              "flex-1 rounded-[3px]",
+              i === bars.length - 1 ? "bg-ink" : "bg-sunken"
+            )}
+            initial={{ height: reduced ? `${h}%` : "8%" }}
+            animate={inView ? { height: `${h}%` } : undefined}
+            transition={{
+              duration: 0.7,
+              delay: 0.15 + i * 0.07,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/** Content: real work samples plus a line of copy being written. */
+function ContentTile() {
+  const reduced = useReducedMotion();
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-40px" });
+  const [lineIndex, setLineIndex] = useState(0);
+  const [typed, setTyped] = useState("");
+
+  const full = contentTypedLines[lineIndex] ?? "";
 
   useEffect(() => {
     if (!inView) return;
     if (reduced) {
-      setDisplay(128);
+      setTyped(contentTypedLines[0] ?? "");
       return;
     }
-    const controls = animate(value, 128, {
-      duration: 1.6,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate: (v) => setDisplay(Math.round(v)),
-    });
-    return () => controls.stop();
-  }, [inView, reduced, value]);
+    let char = 0;
+    const type = setInterval(() => {
+      char += 1;
+      setTyped(full.slice(0, char));
+      if (char >= full.length) {
+        clearInterval(type);
+        // Hold the finished line, then move to the next one.
+        setTimeout(
+          () => setLineIndex((i) => (i + 1) % contentTypedLines.length),
+          2200
+        );
+      }
+    }, 55);
+    return () => clearInterval(type);
+  }, [inView, reduced, full]);
+
+  const samples = contentSamples.slice(0, 2);
 
   return (
-    <div
-      ref={ref}
-      className="rounded-card border border-border bg-surface p-4 shadow-card"
-    >
-      <p className="text-[0.6875rem] uppercase tracking-[0.12em] text-faint">
-        Campaign reach
-      </p>
-      <p className="nums mt-1 text-[1.75rem] font-medium leading-none tracking-[-0.02em] text-ink">
-        +{display}%
-      </p>
-      <svg
-        className="mt-2 w-full text-ink"
-        viewBox="0 0 160 44"
-        aria-hidden="true"
-      >
-        <motion.path
-          d="M2,38 C24,36 34,30 52,27 C74,23 84,16 106,12 C124,8 140,7 158,3"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          initial={{ pathLength: reduced ? 1 : 0 }}
-          animate={inView ? { pathLength: 1 } : undefined}
-          transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
-        />
-        <circle cx="158" cy="3" r="3" fill="currentColor" />
-      </svg>
-      <p className="mt-2 text-[0.6875rem] text-muted">last 90 days</p>
+    <div ref={ref} className={cn(TILE, "overflow-hidden p-3")}>
+      {/* Work samples */}
+      <div className="grid grid-cols-2 gap-2">
+        {samples.length > 0
+          ? samples.map((sample) => (
+              <div
+                key={sample.src}
+                className="relative overflow-hidden rounded-lg border border-border"
+                style={{ aspectRatio: "4 / 3" }}
+              >
+                <Image
+                  src={sample.src}
+                  alt={sample.alt}
+                  fill
+                  sizes="160px"
+                  className="object-cover"
+                />
+              </div>
+            ))
+          : [0, 1].map((i) => (
+              <PlaceholderBlock
+                key={i}
+                ratio="browser"
+                label={i === 0 ? "Photography" : "Design"}
+                className="rounded-lg"
+              />
+            ))}
+      </div>
+
+      {/* Copy being written */}
+      <div className="mt-2.5 rounded-lg border border-border bg-bg px-2.5 py-2">
+        <p className="text-[0.5625rem] uppercase tracking-[0.12em] text-faint">
+          Writing
+        </p>
+        <p className="mt-1 text-[0.75rem] font-medium leading-snug text-ink">
+          {typed}
+          {!reduced && (
+            <motion.span
+              aria-hidden
+              className="ml-0.5 inline-block h-[0.85em] w-[2px] translate-y-[1px] bg-ink"
+              animate={{ opacity: [1, 1, 0, 0] }}
+              transition={{ duration: 1, repeat: Infinity, times: [0, 0.5, 0.5, 1] }}
+            />
+          )}
+        </p>
+      </div>
     </div>
   );
 }
 
-/** Content tile: the publishing rhythm a brand system produces. */
-function ContentTile() {
-  const reduced = useReducedMotion();
-  const chips = ["Post drafted", "Carousel queued", "Newsletter sent"];
+/** A small app mark presented as an object. */
+function MarkTile({ slug, delay }: { slug: string; delay: number }) {
+  const app = getApp(slug);
+  if (!app) return null;
 
   return (
-    <div className="rounded-card border border-border bg-surface p-4 shadow-card">
-      <p className="text-[0.6875rem] uppercase tracking-[0.12em] text-faint">
-        Content
-      </p>
-      <ul className="mt-2.5 space-y-2">
-        {chips.map((chip, i) => (
-          <motion.li
-            key={chip}
-            className="flex items-center gap-2 rounded-lg border border-border bg-bg px-2.5 py-1.5"
-            initial={reduced ? undefined : { opacity: 0, x: -8 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 + i * 0.22, duration: 0.4 }}
-          >
-            <svg
-              className="h-3.5 w-3.5 shrink-0 text-ink"
-              viewBox="0 0 16 16"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              aria-hidden="true"
-            >
-              <path d="M3 8.5l3.5 3.5L13 5" />
-            </svg>
-            <span className="text-[0.75rem] font-medium text-ink">{chip}</span>
-          </motion.li>
-        ))}
-      </ul>
-    </div>
+    <Float delay={delay}>
+      <Link
+        href={`/apps/${app.slug}`}
+        aria-label={`${app.name} — see the app`}
+        className={cn(
+          TILE,
+          "flex aspect-square items-center justify-center transition-shadow hover:shadow-card-hover"
+        )}
+      >
+        <AppIcon
+          icon={app.icon}
+          color={app.accentColor}
+          label={app.name}
+          size={44}
+          className="rounded-xl drop-shadow-[0_6px_14px_rgba(23,21,15,0.16)]"
+        />
+      </Link>
+    </Float>
   );
 }
 
 export default function HeroCollage() {
-  // Real artefacts: one phone app, the Hakkan window, one mark as an object.
-  const phoneApp = getApp("tapa")!;
   const saas = getApp("hakkan")!;
-  const markApp = getApp("caught-slipping")!;
-  const phoneShot = phoneApp.screenshots[0];
-  const saasShot = saas.screenshots[0];
+  const phoneApp = getApp("tapa")!;
 
   return (
-    <div className="mx-auto grid w-full max-w-[560px] grid-cols-[1.1fr_1.35fr] gap-4 lg:ml-auto lg:mr-0">
-      {/* Column 1 — phone app + stat tile */}
-      <div className="flex flex-col justify-center gap-4">
-        <Float delay={0}>
-          <Link
-            href={`/apps/${phoneApp.slug}`}
-            aria-label={`${phoneApp.name} — see the app`}
-            className="block overflow-hidden rounded-well border border-border bg-surface p-2 shadow-card transition-shadow hover:shadow-card-hover"
-          >
-            {phoneShot ? (
-              <div
-                className="relative overflow-hidden rounded-[14px]"
-                style={{ aspectRatio: "9 / 16" }}
-              >
-                <Image
-                  src={phoneShot}
-                  alt={`${phoneApp.name} app screen`}
-                  fill
-                  sizes="(max-width: 1024px) 40vw, 220px"
-                  className="object-cover object-top"
-                  priority
-                />
-              </div>
-            ) : (
-              <PlaceholderBlock
-                ratio="phone"
-                tint={phoneApp.accentColor}
-                label={`${phoneApp.name} screen`}
-                className="rounded-[14px] border-0"
+    <div className="mx-auto grid w-full max-w-[600px] grid-cols-12 items-start gap-3 lg:ml-auto lg:mr-0">
+      {/* 1 — Desktop window, the anchor */}
+      <Float delay={0} className="col-span-12 sm:col-span-8">
+        <Link
+          href={`/apps/${saas.slug}`}
+          aria-label={`${saas.name} — see the product`}
+          className={cn(TILE, "block overflow-hidden transition-shadow hover:shadow-card-hover")}
+        >
+          <div className="flex items-center gap-1.5 border-b border-border bg-bg px-3 py-2">
+            <span className="h-1.5 w-1.5 rounded-full bg-border" />
+            <span className="h-1.5 w-1.5 rounded-full bg-border" />
+            <span className="h-1.5 w-1.5 rounded-full bg-border" />
+            <span className="ml-2 truncate rounded-full bg-sunken px-2.5 py-0.5 text-[0.5625rem] text-faint">
+              hakkan.app
+            </span>
+          </div>
+          {desktopShot ? (
+            <div className="relative w-full" style={{ aspectRatio: "16 / 10" }}>
+              <Image
+                src={desktopShot}
+                alt={`${saas.name} report view`}
+                fill
+                sizes="(max-width: 640px) 92vw, 400px"
+                className="object-cover object-top"
+                priority
               />
-            )}
-          </Link>
-        </Float>
-
-        <Float delay={1.2}>
-          <StatTile />
-        </Float>
-      </div>
-
-      {/* Column 2 — SaaS window + content tile + mark */}
-      <div className="flex flex-col justify-center gap-4">
-        <Float delay={0.6}>
-          <Link
-            href={`/apps/${saas.slug}`}
-            aria-label={`${saas.name} — see the product`}
-            className="block overflow-hidden rounded-well border border-border bg-surface shadow-card transition-shadow hover:shadow-card-hover"
-          >
-            {/* Browser chrome is a frame, not content — the content is real. */}
-            <div className="flex items-center gap-1.5 border-b border-border bg-bg px-3 py-2">
-              <span className="h-1.5 w-1.5 rounded-full bg-border" />
-              <span className="h-1.5 w-1.5 rounded-full bg-border" />
-              <span className="h-1.5 w-1.5 rounded-full bg-border" />
-              <span className="ml-2 truncate rounded-full bg-sunken px-2.5 py-0.5 text-[0.5625rem] text-faint">
-                hakkan.app
-              </span>
             </div>
-            {saasShot ? (
-              <div
-                className="relative w-full"
-                style={{ aspectRatio: "16 / 11" }}
-              >
-                <Image
-                  src={saasShot}
-                  alt={`${saas.name} report view`}
-                  fill
-                  sizes="(max-width: 1024px) 55vw, 300px"
-                  className="object-cover object-top"
-                  priority
-                />
-              </div>
-            ) : (
-              <PlaceholderBlock
-                ratio="browser"
-                tint={saas.accentColor}
-                label="Hakkan window"
-                className="rounded-none border-0"
-              />
-            )}
-          </Link>
-        </Float>
+          ) : (
+            <PlaceholderBlock
+              ratio="browser"
+              tint={saas.accentColor}
+              label="Hakkan window"
+              className="rounded-none border-0"
+            />
+          )}
+        </Link>
+      </Float>
 
-        <div className="grid grid-cols-[1.5fr_1fr] items-start gap-4">
-          <Float delay={1.8} className="min-w-0">
-            <ContentTile />
-          </Float>
+      {/* 2 — Marketing dashboard */}
+      <Float delay={0.8} className="col-span-7 sm:col-span-4">
+        <DashboardTile />
+      </Float>
 
-          <Float delay={2.4}>
-            <Link
-              href={`/apps/${markApp.slug}`}
-              aria-label={`${markApp.name} — see the app`}
-              className={cn(
-                "flex aspect-square items-center justify-center rounded-card border border-border bg-surface shadow-card",
-                "transition-shadow hover:shadow-card-hover"
-              )}
+      {/* 3 — Phone screen, small */}
+      <Float delay={1.4} className="col-span-5 sm:col-span-3">
+        <Link
+          href={`/apps/${phoneApp.slug}`}
+          aria-label={`${phoneApp.name} — see the app`}
+          className={cn(TILE, "block overflow-hidden p-1.5 transition-shadow hover:shadow-card-hover")}
+        >
+          {phoneShot ? (
+            <div
+              className="relative overflow-hidden rounded-[10px]"
+              style={{ aspectRatio: "9 / 16" }}
             >
-              <AppIcon
-                icon={markApp.icon}
-                color={markApp.accentColor}
-                label={markApp.name}
-                size={56}
-                className="rounded-[14px] drop-shadow-[0_8px_18px_rgba(23,21,15,0.16)]"
+              <Image
+                src={phoneShot}
+                alt={`${phoneApp.name} app screen`}
+                fill
+                sizes="(max-width: 640px) 40vw, 150px"
+                className="object-cover object-top"
+                priority
               />
-            </Link>
-          </Float>
-        </div>
+            </div>
+          ) : (
+            <PlaceholderBlock
+              ratio="phone"
+              tint={phoneApp.accentColor}
+              className="rounded-[10px] border-0"
+            />
+          )}
+        </Link>
+      </Float>
+
+      {/* 4 — Content collage */}
+      <Float delay={2} className="col-span-7 sm:col-span-6">
+        <ContentTile />
+      </Float>
+
+      {/* 5 — App marks */}
+      <div className="col-span-12 grid grid-cols-2 gap-3 sm:col-span-3">
+        <MarkTile slug="caught-slipping" delay={2.6} />
+        <MarkTile slug="inspiritintruth" delay={3.1} />
       </div>
     </div>
   );
