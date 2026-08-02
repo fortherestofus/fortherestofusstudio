@@ -21,13 +21,27 @@ interface AppStorySectionProps {
   index: number;
 }
 
+/**
+ * Width caps per frame shape. Height is never set: the screenshot is a
+ * static import carrying its intrinsic dimensions, so the frame takes the
+ * image's own aspect ratio exactly — nothing is cropped away and no
+ * letterbox ever shows. Hardcoding one ratio per shape was how a 3:4
+ * extension popup ended up losing a third of itself to a 16:10 frame.
+ */
+const SHAPE_WIDTH = {
+  phone: "mx-auto w-full max-w-[300px]",
+  panel: "mx-auto w-full max-w-[380px]",
+  browser: "w-full",
+} as const;
+
 export default function AppStorySection({
   story,
   app,
   flipped = false,
   index,
 }: AppStorySectionProps) {
-  const isPhone = story.shape === "phone";
+  const shape = story.shape ?? "browser";
+  const isPhone = shape === "phone";
 
   return (
     <section className="overflow-hidden py-14 sm:py-20">
@@ -56,17 +70,15 @@ export default function AppStorySection({
             {story.image ? (
               <div
                 className={cn(
-                  "relative overflow-hidden rounded-well border border-border bg-surface",
-                  isPhone ? "mx-auto max-w-[300px]" : "w-full"
+                  "overflow-hidden rounded-well border border-border bg-surface",
+                  SHAPE_WIDTH[shape]
                 )}
-                style={{ aspectRatio: isPhone ? "9 / 19.5" : "16 / 10" }}
               >
                 <Image
                   src={story.image}
                   alt={`${app.name} — ${story.title}`}
-                  fill
                   sizes="(max-width: 1024px) 90vw, 45vw"
-                  className="object-cover"
+                  className="h-auto w-full"
                   priority={index === 0}
                 />
               </div>

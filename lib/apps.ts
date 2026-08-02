@@ -1,3 +1,40 @@
+import type { StaticImageData } from "next/image";
+
+/*
+ * Screenshots are statically imported rather than referenced by path string.
+ * Two things fall out of that: a missing file breaks the build instead of
+ * silently rendering an empty frame, and every image carries its intrinsic
+ * width and height, so the components can size each frame to the screenshot
+ * it holds — no letterboxing, no crop — rather than forcing everything into
+ * one hardcoded aspect ratio.
+ */
+// CaughtSlipping — extension popup panels (~3:4)
+import caughtToday from "@/public/screenshots/caught-today.jpg";
+import caughtSites from "@/public/screenshots/caught-sites.jpg";
+import caughtWork from "@/public/screenshots/caught-work.jpg";
+import caughtFocus from "@/public/screenshots/caught-focus.jpg";
+// InSpiritInTruth — phone screens
+import isitHome from "@/public/screenshots/isit-home.jpg";
+import isitDevotionals from "@/public/screenshots/isit-devotionals.jpg";
+import isitPersonalise from "@/public/screenshots/isit-personalise.jpg";
+import isitBible from "@/public/screenshots/isit-bible.jpg";
+import isitDiscover from "@/public/screenshots/isit-discover.jpg";
+import isitProfile from "@/public/screenshots/isit-profile.jpg";
+// tapa. — phone screens
+import tapaHome from "@/public/screenshots/tapa-home.jpg";
+import tapaGenerate from "@/public/screenshots/tapa-generate.jpg";
+import tapaDietary from "@/public/screenshots/tapa-dietary.jpg";
+import tapaRecipe from "@/public/screenshots/tapa-recipe.jpg";
+import tapaCooking from "@/public/screenshots/tapa-cooking.jpg";
+import tapaTimer from "@/public/screenshots/tapa-timer.jpg";
+// Hakkan — browser views
+import hakkanReport from "@/public/screenshots/hakkan-report.jpg";
+import hakkanResearch from "@/public/screenshots/hakkan-research.jpg";
+import hakkanVoices from "@/public/screenshots/hakkan-voices.jpg";
+import hakkanContent from "@/public/screenshots/hakkan-content.jpg";
+import hakkanPersonas from "@/public/screenshots/hakkan-personas.jpg";
+import hakkanVisualReport from "@/public/screenshots/hakkan-visual-report.jpg";
+
 export type AppStatus = "In Development" | "Beta" | "Live";
 
 export interface AppFeature {
@@ -40,12 +77,17 @@ export interface App {
     eyebrow: string;
     title: string;
     body: string;
-    /** Screenshot path; falls back to a placeholder block until supplied. */
-    image?: string;
-    /** Frame shape for the image slot. */
-    shape?: "phone" | "browser";
+    /** Static screenshot import; falls back to a placeholder block until supplied. */
+    image?: StaticImageData;
+    /**
+     * Frame shape for the image slot. "panel" is the extension popup — a
+     * roughly 3:4 surface that is neither a handset nor a browser window,
+     * and forcing it into either frame crops a third of it away.
+     */
+    shape?: "phone" | "browser" | "panel";
   }[];
-  screenshots: string[]; // paths: /screenshots/[slug]-1.png
+  /** Static screenshot imports; [0] is the detail-page hero. */
+  screenshots: StaticImageData[];
   ctaLabel: string;
   ctaHref: string;
   /** Set when ctaHref points off-site (opens in a new tab). */
@@ -130,22 +172,25 @@ export const apps: App[] = [
         eyebrow: "The honest number",
         title: "It counts the hours you would rather not count.",
         body: "CaughtSlipping lives on the machine where the real work and the real procrastination both happen. It tracks YouTube, Reddit, X, Facebook, LinkedIn and anything you add, counts video you are actually watching so an hour-long show reads as an hour, and stops the moment you go idle.",
-        shape: "browser" as const,
+        image: caughtSites,
+        shape: "panel" as const,
       },
       {
         eyebrow: "Two personalities",
         title: "Slipping, or grinding. Both are a problem.",
         body: "Most days it delivers a dark-humour verdict on your scrolling and a shame meter you would rather not see. Flip on Caught Grinding and it does the opposite job: flagging the late nights, the weekend work, and the ninety-minute stretches without a break.",
-        shape: "browser" as const,
+        image: caughtWork,
+        shape: "panel" as const,
       },
       {
         eyebrow: "Nothing leaves the browser",
         title: "No account. No servers. No trail.",
         body: "Every hour it records stays on your own device. There is nothing to sign up for, nothing syncing in the background, and nothing to leak. Every feature is free.",
-        shape: "browser" as const,
+        image: caughtFocus,
+        shape: "panel" as const,
       },
     ],
-    screenshots: [],
+    screenshots: [caughtToday, caughtSites, caughtWork, caughtFocus],
     ctaLabel: "Get Early Access",
     ctaHref: "#",
     seo: {
@@ -218,22 +263,25 @@ export const apps: App[] = [
         eyebrow: "One a week",
         title: "A devotional you can actually finish.",
         body: "One grounded, true-to-life reflection each week, written to be read slowly and sat with rather than rushed through. Faith at the pace of a life that already has enough going on.",
+        image: isitDevotionals,
         shape: "phone" as const,
       },
       {
         eyebrow: "For what you are carrying",
         title: "Tell it what is going on. It writes for that.",
         body: "When the weekly devotional is not the thing you need, describe what you are feeling or facing and get a personal, scripture-rooted reflection written for that moment.",
+        image: isitPersonalise,
         shape: "phone" as const,
       },
       {
         eyebrow: "The whole Bible, in hand",
         title: "Verses, bookmarks, and notes that stay yours.",
         body: "A full in-app Bible, a daily verse to keep you connected between devotionals, and somewhere to keep the passages and thoughts you return to. No algorithm, no ads, no pressure to perform.",
+        image: isitBible,
         shape: "phone" as const,
       },
     ],
-    screenshots: [],
+    screenshots: [isitHome, isitDevotionals, isitPersonalise, isitBible, isitDiscover, isitProfile],
     ctaLabel: "Join the Waitlist",
     ctaHref: "#",
     seo: {
@@ -309,22 +357,25 @@ export const apps: App[] = [
         eyebrow: "Start with what you have",
         title: "Your kitchen is the search bar.",
         body: "Type it, say it, or photograph it. tapa. builds the recipe around what is actually in front of you rather than handing you a shopping list and a lecture.",
+        image: tapaGenerate,
         shape: "phone" as const,
       },
       {
         eyebrow: "Guardrails, not suggestions",
         title: "Set your diet once. It holds everywhere.",
         body: "Vegan, halal, gluten-free, allergies. Set them a single time and they are enforced as hard constraints on every recipe it will ever give you.",
+        image: tapaDietary,
         shape: "phone" as const,
       },
       {
         eyebrow: "Cook for whoever turned up",
         title: "Scale it, save it, send it.",
         body: "Adjust for two or for ten without redoing the maths, keep the good ones offline, and share the winners with the people who will actually make them.",
+        image: tapaRecipe,
         shape: "phone" as const,
       },
     ],
-    screenshots: [],
+    screenshots: [tapaHome, tapaGenerate, tapaDietary, tapaRecipe, tapaCooking, tapaTimer],
     ctaLabel: "Try It Free",
     ctaHref: "#",
     seo: {
@@ -404,22 +455,25 @@ export const apps: App[] = [
         eyebrow: "One question, everywhere",
         title: "It reads the conversation where it happens.",
         body: "Give Hakkan a question and it sweeps the platforms the discussion actually lives on — Reddit, X, YouTube, TikTok, LinkedIn, Hacker News, reviews, news, the open web — showing you exactly which sources it read and which failed.",
+        image: hakkanResearch,
         shape: "browser" as const,
       },
       {
         eyebrow: "Receipts, not vibes",
         title: "Every claim opens into who said it.",
         body: "Click any theme, sentiment bar, or key point and the verbatim quotes appear with platform, author, and link. Nothing is asserted without something behind it, including an honest note on where coverage was thin.",
+        image: hakkanVoices,
         shape: "browser" as const,
       },
       {
         eyebrow: "In your voice",
         title: "Research becomes work you can publish.",
         body: "Turn one study into posts, threads, carousels, blogs, newsletters, or scripts — written through a voice profile learned from your own samples rather than a generic house style.",
+        image: hakkanContent,
         shape: "browser" as const,
       },
     ],
-    screenshots: [],
+    screenshots: [hakkanReport, hakkanResearch, hakkanVoices, hakkanContent, hakkanPersonas, hakkanVisualReport],
     ctaLabel: "Join the beta",
     ctaHref: "https://hakkan.app",
     ctaExternal: true,

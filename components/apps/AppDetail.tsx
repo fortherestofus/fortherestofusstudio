@@ -58,6 +58,21 @@ export default function AppDetail({ app }: { app: App }) {
   const others = getOtherApps(app.slug);
   const heroShot = app.screenshots[0];
   const isPhoneApp = app.platform.some((p) => /iOS|Android/i.test(p));
+  const isPanelApp = app.platform.some((p) => /extension/i.test(p));
+
+  /*
+   * The hero deliberately crops at the fold — the screenshot rises from the
+   * bottom of the section and the spec strip cuts it off. The frame's WIDTH
+   * must still fit the artwork's own proportions (a phone stays narrow, an
+   * extension popup narrower than a browser window), and the crop is always
+   * bottom-only via object-top, so nothing letterboxes and the top of the
+   * screen — the part that identifies the app — is always whole.
+   */
+  const heroFrame = isPhoneApp
+    ? { width: "max-w-[320px]", ratio: "9 / 14" }
+    : isPanelApp
+      ? { width: "max-w-[380px]", ratio: "3 / 3.4" }
+      : { width: "max-w-4xl", ratio: "16 / 9" };
 
   return (
     <AppThemeProvider app={app}>
@@ -127,10 +142,8 @@ export default function AppDetail({ app }: { app: App }) {
           <div className="mt-16 sm:mt-20">
             {heroShot ? (
               <div
-                className={`relative mx-auto overflow-hidden rounded-t-well border border-b-0 border-border bg-surface ${
-                  isPhoneApp ? "max-w-[320px]" : "max-w-4xl"
-                }`}
-                style={{ aspectRatio: isPhoneApp ? "9 / 14" : "16 / 9" }}
+                className={`relative mx-auto overflow-hidden rounded-t-well border border-b-0 border-border bg-surface ${heroFrame.width}`}
+                style={{ aspectRatio: heroFrame.ratio }}
               >
                 <Image
                   src={heroShot}
