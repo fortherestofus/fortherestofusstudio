@@ -459,7 +459,7 @@ export const apps: App[] = [
         shape: "browser" as const,
       },
       {
-        eyebrow: "Receipts, not vibes",
+        eyebrow: "Built on evidence, not slop",
         title: "Every claim opens into who said it.",
         body: "Click any theme, sentiment bar, or key point and the verbatim quotes appear with platform, author, and link. Nothing is asserted without something behind it, including an honest note on where coverage was thin.",
         image: hakkanInfographic,
