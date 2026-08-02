@@ -10,9 +10,9 @@ import type { StaticImageData } from "next/image";
  */
 // CaughtSlipping — extension popup panels (~3:4)
 import caughtToday from "@/public/screenshots/caught-today.jpg";
-import caughtSites from "@/public/screenshots/caught-sites.jpg";
-import caughtWork from "@/public/screenshots/caught-work.jpg";
-import caughtFocus from "@/public/screenshots/caught-focus.jpg";
+import caughtSites from "@/public/screenshots/caughtslipping-websites-visits.jpg";
+import caughtFocus from "@/public/screenshots/caughtslipping-today.jpg";
+import caughtSettings from "@/public/screenshots/caughtslipping-settings.jpg";
 // InSpiritInTruth — phone screens
 import isitHome from "@/public/screenshots/isit-home.jpg";
 import isitDevotionals from "@/public/screenshots/isit-devotionals.jpg";
@@ -31,7 +31,7 @@ import tapaTimer from "@/public/screenshots/tapa-timer.jpg";
 import hakkanReport from "@/public/screenshots/hakkan-report.jpg";
 import hakkanResearch from "@/public/screenshots/hakkan-research.jpg";
 import hakkanVoices from "@/public/screenshots/hakkan-voices.jpg";
-import hakkanContent from "@/public/screenshots/hakkan-content.jpg";
+import hakkanCreate from "@/public/screenshots/create-content.jpg";
 import hakkanPersonas from "@/public/screenshots/hakkan-personas.jpg";
 import hakkanVisualReport from "@/public/screenshots/hakkan-visual-report.jpg";
 
@@ -179,18 +179,18 @@ export const apps: App[] = [
         eyebrow: "Two personalities",
         title: "Slipping, or grinding. Both are a problem.",
         body: "Most days it delivers a dark-humour verdict on your scrolling and a shame meter you would rather not see. Flip on Caught Grinding and it does the opposite job: flagging the late nights, the weekend work, and the ninety-minute stretches without a break.",
-        image: caughtWork,
+        image: caughtFocus,
         shape: "panel" as const,
       },
       {
         eyebrow: "Nothing leaves the browser",
         title: "No account. No servers. No trail.",
         body: "Every hour it records stays on your own device. There is nothing to sign up for, nothing syncing in the background, and nothing to leak. Every feature is free.",
-        image: caughtFocus,
+        image: caughtSettings,
         shape: "panel" as const,
       },
     ],
-    screenshots: [caughtToday, caughtSites, caughtWork, caughtFocus],
+    screenshots: [caughtToday, caughtSites, caughtFocus, caughtSettings],
     ctaLabel: "Get Early Access",
     ctaHref: "#",
     seo: {
@@ -469,11 +469,11 @@ export const apps: App[] = [
         eyebrow: "In your voice",
         title: "Research becomes work you can publish.",
         body: "Turn one study into posts, threads, carousels, blogs, newsletters, or scripts — written through a voice profile learned from your own samples rather than a generic house style.",
-        image: hakkanContent,
+        image: hakkanCreate,
         shape: "browser" as const,
       },
     ],
-    screenshots: [hakkanReport, hakkanResearch, hakkanVoices, hakkanContent, hakkanPersonas, hakkanVisualReport],
+    screenshots: [hakkanReport, hakkanResearch, hakkanVoices, hakkanCreate, hakkanPersonas, hakkanVisualReport],
     ctaLabel: "Join the beta",
     ctaHref: "https://hakkan.app",
     ctaExternal: true,
