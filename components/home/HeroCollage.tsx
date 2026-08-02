@@ -181,32 +181,58 @@ function ContentTile() {
   const reduced = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-40px" });
-  const [lineIndex, setLineIndex] = useState(0);
   const [typed, setTyped] = useState("");
 
-  const full = contentTypedLines[lineIndex] ?? "";
-
+  /*
+   * Type it, hold it, backspace it, type the next one — a single recursive
+   * timeout owning the whole cycle rather than one interval per phase, so
+   * there is exactly one timer to cancel and no chance of a stale phase
+   * firing after the tile unmounts.
+   *
+   * Deleting runs at roughly half the typing interval: a real typist
+   * backspaces faster than they write, and an evenly-paced delete reads as
+   * a glitch rather than an edit.
+   */
   useEffect(() => {
     if (!inView) return;
+    // Reduced motion gets one line, stated, with nothing moving.
     if (reduced) {
       setTyped(contentTypedLines[0] ?? "");
       return;
     }
-    let char = 0;
-    const type = setInterval(() => {
-      char += 1;
+
+    const TYPE_MS = 55;
+    const DELETE_MS = 26;
+    const HOLD_MS = 1800;
+    const GAP_MS = 400;
+
+    let cancelled = false;
+    let timer: ReturnType<typeof setTimeout>;
+
+    const run = (line: number, char: number, deleting: boolean) => {
+      if (cancelled) return;
+      const full = contentTypedLines[line] ?? "";
       setTyped(full.slice(0, char));
-      if (char >= full.length) {
-        clearInterval(type);
-        // Hold the finished line, then move to the next one.
-        setTimeout(
-          () => setLineIndex((i) => (i + 1) % contentTypedLines.length),
-          2200
+
+      if (!deleting && char >= full.length) {
+        timer = setTimeout(() => run(line, char, true), HOLD_MS);
+      } else if (deleting && char <= 0) {
+        const next = (line + 1) % contentTypedLines.length;
+        timer = setTimeout(() => run(next, 0, false), GAP_MS);
+      } else {
+        timer = setTimeout(
+          () => run(line, char + (deleting ? -1 : 1), deleting),
+          deleting ? DELETE_MS : TYPE_MS
         );
       }
-    }, 55);
-    return () => clearInterval(type);
-  }, [inView, reduced, full]);
+    };
+
+    run(0, 0, false);
+    return () => {
+      cancelled = true;
+      clearTimeout(timer);
+    };
+  }, [inView, reduced]);
 
   const samples = contentSamples.slice(0, 2);
 
@@ -245,7 +271,10 @@ function ContentTile() {
         <p className="text-[0.5625rem] uppercase tracking-[0.12em] text-faint">
           Writing
         </p>
-        <p className="mt-1 text-[0.75rem] font-medium leading-snug text-ink">
+        {/* Two lines' worth of height is held: the text empties on every
+            delete, and without a floor the tile — and the collage around
+            it — would shrink and grow on each cycle. */}
+        <p className="mt-1 min-h-[2.75em] text-[0.75rem] font-medium leading-snug text-ink">
           {typed}
           {!reduced && (
             <motion.span

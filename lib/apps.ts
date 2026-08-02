@@ -30,7 +30,7 @@ import tapaTimer from "@/public/screenshots/tapa-timer.jpg";
 // Hakkan — browser views
 import hakkanReport from "@/public/screenshots/hakkan-report.jpg";
 import hakkanResearch from "@/public/screenshots/hakkan-research.jpg";
-import hakkanVoices from "@/public/screenshots/hakkan-voices.jpg";
+import hakkanInfographic from "@/public/screenshots/create-content-information.jpg";
 import hakkanCreate from "@/public/screenshots/create-content.jpg";
 import hakkanPersonas from "@/public/screenshots/hakkan-personas.jpg";
 import hakkanVisualReport from "@/public/screenshots/hakkan-visual-report.jpg";
@@ -462,7 +462,7 @@ export const apps: App[] = [
         eyebrow: "Receipts, not vibes",
         title: "Every claim opens into who said it.",
         body: "Click any theme, sentiment bar, or key point and the verbatim quotes appear with platform, author, and link. Nothing is asserted without something behind it, including an honest note on where coverage was thin.",
-        image: hakkanVoices,
+        image: hakkanInfographic,
         shape: "browser" as const,
       },
       {
@@ -473,7 +473,7 @@ export const apps: App[] = [
         shape: "browser" as const,
       },
     ],
-    screenshots: [hakkanReport, hakkanResearch, hakkanVoices, hakkanCreate, hakkanPersonas, hakkanVisualReport],
+    screenshots: [hakkanReport, hakkanResearch, hakkanInfographic, hakkanCreate, hakkanPersonas, hakkanVisualReport],
     ctaLabel: "Join the beta",
     ctaHref: "https://hakkan.app",
     ctaExternal: true,

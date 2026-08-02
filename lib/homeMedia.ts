@@ -25,11 +25,26 @@ export interface ContentSample {
  * Add files to /public/media/ and list them here (2 is the design intent;
  * more are ignored). Until then the tile shows placeholder frames.
  */
-export const contentSamples: ContentSample[] = [];
+export const contentSamples: ContentSample[] = [
+  {
+    src: "/media/photography-editorial.webp",
+    alt: "Editorial beauty portrait, lit with a red rim light",
+  },
+  {
+    src: "/media/design-packaging.webp",
+    alt: "Wine label design across three bottle mockups",
+  },
+];
 
-/** Lines the content tile types out, in order. Kept short so they fit. */
+/**
+ * Lines the content tile types out, in order, then deletes before typing
+ * the next. Each names a different kind of work the studio actually does,
+ * because the tile's job is to say "and all of this too" in the space of
+ * one sentence. Kept short so they never run past two lines in the tile.
+ */
 export const contentTypedLines = [
-  "Built for the rest of us.",
-  "Say it plainly.",
-  "Ship, then improve.",
+  "Marketing that earns attention.",
+  "Design with a system behind it.",
+  "Photography, film, and social.",
+  "Words that sound like you.",
 ];
