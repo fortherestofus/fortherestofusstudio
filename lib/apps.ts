@@ -290,6 +290,10 @@ export const apps: App[] = [
         "A weekly devotional, AI-written devotions for whatever you're going through, the full Bible, and daily verses. Built for the modern Christian — for iOS and Android.",
     },
     giving: "/apps/inspiritintruth/giving/",
+    legal: {
+      privacy: "/apps/inspiritintruth/privacy/",
+      terms: "/apps/inspiritintruth/terms/",
+    },
   },
   {
     slug: "tapa",

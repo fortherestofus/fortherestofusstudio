@@ -62,7 +62,7 @@ export default function GivingFaqPage() {
         {
           heading: "Will I get a receipt?",
           body: [
-            "Yes — we send it to the email on your giving profile. We'll also send the occasional note on the good your giving does, and nothing more.",
+            "Yes. Paystack emails it to the address you enter when you give, so use one you actually read. That email address is the only thing we ask for.",
           ],
         },
         {

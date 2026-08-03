@@ -215,8 +215,7 @@ export default function AppDetail({ app }: { app: App }) {
             <p className="mt-4 text-pretty leading-relaxed text-muted">
               Gifts fund the work behind {app.name} — new features, quality, and
               the devotional content itself — and 10% of all giving goes to acts
-              of kindness. Giving lives in the app, and a gift never unlocks
-              anything.
+              of kindness. A gift never unlocks anything.
             </p>
             <Link
               href={app.giving}
