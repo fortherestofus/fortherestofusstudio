@@ -102,21 +102,21 @@ function Kpi({
 }) {
   const reduced = useReducedMotion();
   const mv = useMotionValue(0);
-  const [shown, setShown] = useState(0);
+  const [animated, setAnimated] = useState(0);
 
   useEffect(() => {
-    if (!play) return;
-    if (reduced) {
-      setShown(value);
-      return;
-    }
+    if (!play || reduced) return;
     const controls = animate(mv, value, {
       duration: 1.4,
       ease: [0.22, 1, 0.36, 1],
-      onUpdate: (v) => setShown(Math.round(v)),
+      onUpdate: (v) => setAnimated(Math.round(v)),
     });
     return () => controls.stop();
   }, [play, reduced, value, mv]);
+
+  // Reduced motion lands on the final number the moment the tile plays —
+  // derived rather than set from the effect, which would cascade a render.
+  const shown = reduced && play ? value : animated;
 
   return (
     <div>
@@ -194,12 +194,7 @@ function ContentTile() {
    * a glitch rather than an edit.
    */
   useEffect(() => {
-    if (!inView) return;
-    // Reduced motion gets one line, stated, with nothing moving.
-    if (reduced) {
-      setTyped(contentTypedLines[0] ?? "");
-      return;
-    }
+    if (!inView || reduced) return;
 
     const TYPE_MS = 55;
     const DELETE_MS = 26;
@@ -233,6 +228,10 @@ function ContentTile() {
       clearTimeout(timer);
     };
   }, [inView, reduced]);
+
+  // Reduced motion states one line outright, with nothing moving — derived
+  // during render so the effect above never has to set state synchronously.
+  const shown = reduced && inView ? (contentTypedLines[0] ?? "") : typed;
 
   const samples = contentSamples.slice(0, 2);
 
@@ -275,7 +274,7 @@ function ContentTile() {
             delete, and without a floor the tile — and the collage around
             it — would shrink and grow on each cycle. */}
         <p className="mt-1 min-h-[2.75em] text-[0.75rem] font-medium leading-snug text-ink">
-          {typed}
+          {shown}
           {!reduced && (
             <motion.span
               aria-hidden
