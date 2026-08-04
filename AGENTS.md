@@ -60,6 +60,12 @@ Next.js 16 (App Router), React 19.
   uses inline `style` for CSS variables, so a CSP needs `style-src
   'unsafe-inline'` or a nonce pass); `headers()` is ignored under
   `output: "export"`, so revisit them together.
+- **Image optimisation is on** (AVIF, then WebP), which server mode allows —
+  `sharp` resizes on demand and Next caches the result. Two things this ties us
+  to: the production install must keep optional dependencies (sharp is one), and
+  `output: "export"` would disable optimisation entirely, so that switch means
+  restoring `images: { unoptimized: true }` or wiring a custom loader. Always
+  render raster art through `next/image`; SVGs pass through untouched.
 - No backend of its own — the site is content-only. App backends live in their
   own repos (payments/giving run through the apps, not this site).
 

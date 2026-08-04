@@ -23,7 +23,13 @@ const nextConfig: NextConfig = {
   // Server-mode build (so `next start` works on Hostinger / @netlify/next).
   // Add `output: "export"` here only if you want pure static files in /out instead.
   trailingSlash: true,
-  images: { unoptimized: true },
+  // Image optimisation needs a Node runtime, which server mode gives us — sharp
+  // resizes and re-encodes on demand, then caches. If this ever moves to
+  // `output: "export"`, optimisation is unavailable and `unoptimized: true` has
+  // to come back (or a custom loader takes over).
+  images: {
+    formats: ["image/avif", "image/webp"],
+  },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
