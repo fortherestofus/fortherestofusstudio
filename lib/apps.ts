@@ -216,7 +216,9 @@ export const apps: App[] = [
     ],
     status: "In Development",
     platform: ["iOS", "Android"],
-    price: "Free · Premium from $6.99/mo",
+    // Premium is LOCKED at $7.99/mo, $59.99/yr (InSpiritInTruth
+    // docs/DECISIONS.md, 2026-07-30). Mirrored on inspiritintruth.net.
+    price: "Free · Premium $7.99/mo or $59.99/yr",
     icon: "/icons/inspiritintruth-social.png",
     accentColor: "#90A842",
     accentDeep: "#4D6010",
