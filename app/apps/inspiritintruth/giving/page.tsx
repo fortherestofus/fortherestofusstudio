@@ -137,9 +137,9 @@ export default function GivingPage() {
           </h2>
           <p className="mt-4 text-pretty leading-relaxed text-muted">
             Payments are handled securely by Paystack — we never see or store
-            your card details. We keep the email on your giving profile to send
-            receipts and the occasional note on the good your giving does, and
-            nothing more. Ask us to remove your details anytime at{" "}
+            your card details. You give an email address so Paystack can send
+            your receipt, and nothing more; there is no account to create and we
+            keep no record of the gift ourselves. Ask us anything at{" "}
             <a
               className="text-accent-deep underline"
               href={`mailto:${LEGAL_EMAIL}`}
@@ -152,7 +152,9 @@ export default function GivingPage() {
 
         {/* Footer actions */}
         <div className="mt-14 border-t border-border pt-8">
-          <p className="text-muted">Giving lives in the InSpiritInTruth app.</p>
+          <p className="text-muted">
+            Giving lives on the InSpiritInTruth website.
+          </p>
           <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
             <Link
               href="/apps/inspiritintruth/giving/faq"

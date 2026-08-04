@@ -12,6 +12,40 @@ export interface LegalSection {
   bullets?: React.ReactNode[];
 }
 
+const TOKEN = /([\w.+-]+@[\w-]+\.[\w.]+|https?:\/\/[^\s,)]+)/g;
+
+/**
+ * Auto-link emails and URLs, but only in plain strings — nodes that are
+ * already JSX (as on the tapa and CaughtSlipping pages) pass through
+ * untouched, so this stays backwards compatible.
+ */
+function linkify(node: React.ReactNode): React.ReactNode {
+  if (typeof node !== "string") return node;
+  return node.split(TOKEN).map((part, i) => {
+    if (/^[\w.+-]+@[\w-]+\.[\w.]+$/.test(part)) {
+      return (
+        <a key={i} className="text-accent-deep underline" href={`mailto:${part}`}>
+          {part}
+        </a>
+      );
+    }
+    if (/^https?:\/\//.test(part)) {
+      return (
+        <a
+          key={i}
+          className="text-accent-deep underline"
+          href={part}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {part.replace(/^https?:\/\//, "")}
+        </a>
+      );
+    }
+    return part;
+  });
+}
+
 interface LegalDocumentProps {
   title: string;
   lastUpdated: string;
@@ -54,7 +88,7 @@ export default function LegalDocument({
                 key={i}
                 className="text-pretty text-lg leading-relaxed text-ink"
               >
-                {paragraph}
+                {linkify(paragraph)}
               </p>
             ))}
           </div>
@@ -73,7 +107,7 @@ export default function LegalDocument({
                       key={j}
                       className="text-pretty leading-relaxed text-muted"
                     >
-                      {paragraph}
+                      {linkify(paragraph)}
                     </p>
                   ))}
                 </div>
@@ -86,7 +120,7 @@ export default function LegalDocument({
                         aria-hidden
                         className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent"
                       />
-                      <span className="text-pretty">{item}</span>
+                      <span className="text-pretty">{linkify(item)}</span>
                     </li>
                   ))}
                 </ul>

@@ -103,8 +103,15 @@ dark tint.
 
 **Placeholders.** `components/ui/PlaceholderBlock.tsx` renders grainy
 accent-tinted blocks at fixed aspect ratios, standing in for screenshots and
-photography until real assets exist. Every image slot is sized for the real
-asset, so dropping one in shifts no layout.
+photography until real assets exist.
+
+**Screenshots are statically imported** in `lib/apps.ts` (from
+`public/screenshots/`), not referenced by path string: a missing file breaks
+the build, and each image carries its intrinsic dimensions so story-band
+frames take the screenshot's own aspect ratio exactly — never letterboxed,
+never cropped. Only the detail-page hero crops, deliberately, at the fold
+(bottom-only via `object-top`). Frame shapes: `phone`, `browser`, and `panel`
+(the extension popup, ~3:4).
 
 **Vignettes vs screenshots.** `components/services/Vignettes.tsx` holds
 miniature product UI built in HTML/CSS. These are used *only* on service cards
@@ -131,7 +138,8 @@ its own territory is what stops the site reading as two designs.
 - `lib/apps.ts`, `lib/services.ts`, `lib/testimonials.ts`, `lib/contact.ts`,
   `lib/cn.ts`.
 - `public/` — icons (`/icons/[slug].png|svg`), screenshots
-  (`/screenshots/[slug]-N.png`), OG images.
+  (`/screenshots/[slug]-[view].jpg`, statically imported by `lib/apps.ts`),
+  OG images.
 
 ## Conventions
 
