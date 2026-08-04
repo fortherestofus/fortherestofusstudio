@@ -212,7 +212,7 @@ export const apps: App[] = [
       "A weekly devotional, AI-written ones for whatever you're carrying, and the whole Bible — faith at the pace of real life.",
     overview: [
       "InSpiritInTruth puts your faith back in your own hands. It's the companion to the InSpiritInTruth devotional — true-to-life reflections for the modern Christian who can't always make it to church or read the Bible cover to cover, but still wants to stay close to it.",
-      "Each week brings one devotional, written to be digested slowly rather than rushed through. And when you need something for right now, the AI writes a personal, scripture-rooted devotional from whatever you're feeling or going through. A full in-app Bible, a daily verse or quote to keep you connected, bookmarks, and notes hold your practice together the rest of the week — no algorithm, no ads, no pressure to be perfect.",
+      "Each week brings one devotional, written to be digested slowly rather than rushed through. And when you need something for right now, a personal, scripture-rooted devotional is written from whatever you're feeling or going through — three of them free for every reader, unlimited on Premium. A full in-app Bible, a daily verse or quote to keep you connected, bookmarks, and notes hold your practice together the rest of the week — no algorithm, no ads, no pressure to be perfect.",
     ],
     status: "In Development",
     platform: ["iOS", "Android"],
@@ -231,7 +231,7 @@ export const apps: App[] = [
         icon: "Sparkles",
         title: "Devotions on what you're carrying",
         description:
-          "Tell it what you're feeling or facing and the AI writes a personal, scripture-rooted devotional for exactly that moment. Your faith, in your own hands. (Premium)",
+          "Tell it what you're feeling or facing and a personal, scripture-rooted devotional is written for exactly that moment. Your faith, in your own hands. Every reader gets three free; Premium makes them unlimited.",
       },
       {
         icon: "Quote",
