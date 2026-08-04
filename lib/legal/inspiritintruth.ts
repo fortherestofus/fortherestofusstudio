@@ -113,7 +113,7 @@ export const PRIVACY_SECTIONS = [
       "Supabase — accounts, authentication, and the database where your devotionals, notes, bookmarks and preferences are stored.",
       "Anthropic — generates tailored devotionals from the text you share, as described above.",
       "API.Bible and helloao — supply the Bible text you read. Passage requests are served without an account, and we do not send them anything that identifies you.",
-      "RevenueCat — manages Premium subscription status across platforms.",
+      "RevenueCat — manages Premium subscription status across platforms. We send it your account id, and your name and email address, so we can recognise your subscription and find your account if you contact us for help.",
       "Paystack — processes gifts made on our website. You give Paystack an email address for the receipt and your card details go directly to them; neither reaches our servers, and we keep no record of the gift ourselves. Paystack's own privacy terms govern what they hold.",
       "Apple and Google — process subscription payments made through their stores under their own terms, and deliver push notifications.",
       "Expo — delivers push notifications to your device.",
