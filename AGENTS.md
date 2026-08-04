@@ -6,7 +6,7 @@ CaughtSlipping, InSpiritInTruth, tapa., Hakkan — plus custom apps, SaaS, and
 websites for clients) and it **advises** (product and growth direction, brand
 and content, business tech and automation). It also hosts each app's public
 pages: listings, privacy/terms, and InSpiritInTruth's Giving + Giving FAQ.
-Next.js 15 (App Router), React 19.
+Next.js 16 (App Router), React 19.
 
 ## Ways of working (read first)
 
@@ -37,9 +37,15 @@ Next.js 15 (App Router), React 19.
 
 ## Stack
 
-- **Next.js 15 App Router** (`app/`), React 19, TypeScript, **Tailwind 3**
+- **Next.js 16 App Router** (`app/`), React 19, TypeScript, **Tailwind 3**
   (`tailwind.config.ts`), `next-themes` for light/dark (manual toggle,
   `enableSystem: false`, light default).
+- **Turbopack** is the bundler for both `next dev` and `next build` (the Next 16
+  default). There is no webpack config and adding one would fail the build.
+- React's `react-hooks` rules run at **error** level via `eslint-config-next`,
+  including `set-state-in-effect`. Don't reach for `useEffect` + `setState` to
+  derive state: adjust it during render, or use `useSyncExternalStore` to read
+  an external source (see `components/ui/DarkModeToggle.tsx`).
 - Motion: **framer-motion** only, used sparingly (nav sheet, reveals). The
   WebGL shader, `three`, and `gsap` were removed in the redesign — do not
   reintroduce heavy visual dependencies without a reason.
@@ -138,9 +144,10 @@ Static gates (run before every commit):
 - Lint: `npm run lint`
 - Build: `npm run build` (catches App Router + prerender errors)
 
-**Stop the dev server before running `npm run build`** — both write to `.next`
-and running them together corrupts the dev cache (missing-module and
-missing-CSS errors). If that happens, `rm -rf .next` and restart.
+`next dev` and `next build` can now run at the same time — since Next 16 dev
+writes to `.next/dev` and the build to `.next`, so they no longer clobber each
+other's cache. A lockfile stops two `dev` (or two `build`) runs on the same
+project instead. If the cache ever does look corrupt, `rm -rf .next` and restart.
 
 Runtime:
 - `npm run dev` → check home, the apps index, one app detail page, services,

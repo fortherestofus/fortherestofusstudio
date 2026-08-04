@@ -78,8 +78,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // data-scroll-behavior: globals.css sets `scroll-behavior: smooth` on <html>
+  // for in-page anchors. From Next 16 the router no longer neutralises that
+  // during route changes unless this attribute is present — without it, every
+  // navigation smooth-scrolls to the top instead of jumping.
   return (
-    <html lang="en" suppressHydrationWarning className={apfel.variable}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      data-scroll-behavior="smooth"
+      className={apfel.variable}
+    >
       <body className="font-body" suppressHydrationWarning>
         <Providers>
           <Navbar />

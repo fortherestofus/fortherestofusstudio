@@ -1,8 +1,9 @@
 import type { NextConfig } from "next";
 
 // Baseline security headers applied to every route. Intentionally no CSP yet:
-// the site leans on inline styles + a WebGL shader, so a Content-Security-Policy
-// needs its own tested pass before it's turned on.
+// per-app accent theming sets CSS variables via inline `style`, so a
+// Content-Security-Policy needs `style-src 'unsafe-inline'` or a nonce pass
+// before it's turned on.
 // NOTE: headers() only applies in server mode — it is ignored under `output: "export"`.
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
