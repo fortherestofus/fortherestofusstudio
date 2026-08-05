@@ -54,9 +54,14 @@ const nextConfig = {
       // A short shared cache with a long stale-while-revalidate keeps the edge
       // fast while letting a deploy land within minutes. The negative lookahead
       // leaves content-hashed build assets on their own immutable caching.
+      //
+      // /screenshots is deliberately not excluded. Those filenames are stable
+      // while their contents get replaced, so a year-long cache serves the
+      // previous screenshot from the same URL — the trap that caught
+      // inspiritintruth.net when the tailored-devotional captures were swapped.
       {
         source:
-          "/((?!_next/static|_next/image|screenshots|icons|fonts|\\.well-known).*)",
+          "/((?!_next/static|_next/image|icons|fonts|\\.well-known).*)",
         headers: [
           {
             key: "Cache-Control",
