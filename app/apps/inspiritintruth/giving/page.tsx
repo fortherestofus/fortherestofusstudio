@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Sprout } from "lucide-react";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Sprout } from "lucide-react";
 import { getApp } from "@/lib/apps";
 import AppThemeProvider from "@/components/apps/AppThemeProvider";
 import { HELLO_EMAIL, LEGAL_EMAIL } from "@/lib/contact";
@@ -153,9 +153,21 @@ export default function GivingPage() {
         {/* Footer actions */}
         <div className="mt-14 border-t border-border pt-8">
           <p className="text-muted">
-            Giving lives on the InSpiritInTruth website.
+            Giving lives on the InSpiritInTruth website — this page only
+            explains how it works.
           </p>
-          <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">
+            {/* The sentence above was a dead end without this: the whole point
+                is that the gift is made over there. */}
+            <a
+              href="https://inspiritintruth.net/#give"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-[0.9375rem] font-medium text-bg transition-all hover:-translate-y-0.5 hover:shadow-pill"
+            >
+              Give on inspiritintruth.net
+              <ArrowUpRight className="h-4 w-4" />
+            </a>
             <Link
               href="/apps/inspiritintruth/giving/faq"
               className="inline-flex items-center gap-2 text-[0.9375rem] font-medium text-ink transition-colors hover:text-accent-deep"

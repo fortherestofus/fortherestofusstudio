@@ -107,6 +107,8 @@ export interface App {
   };
   /** Static screenshot imports; [0] is the detail-page hero. */
   screenshots: StaticImageData[];
+  /** The app's own site, when it has one — linked from the detail page. */
+  website?: { url: string; label: string };
   ctaLabel: string;
   ctaHref: string;
   /** Set when ctaHref points off-site (opens in a new tab). */
@@ -341,6 +343,7 @@ export const apps: App[] = [
       },
     },
     screenshots: [isitHome, isitDevotionals, isitPersonalise, isitBible, isitDiscover, isitProfile],
+    website: { url: "https://inspiritintruth.net/", label: "Visit inspiritintruth.net" },
     ctaLabel: "Join the Waitlist",
     ctaHref: "#",
     seo: {

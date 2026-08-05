@@ -136,6 +136,18 @@ export default function AppDetail({ app }: { app: App }) {
               >
                 {app.ctaLabel}
               </PillButton>
+              {/* Apps with their own site say so here — this page is the
+                  studio's account of it, not its home. */}
+              {app.website && (
+                <PillButton
+                  href={app.website.url}
+                  external
+                  variant="ghost"
+                  size="lg"
+                >
+                  {app.website.label}
+                </PillButton>
+              )}
             </div>
           </div>
 
