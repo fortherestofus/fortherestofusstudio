@@ -22,6 +22,7 @@ import isitDiscover from "@/public/screenshots/isit-discover.jpg";
 import isitProfile from "@/public/screenshots/isit-profile.jpg";
 import isitJourneyShare from "@/public/screenshots/isit-journey-share.jpg";
 import isitJourneyNamed from "@/public/screenshots/isit-journey-named.jpg";
+import isitJourneyTime from "@/public/screenshots/isit-journey-time.jpg";
 import isitJourneyRead from "@/public/screenshots/isit-journey-read.jpg";
 // tapa. — phone screens
 import tapaHome from "@/public/screenshots/tapa-home.jpg";
@@ -320,17 +321,23 @@ export const apps: App[] = [
           image: isitJourneyNamed,
         },
         {
+          label: "You choose the depth",
+          caption:
+            "A quick moment or a deeper sit. The devotional is written to the time you actually have.",
+          image: isitJourneyTime,
+        },
+        {
           label: "You read",
           caption:
             "A full devotional — title, scripture, reflection — written for that exact moment.",
           image: isitJourneyRead,
         },
       ],
-      timeNote: "Shared at 08:25. Reading by 08:27.",
+      timeNote: "Shared at 15:14. Reading by 15:16.",
       excerpt: {
         lead: "From that exact devotional:",
-        text: "A God who is not fickle does not toy. What can look like divine whiplash, from inside the pain, is often something else entirely: a world that is genuinely fallen, employers who make decisions for reasons that have nothing to do with your worth, an economy or circumstance that is simply broken in ways Scripture never denies. God opening a door doesn\u2019t insulate that door from a fallen world\u2019s storms. It means He was present in giving it, and He remains present in its loss.",
-        source: "Why Does It Feel Like God Won\u2019t Let Me Be Happy?",
+        text: "Living in a broken world means loss visits the faithful and unfaithful alike. Ecclesiastes is unflinching about this \u2014 the same events happen to all. This isn\u2019t a comforting truth in the moment, but it is a freeing one: suffering is not proof of divine rejection. It is proof of living in a world still groaning, waiting for restoration (Romans 8:22).",
+        source: "When God Feels Absent (Even Though You Know the Word)",
       },
     },
     screenshots: [isitHome, isitDevotionals, isitPersonalise, isitBible, isitDiscover, isitProfile],

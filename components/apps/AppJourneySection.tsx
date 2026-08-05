@@ -23,8 +23,8 @@ export default function AppJourneySection({ app }: { app: App }) {
         subtitle={journey.intro}
       />
 
-      {/* The steps, numbered */}
-      <div className="mt-12 grid gap-12 sm:grid-cols-3 sm:gap-6 lg:gap-10">
+      {/* The steps, numbered — fits 3 or 4 without a layout change */}
+      <div className="mt-12 grid gap-12 sm:grid-cols-2 sm:gap-8 lg:grid-cols-4 lg:gap-6">
         {journey.steps.map((step, i) => (
           <div key={step.label} className="flex flex-col">
             <div className="mx-auto w-full max-w-[240px] overflow-hidden rounded-well border border-border bg-surface">
