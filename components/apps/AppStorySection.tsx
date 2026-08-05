@@ -52,10 +52,12 @@ export default function AppStorySection({
             <span className="text-[0.8125rem] uppercase tracking-[0.14em] text-faint">
               {story.eyebrow}
             </span>
-            <h2 className="mt-4 text-balance text-[1.75rem] font-medium leading-[1.12] tracking-[-0.025em] text-ink sm:text-[2.25rem]">
+            {/* Scales up at lg so the text column holds its own beside a
+                full-height phone rather than stranding whitespace. */}
+            <h2 className="mt-4 text-balance text-[1.75rem] font-medium leading-[1.12] tracking-[-0.025em] text-ink sm:text-[2.25rem] lg:text-[2.75rem]">
               {story.title}
             </h2>
-            <p className="mt-5 max-w-[46ch] text-pretty leading-relaxed text-muted sm:text-lg">
+            <p className="mt-5 max-w-[52ch] text-pretty leading-relaxed text-muted sm:text-lg lg:text-xl">
               {story.body}
             </p>
           </div>
