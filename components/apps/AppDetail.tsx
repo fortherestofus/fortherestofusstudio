@@ -13,6 +13,7 @@ import type { App } from "@/lib/apps";
 import { getOtherApps } from "@/lib/apps";
 import AppThemeProvider from "@/components/apps/AppThemeProvider";
 import AppStorySection from "@/components/apps/AppStorySection";
+import AppJourneySection from "@/components/apps/AppJourneySection";
 import AppIcon from "@/components/ui/AppIcon";
 import Badge from "@/components/ui/Badge";
 import PillButton from "@/components/ui/PillButton";
@@ -180,6 +181,9 @@ export default function AppDetail({ app }: { app: App }) {
           index={i}
         />
       ))}
+
+      {/* How it actually happens — real captures, only for apps that carry one */}
+      <AppJourneySection app={app} />
 
       {/* Everything else it does */}
       <Section tone="sunken">
