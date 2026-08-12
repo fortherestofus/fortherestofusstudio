@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/layout/PageHero";
 import Section, { SectionHeading } from "@/components/ui/Section";
-import PlaceholderBlock from "@/components/ui/PlaceholderBlock";
 import PillButton from "@/components/ui/PillButton";
 import CallToAction from "@/components/home/CallToAction";
 import { testimonials, clients } from "@/lib/testimonials";
+import { STUDIO_STATS } from "@/lib/proof";
+import { FOUNDER } from "@/lib/studio";
 import { HELLO_EMAIL } from "@/lib/contact";
 
 const DESCRIPTION =
-  "For The Rest Of Us is a solutions studio in Johannesburg run by Alroy Ndhlovu — a digital marketing, branding, and business technology consultant with over ten years of experience.";
+  "For The Rest Of Us is a solutions and consulting studio in Johannesburg run by Alroy Ndhlovu — a marketing, branding, business technology and product consultant with over twelve years of experience.";
 
 export const metadata: Metadata = {
   title: "Studio",
@@ -25,7 +27,7 @@ export const metadata: Metadata = {
 const PRACTICE = [
   {
     title: "Marketing that is measured",
-    body: "Campaign strategy, paid and organic, analytics that answer a question rather than fill a slide. Built on ten years of running this for other people's budgets.",
+    body: "Campaign strategy, paid and organic, analytics that answer a question rather than fill a slide. Built on twelve years of running this for other people's budgets.",
   },
   {
     title: "Brand and content direction",
@@ -56,15 +58,19 @@ export default function StudioPage() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
-              <PlaceholderBlock
-                ratio="portrait"
-                label="Portrait — to be supplied"
-                className="rounded-well"
-              />
+              <div className="overflow-hidden rounded-well border border-border shadow-card">
+                <Image
+                  src={FOUNDER.portrait}
+                  alt={FOUNDER.portraitAlt}
+                  className="h-auto w-full object-cover"
+                  sizes="(max-width: 1024px) 92vw, 460px"
+                  priority
+                />
+              </div>
               <div className="mt-5">
-                <p className="text-lg font-medium text-ink">Alroy Ndhlovu</p>
+                <p className="text-lg font-medium text-ink">{FOUNDER.name}</p>
                 <p className="mt-1 text-[0.9375rem] text-muted">
-                  Founder · builder · consultant
+                  {FOUNDER.role}
                 </p>
                 <a
                   href={`mailto:${HELLO_EMAIL}`}
@@ -80,9 +86,9 @@ export default function StudioPage() {
             <div className="max-w-reading space-y-5 text-pretty leading-relaxed text-muted">
               <p className="text-lg text-ink">
                 The studio is one person with an unusually wide toolkit. Alroy
-                Ndhlovu has spent over ten years in digital marketing, branding
-                strategy, and business technology — the kind of career where you
-                end up doing whatever the project actually needs.
+                Ndhlovu has spent over twelve years in digital marketing,
+                branding strategy, and business technology — the kind of career
+                where you end up doing whatever the project actually needs.
               </p>
               <p>
                 That has meant running campaigns and content for organisations
@@ -115,7 +121,21 @@ export default function StudioPage() {
               </p>
             </div>
 
-            <div className="mt-12 border-t border-border pt-8">
+            {/* The record, in numbers (lib/proof.ts — real and sourced) */}
+            <dl className="mt-12 grid grid-cols-1 gap-4 border-t border-border pt-8 sm:grid-cols-3">
+              {STUDIO_STATS.map((stat) => (
+                <div key={stat.label}>
+                  <dd className="nums text-[1.75rem] font-medium leading-none tracking-[-0.02em] text-ink">
+                    {stat.value}
+                  </dd>
+                  <dt className="mt-1.5 text-[0.8125rem] leading-snug text-muted">
+                    {stat.label}
+                  </dt>
+                </div>
+              ))}
+            </dl>
+
+            <div className="mt-10 border-t border-border pt-8">
               <h2 className="text-xs font-medium uppercase tracking-[0.14em] text-faint">
                 Work delivered for
               </h2>

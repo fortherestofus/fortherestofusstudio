@@ -56,12 +56,16 @@ export default function AppCard({ app, className }: AppCardProps) {
         <ArrowUpRight className="h-5 w-5 shrink-0 text-faint transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-ink" />
       </div>
 
-      <h3 className="mt-5 text-lg font-medium tracking-[-0.01em] text-ink">
-        {app.name}
-      </h3>
+      {/* The use case leads — every app is a problem first, a product second. */}
+      <p className="mt-5 text-pretty text-[1.0625rem] font-medium leading-snug tracking-[-0.01em] text-ink">
+        “{app.problem}”
+      </p>
 
-      <div className="mt-2 flex flex-wrap items-center gap-2">
-        <span className="text-[0.9375rem] text-muted">{app.category}</span>
+      <div className="mt-3 flex flex-wrap items-center gap-2">
+        <h3 className="text-[0.9375rem] font-medium tracking-[-0.01em] text-ink">
+          {app.name}
+        </h3>
+        <span className="text-[0.875rem] text-muted">· {app.category}</span>
         <Badge variant="status" status={app.status}>
           {app.status}
         </Badge>

@@ -9,6 +9,7 @@
 import Image from "next/image";
 import type { App } from "@/lib/apps";
 import { cn } from "@/lib/cn";
+import ChapterMark from "@/components/ui/ChapterMark";
 import PlaceholderBlock from "@/components/ui/PlaceholderBlock";
 
 type Story = NonNullable<App["story"]>[number];
@@ -49,8 +50,11 @@ export default function AppStorySection({
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Text */}
           <div className={cn(flipped && "lg:order-2")}>
-            <span className="text-[0.8125rem] uppercase tracking-[0.14em] text-faint">
-              {story.eyebrow}
+            <span className="flex items-center gap-3">
+              <ChapterMark index={index + 1} />
+              <span className="text-[0.8125rem] uppercase tracking-[0.14em] text-faint">
+                {story.eyebrow}
+              </span>
             </span>
             {/* Scales up at lg so the text column holds its own beside a
                 full-height phone rather than stranding whitespace. */}

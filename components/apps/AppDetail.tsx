@@ -122,6 +122,11 @@ export default function AppDetail({ app }: { app: App }) {
               </Badge>
             </div>
 
+            {/* The use case, before the brand line: problem first, always. */}
+            <p className="mx-auto mt-6 max-w-[38ch] text-pretty text-[1.0625rem] font-medium leading-snug text-accent-deep">
+              “{app.problem}”
+            </p>
+
             <h1 className="mt-4 text-balance text-[2.25rem] font-medium leading-[1.05] tracking-[-0.03em] text-ink sm:text-[3.25rem]">
               {app.tagline}
             </h1>

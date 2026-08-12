@@ -10,7 +10,7 @@ import ChapterMark from "@/components/ui/ChapterMark";
 import TestimonialQuote from "@/components/ui/TestimonialQuote";
 import PillButton from "@/components/ui/PillButton";
 import EyebrowChip from "@/components/ui/EyebrowChip";
-import { Card } from "@/components/ui/Card";
+import CaseProofCard from "@/components/ui/CaseProofCard";
 import { caseProofs } from "@/lib/proof";
 import { testimonials, clients } from "@/lib/testimonials";
 import { FOUNDER } from "@/lib/studio";
@@ -29,44 +29,7 @@ export default function ProofChapter() {
 
       <div className="mt-12 grid gap-4 md:grid-cols-3 md:gap-5">
         {caseProofs.map((proof) => (
-          <Card key={proof.slug} className="flex flex-col p-6">
-            <div className="flex items-start justify-between gap-3">
-              <h3 className="text-lg font-medium tracking-[-0.01em] text-ink">
-                {proof.client}
-              </h3>
-              <span className="nums shrink-0 rounded-full border border-border px-2.5 py-1 text-[0.6875rem] text-muted">
-                {proof.period}
-              </span>
-            </div>
-            <p className="mt-1.5 text-[0.875rem] leading-relaxed text-muted">
-              {proof.engagement}
-            </p>
-
-            <dl className="mt-6 flex flex-1 flex-col gap-4">
-              {proof.stats.map((stat) => (
-                <div key={stat.label} className="border-t border-border pt-3.5">
-                  <dt className="sr-only">{stat.label}</dt>
-                  <dd>
-                    <span className="nums block text-[1.5rem] font-medium leading-none tracking-[-0.02em] text-ink">
-                      {stat.value}
-                    </span>
-                    <span className="mt-1 block text-[0.8125rem] text-muted">
-                      {stat.label}
-                      {stat.detail && (
-                        <span className="text-faint"> · {stat.detail}</span>
-                      )}
-                    </span>
-                  </dd>
-                </div>
-              ))}
-            </dl>
-
-            {proof.note && (
-              <p className="mt-5 border-t border-dashed border-border pt-4 text-[0.8125rem] leading-relaxed text-muted">
-                {proof.note}
-              </p>
-            )}
-          </Card>
+          <CaseProofCard key={proof.slug} proof={proof} />
         ))}
       </div>
 

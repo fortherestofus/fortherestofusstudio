@@ -3,10 +3,12 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { apps } from "@/lib/apps";
 import { services, PROCESS_STEPS } from "@/lib/services";
+import { caseProofs } from "@/lib/proof";
 import { VIGNETTES, type VignetteKey } from "@/components/services/Vignettes";
 import PageHero from "@/components/layout/PageHero";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import { Well, VignetteCard, ProcessStrip } from "@/components/ui/Card";
+import CaseProofCard from "@/components/ui/CaseProofCard";
 import AppIcon from "@/components/ui/AppIcon";
 import PillButton from "@/components/ui/PillButton";
 import CallToAction from "@/components/home/CallToAction";
@@ -73,7 +75,7 @@ export default function ServicesPage() {
       <Section tone="sunken">
         <SectionHeading
           eyebrow="How we work"
-          title="Understand, build, grow."
+          title="Identify, build, grow."
           subtitle="Three steps, run the same way whether the project is ours or yours."
         />
         <ProcessStrip steps={PROCESS_STEPS} className="mt-12 border-t-0 pt-0" />
@@ -82,14 +84,28 @@ export default function ServicesPage() {
       <Section tone="canvas">
         <SectionHeading
           eyebrow="Proof"
-          title="We walk the walk."
-          subtitle="Our own shelf of products, built end to end with the same hands that would build yours."
+          title="Real engagements, real numbers."
+          subtitle="Client work we can talk about with numbers attached — including the parts that did not work."
         />
-        <div className="mt-12 grid gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-12 grid gap-4 md:grid-cols-3 md:gap-5">
+          {caseProofs.map((proof) => (
+            <CaseProofCard key={proof.slug} proof={proof} />
+          ))}
+        </div>
+      </Section>
+
+      <Section tone="sunken" size="sm">
+        <SectionHeading
+          align="left"
+          eyebrow="Use cases"
+          title="We also build for ourselves."
+          subtitle="Four products, each started as a real problem in our own lives — the working proof behind every service on this page."
+        />
+        <div className="mt-10 grid gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-4">
           {apps.map((app) => (
             <Link
               key={app.slug}
-              href={`/apps/${app.slug}`}
+              href={`/apps/${app.slug}/`}
               className="group flex items-center gap-3 rounded-card border border-border bg-surface p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
             >
               <span
@@ -111,7 +127,7 @@ export default function ServicesPage() {
                   {app.name}
                 </span>
                 <span className="block truncate text-[0.8125rem] text-muted">
-                  {app.category}
+                  {app.problem}
                 </span>
               </span>
               <ArrowRight className="h-4 w-4 shrink-0 text-faint transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-ink" />

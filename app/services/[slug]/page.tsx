@@ -10,8 +10,10 @@ import {
 } from "@/lib/services";
 import { VIGNETTES, type VignetteKey } from "@/components/services/Vignettes";
 import { testimonials } from "@/lib/testimonials";
+import { getCaseProofsForService } from "@/lib/proof";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import { ProcessStrip } from "@/components/ui/Card";
+import CaseProofCard from "@/components/ui/CaseProofCard";
 import EyebrowChip from "@/components/ui/EyebrowChip";
 import PillButton from "@/components/ui/PillButton";
 import Icon from "@/components/ui/Icon";
@@ -56,6 +58,8 @@ export default async function ServiceDetailPage({
   const Vignette = VIGNETTES[service.slug as VignetteKey];
   // One quote next to the CTA — hesitation peaks right before the click.
   const quote = testimonials[services.indexOf(service) % testimonials.length];
+  // Real engagements allowed to speak for this service (lib/proof.ts).
+  const proofs = getCaseProofsForService(slug);
 
   return (
     <>
@@ -167,17 +171,34 @@ export default async function ServiceDetailPage({
         </div>
       </Section>
 
+      {/* Proof — the real-world version of the claims above */}
+      {proofs.length > 0 && (
+        <Section tone="canvas">
+          <SectionHeading
+            align="left"
+            eyebrow="Proof"
+            title="What this looked like in the real world."
+            subtitle="Real engagements with numbers attached — including the parts that did not work."
+          />
+          <div className="mt-10 grid gap-4 md:grid-cols-2 md:gap-5">
+            {proofs.map((proof) => (
+              <CaseProofCard key={proof.slug} proof={proof} />
+            ))}
+          </div>
+        </Section>
+      )}
+
       {/* Process */}
-      <Section tone="canvas">
+      <Section tone="sunken">
         <SectionHeading
           eyebrow="How we work"
-          title="Understand, build, grow."
+          title="Identify, build, grow."
         />
         <ProcessStrip steps={PROCESS_STEPS} className="mt-12 border-t-0 pt-0" />
       </Section>
 
       {/* Other services */}
-      <Section tone="sunken" size="sm">
+      <Section tone="canvas" size="sm">
         <SectionHeading align="left" eyebrow="Also from the studio" title="Other things we do" />
         <div className="mt-10 grid gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-4">
           {others.map((other) => (
