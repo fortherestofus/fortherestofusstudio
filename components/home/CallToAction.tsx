@@ -1,9 +1,18 @@
 /**
  * CallToAction — the full-width dark rounded block that closes a page. This is
  * the page's ink moment; nothing else above it should be dark.
+ *
+ * With `scatter`, real artefacts (the app marks and two product chips) orbit
+ * the ask, the reference's closing-photos move told with the things we
+ * actually make. Decorative only — hidden from assistive tech and from
+ * viewports too narrow to hold them.
  */
 import PillButton from "@/components/ui/PillButton";
 import EyebrowChip from "@/components/ui/EyebrowChip";
+import AppIcon from "@/components/ui/AppIcon";
+import Badge from "@/components/ui/Badge";
+import { getApp } from "@/lib/apps";
+import { cn } from "@/lib/cn";
 
 interface CallToActionProps {
   eyebrow?: string;
@@ -13,6 +22,60 @@ interface CallToActionProps {
   primaryHref?: string;
   secondaryLabel?: string;
   secondaryHref?: string;
+  /** Scatter real artefacts around the ask (home's closing block). */
+  scatter?: boolean;
+}
+
+/** A small product chip — an app named as an object, like the reference's event cards. */
+function ProductChip({ slug, className }: { slug: string; className?: string }) {
+  const app = getApp(slug);
+  if (!app) return null;
+  return (
+    <div
+      className={cn(
+        "flex w-[210px] items-center gap-3 rounded-card border border-ink-border bg-ink-raised p-3",
+        className
+      )}
+    >
+      <AppIcon
+        icon={app.icon}
+        color={app.accentColor}
+        label={app.name}
+        size={34}
+        className="rounded-[9px]"
+      />
+      <div className="min-w-0">
+        <p className="truncate text-[0.8125rem] font-medium text-ink-text">
+          {app.name}
+        </p>
+        <Badge variant="status" status={app.status} className="mt-1 scale-90 origin-left">
+          {app.status}
+        </Badge>
+      </div>
+    </div>
+  );
+}
+
+/** An app mark presented as a tilted tile. */
+function MarkChip({ slug, className }: { slug: string; className?: string }) {
+  const app = getApp(slug);
+  if (!app) return null;
+  return (
+    <div
+      className={cn(
+        "grid h-[74px] w-[74px] place-items-center rounded-card border border-ink-border bg-ink-raised",
+        className
+      )}
+    >
+      <AppIcon
+        icon={app.icon}
+        color={app.accentColor}
+        label={app.name}
+        size={42}
+        className="rounded-xl"
+      />
+    </div>
+  );
 }
 
 export default function CallToAction({
@@ -20,9 +83,10 @@ export default function CallToAction({
   title = "Have an idea worth building?",
   body = "Tell us what you are trying to make or fix. If we are the right studio for it, we will say so. If we are not, we will tell you that too.",
   primaryLabel = "Start a project",
-  primaryHref = "/contact",
+  primaryHref = "/contact/",
   secondaryLabel = "See what we build",
-  secondaryHref = "/apps",
+  secondaryHref = "/apps/",
+  scatter = false,
 }: CallToActionProps) {
   return (
     <section className="bg-bg px-4 pb-20 pt-4 sm:px-6 sm:pb-28">
@@ -35,6 +99,27 @@ export default function CallToAction({
               "radial-gradient(circle, color-mix(in srgb, var(--color-accent) 60%, transparent), transparent 70%)",
           }}
         />
+
+        {scatter && (
+          <div aria-hidden className="pointer-events-none absolute inset-0 hidden lg:block">
+            <MarkChip
+              slug="caught-slipping"
+              className="absolute left-[7%] top-[16%] -rotate-6"
+            />
+            <ProductChip
+              slug="tapa"
+              className="absolute bottom-[18%] left-[5%] rotate-3"
+            />
+            <MarkChip
+              slug="inspiritintruth"
+              className="absolute right-[8%] top-[18%] rotate-6"
+            />
+            <ProductChip
+              slug="hakkan"
+              className="absolute bottom-[16%] right-[4.5%] -rotate-3"
+            />
+          </div>
+        )}
 
         <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-6">
           <EyebrowChip tone="onInk">{eyebrow}</EyebrowChip>
