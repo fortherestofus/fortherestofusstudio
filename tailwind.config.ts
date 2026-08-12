@@ -32,6 +32,15 @@ const config: Config = {
         "ink-muted": "var(--color-ink-text-muted)",
         "ink-border": "var(--color-ink-border)",
 
+        // Tint family — chapter-card washes only (see globals.css note)
+        "tint-amber": "var(--tint-amber)",
+        "tint-amber-deep": "var(--tint-amber-deep)",
+        "tint-olive": "var(--tint-olive)",
+        "tint-olive-deep": "var(--tint-olive-deep)",
+        "tint-rust": "var(--tint-rust)",
+        "tint-rust-deep": "var(--tint-rust-deep)",
+        "tint-lime": "var(--tint-lime)",
+        "tint-lime-deep": "var(--tint-lime-deep)",
       },
       fontFamily: {
         // One family sitewide. Aliases kept so legacy classes resolve to Apfel.

@@ -52,6 +52,12 @@ export interface App {
   name: string;
   category: string;
   tagline: string;
+  /**
+   * The use-case problem this app answers, second person, one line — every
+   * app is presented problem-first, as evidence that real problems deserve
+   * products, never as portfolio (docs/REDESIGN-V3.md §3).
+   */
+  problem: string;
   shortDescription: string; // used on cards (keep to ~2 lines)
   overview: string[]; // detail-page overview, one string per paragraph
   status: AppStatus;
@@ -138,6 +144,7 @@ export const apps: App[] = [
     name: "CaughtSlipping",
     category: "Focus & Productivity",
     tagline: "The browser extension that calls you out.",
+    problem: "You know you're doomscrolling. Nothing calls you out.",
     shortDescription:
       "Tracks where your day online really goes — the scrolling and the overworking — and serves it back to you, without mercy.",
     overview: [
@@ -235,6 +242,7 @@ export const apps: App[] = [
     name: "InSpiritInTruth",
     category: "Faith & Devotion",
     tagline: "Take your faith into your own hands.",
+    problem: "Devotionals are written for everyone. Your walk isn't.",
     shortDescription:
       "A weekly devotional, AI-written ones for whatever you're carrying, and the whole Bible — faith at the pace of real life.",
     overview: [
@@ -369,6 +377,7 @@ export const apps: App[] = [
     name: "tapa.",
     category: "Food & Cooking",
     tagline: "What can I cook with this?",
+    problem: "It's 6pm and you're staring into the fridge again.",
     shortDescription:
       "Takes the daily 'what's for dinner' off your plate — tell it what you've got, get a real recipe back.",
     overview: [
@@ -467,6 +476,7 @@ export const apps: App[] = [
     name: "Hakkan",
     category: "Research & Content",
     tagline: "Worth listening to.",
+    problem: "AI made content cheap to make. And worthless to read.",
     shortDescription:
       "Researches the real conversation across social and the web, hands you a report with receipts, and turns it into thought leadership in your voice.",
     overview: [

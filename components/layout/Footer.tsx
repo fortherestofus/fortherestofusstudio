@@ -34,10 +34,11 @@ const SOCIALS = [
 ];
 
 const SERVICE_LINKS = [
-  { label: "Custom apps & SaaS", href: "/services#build" },
-  { label: "Websites", href: "/services#build" },
-  { label: "Product & growth", href: "/services#advise" },
-  { label: "Tech & automation", href: "/services#advise" },
+  { label: "Custom apps & SaaS", href: "/services/apps-and-saas/" },
+  { label: "Websites", href: "/services/websites/" },
+  { label: "Brand & content", href: "/services/brand-and-content/" },
+  { label: "Marketing & analytics", href: "/services/product-and-growth/" },
+  { label: "Tech & automation", href: "/services/tech-and-automation/" },
 ];
 
 const STUDIO_LINKS = [

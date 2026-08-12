@@ -291,7 +291,7 @@ export default function AppDetail({ app }: { app: App }) {
       <CallToAction
         eyebrow="Work with us"
         title="Want something like this built?"
-        body="We build products like this one for other people too, and advise on the product, brand, and growth work around them."
+        body="We build products like this one for other people too, and consult on the product, brand, and growth work around them."
         primaryLabel="Start a project"
         primaryHref="/contact"
         secondaryLabel="See our services"

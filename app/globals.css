@@ -36,6 +36,21 @@
   --color-ink-text: #f4f2ec;
   --color-ink-text-muted: #a49f92;
   --color-ink-border: rgba(244, 242, 236, 0.12);
+
+  /* Tint family — the story-chapter card washes (docs/REDESIGN-V3.md §6).
+     Derived from the four app accents (CaughtSlipping amber, ISIT olive,
+     tapa rust, Hakkan lime) so the "pop" is literally the products.
+     Allowed ONLY on the chapter-card grids and the closing scatter; the
+     monotone discipline everywhere else is what makes them pop. Each tint
+     pairs with a -deep text colour that passes contrast on the wash. */
+  --tint-amber: #fbe8c1;
+  --tint-amber-deep: #8a6400;
+  --tint-olive: #dee5c6;
+  --tint-olive-deep: #4d6010;
+  --tint-rust: #f0cdc2;
+  --tint-rust-deep: #a8431f;
+  --tint-lime: #f3fbca;
+  --tint-lime-deep: #3a4409;
 }
 
 .dark {
@@ -57,6 +72,17 @@
   --color-ink-text: #f4f2ec;
   --color-ink-text-muted: #a49f92;
   --color-ink-border: rgba(244, 242, 236, 0.1);
+
+  /* Dark-theme tints: the accent folded into the dark surface, with the
+     -deep text lifted toward white for contrast. */
+  --tint-amber: #47391b;
+  --tint-amber-deep: #f4c96e;
+  --tint-olive: #34371f;
+  --tint-olive-deep: #b1c27a;
+  --tint-rust: #40271c;
+  --tint-rust-deep: #db8a70;
+  --tint-lime: #424621;
+  --tint-lime-deep: #e4f683;
 }
 
 @layer base {

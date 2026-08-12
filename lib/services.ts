@@ -11,10 +11,19 @@ export interface ServiceSection {
   body: string;
 }
 
+/**
+ * The lifecycle stage a service belongs to — the four chapters of the story
+ * (see docs/REDESIGN-V3.md §4): build the product, give it identity, grow
+ * its visibility, automate the business around it.
+ */
+export type ServiceLifecycle = "build" | "brand" | "grow" | "automate";
+
 export interface Service {
   slug: string;
-  /** "build" = things we make for you. "advise" = product direction work. */
-  arm: "build" | "advise";
+  /** "build" = things we make for you. "consult" = services/consulting work. */
+  arm: "build" | "consult";
+  /** Which lifecycle chapter this service tells. */
+  lifecycle: ServiceLifecycle;
   /** Lucide icon name — used in the quieter card row and in lists. */
   icon: string;
   title: string;
@@ -46,6 +55,7 @@ export const services: Service[] = [
   {
     slug: "apps-and-saas",
     arm: "build",
+    lifecycle: "build",
     icon: "Smartphone",
     title: "Custom apps & SaaS",
     summary:
@@ -91,6 +101,7 @@ export const services: Service[] = [
   {
     slug: "websites",
     arm: "build",
+    lifecycle: "build",
     icon: "Globe",
     title: "Websites",
     summary:
@@ -135,7 +146,8 @@ export const services: Service[] = [
   },
   {
     slug: "product-and-growth",
-    arm: "advise",
+    arm: "consult",
+    lifecycle: "grow",
     icon: "LineChart",
     title: "Product & growth direction",
     summary:
@@ -180,7 +192,8 @@ export const services: Service[] = [
   },
   {
     slug: "brand-and-content",
-    arm: "advise",
+    arm: "consult",
+    lifecycle: "brand",
     icon: "Palette",
     title: "Brand, design & content",
     summary:
@@ -225,7 +238,8 @@ export const services: Service[] = [
   },
   {
     slug: "tech-and-automation",
-    arm: "advise",
+    arm: "consult",
+    lifecycle: "automate",
     icon: "Workflow",
     title: "Business tech & automation",
     summary:
@@ -273,7 +287,7 @@ export const services: Service[] = [
 export const PROCESS_STEPS = [
   {
     step: 1,
-    title: "Understand",
+    title: "Identify",
     description:
       "The problem, the people it affects, and what success would look like. No proposal until that is clear.",
   },
@@ -291,8 +305,61 @@ export const PROCESS_STEPS = [
   },
 ];
 
+/**
+ * The four lifecycle chapters — how the services chapter on the homepage
+ * groups the five services (see docs/REDESIGN-V3.md §4, chapter 04).
+ * `tint` keys into the tint tokens in globals.css; "ink" renders the dark
+ * card in the grid.
+ */
+export const LIFECYCLE_CHAPTERS: {
+  key: ServiceLifecycle;
+  title: string;
+  blurb: string;
+  tint: "rust" | "amber" | "olive" | "ink";
+  serviceSlugs: string[];
+}[] = [
+  {
+    key: "build",
+    title: "Custom products & solutions",
+    blurb:
+      "Apps, SaaS, and websites — built end to end, from scoped idea to shipped thing.",
+    tint: "rust",
+    serviceSlugs: ["apps-and-saas", "websites"],
+  },
+  {
+    key: "brand",
+    title: "Brand & identity",
+    blurb:
+      "A look and a voice that stay consistent everywhere you show up.",
+    tint: "amber",
+    serviceSlugs: ["brand-and-content"],
+  },
+  {
+    key: "grow",
+    title: "Marketing & analytics",
+    blurb:
+      "Being known: positioning, campaigns, and measurement that tells you what actually worked.",
+    tint: "olive",
+    serviceSlugs: ["product-and-growth"],
+  },
+  {
+    key: "automate",
+    title: "Business tech & automation",
+    blurb:
+      "AI, integrations, and process optimisation — the tedious parts, off your plate.",
+    tint: "ink",
+    serviceSlugs: ["tech-and-automation"],
+  },
+];
+
 export function getServicesByArm(arm: Service["arm"]): Service[] {
   return services.filter((service) => service.arm === arm);
+}
+
+export function getServicesByLifecycle(
+  lifecycle: ServiceLifecycle,
+): Service[] {
+  return services.filter((service) => service.lifecycle === lifecycle);
 }
 
 export function getService(slug: string): Service | undefined {

@@ -73,7 +73,7 @@ export default async function ServiceDetailPage({
           <div className="mt-10 grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-14">
             <div className="lg:col-span-6">
               <EyebrowChip>
-                {service.arm === "build" ? "We build" : "We advise"}
+                {service.arm === "build" ? "We build" : "We consult"}
               </EyebrowChip>
               <h1 className="mt-6 text-balance text-[2.25rem] font-medium leading-[1.06] tracking-[-0.03em] sm:text-[3rem]">
                 <span className="text-ink">{service.page.title}</span>{" "}

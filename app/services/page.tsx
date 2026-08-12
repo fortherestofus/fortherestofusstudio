@@ -12,7 +12,7 @@ import PillButton from "@/components/ui/PillButton";
 import CallToAction from "@/components/home/CallToAction";
 
 const DESCRIPTION =
-  "We build custom apps, SaaS, and websites, and advise on product and growth, brand and content, and business tech and automation. A solutions studio in Johannesburg.";
+  "We build custom apps, SaaS, and websites, and consult on product and growth, brand and content, and business tech and automation. A solutions and consulting studio in Johannesburg.";
 
 export const metadata: Metadata = {
   title: "Services",

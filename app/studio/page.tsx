@@ -48,7 +48,7 @@ export default function StudioPage() {
         eyebrow="The studio"
         title="Technology is still built mostly for people who already understand it."
         titleMuted="We would rather build for everyone else."
-        lead="For The Rest Of Us is a solutions studio in Johannesburg. We design and build digital products, and we advise the people building their own."
+        lead="For The Rest Of Us is a solutions and consulting studio in Johannesburg. We design and build digital products, and we consult for the people building their own."
       />
 
       {/* Founder */}

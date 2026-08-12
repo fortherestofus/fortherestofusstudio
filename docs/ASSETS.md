@@ -3,6 +3,12 @@
 Every slot below already exists at the right size — dropping a file in shifts
 nothing.
 
+## 0. Imported from the portfolio repo (v3 redesign)
+
+| File | Source | Used by |
+|---|---|---|
+| `public/studio/alroy-portrait.jpg` (512×640) | `alroyportfolio/site/src/assets/images/Alroy-Ndhlovu-FOE.jpeg` — the shot used on alroyndhlovu.com | Founder note (home) + `/studio`, statically imported via `lib/studio.ts` |
+
 **Rule:** real screenshots and photography appear on the **home hero collage
 only**. App pages stay editorial with placeholder art until we deliberately
 decide otherwise. Home media is registered in `lib/homeMedia.ts`; app media
