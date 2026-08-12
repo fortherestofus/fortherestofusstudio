@@ -114,7 +114,7 @@ export default function WhyChapter() {
   return (
     <Section tone="canvas" id="why">
       <div className="flex items-baseline gap-4">
-        <ChapterMark index={1} total={5} />
+        <ChapterMark index={1} total={3} />
       </div>
       <SectionHeading
         align="left"

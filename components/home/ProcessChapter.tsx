@@ -27,7 +27,12 @@ import { cn } from "@/lib/cn";
 const STAMPS = ["Week 0", "Week by week", "Launch onward"];
 const ADVANCE_MS = 4500;
 
-export default function ProcessChapter() {
+interface ProcessChapterProps {
+  /** Chapter numbering when the section sits inside a numbered story. */
+  chapter?: { index: number; total: number };
+}
+
+export default function ProcessChapter({ chapter }: ProcessChapterProps) {
   const reduced = useReducedMotion();
   const app = getApp("hakkan")!;
   const buildShot = app.screenshots[3]; // the create-content view
@@ -102,10 +107,10 @@ export default function ProcessChapter() {
   return (
     <Section tone="sunken" id="process">
       <div ref={ref}>
-        <ChapterMark index={4} total={5} />
+        {chapter && <ChapterMark index={chapter.index} total={chapter.total} />}
         <SectionHeading
           align="left"
-          className="mt-4"
+          className={chapter ? "mt-4" : undefined}
           eyebrow="How it works"
           title="From problem to product."
           subtitle="Three states, and you can always see which one we are in. Hakkan — our own research tool — shown as the worked example."

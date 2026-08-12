@@ -16,13 +16,15 @@
    components/apps/AppThemeProvider.
    ============================================================ */
 :root {
-  --color-bg: #f6f5f1;
+  /* v3.1: white canvas, not paper — Alroy found the warm cream too dull.
+     Warmth now comes from imagery and the tint blocks, not the ground. */
+  --color-bg: #ffffff;
   --color-surface: #ffffff;
-  --color-surface-sunken: #eeebe3;
+  --color-surface-sunken: #f4f4f1;
   --color-text: #17150f;
   --color-text-muted: #6f6a5e;
   --color-text-faint: #a5a197;
-  --color-border: #e6e2d8;
+  --color-border: #e7e5de;
 
   /* Restrained accent — small moments only */
   --color-accent: #c4552f;
@@ -43,13 +45,13 @@
      Allowed ONLY on the chapter-card grids and the closing scatter; the
      monotone discipline everywhere else is what makes them pop. Each tint
      pairs with a -deep text colour that passes contrast on the wash. */
-  --tint-amber: #fbe8c1;
-  --tint-amber-deep: #8a6400;
-  --tint-olive: #dee5c6;
-  --tint-olive-deep: #4d6010;
-  --tint-rust: #f0cdc2;
-  --tint-rust-deep: #a8431f;
-  --tint-lime: #f3fbca;
+  --tint-amber: #f8dca2;
+  --tint-amber-deep: #7a5800;
+  --tint-olive: #cdd7a9;
+  --tint-olive-deep: #42530e;
+  --tint-rust: #e8b3a3;
+  --tint-rust-deep: #8f3517;
+  --tint-lime: #edf9af;
   --tint-lime-deep: #3a4409;
 }
 

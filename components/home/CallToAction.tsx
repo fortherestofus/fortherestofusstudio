@@ -7,11 +7,13 @@
  * actually make. Decorative only — hidden from assistive tech and from
  * viewports too narrow to hold them.
  */
+import Image from "next/image";
 import PillButton from "@/components/ui/PillButton";
 import EyebrowChip from "@/components/ui/EyebrowChip";
 import AppIcon from "@/components/ui/AppIcon";
 import Badge from "@/components/ui/Badge";
 import { getApp } from "@/lib/apps";
+import { contentSamples } from "@/lib/homeMedia";
 import { cn } from "@/lib/cn";
 
 interface CallToActionProps {
@@ -51,6 +53,24 @@ function ProductChip({ slug, className }: { slug: string; className?: string }) 
         <Badge variant="status" status={app.status} className="mt-1 scale-90 origin-left">
           {app.status}
         </Badge>
+      </div>
+    </div>
+  );
+}
+
+/** A real work photo as a tilted polaroid — warmth, not decoration. */
+function PhotoChip({ index, className }: { index: number; className?: string }) {
+  const sample = contentSamples[index];
+  if (!sample) return null;
+  return (
+    <div
+      className={cn(
+        "w-[150px] overflow-hidden rounded-[14px] border border-ink-border bg-ink-raised p-1.5",
+        className
+      )}
+    >
+      <div className="relative overflow-hidden rounded-[9px]" style={{ aspectRatio: "4 / 3" }}>
+        <Image src={sample.src} alt={sample.alt} fill sizes="150px" className="object-cover" />
       </div>
     </div>
   );
@@ -102,21 +122,23 @@ export default function CallToAction({
 
         {scatter && (
           <div aria-hidden className="pointer-events-none absolute inset-0 hidden lg:block">
+            <PhotoChip index={0} className="absolute left-[6%] top-[10%] -rotate-6" />
             <MarkChip
               slug="caught-slipping"
-              className="absolute left-[7%] top-[16%] -rotate-6"
+              className="absolute left-[13%] top-[46%] rotate-3"
             />
             <ProductChip
               slug="tapa"
-              className="absolute bottom-[18%] left-[5%] rotate-3"
+              className="absolute bottom-[12%] left-[5%] rotate-2"
             />
+            <PhotoChip index={1} className="absolute right-[6%] top-[11%] rotate-6" />
             <MarkChip
               slug="inspiritintruth"
-              className="absolute right-[8%] top-[18%] rotate-6"
+              className="absolute right-[13%] top-[48%] -rotate-3"
             />
             <ProductChip
               slug="hakkan"
-              className="absolute bottom-[16%] right-[4.5%] -rotate-3"
+              className="absolute bottom-[13%] right-[4.5%] -rotate-2"
             />
           </div>
         )}

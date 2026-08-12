@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { apps } from "@/lib/apps";
-import { services, PROCESS_STEPS } from "@/lib/services";
+import { services } from "@/lib/services";
 import { caseProofs } from "@/lib/proof";
 import { VIGNETTES, type VignetteKey } from "@/components/services/Vignettes";
 import PageHero from "@/components/layout/PageHero";
 import Section, { SectionHeading } from "@/components/ui/Section";
-import { Well, VignetteCard, ProcessStrip } from "@/components/ui/Card";
+import { Well, VignetteCard } from "@/components/ui/Card";
 import CaseProofCard from "@/components/ui/CaseProofCard";
 import AppIcon from "@/components/ui/AppIcon";
 import PillButton from "@/components/ui/PillButton";
+import ProcessChapter from "@/components/home/ProcessChapter";
 import CallToAction from "@/components/home/CallToAction";
 
 const DESCRIPTION =
@@ -72,14 +73,8 @@ export default function ServicesPage() {
         </Well>
       </Section>
 
-      <Section tone="sunken">
-        <SectionHeading
-          eyebrow="How we work"
-          title="Identify, build, grow."
-          subtitle="Three steps, run the same way whether the project is ours or yours."
-        />
-        <ProcessStrip steps={PROCESS_STEPS} className="mt-12 border-t-0 pt-0" />
-      </Section>
+      {/* The full process story lives here, not on the homepage. */}
+      <ProcessChapter />
 
       <Section tone="canvas">
         <SectionHeading

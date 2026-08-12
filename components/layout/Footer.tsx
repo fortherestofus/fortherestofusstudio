@@ -42,7 +42,7 @@ const SERVICE_LINKS = [
 ];
 
 const STUDIO_LINKS = [
-  { label: "The studio", href: "/studio" },
+  { label: "About the studio", href: "/studio" },
   { label: "Start a project", href: "/contact" },
   { label: "Email us", href: `mailto:${HELLO_EMAIL}` },
 ];
