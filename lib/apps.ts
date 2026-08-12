@@ -109,6 +109,12 @@ export interface App {
   screenshots: StaticImageData[];
   /** The app's own site, when it has one — linked from the detail page. */
   website?: { url: string; label: string };
+  /**
+   * App Store / Play listings, for apps that will ship on them. Present with
+   * null values means the badges show but do not link yet — the app is coming,
+   * the listing is not up. Absent means no badges at all.
+   */
+  stores?: { ios: string | null; android: string | null };
   ctaLabel: string;
   ctaHref: string;
   /** Set when ctaHref points off-site (opens in a new tab). */
@@ -344,6 +350,7 @@ export const apps: App[] = [
     },
     screenshots: [isitHome, isitDevotionals, isitPersonalise, isitBible, isitDiscover, isitProfile],
     website: { url: "https://inspiritintruth.net/", label: "Visit inspiritintruth.net" },
+    stores: { ios: null, android: null },
     ctaLabel: "Join the Waitlist",
     ctaHref: "#",
     seo: {
@@ -442,6 +449,7 @@ export const apps: App[] = [
       },
     ],
     screenshots: [tapaHome, tapaGenerate, tapaDietary, tapaRecipe, tapaCooking, tapaTimer],
+    stores: { ios: null, android: null },
     ctaLabel: "Try It Free",
     ctaHref: "#",
     seo: {

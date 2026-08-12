@@ -14,6 +14,7 @@ import { getOtherApps } from "@/lib/apps";
 import AppThemeProvider from "@/components/apps/AppThemeProvider";
 import AppStorySection from "@/components/apps/AppStorySection";
 import AppJourneySection from "@/components/apps/AppJourneySection";
+import StoreBadges from "@/components/apps/StoreBadges";
 import AppIcon from "@/components/ui/AppIcon";
 import Badge from "@/components/ui/Badge";
 import PillButton from "@/components/ui/PillButton";
@@ -149,6 +150,9 @@ export default function AppDetail({ app }: { app: App }) {
                 </PillButton>
               )}
             </div>
+
+            {/* Store badges, for apps that ship on them */}
+            <StoreBadges app={app} className="mt-8" />
           </div>
 
           {/* Hero screenshot rising from the fold */}
