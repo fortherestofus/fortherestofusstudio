@@ -4,6 +4,7 @@
  * each with a real artefact beside it — a claim never travels without its
  * evidence. Closes on the first trust marker, a real quote.
  */
+import Image from "next/image";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import ChapterMark from "@/components/ui/ChapterMark";
 import AppIcon from "@/components/ui/AppIcon";
@@ -113,16 +114,31 @@ const BELIEFS = [
 export default function WhyChapter() {
   return (
     <Section tone="canvas" id="why">
-      <div className="flex items-baseline gap-4">
-        <ChapterMark index={1} total={3} />
+      <ChapterMark index={1} total={3} />
+
+      <div className="mt-4 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
+        <div className="lg:col-span-7">
+          <SectionHeading
+            align="left"
+            eyebrow="Why we build"
+            title="The problem you've learned to live with."
+            subtitle="Every business has one — the process held together with copy-paste, the idea that never left the notes app, the product nobody can find. Good ideas rarely die from bad code. They die in handoffs. We run on three convictions instead:"
+          />
+        </div>
+
+        <div className="lg:col-span-5">
+          <div className="overflow-hidden rounded-well border border-border shadow-card">
+            <Image
+              src="/media/why-problem.jpg"
+              alt="A desk at dusk: a laptop covered in sticky notes, a handwritten list, cold coffee and tangled cables"
+              width={1248}
+              height={832}
+              sizes="(max-width: 1024px) 92vw, 460px"
+              className="h-auto w-full object-cover"
+            />
+          </div>
+        </div>
       </div>
-      <SectionHeading
-        align="left"
-        className="mt-4"
-        eyebrow="Why we build"
-        title="The problem you've learned to live with."
-        subtitle="Every business has one — the process held together with copy-paste, the idea that never left the notes app, the product nobody can find. Good ideas rarely die from bad code. They die in handoffs. We run on three convictions instead:"
-      />
 
       <div className="mt-14 grid gap-12 md:grid-cols-3 md:gap-8">
         {BELIEFS.map((belief) => (
