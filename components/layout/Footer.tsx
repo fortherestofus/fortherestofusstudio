@@ -103,8 +103,9 @@ export default function Footer() {
               className="h-7 w-auto"
             />
             <p className="mt-6 max-w-sm text-pretty text-[0.9375rem] leading-relaxed text-ink-muted">
-              A solutions studio in Johannesburg. We design and build digital
-              products for our clients, and for our own ideas.
+              A solutions &amp; consulting studio in Johannesburg. We build
+              products that solve real problems — for our clients, and for
+              our own ideas.
             </p>
             <div className="mt-8 flex items-center gap-3">
               {SOCIALS.map(({ label, href, Icon: Mark }) => (

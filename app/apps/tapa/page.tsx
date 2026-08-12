@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getApp } from "@/lib/apps";
 import AppDetail from "@/components/apps/AppDetail";
+import AppJsonLd from "@/components/apps/AppJsonLd";
 
 const app = getApp("tapa")!;
 
@@ -22,5 +23,15 @@ export const metadata: Metadata = {
 };
 
 export default function TapaPage() {
-  return <AppDetail app={app} />;
+  return (
+    <>
+      <AppJsonLd
+        app={app}
+        schemaType="MobileApplication"
+        applicationCategory="LifestyleApplication"
+        operatingSystem="iOS, Android"
+      />
+      <AppDetail app={app} />
+    </>
+  );
 }

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getApp } from "@/lib/apps";
 import AppDetail from "@/components/apps/AppDetail";
+import AppJsonLd from "@/components/apps/AppJsonLd";
 
 const app = getApp("caught-slipping")!;
 
@@ -30,40 +31,15 @@ export const metadata: Metadata = {
   },
 };
 
-// SoftwareApplication structured data — helps search engines and AI answer
-// engines describe the extension accurately (name, price, platform, publisher).
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  name: "CaughtSlipping",
-  applicationCategory: "BrowserApplication",
-  operatingSystem: "Chrome",
-  description: app.seo.description,
-  url: "https://fortherestofus.app/apps/caught-slipping/",
-  image: "https://fortherestofus.app/icons/caught-slipping-512.png",
-  offers: {
-    "@type": "Offer",
-    price: "0",
-    priceCurrency: "USD",
-  },
-  isAccessibleForFree: true,
-  publisher: {
-    "@type": "Organization",
-    name: "For The Rest Of Us",
-    url: "https://fortherestofus.app",
-  },
-  creator: {
-    "@type": "Person",
-    name: "Alroy Ndhlovu",
-  },
-};
-
 export default function CaughtSlippingPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      <AppJsonLd
+        app={app}
+        schemaType="SoftwareApplication"
+        applicationCategory="BrowserApplication"
+        operatingSystem="Chrome"
+        image="/icons/caught-slipping-512.png"
       />
       <AppDetail app={app} />
     </>

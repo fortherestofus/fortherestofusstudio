@@ -1,21 +1,34 @@
 # ForTheRestOfUs (studio website) — agent guide
 
-Website for the **fortherestofus** solutions studio (`fortherestofus-studio`).
-The studio has two arms and the site sells both: it **builds** (its own apps —
-CaughtSlipping, InSpiritInTruth, tapa., Hakkan — plus custom apps, SaaS, and
-websites for clients) and it **advises** (product and growth direction, brand
-and content, business tech and automation). It also hosts each app's public
-pages: listings, privacy/terms, and InSpiritInTruth's Giving + Giving FAQ.
-Next.js 16 (App Router), React 19.
+Website for the **fortherestofus** solutions & consulting studio
+(`fortherestofus-studio`). The studio has two arms and the site tells one
+story about both: it **builds** (its own apps — CaughtSlipping,
+InSpiritInTruth, tapa., Hakkan — plus custom apps, SaaS, and websites for
+clients) and it **consults** (product and growth direction, brand and
+content, business tech and automation — never call this arm "advice").
+It also hosts each app's public pages: listings, privacy/terms, and
+InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
 
 ## Ways of working (read first)
 
-- **Design reference is authoritative.** `Design Reference/` (currently
-  `IMG_7712.JPG`) is the spec — analyse the composition rather than
-  approximating. The direction is clean, monotone editorial SaaS: off-white
-  canvas, rounded white cards inside a sunken well, ink pill buttons, big
-  grotesk headlines, dark closing block + footer. Treat any screenshots or
-  links the user shares as the spec.
+- **The site is a story (v3).** `docs/REDESIGN-V3.md` is the authoritative
+  narrative spec: home is five numbered chapters (why → use cases →
+  services → process → proof) between a promise hero and a single dark
+  closing block. **Apps are use cases, never portfolio** — every app
+  surface leads with its `problem` line from `lib/apps.ts`. Claims never
+  travel without adjacent proof.
+- **Design reference is authoritative.** `Design Reference/` (currently the
+  Forth site: `Forth · Your city has plans for you.html` + `Website
+  Screenshot.jpg`) is the spec for storytelling mechanics — numbered
+  chapters, tinted feature cards, claim-then-artefact. The base direction
+  stays clean, monotone editorial SaaS: off-white canvas, rounded white
+  cards inside a sunken well, ink pill buttons, big grotesk headlines, dark
+  closing block + footer. Treat any screenshots or links the user shares as
+  the spec.
+- **Only real numbers.** `lib/proof.ts` is the sole home for result stats
+  (case proofs + studio stats), each with a `source` note. Never add an
+  unmeasured or rounded-up number; honest "what didn't work" notes are a
+  feature, not a bug.
 - **`lib/apps.ts` is the single source of truth** for everything app-related:
   card + detail-page content, features, screenshots, status, accent colors,
   CTA, SEO, giving/legal paths. **`lib/services.ts`** does the same for the
@@ -71,11 +84,15 @@ Next.js 16 (App Router), React 19.
 
 ## Design system
 
-**The system is monotone.** Warm off-white canvas, ink type, ink buttons.
-Colour enters a page only through *imagery* (screenshots, placeholder art) and
-through an app's own accent on that app's pages. There is no section-level
-brand colour and no pastel washes. `--color-accent` is a restrained ember kept
-for small live moments (focus rings, hover, status dots) — never a background.
+**The system is monotone, with one sanctioned exception.** Warm off-white
+canvas, ink type, ink buttons. Colour enters a page only through *imagery*,
+through an app's own accent on that app's pages, and through the **tint
+family** (`--tint-amber/olive/rust/lime` + `-deep` text partners, both
+themes) — soft washes derived from the four app accents, allowed **only**
+on the story chapter-card grids (use cases, services) and the closing
+scatter. Everywhere else there is no section-level brand colour and no
+pastel washes. `--color-accent` is a restrained ember kept for small live
+moments (focus rings, hover, status dots) — never a background.
 
 Tokens live as CSS variables in `app/globals.css` and are mapped to Tailwind
 colors in `tailwind.config.ts`. Use tokens, never raw palette hex.
@@ -131,12 +148,18 @@ its own territory is what stops the site reading as two designs.
   `app/services/[slug]/` (five SEO detail pages from `lib/services.ts`);
   `app/studio/`, `app/contact/`; `app/not-found.tsx`, `app/sitemap.ts`,
   `app/robots.ts`.
-- `components/` — `home/` (page sections), `apps/`, `layout/` (Navbar, Footer,
+- `components/` — `home/` (the story chapters: Hero + HeroArtefact,
+  WhyChapter, UseCasesChapter, ServicesChapter, ProcessChapter (client,
+  state timeline), ProofChapter, CallToAction with scatter), `apps/`
+  (AppDetail, AppStorySection, AppJsonLd…), `layout/` (Navbar, Footer,
   PageHero), `legal/`, `services/` (Vignettes), `ui/` (the kit: PillButton,
   EyebrowChip, Section, Card/Well/VignetteCard/IconCard/ProcessStrip,
-  PlaceholderBlock, Badge, AppCard, Icon).
-- `lib/apps.ts`, `lib/services.ts`, `lib/testimonials.ts`, `lib/contact.ts`,
-  `lib/cn.ts`.
+  ChapterMark, TestimonialQuote, CaseProofCard, PlaceholderBlock, Badge,
+  AppCard, Icon).
+- `lib/apps.ts` (incl. per-app `problem` line), `lib/services.ts` (incl.
+  `lifecycle` + `LIFECYCLE_CHAPTERS`), `lib/proof.ts` (real result stats,
+  sourced), `lib/studio.ts` (founder note + portrait), `lib/testimonials.ts`,
+  `lib/contact.ts`, `lib/cn.ts`.
 - `public/` — icons (`/icons/[slug].png|svg`), screenshots
   (`/screenshots/[slug]-[view].jpg`, statically imported by `lib/apps.ts`),
   OG images.

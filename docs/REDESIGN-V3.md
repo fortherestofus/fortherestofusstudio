@@ -345,6 +345,14 @@ iterate")
 
 ## 9. Build order
 
+> **Status (2026-08-12): Phases 0–3 built and shipped** on
+> `claude/ftrou-website-redesign-838f2f`. Gates green; light theme audited
+> visually desktop + mobile (no horizontal overflow at 375px), dark theme
+> audited via computed contrast on every tint pair (all ≥5.1:1). Still
+> open, awaiting Alroy: real social URLs (footer TODO), cal.com link on
+> `/contact`, dark + interactive spot-check in a live browser session, and
+> a decision on real OG images per app.
+
 **Phase 0 — foundations** (no visual change yet)
 1. Registry updates: process rename, lifecycle grouping, `lib/proof.ts`,
    `lib/studio.ts`; import portrait + any approved assets; tint tokens +
