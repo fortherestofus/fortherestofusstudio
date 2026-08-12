@@ -80,6 +80,20 @@ Julian Shapiro's landing-page rules:
   that takes real-world problems through a product lifecycle: **identify the
   problem → build the product → give it identity → grow its visibility** —
   for clients, and for its own ideas.
+- **Two arms, one story (Alroy, Aug 2026 refinement):** FTROU *builds*
+  custom products/solutions AND is a **services/consulting** business
+  (custom products/solutions · branding/identity · marketing/analytics,
+  powered by business tech/AI/automation). External language is
+  **services / consulting — never "advice"/"advise"**. The internal
+  `arm: "advise"` value and every "We advise" eyebrow must be renamed.
+- **Apps are use cases, not portfolio.** We never present the apps as
+  "look what we built". Each app is told **problem-first** — a worked
+  answer to "why would anyone build a product for this?" (Hakkan: AI
+  content nobody can trust → research-first content worth listening to;
+  tapa: "what can I cook with this?"; CaughtSlipping: catching yourself
+  slipping into distraction; InSpiritInTruth: faith content that isn't
+  personal). They are evidence for the thesis, and the same thesis is the
+  pitch for building a client's product.
 - **The three beliefs** (Alroy's words, polished — these are the "why"
   chapter and also the service architecture):
   1. Every product starts as a **problem worth solving** (build).
@@ -115,8 +129,11 @@ Julian Shapiro's landing-page rules:
 
 ## 4. The new homepage — chapter by chapter
 
-Numbered like the reference ("01 / 06" chapter marks). One dark ink moment
-(the closing block) + dark footer = ink budget respected.
+Six numbered chapters ("01 / 06" chapter marks) + an unnumbered closing
+block. One dark ink moment (the closing block) + dark footer = ink budget
+respected. Arc: promise → why → use cases (our apps as proof of the why) →
+services/consulting (we do this for you) → process → client proof + founder
+→ one ask.
 
 ### 01 · Hero — the promise
 Forth mapping: hero. Descriptive H1 with the lifecycle compressed into it.
@@ -149,26 +166,44 @@ code — they die in handoffs between four different agencies). Then the
 One early testimonial (Kelly-Ann's "Swiss army knife" line) closes the
 chapter as the first trust marker.
 
-### 03 · What we do — the toggle
-Forth mapping: "Plans, without the planning" (Discover/Host toggle + four
-numbered tinted cards). This is where the **solutions/products split** the
-brief asked for lives — same grid, two states:
+### 03 · Use cases — "problems we couldn't leave alone"
+*(Supersedes the earlier toggle idea, per Alroy's refinement: the apps are
+not "what we built" — they are worked answers to "why would anyone build a
+product for this?")* Forth mapping: the numbered tinted card grid from
+"Plans, without the planning". Four cards in the Forth geometry, each
+washed in its app's own accent, each **problem-first**:
 
-- **With you** (default — the solutions arm): four numbered lifecycle cards
-  — 01 **Build** (custom apps, SaaS, websites), 02 **Brand** (identity,
-  design, content), 03 **Grow** (product direction, marketing, analytics),
-  04 **Automate** (business tech, AI, process optimisation — the ink card).
-  Cards link into the five existing `/services/[slug]` pages (Build card
-  covers both build services).
-- **By us** (the products arm): the four apps in the same card geometry,
-  each washed with its own app accent, linking to the app pages. This
-  answers "what we do vs what we've built" — same story, two kinds of
-  evidence.
+- 01 (amber) — *You know you're doomscrolling. Nothing calls you out.* →
+  **CaughtSlipping**, the extension that does.
+- 02 (olive) — *Faith content is generic. Your walk isn't.* →
+  **InSpiritInTruth**, devotionals that know where you are.
+- 03 (rust) — *It's 6pm and you're staring into the fridge.* → **tapa.**,
+  "what can I cook with this?"
+- 04 (lime) — *AI made content cheap. And worthless.* → **Hakkan**,
+  research-first content worth listening to.
 
-Toggle is progressive-enhancement friendly (both grids render; toggle is
-visual state) so SEO/no-JS still sees everything.
+Card anatomy: the problem line big, the app as the answer (icon + name +
+one line + real screenshot artefact), status badge, link to the app page.
+Chapter closes with the bridge line that turns evidence into pitch:
+*your business has one of these problems too — that's the next chapter.*
 
-### 04 · The process — "from problem to product"
+### 04 · Services — "we do this for you"
+The services/consulting arm (never "advice"): four numbered lifecycle
+cards in the same tinted-card geometry —
+
+- 01 **Custom products & solutions** — apps, SaaS, websites
+  (covers the two build services).
+- 02 **Brand & identity** — look, feel, voice, content.
+- 03 **Marketing & analytics** — being known: campaigns, growth,
+  measurement, product direction.
+- 04 **Business tech & automation** (the ink card) — AI, integrations,
+  process optimisation: the toolbox that runs through everything.
+
+Cards carry a proof crumb each (a real number or artefact) and link into
+the five existing `/services/[slug]` pages. A quiet "Not sure which you
+need?" honesty cell keeps the current voice.
+
+### 05 · The process — "from problem to product"
 Forth mapping: "From discovered to confirmed" (the strongest storytelling
 device on the page). Left: a three-state engagement timeline —
 **Identified** (the problem, success criteria — "no proposal until this is
@@ -179,7 +214,7 @@ state** with the timeline, using one real product as the worked example
 (brief note → build screenshot → live screen with real numbers). One
 featured story, per the depth-over-breadth rule.
 
-### 05 · Proof — client work + the studio behind it
+### 06 · Proof — client work + the studio behind it
 Forth mapping: the dark trust section, but rendered **light** (sunken well)
 to protect the ink budget. Two beats:
 
@@ -192,7 +227,7 @@ to protect the ink budget. Two beats:
    build them instead; 12 years across every side of the product). Links to
    `/studio` for the full story.
 
-### 06 · Closing block — dark, warm, one ask
+### Closing block — dark, warm, one ask
 Forth mapping: "Good people. Actual plans." Scattered real artefacts (app
 tiles, screenshots, a work photo) orbiting a centred close:
 
@@ -212,15 +247,22 @@ ever want a "what's live / in beta / in development" board.
 
 ## 5. Inner pages
 
-- **`/apps` + app detail pages:** structure and content stay (per brief:
-  "the apps and pages are good"). Restyle touches only: chapter numbers on
-  story bands, card tint alignment, the new closing block. Keep mocks,
-  specs, journeys, giving/legal untouched in substance.
-- **`/services` + `/services/[slug]`:** keep all five SEO pages. Reframe
-  the index around the four lifecycle cards (Build/Brand/Grow/Automate) as
-  the organising view; detail pages get the process rename and the new
-  closing block. Registry (`lib/services.ts`) gains a `lifecycle` grouping
-  rather than being rewritten.
+- **`/apps` + app detail pages:** facts, mocks, specs, journeys,
+  giving/legal stay in substance. Each detail page gains a **problem-first
+  opening** — a short "the problem" band above the current story (the use
+  case the app answers), so every app page reads as a problem→solution
+  story. Index reframed the same way. Chapter numbers on story bands, new
+  closing block.
+- **`/services` + `/services/[slug]`:** keep all five SEO pages and URLs,
+  but rebuild each detail page **story-style** (per Alroy: "case study,
+  use case, problem solution style"): the problem → how we approach it →
+  a real embedded case (Thrifty on marketing/analytics; Innovatr rebrand
+  on brand; Innovatr platform + Social Sweep on custom products and
+  automation; the apps as use cases where client work doesn't exist yet)
+  → what's included → good fit → CTA. This replaces a separate `/work`
+  section — proof lives next to the claim it verifies. Index reframed
+  around the four lifecycle cards. Registry gains a `lifecycle` grouping
+  and a `case` slot per service.
 - **`/studio`:** becomes the full "About Alroy" chapter — real portrait,
   the founder story, career highlights (Meta certified lead trainer at
   Digify Africa, IFC, Energy Capital & Power…), studio stats, all three
@@ -251,8 +293,10 @@ Everything stays token-driven; changes are additive:
 3. **`FeatureCardGrid` / `TintCard`** — the numbered tinted card with an
    artefact slot (screenshot, mini-UI, or number card).
 4. **`StateTimeline`** — the process timeline + swappable device mock
-   (framer-motion, scroll- or click-driven, `useReducedMotion` gated;
-   no new dependencies).
+   (framer-motion, scroll- or click-driven, `useReducedMotion` gated).
+   Motion note (Alroy, Aug 2026): framer-motion/GSAP approved "where it
+   adds value" — default to framer-motion (already in the bundle); add
+   GSAP only if a specific effect demands it.
 5. **`FloatingArtefact`** — the hero's single floating card (slimmed
    `HeroCollage`).
 6. **Closing scatter** — rebuilt `CallToAction` with absolutely-positioned
@@ -262,9 +306,14 @@ Everything stays token-driven; changes are additive:
 
 ## 7. Content/data changes
 
-- `lib/services.ts`: `PROCESS_STEPS` → Identify/Build/Grow; add lifecycle
-  grouping (`build | brand | grow | automate`) mapped onto the five
-  services; keep slugs/SEO pages stable (no URL changes).
+- `lib/services.ts`: `PROCESS_STEPS` → Identify/Build/Grow; rename
+  `arm: "advise"` → `"consult"` and every "We advise" string → "We
+  consult"; add lifecycle grouping (`build | brand | grow | automate`)
+  mapped onto the five services; add a `case` slot per service (real
+  embedded case story); keep slugs/SEO pages stable (no URL changes).
+- `lib/apps.ts`: add a `problem` field per app (the one-line use-case
+  problem statement) consumed by the home use-case cards and the new
+  problem-first band on detail pages.
 - **New `lib/proof.ts`:** typed registry of real result stats (Thrifty,
   Innovatr, studio stats) with source notes — same "only real claims"
   contract as `lib/testimonials.ts`, enforced by a header comment.
@@ -276,22 +325,23 @@ Everything stays token-driven; changes are additive:
   `public/work/`. All raster art rendered through `next/image`.
 - `docs/ASSETS.md` updated with provenance for every imported file.
 
-## 8. Open questions for Alroy
+## 8. Decisions (Alroy, 2026-08-12: "use best practice/research, we will
+iterate")
 
-1. **Solutions/products split:** one toggled chapter (recommended, matches
-   the brief's hint) — or two separate chapters (services grid, then apps
-   band)?
-2. **Client case studies:** bring full Thrifty/Innovatr case studies onto
-   this site as a `/work` section (stronger proof, some duplication with
-   alroyndhlovu.com) — or keep client proof at summary level (numbers +
-   quotes on home/studio) and let the portfolio site carry the deep dives?
-3. **Portrait:** OK to use `Alroy-Ndhlovu-FOE.jpeg` (the black-background
-   shot used on the portfolio) for the founder note + studio page?
-4. **Tint source:** derive the card tints from the four app accents
-   (recommended — the pop is literally the products) or adopt a
-   Forth-like neutral set (lilac/peach/lime)?
-5. Standing open items from v2 that this build could close: real social
-   URLs for the footer, cal.com link on `/contact`, studio accent.
+1. **Split:** no toggle. Apps become the problem-first **use-cases
+   chapter (03)**; services/consulting get their own chapter (04). The
+   apps are evidence of the why, not a portfolio.
+2. **Client case studies:** no separate `/work` section — real case
+   stories are **embedded in the service detail pages** (proof next to
+   claim), summary numbers on home/`/studio`. Deep dives stay on
+   alroyndhlovu.com.
+3. **Portrait:** use `Alroy-Ndhlovu-FOE.jpeg` (the portfolio shot).
+4. **Tints:** derived from the four app accents (amber/olive/rust/lime),
+   not a neutral Forth set.
+5. **Motion:** framer-motion/GSAP approved where it adds value; default
+   framer-motion.
+6. Still open from v2 (need Alroy input, not blocking): real social URLs
+   for the footer, cal.com link on `/contact`, studio accent.
 
 ## 9. Build order
 
@@ -304,17 +354,20 @@ Everything stays token-driven; changes are additive:
 **Phase 1 — the homepage story** (one chapter per commit)
 3. Hero (new copy + single floating artefact).
 4. Why chapter (problem + three beliefs + artefacts + first testimonial).
-5. What-we-do toggle (lifecycle cards ↔ app cards).
-6. Process chapter (state timeline + worked example).
-7. Proof chapter (client results + founder note).
-8. New closing block + footer fixes.
+5. Use-cases chapter (four problem-first app cards in accent tints).
+6. Services chapter (four lifecycle cards + honesty cell).
+7. Process chapter (state timeline + worked example).
+8. Proof chapter (client results + founder note).
+9. New closing block + footer fixes.
 
 **Phase 2 — inner pages**
-9. `/services` index reframe + detail-page touches.
-10. App pages: chapter marks + closing block (content untouched).
-11. `/studio` rebuild as the full About chapter.
-12. `/contact` refresh (+ booking link if approved).
-13. Legal/giving visual verification.
+10. `/services` index reframe + story-style detail pages with embedded
+    real cases (the biggest Phase 2 item).
+11. App pages: problem-first opening band + chapter marks + closing
+    block (facts untouched).
+12. `/studio` rebuild as the full About chapter.
+13. `/contact` refresh.
+14. Legal/giving visual verification.
 
 **Phase 3 — polish + ship**
 14. SEO pass: metadata/OG coherence, JSON-LD for all four apps, sitemap.
