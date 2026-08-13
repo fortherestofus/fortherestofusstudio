@@ -83,8 +83,8 @@ export default function UseCasesChapter() {
           align="left"
           className="mt-4"
           eyebrow="Built by us"
-          title="Problems we couldn't leave alone."
-          subtitle="Four products of our own, each one a problem from our own lives that we identified, built, named and are growing. The same lifecycle we just described — run on ourselves first."
+          title="Built by us. For us, and for everyone else."
+          subtitle="We went looking for the ordinary problems — the ones nobody writes a brief for, that everyone recognises the second you name them. Losing an evening to the scroll. Standing in front of a fridge with no idea what to make. Reading something you cannot tell was written by a person. Four products of our own came out of that, each one identified, built, named and now growing — the same lifecycle we just described, run on ourselves first."
         />
       </div>
 

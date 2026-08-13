@@ -47,6 +47,8 @@ export default function ArtefactRotator({
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       className={cn("flex h-full flex-col justify-end px-5 pt-5", className)}
+      /* The row this sits in stretches to the tallest card, so the rotator
+         is free to take the height its screens actually need. */
     >
       <div className="flex items-center justify-between gap-4 pb-2.5">
         <p
@@ -80,18 +82,18 @@ export default function ArtefactRotator({
         </div>
       </div>
 
-      {/* One wide screen, whole — 16:9 across the set, so the frame holds. */}
-      <div
-        className={cn(
-          "relative overflow-hidden rounded-t-[10px] border border-b-0",
-          onInk ? "border-ink-border bg-ink-raised" : "border-border bg-surface"
-        )}
-        style={{ aspectRatio: "16 / 9" }}
-      >
+      {/*
+       * The frame is the image, not a box around it. A fixed-aspect
+       * container gets squashed by the flex row above and then pillarboxes
+       * the screen inside a frame wider than its own content — so the
+       * border and radius sit on the picture itself and always fit it.
+       */}
+      {/* Sized by width, not height: the screen fills the card and the
+          frame is the picture's own border, so the two always agree. */}
+      <div className="relative w-full">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={piece.src}
-            className="absolute inset-0"
             initial={reduced ? false : { opacity: 0, scale: 1.015 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={reduced ? undefined : { opacity: 0 }}
@@ -100,9 +102,13 @@ export default function ArtefactRotator({
             <Image
               src={piece.src}
               alt={piece.alt}
-              fill
+              width={piece.width}
+              height={piece.height}
               sizes="(max-width: 640px) 92vw, 560px"
-              className="object-contain object-top"
+              className={cn(
+                "h-auto w-full rounded-t-[10px] border border-b-0",
+                onInk ? "border-ink-border" : "border-border"
+              )}
             />
           </motion.div>
         </AnimatePresence>

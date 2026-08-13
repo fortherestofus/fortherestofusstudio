@@ -210,8 +210,15 @@ export default function ServicesChapter() {
                 </ul>
               </div>
 
-              {/* Real work, bleeding off the block's bottom edge */}
-              <div className="mt-auto h-[200px] sm:h-[230px]">
+              {/* Real work, bleeding off the block's bottom edge. The
+                  rotator sizes itself by width, so it opts out of the
+                  fixed height the stacked rows need. */}
+              <div
+                className={cn(
+                  "mt-auto",
+                  chapter.key === "automate" ? "" : "h-[200px] sm:h-[230px]"
+                )}
+              >
                 {ARTEFACTS[chapter.key]}
               </div>
             </div>

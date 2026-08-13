@@ -58,8 +58,15 @@ export default function Navbar() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
+        /*
+         * Opaque once scrolled, never translucent. A blurred 80% bar looked
+         * elegant over the hero and then vanished the moment a dark section
+         * (the ink card, the closing block) passed beneath it — ink type on
+         * a dark blur is unreadable. Page tops are all light canvas, so the
+         * transparent-at-rest state is safe; everything after it is not.
+         */
         scrolled
-          ? "border-b border-border bg-bg/80 backdrop-blur-md"
+          ? "border-b border-border bg-bg shadow-nav"
           : "border-b border-transparent"
       )}
     >
