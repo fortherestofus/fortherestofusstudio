@@ -91,7 +91,7 @@ export default function Footer() {
 
   return (
     <footer className="bg-ink-surface text-ink-text">
-      <div className="mx-auto w-full max-w-content px-5 py-16 sm:px-8 sm:py-20">
+      <div className="mx-auto w-full max-w-content px-5 py-14 sm:px-8 sm:py-16">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
           {/* Brand block */}
           <div className="lg:col-span-5">
@@ -152,7 +152,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-ink-border pt-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-4 border-t border-ink-border pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-ink-text/40">
             © {year} For The Rest Of Us. Built in Johannesburg.
           </p>

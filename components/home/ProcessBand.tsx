@@ -43,7 +43,7 @@ export default function ProcessBand() {
           subtitle="One lifecycle, whether the product is ours or yours — powered by business tech, AI, and automation wherever they genuinely remove work."
         />
 
-        <div className="relative mt-14">
+        <div className="relative mt-12">
           {/* The rule that draws itself */}
           <motion.span
             aria-hidden

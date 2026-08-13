@@ -45,7 +45,7 @@ export default function AppStorySection({
   const isPhone = shape === "phone";
 
   return (
-    <section className="overflow-hidden py-14 sm:py-20">
+    <section className="overflow-hidden py-12 sm:py-16">
       <div className="mx-auto w-full max-w-content px-5 sm:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
           {/* Text */}

@@ -161,7 +161,7 @@ export default function AppDetail({ app }: { app: App }) {
           </div>
 
           {/* Hero screenshot rising from the fold */}
-          <div className="mt-16 sm:mt-20">
+          <div className="mt-12 sm:mt-16">
             {heroShot ? (
               <div
                 className={`relative mx-auto overflow-hidden rounded-t-well border border-b-0 border-border bg-surface ${heroFrame.width}`}
@@ -267,7 +267,7 @@ export default function AppDetail({ app }: { app: App }) {
         </div>
 
         {app.legal && (
-          <div className="mt-14 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-border pt-8 text-[0.9375rem] text-muted">
+          <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-border pt-8 text-[0.9375rem] text-muted">
             <span className="text-faint">Legal</span>
             <Link
               href={app.legal.privacy}

@@ -14,9 +14,9 @@ import HeroArtefact from "@/components/home/HeroArtefact";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-bg pt-32 sm:pt-36 lg:pt-40">
-      <div className="relative mx-auto w-full max-w-content px-5 pb-24 sm:px-8 sm:pb-32">
-        <div className="grid items-center gap-20 lg:grid-cols-12 lg:gap-14">
+    <section className="relative overflow-hidden bg-bg pt-28 sm:pt-32 lg:pt-36">
+      <div className="relative mx-auto w-full max-w-content px-5 pb-16 sm:px-8 sm:pb-20">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
           {/* Copy */}
           <div className="lg:col-span-6">
             <EyebrowChip>Solutions &amp; consulting studio · Johannesburg</EyebrowChip>

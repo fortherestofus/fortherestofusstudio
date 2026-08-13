@@ -111,6 +111,13 @@ colors in `tailwind.config.ts`. Use tokens, never raw palette hex.
   (text on a solid accent fill), **`accent-deep`** (text and icons on a pale
   wash — always use this for accent-coloured text; raw `accent` fails contrast
   on light surfaces).
+- **Vertical rhythm.** Section padding is the *only* thing that spaces
+  sections, and adjacent paddings stack — `md` (`py-12 sm:py-16`) means a
+  128px boundary on desktop, not 64. Keep internal spacing visibly smaller
+  than the boundary (`mt-12` max for a major break inside a section, `mt-8`
+  after a heading) so proximity still reads. Before adding vertical space,
+  measure the real gap rather than guessing: the old layout had 192px
+  boundaries plus 64px internal margins and read as broken.
 - **At most two ink (dark) moments per page, and never in the same viewport.**
   On most pages that budget is spent on the closing `CallToAction` block and
   the footer, so keep everything above them light.

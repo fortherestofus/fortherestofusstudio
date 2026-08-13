@@ -77,7 +77,7 @@ export default function UseCasesChapter() {
   return (
     <section id="use-cases" className="bg-sunken">
       {/* Heading */}
-      <div className="mx-auto w-full max-w-content px-5 pt-16 sm:px-8 sm:pt-24">
+      <div className="mx-auto w-full max-w-content px-5 pt-12 sm:px-8 sm:pt-16">
         <ChapterMark index={4} total={4} tone="default" />
         <SectionHeading
           align="left"
@@ -221,7 +221,7 @@ export default function UseCasesChapter() {
       </div>
 
       {/* The turn back to the reader */}
-      <div className="mx-auto flex w-full max-w-content flex-col items-center gap-6 px-5 pb-16 text-center sm:px-8 sm:pb-24">
+      <div className="mx-auto flex w-full max-w-content flex-col items-center gap-6 px-5 pb-12 text-center sm:px-8 sm:pb-16">
         <p className="max-w-[52ch] text-pretty text-lg leading-relaxed text-ink">
           Your business has a problem like one of these. We can build yours
           the same way.

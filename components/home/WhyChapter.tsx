@@ -40,7 +40,7 @@ const BELIEFS = [
 export default function WhyChapter() {
   return (
     <Section tone="canvas" id="why">
-      <ChapterMark index={1} total={3} />
+      <ChapterMark index={1} total={4} />
 
       <div className="mt-4 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
         <div className="lg:col-span-6">
@@ -61,7 +61,7 @@ export default function WhyChapter() {
         </div>
       </div>
 
-      <div className="mt-16 grid gap-12 md:grid-cols-3 md:gap-8">
+      <div className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
         {BELIEFS.map((belief, i) => (
           <div key={belief.title} className="flex flex-col">
             <div className="flex items-center gap-3">
@@ -82,7 +82,7 @@ export default function WhyChapter() {
       </div>
 
       {/* First trust marker */}
-      <div className="mt-16 border-t border-border pt-10">
+      <div className="mt-12 border-t border-border pt-8">
         <TestimonialQuote
           testimonial={testimonials[0]}
           size="lg"

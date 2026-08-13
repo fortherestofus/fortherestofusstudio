@@ -25,7 +25,7 @@ export default function PageHero({
   align = "left",
 }: PageHeroProps) {
   return (
-    <section className="relative overflow-hidden bg-bg pb-14 pt-32 sm:pb-20 sm:pt-40">
+    <section className="relative overflow-hidden bg-bg pb-12 pt-28 sm:pb-16 sm:pt-32">
       <div
         aria-hidden
         className="pointer-events-none absolute -left-40 -top-28 h-[420px] w-[420px] rounded-full opacity-35 blur-3xl"

@@ -109,8 +109,8 @@ export default function CallToAction({
   scatter = false,
 }: CallToActionProps) {
   return (
-    <section className="bg-bg px-4 pb-20 pt-4 sm:px-6 sm:pb-28">
-      <div className="grain relative mx-auto w-full max-w-content overflow-hidden rounded-block bg-ink-surface px-6 py-16 text-center sm:px-12 sm:py-24">
+    <section className="bg-bg px-4 pb-16 sm:px-6 sm:pb-20">
+      <div className="grain relative mx-auto w-full max-w-content overflow-hidden rounded-block bg-ink-surface px-6 py-14 text-center sm:px-12 sm:py-20">
         <div
           aria-hidden
           className="pointer-events-none absolute -right-20 -top-24 h-[360px] w-[360px] rounded-full opacity-25 blur-3xl"

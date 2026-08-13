@@ -121,7 +121,7 @@ export default function StudioPage() {
         </div>
 
         {/* The lifecycle, stated once */}
-        <ol className="mt-14 grid gap-8 border-t border-border pt-10 md:grid-cols-3">
+        <ol className="mt-12 grid gap-8 border-t border-border pt-8 md:grid-cols-3">
           {PROCESS_STEPS.map((step) => (
             <li key={step.step}>
               <span className="nums text-[0.8125rem] text-accent-deep">
@@ -233,7 +233,7 @@ export default function StudioPage() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-border pt-10">
+        <div className="mt-12 border-t border-border pt-8">
           <TestimonialQuote
             testimonial={testimonials[0]}
             size="lg"
