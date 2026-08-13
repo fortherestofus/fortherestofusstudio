@@ -328,13 +328,12 @@ export default async function ServiceDetailPage({
 
           <div className="mt-12 border-t border-border pt-8">
             <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-faint">
-              And the rest of the bench
+              The rest of the tools we use
             </h3>
             <ToolMarquee className="mt-5" />
             <p className="mt-4 max-w-[56ch] text-[0.875rem] leading-relaxed text-muted">
-              Every name here has shipped real work in our case studies —
-              and if your stack already runs on something else, we build on
-              that instead.
+              We pick per job rather than per habit — and if your stack
+              already runs on something else, we build on that instead.
             </p>
           </div>
         </Section>

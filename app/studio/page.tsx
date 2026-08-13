@@ -202,13 +202,12 @@ export default function StudioPage() {
 
         <div className="mt-12 border-t border-border pt-8">
           <h2 className="text-[0.6875rem] uppercase tracking-[0.14em] text-faint">
-            The bench we build on
+            The tools we use
           </h2>
           <ToolMarquee className="mt-6" />
           <p className="mt-5 max-w-[60ch] text-[0.9375rem] leading-relaxed text-muted">
-            Every name here has shipped real work in our case studies. We pick
-            per job rather than per habit — and if your stack already runs on
-            something else, we build on that instead.
+            We pick per job rather than per habit — and if your stack already
+            runs on something else, we build on that instead.
           </p>
         </div>
 

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { services } from "@/lib/services";
 import { HELLO_EMAIL, CAL_INTRO, CAL_CONSULT, calLink } from "@/lib/contact";
 import { STUDIO_STATS } from "@/lib/proof";
@@ -165,18 +165,27 @@ export default function ContactPage() {
           fallbackLabel="Book a 15 minute intro call"
         />
 
-        <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted">
-          Want to work through something properly instead?{" "}
-          <a
-            href={CAL_CONSULT}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-medium text-ink underline decoration-border underline-offset-4 transition-colors hover:decoration-ink"
-          >
-            Book a paid consultation
-            <ArrowUpRight className="h-4 w-4" aria-hidden />
-          </a>
-        </p>
+        {/*
+          The second event type, as an option rather than a footnote. It could
+          have gone inside the embed — pointing Cal at the profile page lists
+          both — but that puts a "choose an event type" step in front of the
+          free intro call, which is the action this page is actually for.
+        */}
+        <div className="mt-8 flex flex-col gap-6 rounded-card border border-border bg-surface p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
+          <div>
+            <h3 className="text-[1.25rem] font-medium tracking-[-0.015em] text-ink">
+              Or something more involved
+            </h3>
+            <p className="mt-2 max-w-[54ch] text-pretty text-[0.9375rem] leading-relaxed text-muted">
+              A longer, paid session — for when you already know what you want
+              and need to work through the how, rather than find out whether
+              there is a project here.
+            </p>
+          </div>
+          <PillButton href={CAL_CONSULT} external variant="ghost" size="lg">
+            Book a consultation
+          </PillButton>
+        </div>
       </Section>
 
       {/*

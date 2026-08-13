@@ -60,7 +60,15 @@ export const testimonials: Testimonial[] = [
   },
 ];
 
-/** Organisations Alroy has done work for. Real engagements only. */
+/**
+ * Organisations Alroy has done work for. Real engagements only, and the single
+ * source for every "Work delivered for" list on the site — the home band, the
+ * hero's featured four (which take the first four, so order matters here), and
+ * the marquee on /services and /studio.
+ *
+ * The marquee used to keep its own longer list of nine alongside this six,
+ * which is how two records of the same fact drift apart. This is the nine.
+ */
 export const clients = [
   "Meta",
   "IFC — World Bank Group",
@@ -68,4 +76,7 @@ export const clients = [
   "Energy Capital & Power",
   "African Agri Council",
   "Jenna Clifford",
+  "Innovatr",
+  "Thrifty Adventures",
+  "Deep Ocean",
 ];

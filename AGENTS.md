@@ -60,13 +60,24 @@ InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
   generated faces in `ProcessBand` are the deliberate exception: generic
   personas standing in for roles, in an exchange the page labels as an
   illustration, carrying no names, numbers or results.
-- **Client logos: two sanctioned places, one wording.** They appear beside a
-  testimonial (the speaker's organisation) and in the `ClientMarquee` on
-  `/services` and `/studio`, always headed **"Work delivered for"** — a record
-  of engagements, never "trusted by" or wording that implies endorsement. They
-  stay out of the hero and the footer. Trademarks belong to their owners and
-  identify the work only. `/studio` used to list the same names as plain text;
-  the marks are the same record, read faster.
+- **Client names are typographic; logos survive in one place only.** The
+  `ClientMarquee` on `/services` and `/studio` is a rail of **names**, not
+  marks. It carried the real logos until we looked at them at 44px: several of
+  these companies only publish a dense lockup or a dark square, so Jenna
+  Clifford read as a black box and African Agri Council as three coloured
+  dots. A logo wall you cannot read is worse than the words, and this site is
+  type-led. Organisation marks remain **only** beside a testimonial, at 64px,
+  identifying the speaker. Every list reads from `clients` in
+  `lib/testimonials.ts` — the marquee used to keep its own longer copy, which
+  is how two records of the same fact drift apart. Always headed **"Work
+  delivered for"**, never "trusted by" or anything implying endorsement; never
+  in the hero or footer. Trademarks belong to their owners.
+- **The tool rail says "the tools we use", and ends on "and more".** It was
+  once a stricter claim — every name evidenced by a shipped case study — which
+  was true but meant the list could never name something we can do and simply
+  have not billed for yet. `ToolMarquee` is now explicitly non-exhaustive. The
+  line that still must not be written is an aspirational one: add a tool only
+  if someone here has actually run it.
 - **Three pillars, one lifecycle.** Services group as **build → identity →
   grow** (`ServiceLifecycle`, `LIFECYCLE_CHAPTERS`). Automation is not a
   fourth pillar; it sits under grow. The five service slugs and URLs stay
@@ -197,6 +208,10 @@ the iframe canvas stays white); the frame uses `min-height` and **never**
 no height, is a real working link, and retires only on Cal's `linkReady`.
 Colours are read from our tokens at call time and re-sent on a theme flip —
 one frame later, because next-themes swaps the class from a parent effect.
+The paid consultation is a **panel below the embed**, not a second event type
+inside it: pointing Cal at the profile page does list both, at the cost of a
+"choose an event type" step in front of the free intro call, which is the
+action the page exists for.
 
 **`/studio` says who we are, and stops there.** It does not restate the
 three-step lifecycle (that is `/services`) and does not list the products

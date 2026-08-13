@@ -2,49 +2,44 @@
 
 /**
  * ClientMarquee — the organisations we have delivered work for, as a slow
- * continuous rail.
+ * continuous rail of names.
  *
- * Headed "Work delivered for", not "trusted by": these marks record real
- * engagements, they are not endorsements, and the site's rule is that a
- * logo strip must never imply one (AGENTS.md). Trademarks belong to their
- * owners and appear here only to identify the work.
+ * Typographic, not logos. It carried the real marks until Alroy pointed out
+ * what they actually looked like in a 44px row: several of these companies
+ * only publish a dense horizontal lockup or a dark square, so at that height
+ * Jenna Clifford read as a black box, Thrifty and Digify as illegible smudges,
+ * and African Agri Council as three coloured dots. A wall of marks that cannot
+ * be read is worse than the names, and the site is type-led anyway — this
+ * matches the wordmark rather than fighting it.
  *
- * The rail is duplicated once and translated by exactly half its width, so
- * the seam is invisible. Under reduced motion it stops and becomes a plain
- * wrapped list.
+ * Names still come from lib/testimonials, so a logo file can never disagree
+ * with the record. Organisation marks survive in exactly one place: beside a
+ * testimonial, at 64px, where they are legible and identify the speaker.
+ *
+ * Headed "Work delivered for", not "trusted by": these are engagements, not
+ * endorsements (AGENTS.md). The rail is duplicated once and translated by
+ * exactly half its width, so the seam is invisible. Under reduced motion it
+ * stops and becomes a plain wrapped list.
  */
-import Image from "next/image";
 import { useReducedMotion } from "framer-motion";
+import { clients } from "@/lib/testimonials";
 import { cn } from "@/lib/cn";
 
-export interface ClientMark {
-  src: string;
-  name: string;
+function Name({ name }: { name: string }) {
+  return (
+    <span className="shrink-0 whitespace-nowrap text-[1.25rem] font-medium tracking-[-0.015em] text-ink sm:text-[1.5rem]">
+      {name}
+    </span>
+  );
 }
 
-export const CLIENT_MARKS: ClientMark[] = [
-  { src: "/logos/meta.png", name: "Meta" },
-  { src: "/logos/ifc.jpg", name: "IFC — World Bank Group" },
-  { src: "/logos/innovatr.jpg", name: "Innovatr" },
-  { src: "/logos/thrifty.jpg", name: "Thrifty Adventures" },
-  { src: "/logos/digify-africa.png", name: "Digify Africa" },
-  { src: "/logos/energy-capital-power.png", name: "Energy Capital & Power" },
-  { src: "/logos/deep-ocean.jpg", name: "Deep Ocean" },
-  { src: "/logos/african-agri-council.png", name: "African Agri Council" },
-  { src: "/logos/jenna-clifford.jpg", name: "Jenna Clifford" },
-];
-
-function Mark({ mark }: { mark: ClientMark }) {
+/** The one live moment in an otherwise monotone rail. */
+function Dot() {
   return (
-    <span className="flex h-16 w-[150px] shrink-0 items-center justify-center rounded-card border border-border bg-surface p-3">
-      <Image
-        src={mark.src}
-        alt={mark.name}
-        width={120}
-        height={44}
-        className="h-full w-auto max-w-full object-contain"
-      />
-    </span>
+    <span
+      aria-hidden
+      className="h-1.5 w-1.5 shrink-0 self-center rounded-full bg-accent"
+    />
   );
 }
 
@@ -53,11 +48,13 @@ export default function ClientMarquee({ className }: { className?: string }) {
 
   if (reduced) {
     return (
-      <div className={cn("flex flex-wrap gap-3", className)}>
-        {CLIENT_MARKS.map((m) => (
-          <Mark key={m.src} mark={m} />
+      <ul className={cn("flex flex-wrap items-center gap-x-5 gap-y-2", className)}>
+        {clients.map((name) => (
+          <li key={name}>
+            <Name name={name} />
+          </li>
         ))}
-      </div>
+      </ul>
     );
   }
 
@@ -65,14 +62,17 @@ export default function ClientMarquee({ className }: { className?: string }) {
     <div
       className={cn(
         "relative overflow-hidden",
-        // Fade the ends so marks enter and leave rather than snapping off.
+        // Fade the ends so names enter and leave rather than snapping off.
         "[mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]",
         className
       )}
     >
-      <div className="flex w-max animate-marquee gap-3 hover:[animation-play-state:paused]">
-        {[...CLIENT_MARKS, ...CLIENT_MARKS].map((m, i) => (
-          <Mark key={`${m.src}-${i}`} mark={m} />
+      <div className="flex w-max animate-marquee items-center gap-6 hover:[animation-play-state:paused] sm:gap-8">
+        {[...clients, ...clients].map((name, i) => (
+          <span key={`${name}-${i}`} className="flex items-center gap-6 sm:gap-8">
+            <Name name={name} />
+            <Dot />
+          </span>
         ))}
       </div>
     </div>
