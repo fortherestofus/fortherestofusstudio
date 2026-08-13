@@ -35,7 +35,7 @@ const BLOCKS: Record<
     body: "text-accent-ink opacity-80",
     link: "text-accent-ink",
   },
-  brand: {
+  identity: {
     card: "bg-tint-amber border-transparent",
     mark: "text-tint-amber-deep opacity-70",
     title: "text-tint-amber-deep",
@@ -43,13 +43,6 @@ const BLOCKS: Record<
     link: "text-ink",
   },
   grow: {
-    card: "bg-tint-olive border-transparent",
-    mark: "text-tint-olive-deep opacity-70",
-    title: "text-tint-olive-deep",
-    body: "text-ink opacity-75",
-    link: "text-ink",
-  },
-  automate: {
     card: "bg-ink-surface border-transparent",
     mark: "text-ink-muted",
     title: "text-ink-text",
@@ -107,39 +100,34 @@ function IdentityStack() {
   );
 }
 
-/** Campaign work — the artefact for the grow block, with rotating results. */
-function CampaignArtefact() {
+/**
+ * Grow holds both halves of the pillar — the campaign that gets you found
+ * and the automation that keeps it running — so its artefact is a pair,
+ * which is also why this block takes the full width of the grid.
+ */
+function GrowArtefact() {
   const piece = marketingWork[0];
   return (
-    <div className="relative h-full px-5 pt-5">
-      <div className="relative h-full overflow-hidden rounded-t-[10px] border border-b-0 border-border bg-surface shadow-[0_-8px_24px_rgba(23,21,15,0.12)]">
+    <div className="grid gap-5 px-5 pt-5 md:grid-cols-2">
+      <div className="relative h-[230px] overflow-hidden rounded-t-[10px] border border-b-0 border-ink-border">
         <Image
           src={piece.src}
           alt={piece.alt}
           fill
-          sizes="(max-width: 640px) 92vw, 560px"
+          sizes="(max-width: 768px) 92vw, 420px"
           className="object-cover object-top"
         />
         <KpiRotator />
       </div>
+      <ArtefactRotator pieces={automationWork} onInk className="px-0 pt-0" />
     </div>
   );
 }
 
-/**
- * The automation bench — the artefact for the automation block. These are
- * whole working tools, so they take the full width one at a time rather
- * than becoming three unreadable slivers.
- */
-function AutomationArtefact() {
-  return <ArtefactRotator pieces={automationWork} onInk />;
-}
-
 const ARTEFACTS: Record<string, React.ReactNode> = {
   build: <ProductsArtefact />,
-  brand: <IdentityStack />,
-  grow: <CampaignArtefact />,
-  automate: <AutomationArtefact />,
+  identity: <IdentityStack />,
+  grow: <GrowArtefact />,
 };
 
 export default function ServicesChapter() {
@@ -157,13 +145,15 @@ export default function ServicesChapter() {
       <div className="mt-12 grid gap-4 sm:grid-cols-2 sm:gap-5">
         {LIFECYCLE_CHAPTERS.map((chapter, i) => {
           const block = BLOCKS[chapter.key];
-          const isInk = chapter.key === "automate";
+          const isInk = chapter.key === "grow";
           return (
             <div
               key={chapter.key}
               className={cn(
                 "flex flex-col overflow-hidden rounded-card border",
-                block.card
+                block.card,
+                /* Grow carries two artefacts, so it takes the full row. */
+                isInk && "sm:col-span-2"
               )}
             >
               <div className="flex flex-col px-6 pt-6 sm:px-7 sm:pt-7">
@@ -216,7 +206,7 @@ export default function ServicesChapter() {
               <div
                 className={cn(
                   "mt-auto",
-                  chapter.key === "automate" ? "" : "h-[200px] sm:h-[230px]"
+                  chapter.key === "grow" ? "" : "h-[200px] sm:h-[230px]"
                 )}
               >
                 {ARTEFACTS[chapter.key]}

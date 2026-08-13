@@ -12,11 +12,12 @@ export interface ServiceSection {
 }
 
 /**
- * The lifecycle stage a service belongs to — the four chapters of the story
- * (see docs/REDESIGN-V3.md §4): build the product, give it identity, grow
- * its visibility, automate the business around it.
+ * The three things the studio does, in the order they happen: build the
+ * product, give it an identity, grow its visibility. Automation is not a
+ * fourth pillar — it is how growth happens without adding headcount, so it
+ * lives under "grow" (Alroy's framing, iteration 5).
  */
-export type ServiceLifecycle = "build" | "brand" | "grow" | "automate";
+export type ServiceLifecycle = "build" | "identity" | "grow";
 
 export interface Service {
   slug: string;
@@ -193,7 +194,7 @@ export const services: Service[] = [
   {
     slug: "brand-and-content",
     arm: "consult",
-    lifecycle: "brand",
+    lifecycle: "identity",
     icon: "Palette",
     title: "Brand, design & content",
     summary:
@@ -239,7 +240,7 @@ export const services: Service[] = [
   {
     slug: "tech-and-automation",
     arm: "consult",
-    lifecycle: "automate",
+    lifecycle: "grow",
     icon: "Workflow",
     title: "Business tech & automation",
     summary:
@@ -284,6 +285,43 @@ export const services: Service[] = [
   },
 ];
 
+/**
+ * The named tools we actually run, for the automation page. Third-party
+ * products, described by what we use them for — never presented as ours.
+ * Keep this factual: if a capability is not one we have used on real work,
+ * it does not belong here.
+ */
+export const TOOLBENCH: {
+  name: string;
+  role: string;
+  detail: string;
+}[] = [
+  {
+    name: "Apollo.io",
+    role: "Finding the right people to talk to",
+    detail:
+      "Sourcing qualified contacts against an ICP — filtering by role, seniority and company, enriching what is missing, and pushing the result into a CRM. We built Innovatr's pipeline this way, from nothing to a few thousand contacts.",
+  },
+  {
+    name: "Zoho",
+    role: "Following up without forgetting",
+    detail:
+      "Email sequencing and the CRM automations around it: what gets sent, when, and what happens when somebody replies. The unglamorous half of lead generation, and the half that usually breaks.",
+  },
+  {
+    name: "Claude Cowork",
+    role: "Orchestrating the office work",
+    detail:
+      "Design, data processing, dashboards, content drafting and SaaS orchestration, run against your own files and tools through MCP connections and computer use. It reads the folder so nobody has to.",
+  },
+  {
+    name: "Zapier",
+    role: "Making the tools talk",
+    detail:
+      "The joins between systems: a form filling a CRM, a signup starting a sequence, a lead routed by fit, content moving from draft to scheduled. Mapped on a canvas first, so we automate a process we have actually looked at.",
+  },
+];
+
 export const PROCESS_STEPS = [
   {
     step: 1,
@@ -314,41 +352,42 @@ export const PROCESS_STEPS = [
 export const LIFECYCLE_CHAPTERS: {
   key: ServiceLifecycle;
   title: string;
+  /** The one-line promise. */
   blurb: string;
-  tint: "rust" | "amber" | "olive" | "ink";
+  /** The belief underneath it, for the services page. */
+  belief: string;
+  tint: "rust" | "amber" | "ink";
   serviceSlugs: string[];
 }[] = [
   {
     key: "build",
-    title: "Custom products & solutions",
+    title: "We build",
     blurb:
-      "Apps, SaaS, and websites — built end to end, from scoped idea to shipped thing.",
+      "Custom products and solutions — apps, SaaS, and websites, from scoped idea to shipped thing.",
+    belief:
+      "A product only exists once someone can use it. Everything before that is a document.",
     tint: "rust",
     serviceSlugs: ["apps-and-saas", "websites"],
   },
   {
-    key: "brand",
-    title: "Brand & identity",
+    key: "identity",
+    title: "We give it identity",
     blurb:
-      "A look and a voice that stay consistent everywhere you show up.",
+      "Branding, design and content — a look and a voice that stay consistent everywhere you show up.",
+    belief:
+      "Products without a face get forgotten, even the useful ones. Design and words are the same job.",
     tint: "amber",
     serviceSlugs: ["brand-and-content"],
   },
   {
     key: "grow",
-    title: "Marketing & analytics",
+    title: "We grow it",
     blurb:
-      "Being known: positioning, campaigns, and measurement that tells you what actually worked.",
-    tint: "olive",
-    serviceSlugs: ["product-and-growth"],
-  },
-  {
-    key: "automate",
-    title: "Business tech & automation",
-    blurb:
-      "AI, integrations, and process optimisation — the tedious parts, off your plate.",
+      "Marketing, analytics and automation — being found, and running without you.",
+    belief:
+      "Launch is the middle. What you measure next decides whether any of it mattered.",
     tint: "ink",
-    serviceSlugs: ["tech-and-automation"],
+    serviceSlugs: ["product-and-growth", "tech-and-automation"],
   },
 ];
 

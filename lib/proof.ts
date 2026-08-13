@@ -20,12 +20,14 @@ export interface CaseProof {
   slug: string;
   client: string;
   /**
-   * "client" = paid work for a named client. "exploration" = self-directed
-   * work of our own. The distinction is never blurred on the page: an
-   * exploration is labelled as one, because presenting it as a client
-   * engagement would be a claim we cannot make.
+   * "client" = paid work for a named client. "venture" = a business of our
+   * own that took real money from real customers. "exploration" = a
+   * self-directed piece with no customers at all. The distinction is never
+   * blurred on the page — each is labelled — because presenting our own
+   * venture or a concept as a client engagement would be a claim we cannot
+   * make.
    */
-  kind: "client" | "exploration";
+  kind: "client" | "venture" | "exploration";
   /** What the engagement was, one line. */
   engagement: string;
   period: string;
@@ -134,6 +136,35 @@ export const caseProofs: CaseProof[] = [
     source:
       "Build and pricing records from the engagement; R20,000 is the price it was positioned at, not revenue booked. Full case study at alroyndhlovu.com.",
     serviceSlugs: ["apps-and-saas", "tech-and-automation"],
+  },
+  {
+    slug: "filosofee",
+    kind: "venture",
+    client: "Filosofee",
+    engagement:
+      "Our own clothing brand, built end to end: product, store, payment gateways, photography and content — then validated by selling",
+    period: "2024 – present",
+    stats: [
+      {
+        value: "Month one",
+        label: "first sales, local and international",
+        detail: "the validation that mattered — people paid",
+      },
+      {
+        value: "20 pieces",
+        label: "first bulk order",
+        detail: "branded merch produced for Thrifty Adventures",
+      },
+      {
+        value: "B2C → B2B",
+        label: "one storefront, two business models",
+        detail: "direct to customers, then collaborations",
+      },
+    ],
+    note: "We also killed a product: stickers. The admin per order, the packing, and the margin at that size never justified themselves for a small team — the honest answer was to stop, not to push harder.",
+    source:
+      "Our own brand, not client work. filosofee.shop. Sales figures are deliberately unstated — 'first sales in month one' is what we can evidence without publishing a revenue number.",
+    serviceSlugs: ["websites", "brand-and-content", "product-and-growth"],
   },
   {
     slug: "lumiskin",

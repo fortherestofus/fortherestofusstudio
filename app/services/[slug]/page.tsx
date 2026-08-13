@@ -7,10 +7,13 @@ import {
   getService,
   getOtherServices,
   PROCESS_STEPS,
+  TOOLBENCH,
 } from "@/lib/services";
 import { VIGNETTES, type VignetteKey } from "@/components/services/Vignettes";
 import { testimonials } from "@/lib/testimonials";
-import { getCaseProofsForService } from "@/lib/proof";
+import { caseProofs } from "@/lib/proof";
+import { SERVICE_SHOWCASE } from "@/lib/serviceShowcase";
+import WorkStrip from "@/components/services/WorkStrip";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import { ProcessStrip } from "@/components/ui/Card";
 import CaseProofCard from "@/components/ui/CaseProofCard";
@@ -58,8 +61,11 @@ export default async function ServiceDetailPage({
   const Vignette = VIGNETTES[service.slug as VignetteKey];
   // One quote next to the CTA — hesitation peaks right before the click.
   const quote = testimonials[services.indexOf(service) % testimonials.length];
-  // Real engagements allowed to speak for this service (lib/proof.ts).
-  const proofs = getCaseProofsForService(slug);
+  // The work strip and the single case this page anchors on.
+  const showcase = SERVICE_SHOWCASE[slug];
+  const anchorCase = showcase
+    ? caseProofs.find((c) => c.slug === showcase.caseSlug)
+    : undefined;
 
   return (
     <>
@@ -171,20 +177,74 @@ export default async function ServiceDetailPage({
         </div>
       </Section>
 
-      {/* Proof — the real-world version of the claims above */}
-      {proofs.length > 0 && (
+      {/* The work itself */}
+      {showcase && (
         <Section tone="canvas">
           <SectionHeading
             align="left"
-            eyebrow="Proof"
-            title="What this looked like in the real world."
-            subtitle="Real engagements with numbers attached — including the parts that did not work."
+            eyebrow="The work"
+            title={showcase.stripTitle}
+            subtitle={showcase.stripIntro}
           />
-          <div className="mt-10 grid gap-4 md:grid-cols-2 md:gap-5">
-            {proofs.map((proof) => (
-              <CaseProofCard key={proof.slug} proof={proof} />
-            ))}
+          <WorkStrip pieces={showcase.pieces} className="mt-10" />
+        </Section>
+      )}
+
+      {/* One case, told from this service's angle */}
+      {anchorCase && (
+        <Section tone="sunken">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-5">
+              <EyebrowChip tone={anchorCase.kind === "client" ? "default" : "accent"}>
+                {anchorCase.kind === "client"
+                  ? "Client case"
+                  : anchorCase.kind === "venture"
+                    ? "Our own venture"
+                    : "Self-directed exploration"}
+              </EyebrowChip>
+              <h2 className="mt-5 text-balance text-[1.75rem] font-medium leading-snug tracking-[-0.02em] text-ink sm:text-[2.25rem]">
+                {anchorCase.client}
+              </h2>
+              <p className="mt-4 max-w-[46ch] text-pretty leading-relaxed text-muted">
+                {showcase?.caseAngle}
+              </p>
+            </div>
+            <div className="lg:col-span-7">
+              <CaseProofCard proof={anchorCase} />
+            </div>
           </div>
+        </Section>
+      )}
+
+      {/* The named bench — automation page only */}
+      {slug === "tech-and-automation" && (
+        <Section tone="canvas">
+          <SectionHeading
+            align="left"
+            eyebrow="What we run on"
+            title="The tools, named."
+            subtitle="No mystery stack. These are the platforms we build automations on, and what each one is actually for."
+          />
+          <ol className="mt-10 grid gap-x-10 gap-y-0 md:grid-cols-2">
+            {TOOLBENCH.map((tool, i) => (
+              <li key={tool.name} className="border-t border-border py-6">
+                <div className="flex items-baseline gap-3">
+                  <span className="nums text-[0.8125rem] text-faint">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-[1.25rem] font-medium tracking-[-0.015em] text-ink">
+                    {tool.name}
+                  </h3>
+                </div>
+                <p className="mt-1 pl-8 text-[0.9375rem] font-medium text-accent-deep">
+                  {tool.role}
+                </p>
+                <p className="mt-2 max-w-[46ch] pl-8 text-[0.9375rem] leading-relaxed text-muted">
+                  {tool.detail}
+                </p>
+              </li>
+            ))}
+          </ol>
         </Section>
       )}
 

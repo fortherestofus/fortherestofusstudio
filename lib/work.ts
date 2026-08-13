@@ -35,6 +35,14 @@ export const dejaMediaVideo = {
   width: 1280,
   height: 720,
   caption: "Deja Media — a site built to be edited by the people who own it.",
+  /** The poster as a still, for rails that cannot hold a video. */
+  posterAsWork: {
+    src: "/video/dejamedia-site-poster.webp",
+    alt: "The Deja Media site",
+    width: 1280,
+    height: 720,
+    caption: "Deja Media — built to be edited by its owners",
+  } satisfies WorkImage,
 };
 
 /**
@@ -116,6 +124,113 @@ export const automationWork: WorkImage[] = [
     caption: "Costing the automation honestly",
   },
 ];
+
+/**
+ * Filosofee — our own clothing brand, and the one case that touches all
+ * three pillars. Grouped by which pillar each artefact argues for, so a
+ * service page can take the slice that belongs to it and no page repeats
+ * another.
+ */
+export const filosofeeVideo = {
+  src: "/video/filosofee-site.mp4",
+  poster: "/video/filosofee-site-poster.webp",
+  width: 1280,
+  height: 720,
+  caption: "filosofee.shop — the store, built and taking payments.",
+};
+
+/**
+ * Build: the storefront. The payments strip lives separately — it is a
+ * 700×59 utility graphic, and anything that thin turns a fixed-height rail
+ * into a very wide empty box.
+ */
+export const filosofeeStore: WorkImage[] = [
+  {
+    src: "/work/filosofee/site-home.jpg",
+    alt: "The Filosofee storefront homepage",
+    width: 570,
+    height: 600,
+    caption: "The storefront",
+  },
+];
+
+export const filosofeePayments: WorkImage = {
+  src: "/work/filosofee/site-payments.png",
+  alt: "Card, Mastercard and PayPal payment options on the Filosofee checkout",
+  width: 700,
+  height: 59,
+  caption: "Gateways, live",
+};
+
+/** Identity: the shoot that set the product truth, and the voice on it. */
+export const filosofeeIdentity: WorkImage[] = [
+  {
+    src: "/work/filosofee/shoot-wordmark.jpg",
+    alt: "Studio shot of the Filosofee wordmark tee",
+    width: 1080,
+    height: 1350,
+    caption: "The wordmark, shot",
+  },
+  {
+    src: "/work/filosofee/shoot-pair.jpg",
+    alt: "Two models in Filosofee tees against a studio backdrop",
+    width: 1080,
+    height: 1350,
+    caption: "The range",
+  },
+  {
+    src: "/work/filosofee/tee-indoda.png",
+    alt: "“indoda must what?” speech-bubble graphic tee design",
+    width: 900,
+    height: 900,
+    caption: "Voice, worn",
+  },
+  {
+    src: "/work/filosofee/tee-zero.png",
+    alt: "“I have zero talking stages left in me” graphic tee design",
+    width: 900,
+    height: 900,
+    caption: "Voice, worn",
+  },
+];
+
+/**
+ * Grow: the AI set. Deliberately the frames a shoot could not reach — a
+ * New York street, a diner, a field with a tiger — because that is the
+ * actual argument. The studio shoot above gave these their base.
+ */
+export const filosofeeAiMedia: WorkImage[] = [
+  {
+    src: "/work/filosofee/ai-street.jpg",
+    alt: "Generated campaign frame: a model in Filosofee on a brownstone street",
+    width: 1024,
+    height: 1536,
+    caption: "A street we never flew to",
+  },
+  {
+    src: "/work/filosofee/ai-diner.jpg",
+    alt: "Generated campaign frame: a model in Filosofee in a diner",
+    width: 1024,
+    height: 1536,
+    caption: "A diner we never booked",
+  },
+  {
+    src: "/work/filosofee/ai-tiger.jpg",
+    alt: "Generated campaign frame: a model in Filosofee in a field beside a tiger",
+    width: 1024,
+    height: 1536,
+    caption: "A tiger, obviously",
+  },
+];
+
+/** The product we stopped making — the honest chapter. */
+export const filosofeeStickers: WorkImage = {
+  src: "/work/filosofee/site-stickers.jpg",
+  alt: "Filosofee sticker product photographed on a laptop",
+  width: 570,
+  height: 600,
+  caption: "Stickers — the line we closed",
+};
 
 /** Social Sweep's demo, for the automation and product surfaces. */
 export const socialSweepVideo = {

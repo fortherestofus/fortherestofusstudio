@@ -62,8 +62,15 @@ export default function StudioPage() {
                   So we run the whole lifecycle: identify the problem, build
                   the product, grow its visibility — with business tech, AI and
                   automation used wherever they genuinely remove work rather
-                  than add software. It is deliberately a small studio. The
-                  person you brief is the person who does the work.
+                  than add software.
+                </p>
+                <p>
+                  It is deliberately small. Projects run as a small team
+                  assembled for the job, and the person who scopes your work is
+                  the person who leads it through to launch — no account layer,
+                  no work handed down. Your repositories, accounts and content
+                  are yours from day one, documented. We would rather you could
+                  leave than have you locked in.
                 </p>
               </div>
             </div>
