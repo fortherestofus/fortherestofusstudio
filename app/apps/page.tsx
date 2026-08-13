@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { apps } from "@/lib/apps";
 import PageHero from "@/components/layout/PageHero";
-import Section from "@/components/ui/Section";
-import { Well } from "@/components/ui/Card";
-import AppCard from "@/components/ui/AppCard";
+import AppBand from "@/components/apps/AppBand";
 import CallToAction from "@/components/home/CallToAction";
 
 const DESCRIPTION =
@@ -31,24 +29,31 @@ export default function AppsIndexPage() {
         lead="We keep a small shelf of products of our own. They are where we test ideas, learn what actually holds up in people's hands, and stay honest about how long good work takes. They are also the clearest proof of what this studio can do."
       />
 
-      <Section tone="canvas" size="sm">
-        <Well>
-          <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
-            {apps.map((app) => (
-              <AppCard key={app.slug} app={app} />
-            ))}
-          </div>
-        </Well>
-      </Section>
+      {/*
+        Four editorial bands, not a card grid. Each one leads with the problem
+        and shows the actual product — the page's whole subject was previously
+        represented by four icons on a tray. Alternating tone and side gives
+        the scroll a rhythm; the accent wash behind each frame is the app's
+        own, so four bands read as four products.
+      */}
+      {apps.map((app, i) => (
+        <AppBand
+          key={app.slug}
+          app={app}
+          index={i}
+          total={apps.length}
+          flipped={i % 2 === 1}
+        />
+      ))}
 
       <CallToAction
         eyebrow="Your turn"
         title="Want something like this for your idea?"
         body="We take on a small number of client projects at a time. If you have something you want built properly, tell us about it."
         primaryLabel="Start a project"
-        primaryHref="/contact"
+        primaryHref="/contact/"
         secondaryLabel="See our services"
-        secondaryHref="/services"
+        secondaryHref="/services/"
       />
     </>
   );
