@@ -42,7 +42,7 @@ export interface CaseProof {
 export const STUDIO_STATS: ProofStat[] = [
   { value: "12+", label: "years across product, brand, and growth" },
   { value: "1,200+", label: "projects and clients served" },
-  { value: "4", label: "products of our own in active development" },
+  { value: "4", label: "products of our own, all in beta testing" },
 ];
 
 export const caseProofs: CaseProof[] = [

@@ -12,6 +12,7 @@ import { ArrowRight } from "lucide-react";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import ChapterMark from "@/components/ui/ChapterMark";
 import PillButton from "@/components/ui/PillButton";
+import ArtefactRotator from "@/components/home/ArtefactRotator";
 import KpiRotator from "@/components/home/KpiRotator";
 import { LIFECYCLE_CHAPTERS, getService } from "@/lib/services";
 import { getApp } from "@/lib/apps";
@@ -65,26 +66,22 @@ const BUILD_SHOWCASE = ["hakkan", "caught-slipping", "tapa"];
 
 function ProductsArtefact() {
   return (
-    <div className="flex h-full items-end gap-3 px-5 pt-5">
-      {BUILD_SHOWCASE.map((slug, i) => {
+    <div className="flex h-full items-end gap-3 overflow-hidden px-5 pt-5">
+      {BUILD_SHOWCASE.map((slug) => {
         const app = getApp(slug);
         if (!app) return null;
         return (
-          <div
+          <Image
             key={app.slug}
-            className={cn(
-              "relative flex-1 overflow-hidden rounded-t-[10px] border border-b-0 border-border bg-surface shadow-[0_-8px_24px_rgba(23,21,15,0.12)]",
-              i === 1 ? "h-full" : "h-[86%]"
-            )}
-          >
-            <Image
-              src={app.screenshots[0]}
-              alt={`${app.name} screen`}
-              fill
-              sizes="180px"
-              className="object-cover object-left-top"
-            />
-          </div>
+            src={app.screenshots[0]}
+            alt={`${app.name} screen`}
+            sizes="320px"
+            /* Height-sized, width automatic: Hakkan is a browser window and
+               tapa is a handset, and forcing both into one box crops
+               whichever does not fit. The row bleeds off the card edge by
+               design, the same way the artefacts bleed off the bottom. */
+            className="h-full w-auto shrink-0 rounded-t-[10px] border border-b-0 border-border object-contain shadow-[0_-8px_24px_rgba(23,21,15,0.12)]"
+          />
         );
       })}
     </div>
@@ -93,25 +90,18 @@ function ProductsArtefact() {
 
 /** Identity work — the artefact for the brand block. */
 function IdentityStack() {
-  const pieces = identityWork.slice(0, 3);
   return (
-    <div className="flex h-full items-end gap-3 px-5 pt-5">
-      {pieces.map((piece, i) => (
-        <div
+    <div className="flex h-full items-end gap-3 overflow-hidden px-5 pt-5">
+      {identityWork.slice(0, 3).map((piece) => (
+        <Image
           key={piece.src}
-          className={cn(
-            "relative flex-1 overflow-hidden rounded-t-[10px] border border-b-0 border-border bg-surface shadow-[0_-8px_24px_rgba(23,21,15,0.12)]",
-            i === 1 ? "h-full" : "h-[84%]"
-          )}
-        >
-          <Image
-            src={piece.src}
-            alt={piece.alt}
-            fill
-            sizes="180px"
-            className="object-cover"
-          />
-        </div>
+          src={piece.src}
+          alt={piece.alt}
+          width={piece.width}
+          height={piece.height}
+          sizes="320px"
+          className="h-full w-auto shrink-0 rounded-t-[10px] border border-b-0 border-border object-contain shadow-[0_-8px_24px_rgba(23,21,15,0.12)]"
+        />
       ))}
     </div>
   );
@@ -137,33 +127,12 @@ function CampaignArtefact() {
 }
 
 /**
- * The automation bench — the artefact for the automation block, built the
- * same way as the products stack so the two read as a pair.
+ * The automation bench — the artefact for the automation block. These are
+ * whole working tools, so they take the full width one at a time rather
+ * than becoming three unreadable slivers.
  */
 function AutomationArtefact() {
-  return (
-    <div className="flex h-full items-end gap-3 px-5 pt-5">
-      {automationWork.map((piece, i) => (
-        <div
-          key={piece.src}
-          className={cn(
-            "relative flex-1 overflow-hidden rounded-t-[10px] border border-b-0 border-ink-border bg-ink-raised shadow-[0_-8px_24px_rgba(0,0,0,0.45)]",
-            i === 1 ? "h-full" : "h-[86%]"
-          )}
-        >
-          <Image
-            src={piece.src}
-            alt={piece.alt}
-            fill
-            sizes="180px"
-            /* Centre-crop: these are wide product screens whose subject sits
-               mid-frame, so a top-left crop lands on empty canvas. */
-            className="object-cover object-center"
-          />
-        </div>
-      ))}
-    </div>
-  );
+  return <ArtefactRotator pieces={automationWork} onInk />;
 }
 
 const ARTEFACTS: Record<string, React.ReactNode> = {

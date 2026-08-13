@@ -151,7 +151,7 @@ export const apps: App[] = [
       "Your phone already nags you about screen time. But the real damage — and the real work — happens on the computer you sit at all day. CaughtSlipping lives there, quietly tracking where your hours go across YouTube, Reddit, X, Facebook, LinkedIn, and any site you add, then telling you the truth about it. It even counts the shows you watch hands-off, so an hour of video reads as an hour, not three minutes, and it stops the moment you're genuinely away.",
       "It has two personalities. Most days it's Caught Slipping: a dark-humour verdict on your scrolling and a shame meter you'd rather not see. But if your problem is the opposite — never logging off — flip on Caught Grinding and it tracks your focused time and warns you when 'productive' has quietly turned into overworking. Everything lives on your own device. No account, no servers, nothing leaving your browser — and every feature is free.",
     ],
-    status: "In Development",
+    status: "Beta",
     platform: ["Chrome Extension"],
     price: "Free",
     icon: "/icons/caught-slipping.png",
@@ -249,7 +249,7 @@ export const apps: App[] = [
       "InSpiritInTruth puts your faith back in your own hands. It's the companion to the InSpiritInTruth devotional — true-to-life reflections for the modern Christian who can't always make it to church or read the Bible cover to cover, but still wants to stay close to it.",
       "Each week brings one devotional, written to be digested slowly rather than rushed through. And when you need something for right now, a personal, scripture-rooted devotional is written from whatever you're feeling or going through — three of them free for every reader, unlimited on Premium. A full in-app Bible, a daily verse or quote to keep you connected, bookmarks, and notes hold your practice together the rest of the week — no algorithm, no ads, no pressure to be perfect.",
     ],
-    status: "In Development",
+    status: "Beta",
     platform: ["iOS", "Android"],
     // Premium is LOCKED at $7.99/mo, $59.99/yr (InSpiritInTruth
     // docs/DECISIONS.md, 2026-07-30). Mirrored on inspiritintruth.net.
@@ -384,7 +384,7 @@ export const apps: App[] = [
       "tapa. exists to delete one very specific kind of mental load: figuring out what to eat. Tell it what's in the fridge — by typing, talking, or snapping a photo — and it hands back a real, cookable recipe built around your tastes. No food-blog life story, no twenty open tabs.",
       "It's for people tired of thinking about meals every single day — busy professionals, the ones hosting, and anyone who'd rather spend that energy elsewhere. Get a fresh idea each morning, discover new ways to cook what you already have, scale up for visitors and group dinners, and save the winners to cook again or share. Set your dietary needs once and they're enforced as hard rules, every recipe.",
     ],
-    status: "In Development",
+    status: "Beta",
     platform: ["iOS", "Android"],
     price: "Free · Pro from $2.99/mo",
     icon: "/icons/tapa.png",

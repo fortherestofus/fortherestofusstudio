@@ -98,13 +98,15 @@ export default function UseCasesChapter() {
                 const isActive = i === active;
                 return (
                   <li key={app.slug}>
-                    <Link
-                      href={`/apps/${app.slug}/`}
+                    {/* Not a link: the whole card being clickable made it far
+                        too easy to leave the story by accident. Going to an
+                        app page is a deliberate act now. */}
+                    <div
                       className={cn(
-                        "block rounded-card border p-5 transition-all duration-300",
+                        "rounded-card border p-5 transition-all duration-300",
                         isActive
                           ? "border-border bg-surface shadow-card"
-                          : "border-transparent opacity-55 hover:opacity-90"
+                          : "border-transparent opacity-55"
                       )}
                     >
                       <div className="flex items-center gap-3">
@@ -138,11 +140,20 @@ export default function UseCasesChapter() {
                         “{app.problem}”
                       </p>
                       {isActive && (
-                        <p className="mt-2 text-[0.875rem] leading-relaxed text-muted">
-                          {app.tagline}
-                        </p>
+                        <>
+                          <p className="mt-2 text-[0.875rem] leading-relaxed text-muted">
+                            {app.tagline}
+                          </p>
+                          <Link
+                            href={`/apps/${app.slug}/`}
+                            className="group mt-4 inline-flex items-center gap-1.5 text-[0.875rem] font-medium text-ink underline-offset-4 hover:underline"
+                          >
+                            Learn more
+                            <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                          </Link>
+                        </>
                       )}
-                    </Link>
+                    </div>
                   </li>
                 );
               })}
@@ -181,18 +192,18 @@ export default function UseCasesChapter() {
       {/* Mobile: a plain stacked list */}
       <div className="mx-auto grid w-full max-w-content gap-4 px-5 py-12 sm:px-8 lg:hidden">
         {apps.map((app, i) => (
-          <Link
+          <div
             key={app.slug}
-            href={`/apps/${app.slug}/`}
             className="overflow-hidden rounded-card border border-border bg-surface shadow-card"
           >
-            <div className="relative h-[190px] overflow-hidden border-b border-border bg-sunken">
+            {/* Contained, not cropped — a phone screen forced into a wide
+                box loses the part that shows what the app does. */}
+            <div className="flex items-end justify-center bg-sunken px-5 pt-5">
               <Image
                 src={app.screenshots[0]}
                 alt={`${app.name} screen`}
-                fill
-                sizes="92vw"
-                className="object-cover object-left-top"
+                sizes="(max-width: 640px) 60vw, 320px"
+                className="h-[230px] w-auto rounded-t-[10px] border border-b-0 border-border object-contain"
               />
             </div>
             <div className="p-5">
@@ -215,8 +226,15 @@ export default function UseCasesChapter() {
               <p className="mt-3 text-pretty text-[1.125rem] font-medium leading-snug text-ink">
                 “{app.problem}”
               </p>
+              <Link
+                href={`/apps/${app.slug}/`}
+                className="group mt-4 inline-flex items-center gap-1.5 text-[0.875rem] font-medium text-ink underline-offset-4 hover:underline"
+              >
+                Learn more
+                <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+              </Link>
             </div>
-          </Link>
+          </div>
         ))}
       </div>
 
