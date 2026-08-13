@@ -38,7 +38,16 @@ InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
   pricing, or data handling changes (tapa, CaughtSlipping, InSpiritInTruth,
   Hakkan), its listing/legal/giving pages here must follow. Giving copy is
   voluntary-gift only — a gift must never be said to unlock anything. Hakkan
-  is in private beta; never describe it as launched.
+  is in private beta; never describe it as launched. **CaughtSlipping is live**
+  on the Chrome Web Store (August 2026) — status `Live`, CTA and badge both
+  point at `CAUGHT_SLIPPING_CWS` in `lib/apps.ts`, with Google's share
+  `utm_source` stripped.
+- **Store badges only for stores an app is actually headed for.** Each key in
+  an app's `stores` is opt-in: present-with-a-URL links, present-with-`null`
+  renders unlinked and names that store in the coming-soon line, absent
+  renders nothing. A Chrome extension is not going to the App Store, so
+  CaughtSlipping carries `chrome` alone. Badges are used exactly as supplied
+  and never dimmed or recoloured — greying someone else's mark modifies it.
 - **Only real claims.** No invented stats, testimonials, or client logos.
   `lib/testimonials.ts` holds real quotes from real named people — never add an
   entry that was not actually said, and never invent a name, title, or company.
@@ -169,6 +178,20 @@ real artefact of what that service actually sells, via `heroArtefact()` in
 subject — a voice-and-palette card heading the automation page — was the
 mismatch that killed it. Real screenshots or nothing.
 
+**Two ways to make contact, and the booker is the heavy one.**
+`/contact` offers email and a cal.com booking; both URLs live in
+`lib/contact.ts` and point at Alroy's own Cal account, so the booker shows his
+name. `components/contact/CalBooking.tsx` carries the traps that cost real
+time to find, and the comments in it are load-bearing: the embed is not
+requested until the section is nearly in view; the theme goes in the iframe's
+**query string** as well as through `ui` (theme by postMessage alone is the
+white flash everyone reports, and `ui.color-scheme` is separately needed or
+the iframe canvas stays white); the frame uses `min-height` and **never**
+`height`/`overflow`; the fallback anchor is absolutely positioned so it adds
+no height, is a real working link, and retires only on Cal's `linkReady`.
+Colours are read from our tokens at call time and re-sent on a theme flip —
+one frame later, because next-themes swaps the class from a parent effect.
+
 **Every section must earn its place.** Before adding one, ask what it proves
 that its page does not already prove. The service detail pages carry no
 process strip and no "other things we do" grid: both repeated `/services`
@@ -198,14 +221,14 @@ its own territory is what stops the site reading as two designs.
   WhyChapter, UseCasesChapter, ServicesChapter, ProcessChapter (client,
   state timeline), ProofChapter, CallToAction with scatter), `apps/`
   (AppDetail, AppStorySection, AppJsonLd…), `layout/` (Navbar, Footer,
-  PageHero), `legal/`, `services/` (Vignettes), `ui/` (the kit: PillButton,
+  PageHero), `legal/`, `contact/` (CalBooking), `services/`, `ui/` (the kit: PillButton,
   EyebrowChip, Section, Card/Well/VignetteCard/IconCard/ProcessStrip,
   ChapterMark, TestimonialQuote, CaseProofCard, PlaceholderBlock, Badge,
   AppCard, Icon).
 - `lib/apps.ts` (incl. per-app `problem` line), `lib/services.ts` (incl.
   `lifecycle` + `LIFECYCLE_CHAPTERS`), `lib/proof.ts` (real result stats,
   sourced), `lib/studio.ts` (founder note + portrait), `lib/testimonials.ts`,
-  `lib/contact.ts`, `lib/cn.ts`.
+  `lib/contact.ts` (emails + cal.com links), `lib/cn.ts`.
 - `public/` — icons (`/icons/[slug].png|svg`), screenshots
   (`/screenshots/[slug]-[view].jpg`, statically imported by `lib/apps.ts`),
   OG images.

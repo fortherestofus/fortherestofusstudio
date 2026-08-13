@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { services, PROCESS_STEPS } from "@/lib/services";
-import { HELLO_EMAIL } from "@/lib/contact";
+import { HELLO_EMAIL, CAL_INTRO, CAL_CONSULT, calLink } from "@/lib/contact";
 import { contactStillLife } from "@/lib/work";
 import { testimonials } from "@/lib/testimonials";
 import Section from "@/components/ui/Section";
 import EyebrowChip from "@/components/ui/EyebrowChip";
 import PillButton from "@/components/ui/PillButton";
 import TestimonialQuote from "@/components/ui/TestimonialQuote";
+import CalBooking from "@/components/contact/CalBooking";
 import CallToAction from "@/components/home/CallToAction";
 
 const EMAIL = HELLO_EMAIL;
@@ -42,7 +43,7 @@ export default function ContactPage() {
   return (
     <>
       {/* Hero — the invitation, with something to look at */}
-      <section className="bg-bg pt-28 sm:pt-36">
+      <section className="bg-bg pb-12 pt-28 sm:pb-16 sm:pt-36">
         <div className="mx-auto w-full max-w-content px-5 sm:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
             <div className="lg:col-span-6">
@@ -54,15 +55,18 @@ export default function ContactPage() {
                 </span>
               </h1>
               <p className="mt-6 max-w-[48ch] text-pretty leading-relaxed text-muted sm:text-lg">
-                One email, read by the person who would do the work. You get an
-                honest answer about scope, time and cost — and if we are not the
-                right studio for it, we will say so and point you somewhere
-                better.
+                Send an email or book a call — either one reaches the person who
+                would do the work. You get an honest answer about scope, time
+                and cost, and if we are not the right studio for it, we will say
+                so and point you somewhere better.
               </p>
 
               <div className="mt-9 flex flex-wrap items-center gap-3">
                 <PillButton href={`mailto:${EMAIL}?subject=${subject}`} size="lg">
                   Email {EMAIL}
+                </PillButton>
+                <PillButton href="#book" variant="ghost" size="lg">
+                  Book an intro call
                 </PillButton>
               </div>
 
@@ -101,6 +105,45 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/*
+        Book a time. Second route in, and the heaviest thing on the site — the
+        embed itself defers until you scroll to it, and the link inside the
+        frame works with no JS at all.
+      */}
+      {/* scroll-mt clears the fixed navbar when the hero's anchor lands here. */}
+      <Section id="book" tone="sunken" className="scroll-mt-24">
+        <div className="max-w-reading">
+          <h2 className="text-[1.75rem] font-medium tracking-[-0.02em] text-ink sm:text-[2.25rem]">
+            Or book a time
+          </h2>
+          <p className="mt-3 text-pretty leading-relaxed text-muted">
+            Fifteen minutes, no deck. Bring the problem as you understand it
+            today — half-formed is normal, and it is usually the fastest way to
+            find out whether there is a project here.
+          </p>
+        </div>
+
+        <CalBooking
+          className="mt-8"
+          calLink={calLink(CAL_INTRO)}
+          fallbackHref={CAL_INTRO}
+          fallbackLabel="Book a 15 minute intro call"
+        />
+
+        <p className="mt-5 text-[0.9375rem] leading-relaxed text-muted">
+          Want to work through something properly instead?{" "}
+          <a
+            href={CAL_CONSULT}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 font-medium text-ink underline decoration-border underline-offset-4 transition-colors hover:decoration-ink"
+          >
+            Book a paid consultation
+            <ArrowUpRight className="h-4 w-4" aria-hidden />
+          </a>
+        </p>
+      </Section>
 
       {/* What to send, and what happens next — side by side */}
       <Section tone="canvas">
@@ -187,7 +230,7 @@ export default function ContactPage() {
       <CallToAction
         eyebrow="No pressure"
         title="Still deciding?"
-        body="Read how a project actually runs, or look at the products we have built for ourselves. Then email whenever you are ready."
+        body="Read how a project actually runs, or look at the products we have built for ourselves. Then email or book a call whenever you are ready."
         primaryLabel="See how we work"
         primaryHref="/services/"
         secondaryLabel="See the apps"

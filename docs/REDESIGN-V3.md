@@ -268,10 +268,13 @@ ever want a "what's live / in beta / in development" board.
   Digify Africa, IFC, Energy Capital & Power…), studio stats, all three
   testimonials, honest voice. Content sourced from the portfolio repo's
   bio/experience data (no invention).
-- **`/contact`:** keep the honest structure; add the process rename;
-  optionally add the cal.com booking link (exists:
-  cal.com/mralroyndhlovu) — pending Alroy's decision (open item in
-  REDESIGN.md already).
+- **`/contact`:** keep the honest structure; add the process rename.
+  **Decided 2026-08-13: the cal.com booking goes in**, as an inline
+  embed rather than a link — the pattern proven on the portfolio,
+  ported to React in `components/contact/CalBooking.tsx`. Two routes
+  now, email and booking, with the booker deferred until it is nearly
+  in view and a real anchor behind it for no-JS. Both links live in
+  `lib/contact.ts`.
 - **Legal / giving pages:** design already unified via `LegalDocument`;
   no content changes. Verify they inherit any token/component tweaks
   cleanly. Giving copy rules unchanged (voluntary gift, never unlocks).
@@ -341,7 +344,19 @@ iterate")
 5. **Motion:** framer-motion/GSAP approved where it adds value; default
    framer-motion.
 6. Still open from v2 (need Alroy input, not blocking): real social URLs
-   for the footer, cal.com link on `/contact`, studio accent.
+   for the footer, studio accent.
+7. **cal.com — settled 2026-08-13.** Embedded inline on `/contact`
+   (`CAL_INTRO`), with the paid session as a quiet secondary link
+   (`CAL_CONSULT`). Both are Alroy's personal Cal event types, so the
+   booker shows his name on a site that is otherwise deliberately a
+   little anonymous — a studio Cal team would fix that, and it is two
+   lines in `lib/contact.ts` when one exists.
+8. **CaughtSlipping shipped 2026-08-13** to the Chrome Web Store
+   (`ncepfdipljmhbhehjegfemndcgaclnlg`). Status moved Beta → Live, CTA
+   from a dead `#` to "Add to Chrome", and Google's store badge now
+   renders beside it. `stores` keys became per-store opt-in so the
+   extension does not advertise App Store and Play listings it will
+   never have.
 
 ## 9. Build order
 
