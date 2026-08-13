@@ -13,8 +13,15 @@ export interface Testimonial {
   name: string;
   title: string;
   company: string;
-  /** Two-letter monogram used until a real photo exists. */
+  /** Two-letter monogram, used when no organisation logo is set. */
   initials: string;
+  /**
+   * The organisation the person spoke from. We attribute to the company
+   * rather than inventing a likeness for a real, named professional — see
+   * components/ui/TestimonialQuote.tsx. Trademarks belong to their owners
+   * and are used here only to identify the engagement.
+   */
+  logo?: { src: string; alt: string };
 }
 
 export const testimonials: Testimonial[] = [
@@ -25,6 +32,10 @@ export const testimonials: Testimonial[] = [
     title: "Co-Founder & Chairperson",
     company: "Energy Capital & Power",
     initials: "KA",
+    logo: {
+      src: "/logos/energy-capital-power.png",
+      alt: "Energy Capital & Power",
+    },
   },
   {
     quote:
@@ -33,6 +44,10 @@ export const testimonials: Testimonial[] = [
     title: "Senior Consultant",
     company: "IFC — International Finance Corporation",
     initials: "HN",
+    logo: {
+      src: "/logos/ifc.jpg",
+      alt: "IFC — International Finance Corporation",
+    },
   },
   {
     quote:
@@ -41,6 +56,7 @@ export const testimonials: Testimonial[] = [
     title: "Commercial & Strategy Director",
     company: "CIO Africa by dx5",
     initials: "DP",
+    logo: { src: "/logos/gl-events.png", alt: "GL events" },
   },
 ];
 

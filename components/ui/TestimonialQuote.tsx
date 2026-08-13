@@ -2,12 +2,14 @@
  * TestimonialQuote — a single real quote, rendered inline next to the claim
  * it verifies (research: distributed testimonials outperform a quote wall).
  *
- * The avatar is a typographic monogram, deliberately. These are real, named,
- * findable professionals and we have no photographs of them — a generated
- * face beside a real person's name would be a fabricated likeness, which is
- * the one thing this site's proof rules never allow. The monogram is drawn
- * to look intentional rather than like a missing image.
+ * The mark beside the name is the speaker's ORGANISATION, never a portrait.
+ * These are real, named, findable professionals and we hold no photographs
+ * of them — a generated face (photoreal or illustrated) would invent a real
+ * person's appearance. The logo identifies the engagement honestly and adds
+ * the colour a monogram cannot. Falls back to the monogram when no logo is
+ * on file.
  */
+import Image from "next/image";
 import type { Testimonial } from "@/lib/testimonials";
 import { cn } from "@/lib/cn";
 
@@ -49,16 +51,37 @@ export default function TestimonialQuote({
         “{testimonial.quote}”
       </blockquote>
       <figcaption className="flex items-center gap-3.5">
-        <span
-          aria-hidden
-          className={cn(
-            "grid shrink-0 place-items-center rounded-[12px] font-medium tracking-[0.02em]",
-            size === "lg" ? "h-12 w-12 text-[0.9375rem]" : "h-11 w-11 text-[0.875rem]",
-            tint
-          )}
-        >
-          {testimonial.initials}
-        </span>
+        {testimonial.logo ? (
+          <span
+            className={cn(
+              // The three marks are drawn very differently — a transparent
+              // roundel, a full-bleed red square, a gradient square — so they
+              // sit inset on a neutral tile rather than flush, which would
+              // crop the ones whose artwork runs to the canvas edge.
+              "relative shrink-0 overflow-hidden rounded-[12px] border border-border bg-surface p-2",
+              size === "lg" ? "h-16 w-16" : "h-14 w-14"
+            )}
+          >
+            <Image
+              src={testimonial.logo.src}
+              alt={testimonial.logo.alt}
+              fill
+              sizes="64px"
+              className="object-contain"
+            />
+          </span>
+        ) : (
+          <span
+            aria-hidden
+            className={cn(
+              "grid shrink-0 place-items-center rounded-[12px] font-medium tracking-[0.02em]",
+              size === "lg" ? "h-12 w-12 text-[0.9375rem]" : "h-11 w-11 text-[0.875rem]",
+              tint
+            )}
+          >
+            {testimonial.initials}
+          </span>
+        )}
         <span className="text-sm leading-tight">
           <span className="block font-medium text-ink">{testimonial.name}</span>
           <span className="block text-muted">

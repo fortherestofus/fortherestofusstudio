@@ -43,6 +43,13 @@ InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
   `lib/testimonials.ts` holds real quotes from real named people — never add an
   entry that was not actually said, and never invent a name, title, or company.
   Client names there are real engagements.
+- **Never invent a person's likeness.** The mark beside a testimonial is the
+  speaker's *organisation* logo (`logo` in `lib/testimonials.ts`), never a
+  portrait: we hold no photographs of these people, and a generated face —
+  photoreal, cartoon, or 3D — would fabricate the appearance of a real,
+  named professional. Real headshots are fine with their permission.
+  Client logos stay out of the hero/footer lists, where a logo strip would
+  read as endorsement rather than as a record of work.
 - **Keep the docs current** — update this file and `docs/REDESIGN.md` after
   meaningful changes.
 - **Commit + push after a coherent change** once gates are green. Repo:

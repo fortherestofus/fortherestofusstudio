@@ -3,7 +3,9 @@
  * knows what we sell), with the lifecycle compressed into the muted line.
  * One floating artefact beside it (see HeroArtefact); the proof line under
  * the CTAs is real studio numbers, and the client names are real engagements
- * shown as text — a logo is a trademark.
+ * shown as text: a logo strip reads as endorsement, where a list reads as
+ * a record. (Organisation logos do appear beside testimonials, where the
+ * person actually spoke — see components/ui/TestimonialQuote.tsx.)
  */
 import { clients } from "@/lib/testimonials";
 import PillButton from "@/components/ui/PillButton";
