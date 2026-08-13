@@ -385,10 +385,13 @@ export const marketingWork: WorkImage[] = [
 ];
 
 /**
- * Two commissioned still lifes, generated for the studio (Grok Imagine).
- * They stand in only where no real artefact exists — automation is a
- * process, not a screen, and a contact page has nothing to photograph.
- * Everything else on the site is real work.
+ * The one commissioned still life left, generated for the studio (Grok
+ * Imagine). It stands in where no real artefact exists — automation is a
+ * process, not a screen. Everything else on the site is real work.
+ *
+ * A second one sat on /contact until Alroy called it: a generated table and
+ * two cups is not a portfolio and proves nothing at the moment someone is
+ * deciding whether to write. The studio's real numbers took its place.
  */
 export const automationStillLife: WorkImage = {
   src: "/media/automate-visual.jpg",
@@ -396,13 +399,6 @@ export const automationStillLife: WorkImage = {
   width: 1248,
   height: 832,
   caption: "One thing sets off the next. That is the whole idea.",
-};
-
-export const contactStillLife: WorkImage = {
-  src: "/media/contact-visual.jpg",
-  alt: "A small round table by a sunlit window, two cups and an open chair",
-  width: 1248,
-  height: 832,
 };
 
 /** Social Sweep's report charts — the automation/product artefact. */

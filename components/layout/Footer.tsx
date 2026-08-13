@@ -98,8 +98,8 @@ export default function Footer() {
             <Image
               src="/icons/logo-dark.png"
               alt="For The Rest Of Us"
-              width={191}
-              height={28}
+              width={750}
+              height={110}
               className="h-7 w-auto"
             />
             <p className="mt-6 max-w-sm text-pretty text-[0.9375rem] leading-relaxed text-ink-muted">

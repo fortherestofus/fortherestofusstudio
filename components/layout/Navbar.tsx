@@ -79,16 +79,16 @@ export default function Navbar() {
           <Image
             src="/icons/logo-light.png"
             alt="For The Rest Of Us"
-            width={164}
-            height={24}
+            width={750}
+            height={110}
             priority
             className="h-[22px] w-auto dark:hidden"
           />
           <Image
             src="/icons/logo-dark.png"
             alt="For The Rest Of Us"
-            width={164}
-            height={24}
+            width={750}
+            height={110}
             priority
             className="hidden h-[22px] w-auto dark:block"
           />

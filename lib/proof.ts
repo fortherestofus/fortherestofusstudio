@@ -44,7 +44,13 @@ export interface CaseProof {
 export const STUDIO_STATS: ProofStat[] = [
   { value: "12+", label: "years across product, brand, and growth" },
   { value: "1,200+", label: "projects and clients served" },
-  { value: "4", label: "products of our own, all in beta testing" },
+  // CaughtSlipping shipped to the Chrome Web Store on 2026-08-13; the other
+  // three are still in beta. Keep this split honest as each one lands.
+  {
+    value: "4",
+    label: "products of our own",
+    detail: "one live, three in beta",
+  },
 ];
 
 export const caseProofs: CaseProof[] = [

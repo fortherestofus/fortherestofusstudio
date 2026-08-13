@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { services, PROCESS_STEPS } from "@/lib/services";
+import { services } from "@/lib/services";
 import { HELLO_EMAIL, CAL_INTRO, CAL_CONSULT, calLink } from "@/lib/contact";
-import { contactStillLife } from "@/lib/work";
+import { STUDIO_STATS } from "@/lib/proof";
 import { testimonials } from "@/lib/testimonials";
 import Section from "@/components/ui/Section";
 import EyebrowChip from "@/components/ui/EyebrowChip";
@@ -30,11 +29,19 @@ export const metadata: Metadata = {
   },
 };
 
-const BRIEF_PROMPTS = [
-  "What you are trying to build, or the problem you want solved",
-  "Who it is for, if you already know",
-  "Where you are now: an idea, a draft, or something already live",
-  "Roughly when you would like it done",
+/**
+ * The studio's numbers, as the thing you look at while deciding whether to
+ * write. A generated still life sat here and said nothing; these are real and
+ * sourced (lib/proof.ts).
+ *
+ * Indices point into STUDIO_STATS — the registry order is About's reading
+ * order and stays as it is. Here the widest number leads, because it is the
+ * one that answers "have you done this before".
+ */
+const STAT_CARDS = [
+  { index: 1, tint: "bg-tint-amber", deep: "text-tint-amber-deep", wide: true },
+  { index: 0, tint: "bg-tint-olive", deep: "text-tint-olive-deep", wide: false },
+  { index: 2, tint: "bg-tint-rust", deep: "text-tint-rust-deep", wide: false },
 ];
 
 export default function ContactPage() {
@@ -70,7 +77,15 @@ export default function ContactPage() {
                 </PillButton>
               </div>
 
-              <dl className="mt-12 grid gap-6 border-t border-border pt-8 sm:grid-cols-3">
+              {/* What used to be a numbered "what to put in the first email"
+                  section, at the size the instruction actually warrants. */}
+              <p className="mt-6 max-w-[52ch] text-pretty text-[0.9375rem] leading-relaxed text-muted">
+                In the email: what you are building or the problem you want
+                solved, who it is for, where you are now, and roughly when you
+                want it done. A paragraph is plenty — we will ask the rest.
+              </p>
+
+              <dl className="mt-10 grid gap-6 border-t border-border pt-8 sm:grid-cols-3">
                 {[
                   { label: "Based in", value: "Johannesburg, South Africa" },
                   { label: "Replies", value: "Usually within two days" },
@@ -89,18 +104,37 @@ export default function ContactPage() {
             </div>
 
             <div className="lg:col-span-6">
-              <figure className="overflow-hidden rounded-well border border-border shadow-card">
-                <div className="relative" style={{ aspectRatio: "3 / 2" }}>
-                  <Image
-                    src={contactStillLife.src}
-                    alt={contactStillLife.alt}
-                    fill
-                    sizes="(max-width: 1024px) 92vw, 560px"
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </figure>
+              <dl className="grid gap-4 sm:grid-cols-2">
+                {STAT_CARDS.map(({ index, tint, deep, wide }) => {
+                  const stat = STUDIO_STATS[index];
+                  return (
+                    <div
+                      key={stat.label}
+                      className={`rounded-card p-7 sm:p-8 ${tint} ${
+                        wide ? "sm:col-span-2" : ""
+                      }`}
+                    >
+                      <dd
+                        className={`nums font-medium leading-none tracking-[-0.03em] ${deep} ${
+                          wide
+                            ? "text-[3.25rem] sm:text-[4rem]"
+                            : "text-[2.5rem] sm:text-[3rem]"
+                        }`}
+                      >
+                        {stat.value}
+                      </dd>
+                      <dt className="mt-3 text-pretty text-[0.9375rem] leading-snug text-ink/75">
+                        {stat.label}
+                        {stat.detail && (
+                          <span className={`mt-1 block text-[0.8125rem] ${deep}`}>
+                            {stat.detail}
+                          </span>
+                        )}
+                      </dt>
+                    </div>
+                  );
+                })}
+              </dl>
             </div>
           </div>
         </div>
@@ -145,85 +179,37 @@ export default function ContactPage() {
         </p>
       </Section>
 
-      {/* What to send, and what happens next — side by side */}
+      {/*
+        Someone who has just looked at a calendar and not clicked it is exactly
+        who a testimonial is for, so the quote lives here now rather than under
+        a process list — the process belongs on /services, and repeating it
+        here was the second menu this page did not need.
+      */}
       <Section tone="canvas">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
-          <div className="lg:col-span-6">
-            <h2 className="text-[1.75rem] font-medium tracking-[-0.02em] text-ink">
-              What to put in the first email
-            </h2>
-            <p className="mt-3 max-w-[46ch] leading-relaxed text-muted">
-              None of it has to be polished. A paragraph is plenty — we will ask
-              the rest.
-            </p>
-            <ol className="mt-8 flex flex-col">
-              {BRIEF_PROMPTS.map((prompt, i) => (
-                <li
-                  key={prompt}
-                  className="flex gap-5 border-t border-border py-5"
-                >
-                  <span className="nums shrink-0 text-[0.8125rem] text-faint">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <span className="text-[1.0625rem] leading-snug text-ink">
-                    {prompt}
-                  </span>
-                </li>
-              ))}
-            </ol>
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
+          <div className="lg:col-span-5">
+            <TestimonialQuote testimonial={testimonials[2]} size="lg" />
           </div>
 
-          <div className="lg:col-span-6">
-            <h2 className="text-[1.75rem] font-medium tracking-[-0.02em] text-ink">
-              What happens next
+          <div className="lg:col-span-7">
+            <h2 className="text-[0.6875rem] uppercase tracking-[0.14em] text-faint">
+              What people usually come to us for
             </h2>
-            <p className="mt-3 max-w-[46ch] leading-relaxed text-muted">
-              The same three stages every project runs on.
-            </p>
-            <ol className="mt-8 flex flex-col">
-              {PROCESS_STEPS.map((step) => (
-                <li
-                  key={step.step}
-                  className="flex gap-5 border-t border-border py-5"
+            <div className="mt-6 grid gap-x-8 gap-y-1 sm:grid-cols-2">
+              {services.map((service) => (
+                <Link
+                  key={service.slug}
+                  href={`/services/${service.slug}/`}
+                  className="group flex items-center justify-between gap-4 border-b border-border py-4 transition-colors hover:border-ink"
                 >
-                  <span className="nums shrink-0 text-[0.8125rem] text-accent-deep">
-                    {String(step.step).padStart(2, "0")}
+                  <span className="text-[1.0625rem] text-ink">
+                    {service.title}
                   </span>
-                  <span>
-                    <span className="block text-[1.0625rem] font-medium text-ink">
-                      {step.title}
-                    </span>
-                    <span className="mt-1 block text-[0.9375rem] leading-relaxed text-muted">
-                      {step.description}
-                    </span>
-                  </span>
-                </li>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-faint transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-ink" />
+                </Link>
               ))}
-            </ol>
-
-            <div className="mt-10 border-t border-border pt-8">
-              <TestimonialQuote testimonial={testimonials[2]} />
             </div>
           </div>
-        </div>
-      </Section>
-
-      {/* Where people usually start */}
-      <Section tone="sunken" size="sm">
-        <h2 className="text-[0.6875rem] uppercase tracking-[0.14em] text-faint">
-          What people usually come to us for
-        </h2>
-        <div className="mt-8 grid gap-x-8 gap-y-1 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <Link
-              key={service.slug}
-              href={`/services/${service.slug}/`}
-              className="group flex items-center justify-between gap-4 border-b border-border py-4 transition-colors hover:border-ink"
-            >
-              <span className="text-[1.0625rem] text-ink">{service.title}</span>
-              <ArrowRight className="h-4 w-4 shrink-0 text-faint transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-ink" />
-            </Link>
-          ))}
         </div>
       </Section>
 
