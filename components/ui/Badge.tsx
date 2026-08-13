@@ -1,8 +1,8 @@
 /**
- * Badge — small status and platform markers.
- *
- * Status colours are semantic (not brand) so they stay readable on any app
- * page regardless of that app's accent.
+ * Badge — small status and platform markers, typographic: a live dot plus
+ * small-caps text. (The bordered pill treatment was removed with the rest
+ * of the template chrome, iteration 3.) Status colours stay semantic so
+ * they read on any app page regardless of accent.
  */
 import type { AppStatus } from "@/lib/apps";
 import { cn } from "@/lib/cn";
@@ -17,10 +17,9 @@ interface BadgeProps {
 }
 
 const STATUS_STYLES: Record<AppStatus, string> = {
-  "In Development":
-    "border-[#e8c99a] bg-[#fbf1e0] text-[#8a6400] dark:border-[#8a6400]/40 dark:bg-[#8a6400]/15 dark:text-[#e8bd77]",
-  Beta: "border-[#a9c9e8] bg-[#e4eef7] text-[#2c5d8a] dark:border-[#2c5d8a]/40 dark:bg-[#2c5d8a]/15 dark:text-[#8fbde8]",
-  Live: "border-[#a8d5bb] bg-[#e3f1e8] text-[#2f6b47] dark:border-[#2f6b47]/40 dark:bg-[#2f6b47]/15 dark:text-[#7fc79c]",
+  "In Development": "text-[#8a6400] dark:text-[#e8bd77]",
+  Beta: "text-[#2c5d8a] dark:text-[#8fbde8]",
+  Live: "text-[#2f6b47] dark:text-[#7fc79c]",
 };
 
 export default function Badge({
@@ -30,12 +29,12 @@ export default function Badge({
   className,
 }: BadgeProps) {
   const base =
-    "inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-xs font-medium";
+    "inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap text-[0.6875rem] font-medium uppercase tracking-[0.1em]";
 
   if (variant === "status" && status) {
     return (
       <span className={cn(base, STATUS_STYLES[status], className)}>
-        <span className="h-1.5 w-1.5 rounded-full bg-current opacity-70" />
+        <span className="h-1.5 w-1.5 rounded-full bg-current" />
         {children}
       </span>
     );
@@ -43,19 +42,11 @@ export default function Badge({
 
   if (variant === "accent") {
     return (
-      <span
-        className={cn(base, "border-transparent bg-accent-soft text-accent-deep", className)}
-      >
+      <span className={cn(base, "text-accent-deep", className)}>
         {children}
       </span>
     );
   }
 
-  return (
-    <span
-      className={cn(base, "border-border bg-surface text-muted", className)}
-    >
-      {children}
-    </span>
-  );
+  return <span className={cn(base, "text-muted", className)}>{children}</span>;
 }

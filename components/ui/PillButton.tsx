@@ -1,8 +1,9 @@
 /**
  * PillButton — the site's primary call to action.
  *
- * Ink-filled pill with an optional circular arrow chip (per the design
- * reference). Renders as a link when `href` is set, otherwise a button.
+ * Ink-filled with a soft-rectangle radius (the full pill read as template
+ * UI — squared off at Alroy's direction, iteration 3). The name stays so
+ * forty call sites don't churn. Renders as a link when `href` is set.
  */
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -59,7 +60,7 @@ export default function PillButton({
   onClick,
 }: PillButtonProps) {
   const classes = cn(
-    "inline-flex items-center justify-center rounded-full font-medium",
+    "inline-flex items-center justify-center rounded-[12px] font-medium",
     "transition-all duration-200 hover:-translate-y-0.5",
     "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
     VARIANTS[variant],
@@ -74,7 +75,7 @@ export default function PillButton({
         <span
           aria-hidden
           className={cn(
-            "grid place-items-center rounded-full",
+            "grid place-items-center rounded-[8px]",
             size === "lg" ? "h-9 w-9" : "h-8 w-8",
             ARROW_CHIP[variant]
           )}

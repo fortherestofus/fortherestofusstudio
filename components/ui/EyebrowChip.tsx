@@ -1,6 +1,8 @@
 /**
- * EyebrowChip — small outlined pill that labels a section, sitting above the
- * section headline (the "Features" / "Advantage" markers in the reference).
+ * EyebrowChip — the small label above a section headline. Typographic, not
+ * a bordered pill: a small-caps label with an accent tick, the way the
+ * reference labels its sections. (The pill treatment read as template UI —
+ * removed at Alroy's direction, iteration 3.)
  */
 import { cn } from "@/lib/cn";
 
@@ -11,9 +13,15 @@ interface EyebrowChipProps {
 }
 
 const TONES = {
-  default: "border-border text-muted bg-surface",
-  accent: "border-transparent bg-accent-soft text-accent-deep",
-  onInk: "border-ink-border text-ink-muted bg-transparent",
+  default: "text-muted",
+  accent: "text-accent-deep",
+  onInk: "text-ink-muted",
+} as const;
+
+const TICK = {
+  default: "bg-accent",
+  accent: "bg-accent",
+  onInk: "bg-ink-muted",
 } as const;
 
 export default function EyebrowChip({
@@ -24,12 +32,15 @@ export default function EyebrowChip({
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-full border px-3.5 py-1.5",
-        "text-[0.8125rem] leading-none",
+        "inline-flex items-center gap-2.5 text-[0.8125rem] font-medium uppercase leading-none tracking-[0.14em]",
         TONES[tone],
         className
       )}
     >
+      <span
+        aria-hidden
+        className={cn("h-[3px] w-5 rounded-full", TICK[tone])}
+      />
       {children}
     </span>
   );

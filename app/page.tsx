@@ -1,16 +1,18 @@
 import Hero from "@/components/home/Hero";
 import WhyChapter from "@/components/home/WhyChapter";
 import ServicesChapter from "@/components/home/ServicesChapter";
+import ProcessBand from "@/components/home/ProcessBand";
 import UseCasesChapter from "@/components/home/UseCasesChapter";
 import TrustBand from "@/components/home/TrustBand";
 import CallToAction from "@/components/home/CallToAction";
 
 /**
- * Home — a short story, not a one-pager (docs/REDESIGN-V3.md §iteration-2):
- * the promise, the why, the services as the colored centrepiece, the apps
- * as proof of the why, a slim trust band, one ask. Depth lives behind the
- * clicks: case studies on the service pages, process on /services, the
- * founder on /studio.
+ * Home — a short story, not a one-pager (docs/REDESIGN-V3.md):
+ * 01 why we build (three convictions, each proven by real work)
+ * 02 services — the colored centrepiece, opening into case studies
+ * 03 how we work — identify, build, grow
+ * 04 use cases — our own products, scrolled through one problem at a time
+ * then a slim trust band and one ask. Depth lives behind the clicks.
  */
 export default function Home() {
   return (
@@ -18,6 +20,7 @@ export default function Home() {
       <Hero />
       <WhyChapter />
       <ServicesChapter />
+      <ProcessBand />
       <UseCasesChapter />
       <TrustBand />
       <CallToAction

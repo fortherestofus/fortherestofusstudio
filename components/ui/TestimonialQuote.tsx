@@ -1,7 +1,12 @@
 /**
  * TestimonialQuote — a single real quote, rendered inline next to the claim
  * it verifies (research: distributed testimonials outperform a quote wall).
- * "lg" is the promoted treatment; "sm" is the quiet rail version.
+ *
+ * The avatar is a typographic monogram, deliberately. These are real, named,
+ * findable professionals and we have no photographs of them — a generated
+ * face beside a real person's name would be a fabricated likeness, which is
+ * the one thing this site's proof rules never allow. The monogram is drawn
+ * to look intentional rather than like a missing image.
  */
 import type { Testimonial } from "@/lib/testimonials";
 import { cn } from "@/lib/cn";
@@ -12,11 +17,25 @@ interface TestimonialQuoteProps {
   className?: string;
 }
 
+/** A quiet tint per person, cycled from the app accents. */
+const MONOGRAM_TINTS = [
+  "bg-tint-rust text-tint-rust-deep",
+  "bg-tint-olive text-tint-olive-deep",
+  "bg-tint-amber text-tint-amber-deep",
+];
+
 export default function TestimonialQuote({
   testimonial,
   size = "sm",
   className,
 }: TestimonialQuoteProps) {
+  // Stable per-person tint: derived from the initials, not render order.
+  const tint =
+    MONOGRAM_TINTS[
+      (testimonial.initials.charCodeAt(0) + testimonial.initials.charCodeAt(1)) %
+        MONOGRAM_TINTS.length
+    ];
+
   return (
     <figure className={cn("flex flex-col gap-5", className)}>
       <blockquote
@@ -29,10 +48,14 @@ export default function TestimonialQuote({
       >
         “{testimonial.quote}”
       </blockquote>
-      <figcaption className="flex items-center gap-3">
+      <figcaption className="flex items-center gap-3.5">
         <span
           aria-hidden
-          className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-ink text-[0.6875rem] font-medium text-bg"
+          className={cn(
+            "grid shrink-0 place-items-center rounded-[12px] font-medium tracking-[0.02em]",
+            size === "lg" ? "h-12 w-12 text-[0.9375rem]" : "h-11 w-11 text-[0.875rem]",
+            tint
+          )}
         >
           {testimonial.initials}
         </span>

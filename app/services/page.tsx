@@ -1,14 +1,20 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { apps } from "@/lib/apps";
 import { services } from "@/lib/services";
 import { caseProofs } from "@/lib/proof";
-import { VIGNETTES, type VignetteKey } from "@/components/services/Vignettes";
-import PageHero from "@/components/layout/PageHero";
+import {
+  automationStillLife,
+  identityWork,
+  innovatrRedesign,
+  marketingWork,
+  socialSweepCharts,
+} from "@/lib/work";
 import Section, { SectionHeading } from "@/components/ui/Section";
-import { Well, VignetteCard } from "@/components/ui/Card";
 import CaseProofCard from "@/components/ui/CaseProofCard";
+import EyebrowChip from "@/components/ui/EyebrowChip";
 import AppIcon from "@/components/ui/AppIcon";
 import PillButton from "@/components/ui/PillButton";
 import ProcessChapter from "@/components/home/ProcessChapter";
@@ -29,48 +35,129 @@ export const metadata: Metadata = {
   },
 };
 
+/** A real artefact per service, for the index list. */
+const SERVICE_THUMBS: Record<string, { src: string; alt: string }> = {
+  "apps-and-saas": {
+    src: socialSweepCharts.src,
+    alt: socialSweepCharts.alt,
+  },
+  websites: {
+    src: innovatrRedesign.after.src,
+    alt: innovatrRedesign.after.alt,
+  },
+  "product-and-growth": {
+    src: marketingWork[0].src,
+    alt: marketingWork[0].alt,
+  },
+  "brand-and-content": {
+    src: identityWork[1].src,
+    alt: identityWork[1].alt,
+  },
+  "tech-and-automation": {
+    src: automationStillLife.src,
+    alt: automationStillLife.alt,
+  },
+};
+
 export default function ServicesPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Work with us"
-        title="Product help"
-        titleMuted="for the rest of us."
-        lead="Some clients need something built. Some need to work out what to build, who it is for, and how anyone will hear about it. We do both, and most projects turn out to be a mix of the two."
-      >
-        <div className="flex flex-wrap gap-3">
-          <PillButton href="/contact" size="lg">
-            Start a project
-          </PillButton>
-          <PillButton
-            href="#what-we-do"
-            variant="ghost"
-            size="lg"
-            withArrow={false}
-          >
-            What we do
-          </PillButton>
-        </div>
-      </PageHero>
+      {/* Hero — the promise, with real work behind it */}
+      <section className="bg-bg pt-28 sm:pt-36">
+        <div className="mx-auto w-full max-w-content px-5 sm:px-8">
+          <div className="grid items-end gap-10 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-7">
+              <EyebrowChip>Services &amp; consulting</EyebrowChip>
+              <h1 className="mt-6 text-balance text-[2.5rem] font-medium leading-[1.04] tracking-[-0.035em] sm:text-[3.5rem]">
+                <span className="block text-ink">Product help</span>
+                <span className="block text-muted">for the rest of us.</span>
+              </h1>
+              <p className="mt-6 max-w-[50ch] text-pretty leading-relaxed text-muted sm:text-lg">
+                Some clients need something built. Some need to work out what to
+                build, who it is for, and how anyone will hear about it. We do
+                both — and most projects turn out to be a mix.
+              </p>
+              <div className="mt-9">
+                <PillButton href="/contact/" size="lg">
+                  Start a project
+                </PillButton>
+              </div>
+            </div>
 
-      <Section id="what-we-do" tone="canvas" size="sm">
-        <Well>
-          <div className="grid gap-3 sm:gap-4 lg:grid-cols-3">
-            {services.map((service) => {
-              const Vignette = VIGNETTES[service.slug as VignetteKey];
-              return (
-                <VignetteCard
-                  key={service.slug}
-                  visual={<Vignette />}
-                  title={service.title}
-                  description={service.summary}
-                  href={`/services/${service.slug}`}
-                  linkLabel="See how it works"
-                />
-              );
-            })}
+            <div className="lg:col-span-5">
+              <div className="grid grid-cols-2 gap-3">
+                <figure className="col-span-2 overflow-hidden rounded-card border border-border bg-surface">
+                  <div className="relative" style={{ aspectRatio: "16 / 10" }}>
+                    <Image
+                      src={innovatrRedesign.after.src}
+                      alt={innovatrRedesign.after.alt}
+                      fill
+                      sizes="(max-width: 1024px) 92vw, 460px"
+                      className="object-cover object-top"
+                      priority
+                    />
+                  </div>
+                </figure>
+                {[identityWork[1], marketingWork[0]].map((piece) => (
+                  <figure
+                    key={piece.src}
+                    className="overflow-hidden rounded-card border border-border bg-surface"
+                  >
+                    <div className="relative" style={{ aspectRatio: "1 / 1" }}>
+                      <Image
+                        src={piece.src}
+                        alt={piece.alt}
+                        fill
+                        sizes="230px"
+                        className="object-cover"
+                      />
+                    </div>
+                  </figure>
+                ))}
+              </div>
+            </div>
           </div>
-        </Well>
+        </div>
+      </section>
+
+      {/* The four lifecycle chapters, as the organising view */}
+      <Section id="what-we-do" tone="canvas">
+        <div className="grid gap-x-8 gap-y-0 lg:grid-cols-2">
+          {services.map((service, i) => {
+            const thumb = SERVICE_THUMBS[service.slug];
+            return (
+              <Link
+                key={service.slug}
+                href={`/services/${service.slug}/`}
+                className="group flex items-center gap-6 border-b border-border py-6 transition-colors hover:border-ink"
+              >
+                <span className="nums shrink-0 text-[0.8125rem] text-faint">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="relative hidden h-16 w-24 shrink-0 overflow-hidden rounded-[10px] border border-border bg-sunken sm:block">
+                  {thumb && (
+                    <Image
+                      src={thumb.src}
+                      alt={thumb.alt}
+                      fill
+                      sizes="96px"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                  )}
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-[1.25rem] font-medium tracking-[-0.015em] text-ink">
+                    {service.title}
+                  </span>
+                  <span className="mt-1 block text-[0.9375rem] leading-relaxed text-muted">
+                    {service.summary}
+                  </span>
+                </span>
+                <ArrowRight className="h-5 w-5 shrink-0 text-faint transition-all duration-300 group-hover:translate-x-1 group-hover:text-ink" />
+              </Link>
+            );
+          })}
+        </div>
       </Section>
 
       {/* The full process story lives here, not on the homepage. */}

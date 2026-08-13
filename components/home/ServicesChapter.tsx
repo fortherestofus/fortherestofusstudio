@@ -1,26 +1,21 @@
 /**
  * ServicesChapter — chapter 02, the centrepiece. The services/consulting arm
- * as four big colored blocks (the reference's "Plans, without the planning"
- * grid): one full-saturation ember block, two strong washes, one ink block.
- * Each carries its service vignette as the artefact and opens into the
- * service page, where the real case study lives. Never "advice".
+ * as four big colored blocks (the reference's feature grid): one
+ * full-saturation ember block, two strong washes, one ink block. Each block
+ * carries a real artefact — products we shipped, identity work we made,
+ * campaign work we ran — and opens into the service page, where the case
+ * study lives. Never "advice".
  */
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import ChapterMark from "@/components/ui/ChapterMark";
 import PillButton from "@/components/ui/PillButton";
-import { VIGNETTES, type VignetteKey } from "@/components/services/Vignettes";
 import { LIFECYCLE_CHAPTERS, getService } from "@/lib/services";
+import { apps } from "@/lib/apps";
+import { automationStillLife, identityWork, marketingWork } from "@/lib/work";
 import { cn } from "@/lib/cn";
-
-/** Which service's vignette illustrates each lifecycle block. */
-const BLOCK_VIGNETTE: Record<string, VignetteKey> = {
-  build: "apps-and-saas",
-  brand: "brand-and-content",
-  grow: "product-and-growth",
-  automate: "tech-and-automation",
-};
 
 /**
  * Block treatments. "build" commits to the brand ember at full saturation
@@ -61,10 +56,111 @@ const BLOCKS: Record<
   },
 };
 
+/** Products we shipped — the artefact for the build block. */
+function ProductsArtefact() {
+  return (
+    <div className="flex h-full items-end gap-3 px-5 pt-5">
+      {apps.slice(0, 3).map((app, i) => (
+        <div
+          key={app.slug}
+          className={cn(
+            "relative flex-1 overflow-hidden rounded-t-[10px] border border-b-0 border-border bg-surface shadow-[0_-8px_24px_rgba(23,21,15,0.12)]",
+            i === 1 ? "h-full" : "h-[86%]"
+          )}
+        >
+          <Image
+            src={app.screenshots[0]}
+            alt={`${app.name} screen`}
+            fill
+            sizes="180px"
+            className="object-cover object-left-top"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** Identity work — the artefact for the brand block. */
+function IdentityStack() {
+  const pieces = identityWork.slice(0, 3);
+  return (
+    <div className="flex h-full items-end gap-3 px-5 pt-5">
+      {pieces.map((piece, i) => (
+        <div
+          key={piece.src}
+          className={cn(
+            "relative flex-1 overflow-hidden rounded-t-[10px] border border-b-0 border-border bg-surface shadow-[0_-8px_24px_rgba(23,21,15,0.12)]",
+            i === 1 ? "h-full" : "h-[84%]"
+          )}
+        >
+          <Image
+            src={piece.src}
+            alt={piece.alt}
+            fill
+            sizes="180px"
+            className="object-cover"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/** Campaign work — the artefact for the grow block. */
+function CampaignArtefact() {
+  const piece = marketingWork[0];
+  return (
+    <div className="relative h-full px-5 pt-5">
+      <div className="relative h-full overflow-hidden rounded-t-[10px] border border-b-0 border-border bg-surface shadow-[0_-8px_24px_rgba(23,21,15,0.12)]">
+        <Image
+          src={piece.src}
+          alt={piece.alt}
+          fill
+          sizes="(max-width: 640px) 92vw, 560px"
+          className="object-cover object-top"
+        />
+        <div className="absolute bottom-3 left-3 rounded-[10px] bg-ink px-3 py-2 shadow-card">
+          <p className="nums text-[1.125rem] font-medium leading-none text-bg">
+            742 leads
+          </p>
+          <p className="mt-1 text-[0.625rem] uppercase tracking-[0.12em] text-bg opacity-70">
+            at R29.57 · Thrifty Adventures
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/** The commissioned still life — the artefact for the automation block. */
+function AutomationArtefact() {
+  return (
+    <div className="relative h-full px-5 pt-5">
+      <div className="relative h-full overflow-hidden rounded-t-[10px] shadow-[0_-8px_24px_rgba(0,0,0,0.4)]">
+        <Image
+          src={automationStillLife.src}
+          alt={automationStillLife.alt}
+          fill
+          sizes="(max-width: 640px) 92vw, 560px"
+          className="object-cover"
+        />
+      </div>
+    </div>
+  );
+}
+
+const ARTEFACTS: Record<string, React.ReactNode> = {
+  build: <ProductsArtefact />,
+  brand: <IdentityStack />,
+  grow: <CampaignArtefact />,
+  automate: <AutomationArtefact />,
+};
+
 export default function ServicesChapter() {
   return (
     <Section tone="canvas" id="services">
-      <ChapterMark index={2} total={3} />
+      <ChapterMark index={2} total={4} />
       <SectionHeading
         align="left"
         className="mt-4"
@@ -76,7 +172,7 @@ export default function ServicesChapter() {
       <div className="mt-12 grid gap-4 sm:grid-cols-2 sm:gap-5">
         {LIFECYCLE_CHAPTERS.map((chapter, i) => {
           const block = BLOCKS[chapter.key];
-          const Vignette = VIGNETTES[BLOCK_VIGNETTE[chapter.key]];
+          const isInk = chapter.key === "automate";
           return (
             <div
               key={chapter.key}
@@ -87,7 +183,7 @@ export default function ServicesChapter() {
             >
               <div className="flex flex-col px-6 pt-6 sm:px-7 sm:pt-7">
                 <div className={block.mark}>
-                  <ChapterMark index={i + 1} tone="onTint" />
+                  <ChapterMark index={i + 1} tone={isInk ? "onInk" : "onTint"} />
                 </div>
 
                 <h3
@@ -129,10 +225,9 @@ export default function ServicesChapter() {
                 </ul>
               </div>
 
-              {/* The artefact: the service's vignette in a surface panel,
-                  bleeding off the block's bottom edge like the reference. */}
-              <div className="relative ml-6 mt-auto h-[180px] overflow-hidden rounded-tl-[14px] bg-surface shadow-[0_-6px_24px_rgba(23,21,15,0.10)] sm:ml-7 sm:h-[200px]">
-                <Vignette />
+              {/* Real work, bleeding off the block's bottom edge */}
+              <div className="mt-auto h-[200px] sm:h-[230px]">
+                {ARTEFACTS[chapter.key]}
               </div>
             </div>
           );
