@@ -110,11 +110,13 @@ export interface App {
   /** The app's own site, when it has one — linked from the detail page. */
   website?: { url: string; label: string };
   /**
-   * App Store / Play listings, for apps that will ship on them. Present with
-   * null values means the badges show but do not link yet — the app is coming,
-   * the listing is not up. Absent means no badges at all.
+   * Store listings, for apps that will ship on them. Present with null values
+   * means the badges show but do not link yet — the app is coming, the listing
+   * is not up. Absent means no badges at all. An app declares only the stores
+   * it belongs in: a Chrome extension has no App Store listing to be coming
+   * soon to.
    */
-  stores?: { ios: string | null; android: string | null };
+  stores?: { ios?: string | null; android?: string | null; chrome?: string | null };
   ctaLabel: string;
   ctaHref: string;
   /** Set when ctaHref points off-site (opens in a new tab). */
@@ -144,7 +146,7 @@ export const apps: App[] = [
       "Your phone already nags you about screen time. But the real damage — and the real work — happens on the computer you sit at all day. CaughtSlipping lives there, quietly tracking where your hours go across YouTube, Reddit, X, Facebook, LinkedIn, and any site you add, then telling you the truth about it. It even counts the shows you watch hands-off, so an hour of video reads as an hour, not three minutes, and it stops the moment you're genuinely away.",
       "It has two personalities. Most days it's Caught Slipping: a dark-humour verdict on your scrolling and a shame meter you'd rather not see. But if your problem is the opposite — never logging off — flip on Caught Grinding and it tracks your focused time and warns you when 'productive' has quietly turned into overworking. Everything lives on your own device. No account, no servers, nothing leaving your browser — and every feature is free.",
     ],
-    status: "In Development",
+    status: "Live",
     platform: ["Chrome Extension"],
     price: "Free",
     icon: "/icons/caught-slipping.png",
@@ -218,8 +220,10 @@ export const apps: App[] = [
       },
     ],
     screenshots: [caughtToday, caughtSites, caughtFocus, caughtSettings],
-    ctaLabel: "Get Early Access",
-    ctaHref: "#",
+    stores: { chrome: "https://chromewebstore.google.com/detail/ncepfdipljmhbhehjegfemndcgaclnlg" },
+    ctaLabel: "Add to Chrome",
+    ctaHref: "https://chromewebstore.google.com/detail/ncepfdipljmhbhehjegfemndcgaclnlg",
+    ctaExternal: true,
     seo: {
       title: "CaughtSlipping — The browser extension that calls you out",
       description:

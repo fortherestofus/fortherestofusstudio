@@ -14,6 +14,9 @@ const eslintConfig = [
       "out/**",
       "build/**",
       ".claude/**",
+      // Saved reference pages, not source. Already git-ignored; linting
+      // someone else's minified bundle only ever reports their choices.
+      "Design Reference/**",
       "next-env.d.ts",
     ],
   },
