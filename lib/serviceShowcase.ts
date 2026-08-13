@@ -11,13 +11,10 @@
 import type { WorkImage } from "@/lib/work";
 import {
   automationWork,
-  dejaMediaVideo,
   filosofeeAiMedia,
   filosofeeIdentity,
   filosofeeStickers,
-  filosofeeStore,
   identityWork,
-  innovatrRedesign,
   marketingWork,
   socialSweepCharts,
   storeDesignWork,
@@ -65,13 +62,13 @@ export const SERVICE_SHOWCASE: Record<string, ServiceShowcase> = {
   websites: {
     stripTitle: "Sites we have built",
     stripIntro:
-      "Storefronts that take money, marketing sites that load, and a concept that shows what a hero can do.",
-    pieces: [
-      ...filosofeeStore,
-      innovatrRedesign.after,
-      innovatrRedesign.before,
-      dejaMediaVideo.posterAsWork,
-    ],
+      "Filmed scrolling, because a static frame says almost nothing about a website.",
+    /*
+     * Empty on purpose: the Websites page renders its work as click-to-play
+     * videos from lib/work's builtSites instead of a still-image strip
+     * (app/services/[slug]/page.tsx special-cases the slug).
+     */
+    pieces: [],
     caseSlug: "filosofee",
     caseAngle:
       "Our own store, end to end: product, site, payment gateways — then the only validation that counts, people paying for it.",

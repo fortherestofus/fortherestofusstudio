@@ -28,6 +28,38 @@ export const lumiskinVideo = {
   caption: "LumiSkin — the version that made it out of the notes app.",
 };
 
+/**
+ * The sites we have built, filmed scrolling — the Websites page shows these
+ * as click-to-play videos, because a static frame of a website says almost
+ * nothing about one. There are more; the page says so and points at
+ * contact rather than padding the list.
+ */
+export const builtSites: {
+  src: string;
+  poster: string;
+  title: string;
+  caption: string;
+}[] = [
+  {
+    src: "/video/filosofee-site.mp4",
+    poster: "/video/filosofee-site-poster.webp",
+    title: "Filosofee",
+    caption: "Our own store — product, checkout, payment gateways.",
+  },
+  {
+    src: "/video/festival-site.mp4",
+    poster: "/video/festival-site-poster.webp",
+    title: "Festival of Eventing",
+    caption: "An event brand's home — programme, partners, registration.",
+  },
+  {
+    src: "/video/dejamedia-site.mp4",
+    poster: "/video/dejamedia-site-poster.webp",
+    title: "Deja Media",
+    caption: "A studio site built to be edited by the people who own it.",
+  },
+];
+
 /** The Deja Media site, filmed scrolling. Kept for the services surfaces. */
 export const dejaMediaVideo = {
   src: "/video/dejamedia-site.mp4",

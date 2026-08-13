@@ -69,17 +69,17 @@ const STAGES: Stage[] = [
       {
         who: "client",
         side: "left",
-        text: "People start our booking form and vanish halfway through. We cannot tell where.",
+        text: "People start our booking form and vanish halfway through. We cannot tell where, and it is costing us bookings.",
       },
       {
         who: "studio",
         side: "right",
-        text: "Then nothing gets built yet. Analytics first: which field they abandon, on which device, and whether the landing page is even sending you the right people.",
+        text: "That is a painful one — you are paying to bring people in and losing them at the last step. We have seen it before, and it is usually fixable.",
       },
       {
         who: "studio",
         side: "right",
-        text: "A week of session data tells us if this is a form problem or a traffic problem. They need very different fixes.",
+        text: "Before we change anything, let us watch it happen: a week of analytics on where people leave, on which device. Then we will know what we are actually fixing.",
       },
     ],
   },
@@ -96,17 +96,17 @@ const STAGES: Stage[] = [
       {
         who: "studio",
         side: "left",
-        text: "It is step four. Seven fields on a phone, and the date picker breaks on older Android.",
+        text: "Found it. Step four: seven fields on a phone, and the date picker breaks on older Android. Most people are on mobile.",
       },
       {
         who: "teamA",
         side: "right",
-        text: "Then split it in two and save what they typed. Nobody should lose progress by tapping back.",
+        text: "No wonder they give up. Split it into two short steps and save what they typed — nobody should lose progress by tapping back.",
       },
       {
         who: "teamB",
         side: "right",
-        text: "I will test the native date input against the custom one before we commit to either. Something clickable by Friday.",
+        text: "I will try the native date input against the custom one and we keep whichever wins. Something clickable by Friday.",
       },
     ],
   },
@@ -123,17 +123,17 @@ const STAGES: Stage[] = [
       {
         who: "studio",
         side: "left",
-        text: "Two steps, progress saved, native date picker. Here is where people used to leave, and where they get to now.",
+        text: "Here is the new flow live. The issue was simple once we could see it: the form asked too much, too early, on the device most people use.",
       },
       {
         who: "client",
         side: "right",
-        text: "So what was actually wrong with it?",
+        text: "People are actually finishing it now. This is what we needed.",
       },
       {
         who: "studio",
         side: "left",
-        text: "It asked too much too early, on the device most people were using. Next we watch the drop-off that is left and keep trimming.",
+        text: "Glad it is working. Launch is the middle, though — we keep watching the drop-off that is left, and here is the growth plan for the next quarter.",
       },
     ],
   },

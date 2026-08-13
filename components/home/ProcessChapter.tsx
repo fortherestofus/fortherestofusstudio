@@ -3,7 +3,9 @@
 /**
  * ProcessChapter — chapter 04. The engagement as three states (the
  * reference's discovered→saved→confirmed device, retold as identify→build→
- * grow) with one real product as the worked example: Hakkan's brief, its
+ * grow) with a different real project evidencing each state: any problem
+ * can arrive (the mosaic), one of ours mid-build (Hakkan), a client
+ * campaign growing (Thrifty). Originally it was Hakkan three times —
  * build screen, its report with the measured result. One story told deeply
  * beats four told thinly.
  *
@@ -22,6 +24,7 @@ import Section, { SectionHeading } from "@/components/ui/Section";
 import ChapterMark from "@/components/ui/ChapterMark";
 import { getApp } from "@/lib/apps";
 import { PROCESS_STEPS } from "@/lib/services";
+import { filosofeeIdentity, identityWork, marketingWork } from "@/lib/work";
 import { cn } from "@/lib/cn";
 
 const STAMPS = ["Week 0", "Week by week", "Launch onward"];
@@ -35,8 +38,8 @@ interface ProcessChapterProps {
 export default function ProcessChapter({ chapter }: ProcessChapterProps) {
   const reduced = useReducedMotion();
   const app = getApp("hakkan")!;
-  const buildShot = app.screenshots[3]; // the create-content view
-  const growShot = app.screenshots[0]; // the report view
+  const buildShot = app.screenshots[2]; // the infographic build view
+  const growShot = marketingWork[0]; // the Thrifty campaign grid
 
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { margin: "-20%" });
@@ -58,47 +61,91 @@ export default function ProcessChapter({ chapter }: ProcessChapterProps) {
     setActive(i);
   };
 
+  /*
+   * One state, one kind of evidence — and deliberately three different
+   * projects, because the point of this section is range: any problem can
+   * arrive, one of our products can be mid-build, a client campaign can be
+   * the thing growing.
+   */
+  const identifyMosaic = [
+    {
+      src: identityWork[4].src,
+      alt: identityWork[4].alt,
+      label: "A brand that needs a face",
+    },
+    {
+      src: filosofeeIdentity[1].src,
+      alt: filosofeeIdentity[1].alt,
+      label: "A product that needs a market",
+    },
+    {
+      src: marketingWork[1].src,
+      alt: marketingWork[1].alt,
+      label: "Research nobody reads",
+    },
+    {
+      src: identityWork[1].src,
+      alt: identityWork[1].alt,
+      label: "A launch with no story",
+    },
+  ];
+
   const mocks = [
-    // 01 · Identify — the brief, as a document
-    <div key="identify" className="flex h-full flex-col justify-center p-6 sm:p-8">
+    // 01 · Identify — problems arrive in every shape
+    <div key="identify" className="flex h-full flex-col p-5 sm:p-6">
       <p className="text-[0.625rem] uppercase tracking-[0.14em] text-faint">
-        The brief · {app.name}
+        Problems arrive in every shape
       </p>
-      <p className="mt-4 text-[0.6875rem] uppercase tracking-[0.12em] text-muted">
-        Problem
-      </p>
-      <p className="mt-1 text-[1.0625rem] font-medium leading-snug text-ink">
-        “{app.problem}”
-      </p>
-      <p className="mt-5 text-[0.6875rem] uppercase tracking-[0.12em] text-muted">
-        Success looks like
-      </p>
-      <p className="mt-1 text-[1.0625rem] font-medium leading-snug text-ink">
-        Content a reader would cite — real sources, real voices.
-      </p>
+      <div className="mt-4 grid flex-1 grid-cols-2 gap-3">
+        {identifyMosaic.map((tile) => (
+          <div
+            key={tile.src}
+            className="relative overflow-hidden rounded-[10px] border border-border"
+          >
+            <Image
+              src={tile.src}
+              alt={tile.alt}
+              fill
+              sizes="260px"
+              className="object-cover"
+            />
+            <span className="absolute inset-x-0 bottom-0 bg-ink-surface/70 px-2.5 py-1.5 text-[0.625rem] font-medium text-ink-text">
+              {tile.label}
+            </span>
+          </div>
+        ))}
+      </div>
     </div>,
-    // 02 · Build — the real product taking shape
+    // 02 · Build — one of ours, mid-cycle
     <div key="build" className="relative h-full">
       <Image
         src={buildShot}
         alt={`${app.name} in the middle of a build cycle`}
         fill
         sizes="(max-width: 1024px) 92vw, 560px"
-        className="object-cover object-left-top"
+        className="object-cover object-top"
       />
+      <div className="absolute bottom-4 left-4 rounded-[10px] border border-border bg-surface px-3.5 py-1.5 shadow-card">
+        <p className="text-[0.75rem] font-medium text-ink">
+          Hakkan — a build cycle in progress
+        </p>
+      </div>
     </div>,
-    // 03 · Grow — shipped, measured, improved
+    // 03 · Grow — a client campaign, measured
     <div key="grow" className="relative h-full">
       <Image
-        src={growShot}
-        alt={`${app.name} report view after launch`}
+        src={growShot.src}
+        alt={growShot.alt}
         fill
         sizes="(max-width: 1024px) 92vw, 560px"
-        className="object-cover object-left-top"
+        className="object-cover object-top"
       />
-      <div className="absolute bottom-4 left-4 rounded-full border border-border bg-surface px-3.5 py-1.5 shadow-card">
-        <p className="nums text-[0.75rem] font-medium text-ink">
-          Human voices in citations: 12% → 57%
+      <div className="absolute bottom-4 left-4 rounded-[10px] bg-ink px-3.5 py-2 shadow-card">
+        <p className="nums text-[0.875rem] font-medium leading-none text-bg">
+          742 leads at R29.57
+        </p>
+        <p className="mt-1 text-[0.625rem] uppercase tracking-[0.12em] text-bg opacity-70">
+          Thrifty Adventures · LinkedIn
         </p>
       </div>
     </div>,
@@ -113,7 +160,7 @@ export default function ProcessChapter({ chapter }: ProcessChapterProps) {
           className={chapter ? "mt-4" : undefined}
           eyebrow="How it works"
           title="From problem to product."
-          subtitle="Three states, and you can always see which one we are in. Hakkan — our own research tool — shown as the worked example."
+          subtitle="Three states, and you can always see which one we are in — shown here with three different projects, because the spine is the same whatever arrives."
         />
 
         <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
@@ -179,7 +226,7 @@ export default function ProcessChapter({ chapter }: ProcessChapterProps) {
                 <span className="h-1.5 w-1.5 rounded-full bg-border" />
                 <span className="h-1.5 w-1.5 rounded-full bg-border" />
                 <span className="ml-2 truncate rounded-full bg-sunken px-2.5 py-0.5 text-[0.5625rem] text-faint">
-                  {PROCESS_STEPS[active].title.toLowerCase()} · hakkan.app
+                  {PROCESS_STEPS[active].title.toLowerCase()} · fortherestofus
                 </span>
               </div>
               <div className="relative" style={{ aspectRatio: "16 / 10" }}>

@@ -162,10 +162,24 @@ never cropped. Only the detail-page hero crops, deliberately, at the fold
 (bottom-only via `object-top`). Frame shapes: `phone`, `browser`, and `panel`
 (the extension popup, ~3:4).
 
-**Vignettes vs screenshots.** `components/services/Vignettes.tsx` holds
-miniature product UI built in HTML/CSS. These are used *only* on service cards
-and service hero slots, where there is no real artefact to show. App pages must
-use real screenshots (or a placeholder awaiting one) — never simulated UI.
+**No simulated UI anywhere.** `components/services/Vignettes.tsx` (miniature
+product UI built in HTML/CSS) was retired: every service page now opens on a
+real artefact of what that service actually sells, via `heroArtefact()` in
+`app/services/[slug]/page.tsx`. A vignette on every page regardless of
+subject — a voice-and-palette card heading the automation page — was the
+mismatch that killed it. Real screenshots or nothing.
+
+**Every section must earn its place.** Before adding one, ask what it proves
+that its page does not already prove. The service detail pages carry no
+process strip and no "other things we do" grid: both repeated `/services`
+verbatim, and a detail page's job is depth on one subject, not a second
+menu. `/services` alone carries the process and the full pillar list.
+
+**Websites is filmed, not photographed.** `builtSites` in `lib/work.ts`
+holds click-to-play walkthroughs (Filosofee, Festival of Eventing, Deja
+Media); a still frame of a website says almost nothing about it. The page
+says there are more and points at contact rather than padding the list. A
+storefront product photo is not a website — do not put one in that strip.
 
 **Territories.** Cards belong to the studio side (home, services). App pages
 are editorial: full-bleed alternating bands, big type, screenshots bleeding off

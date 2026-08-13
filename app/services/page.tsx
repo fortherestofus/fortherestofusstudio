@@ -26,11 +26,16 @@ export const metadata: Metadata = {
   },
 };
 
-/** Pillar treatments — the same three colours the homepage grid uses. */
-const PILLARS: Record<string, { mark: string; rule: string }> = {
-  build: { mark: "text-accent-deep", rule: "bg-accent" },
-  identity: { mark: "text-tint-amber-deep", rule: "bg-tint-amber-deep" },
-  grow: { mark: "text-tint-olive-deep", rule: "bg-tint-olive-deep" },
+/**
+ * Pillar treatments — pastel washes with their readable deep partners.
+ * The plain white rows read as one large undifferentiated surface; the
+ * washes give each pillar its own temperature, and the service rows lift
+ * on hover like cards because they are the click targets.
+ */
+const PILLARS: Record<string, { card: string; deep: string }> = {
+  build: { card: "bg-tint-rust", deep: "text-tint-rust-deep" },
+  identity: { card: "bg-tint-amber", deep: "text-tint-amber-deep" },
+  grow: { card: "bg-tint-olive", deep: "text-tint-olive-deep" },
 };
 
 export default function ServicesPage() {
@@ -66,61 +71,66 @@ export default function ServicesPage() {
 
       {/* The three pillars — the whole point of the page */}
       <Section id="what-we-do" tone="canvas">
-        <ol className="flex flex-col">
+        <ol className="flex flex-col gap-5">
           {LIFECYCLE_CHAPTERS.map((chapter, i) => {
             const pillar = PILLARS[chapter.key];
             return (
               <li
                 key={chapter.key}
-                className="grid gap-6 border-t border-border py-10 lg:grid-cols-12 lg:gap-10"
+                className={cn(
+                  "grid gap-8 rounded-card p-7 sm:p-9 lg:grid-cols-12 lg:gap-10",
+                  pillar.card
+                )}
               >
                 <div className="lg:col-span-5">
-                  <div className="flex items-center gap-3">
-                    <span className={cn("nums text-[0.8125rem]", pillar.mark)}>
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span
-                      aria-hidden
-                      className={cn("h-[3px] w-6 rounded-full", pillar.rule)}
-                    />
-                  </div>
-                  <h2 className="mt-4 text-balance text-[2rem] font-medium leading-[1.1] tracking-[-0.025em] text-ink sm:text-[2.5rem]">
+                  <span className={cn("nums text-[0.8125rem]", pillar.deep)}>
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h2
+                    className={cn(
+                      "mt-3 text-balance text-[2rem] font-medium leading-[1.1] tracking-[-0.025em] sm:text-[2.5rem]",
+                      pillar.deep
+                    )}
+                  >
                     {chapter.title}
                   </h2>
-                  <p className="mt-3 max-w-[38ch] text-pretty leading-relaxed text-muted">
+                  <p className="mt-3 max-w-[38ch] text-pretty leading-relaxed text-ink/75">
                     {chapter.blurb}
+                  </p>
+                  <p
+                    className={cn(
+                      "mt-6 max-w-[40ch] border-t border-ink/10 pt-5 text-pretty text-[1.0625rem] font-medium leading-relaxed",
+                      pillar.deep
+                    )}
+                  >
+                    {chapter.belief}
                   </p>
                 </div>
 
-                <div className="lg:col-span-7">
-                  <p className="max-w-[46ch] text-pretty text-[1.125rem] leading-relaxed text-ink">
-                    {chapter.belief}
-                  </p>
-                  <ul className="mt-7 flex flex-col">
-                    {chapter.serviceSlugs.map((slug) => {
-                      const service = getService(slug);
-                      if (!service) return null;
-                      return (
-                        <li key={slug}>
-                          <Link
-                            href={`/services/${slug}/`}
-                            className="group flex items-center justify-between gap-6 border-b border-border py-4 transition-colors hover:border-ink"
-                          >
-                            <span>
-                              <span className="block text-[1.0625rem] font-medium text-ink">
-                                {service.title}
-                              </span>
-                              <span className="mt-0.5 block text-[0.9375rem] leading-relaxed text-muted">
-                                {service.summary}
-                              </span>
+                <ul className="flex flex-col gap-3 self-center lg:col-span-7">
+                  {chapter.serviceSlugs.map((slug) => {
+                    const service = getService(slug);
+                    if (!service) return null;
+                    return (
+                      <li key={slug}>
+                        <Link
+                          href={`/services/${slug}/`}
+                          className="group flex items-center justify-between gap-6 rounded-card bg-surface p-5 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
+                        >
+                          <span>
+                            <span className="block text-[1.0625rem] font-medium text-ink">
+                              {service.title}
                             </span>
-                            <ArrowRight className="h-5 w-5 shrink-0 text-faint transition-all duration-300 group-hover:translate-x-1 group-hover:text-ink" />
-                          </Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
+                            <span className="mt-0.5 block text-[0.9375rem] leading-relaxed text-muted">
+                              {service.summary}
+                            </span>
+                          </span>
+                          <ArrowRight className="h-5 w-5 shrink-0 text-faint transition-all duration-300 group-hover:translate-x-1 group-hover:text-ink" />
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
               </li>
             );
           })}

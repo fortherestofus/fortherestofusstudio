@@ -1,25 +1,27 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, Check } from "lucide-react";
-import {
-  services,
-  getService,
-  getOtherServices,
-  PROCESS_STEPS,
-  TOOLBENCH,
-} from "@/lib/services";
-import { VIGNETTES, type VignetteKey } from "@/components/services/Vignettes";
+import { ArrowLeft, Check } from "lucide-react";
+import { services, getService, TOOLBENCH } from "@/lib/services";
 import { testimonials } from "@/lib/testimonials";
 import { caseProofs } from "@/lib/proof";
 import { SERVICE_SHOWCASE } from "@/lib/serviceShowcase";
+import {
+  automationWork,
+  builtSites,
+  identityWork,
+  innovatrRedesign,
+  marketingWork,
+} from "@/lib/work";
+import { getApp } from "@/lib/apps";
 import WorkStrip from "@/components/services/WorkStrip";
+import ToolMarquee from "@/components/services/ToolMarquee";
+import WorkVideo from "@/components/ui/WorkVideo";
 import Section, { SectionHeading } from "@/components/ui/Section";
-import { ProcessStrip } from "@/components/ui/Card";
 import CaseProofCard from "@/components/ui/CaseProofCard";
 import EyebrowChip from "@/components/ui/EyebrowChip";
 import PillButton from "@/components/ui/PillButton";
-import Icon from "@/components/ui/Icon";
 import CallToAction from "@/components/home/CallToAction";
 
 export function generateStaticParams() {
@@ -48,6 +50,37 @@ export async function generateMetadata({
   };
 }
 
+/**
+ * The hero artefact per service — each page opens on the thing it sells.
+ * A vignette (simulated UI) used to sit here; real work replaced it, and
+ * the mismatch (a voice-and-palette card on every page regardless of
+ * subject) went with it.
+ */
+function heroArtefact(slug: string): { src: string; alt: string } | null {
+  switch (slug) {
+    case "apps-and-saas": {
+      const hakkan = getApp("hakkan")!;
+      return {
+        src: hakkan.screenshots[0].src,
+        alt: "Hakkan, a product we built and run",
+      };
+    }
+    case "websites":
+      return {
+        src: innovatrRedesign.after.src,
+        alt: innovatrRedesign.after.alt,
+      };
+    case "brand-and-content":
+      return { src: identityWork[0].src, alt: identityWork[0].alt };
+    case "product-and-growth":
+      return { src: marketingWork[0].src, alt: marketingWork[0].alt };
+    case "tech-and-automation":
+      return { src: automationWork[0].src, alt: automationWork[0].alt };
+    default:
+      return null;
+  }
+}
+
 export default async function ServiceDetailPage({
   params,
 }: {
@@ -57,23 +90,22 @@ export default async function ServiceDetailPage({
   const service = getService(slug);
   if (!service) notFound();
 
-  const others = getOtherServices(slug);
-  const Vignette = VIGNETTES[service.slug as VignetteKey];
-  // One quote next to the CTA — hesitation peaks right before the click.
+  // One quote next to the claims — hesitation peaks right before the click.
   const quote = testimonials[services.indexOf(service) % testimonials.length];
   // The work strip and the single case this page anchors on.
   const showcase = SERVICE_SHOWCASE[slug];
   const anchorCase = showcase
     ? caseProofs.find((c) => c.slug === showcase.caseSlug)
     : undefined;
+  const hero = heroArtefact(slug);
 
   return (
     <>
-      {/* Hero */}
-      <section className="bg-bg pb-16 pt-28 sm:pb-20 sm:pt-36">
+      {/* Hero — the promise, next to the thing itself */}
+      <section className="bg-bg pb-12 pt-28 sm:pb-16 sm:pt-32">
         <div className="mx-auto w-full max-w-content px-5 sm:px-8">
           <Link
-            href="/services"
+            href="/services/"
             className="inline-flex items-center gap-1.5 text-[0.9375rem] text-muted transition-colors hover:text-ink"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -93,22 +125,31 @@ export default async function ServiceDetailPage({
                 {service.page.lead}
               </p>
               <div className="mt-9">
-                <PillButton href="/contact" size="lg">
+                <PillButton href="/contact/" size="lg">
                   Start a project
                 </PillButton>
               </div>
             </div>
 
             <div className="lg:col-span-6">
-              <div className="relative h-[280px] overflow-hidden rounded-well border border-border bg-surface sm:h-[320px]">
-                <Vignette />
-              </div>
+              {hero && (
+                <div className="relative h-[280px] overflow-hidden rounded-well border border-border bg-surface shadow-card sm:h-[340px]">
+                  <Image
+                    src={hero.src}
+                    alt={hero.alt}
+                    fill
+                    sizes="(max-width: 1024px) 92vw, 560px"
+                    className="object-cover object-top"
+                    priority
+                  />
+                </div>
+              )}
             </div>
           </div>
         </div>
       </section>
 
-      {/* How it works */}
+      {/* How it works — the explainer, with the scope beside it */}
       <Section tone="sunken">
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-7">
@@ -177,17 +218,56 @@ export default async function ServiceDetailPage({
         </div>
       </Section>
 
-      {/* The work itself */}
-      {showcase && (
+      {/* The work — sites play as video; everything else is a strip */}
+      {slug === "websites" ? (
         <Section tone="canvas">
           <SectionHeading
             align="left"
             eyebrow="The work"
-            title={showcase.stripTitle}
-            subtitle={showcase.stripIntro}
+            title="Sites we have built"
+            subtitle="Filmed scrolling, because a static frame says almost nothing about a website. Press play."
           />
-          <WorkStrip pieces={showcase.pieces} className="mt-10" />
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {builtSites.map((site) => (
+              <div key={site.src}>
+                <WorkVideo
+                  src={site.src}
+                  poster={site.poster}
+                  label={`Play the ${site.title} walkthrough`}
+                />
+                <p className="mt-3 text-[0.9375rem] font-medium text-ink">
+                  {site.title}
+                </p>
+                <p className="mt-0.5 text-[0.8125rem] leading-relaxed text-muted">
+                  {site.caption}
+                </p>
+              </div>
+            ))}
+          </div>
+          <p className="mt-8 max-w-[56ch] text-pretty text-[0.9375rem] leading-relaxed text-muted">
+            There are more.{" "}
+            <Link
+              href="/contact/"
+              className="font-medium text-ink underline decoration-border underline-offset-4 transition-colors hover:decoration-ink"
+            >
+              Ask for a walkthrough
+            </Link>{" "}
+            and we will show you the ones closest to what you are building.
+          </p>
         </Section>
+      ) : (
+        showcase &&
+        showcase.pieces.length > 0 && (
+          <Section tone="canvas">
+            <SectionHeading
+              align="left"
+              eyebrow="The work"
+              title={showcase.stripTitle}
+              subtitle={showcase.stripIntro}
+            />
+            <WorkStrip pieces={showcase.pieces} className="mt-10" />
+          </Section>
+        )
       )}
 
       {/* One case, told from this service's angle */}
@@ -216,14 +296,14 @@ export default async function ServiceDetailPage({
         </Section>
       )}
 
-      {/* The named bench — automation page only */}
+      {/* Automation page only: the tools, framed as the case they served */}
       {slug === "tech-and-automation" && (
         <Section tone="canvas">
           <SectionHeading
             align="left"
-            eyebrow="What we run on"
-            title="The tools, named."
-            subtitle="No mystery stack. These are the platforms we build automations on, and what each one is actually for."
+            eyebrow="Case in point"
+            title="One pipeline, four tools."
+            subtitle="Innovatr's lead engine, tool by tool — what each one actually did. The point is not these four; it is that we pick per job."
           />
           <ol className="mt-10 grid gap-x-10 gap-y-0 md:grid-cols-2">
             {TOOLBENCH.map((tool, i) => (
@@ -245,49 +325,29 @@ export default async function ServiceDetailPage({
               </li>
             ))}
           </ol>
+
+          <div className="mt-12 border-t border-border pt-8">
+            <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-faint">
+              And the rest of the bench
+            </h3>
+            <ToolMarquee className="mt-5" />
+            <p className="mt-4 max-w-[56ch] text-[0.875rem] leading-relaxed text-muted">
+              Every name here has shipped real work in our case studies —
+              and if your stack already runs on something else, we build on
+              that instead.
+            </p>
+          </div>
         </Section>
       )}
-
-      {/* Process */}
-      <Section tone="sunken">
-        <SectionHeading
-          eyebrow="How we work"
-          title="Identify, build, grow."
-        />
-        <ProcessStrip steps={PROCESS_STEPS} className="mt-12 border-t-0 pt-0" />
-      </Section>
-
-      {/* Other services */}
-      <Section tone="canvas" size="sm">
-        <SectionHeading align="left" eyebrow="Also from the studio" title="Other things we do" />
-        <div className="mt-10 grid gap-3 sm:gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {others.map((other) => (
-            <Link
-              key={other.slug}
-              href={`/services/${other.slug}`}
-              className="group flex flex-col rounded-card border border-border bg-surface p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover"
-            >
-              <span className="grid h-9 w-9 place-items-center rounded-lg bg-ink text-bg">
-                <Icon name={other.icon} className="h-4 w-4" />
-              </span>
-              <span className="mt-4 font-medium text-ink">{other.title}</span>
-              <span className="mt-1.5 flex-1 text-[0.875rem] leading-relaxed text-muted">
-                {other.summary}
-              </span>
-              <ArrowRight className="mt-4 h-4 w-4 text-faint transition-all duration-300 group-hover:translate-x-0.5 group-hover:text-ink" />
-            </Link>
-          ))}
-        </div>
-      </Section>
 
       <CallToAction
         eyebrow="Start here"
         title={`Need help with ${service.title.toLowerCase()}?`}
         body="Send a short note about where you are and what you are trying to reach. We will tell you honestly whether we are the right studio for it."
         primaryLabel="Start a project"
-        primaryHref="/contact"
+        primaryHref="/contact/"
         secondaryLabel="See all services"
-        secondaryHref="/services"
+        secondaryHref="/services/"
       />
     </>
   );
