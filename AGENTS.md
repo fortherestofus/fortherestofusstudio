@@ -47,9 +47,27 @@ InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
   speaker's *organisation* logo (`logo` in `lib/testimonials.ts`), never a
   portrait: we hold no photographs of these people, and a generated face —
   photoreal, cartoon, or 3D — would fabricate the appearance of a real,
-  named professional. Real headshots are fine with their permission.
-  Client logos stay out of the hero/footer lists, where a logo strip would
-  read as endorsement rather than as a record of work.
+  named professional. Real headshots are fine with their permission. The
+  generated faces in `ProcessBand` are the deliberate exception: generic
+  personas standing in for roles, in an exchange the page labels as an
+  illustration, carrying no names, numbers or results.
+- **Client logos: one sanctioned strip.** They appear beside a testimonial
+  (the speaker's organisation) and in the `ClientMarquee` on `/services`,
+  headed **"Work delivered for"** — a record of engagements, never "trusted
+  by" or wording that implies endorsement. They stay out of the hero and
+  footer. Trademarks belong to their owners and identify the work only.
+- **Three pillars, one lifecycle.** Services group as **build → identity →
+  grow** (`ServiceLifecycle`, `LIFECYCLE_CHAPTERS`). Automation is not a
+  fourth pillar; it sits under grow. The five service slugs and URLs stay
+  as they are — the grouping is presentational, and those pages carry real
+  search intent.
+- **One case anchors one page.** `lib/serviceShowcase.ts` maps each service
+  to a work strip and a single case from `lib/proof.ts`. Filosofee spans
+  three pillars, so it appears on three pages — but each shows a different
+  face of it (the store, the identity, the economics) and never repeats an
+  artefact. `CaseProof.kind` distinguishes `client` / `venture` (our own
+  business, real customers) / `exploration` (no customers); every surface
+  labels which it is.
 - **Keep the docs current** — update this file and `docs/REDESIGN.md` after
   meaningful changes.
 - **Commit + push after a coherent change** once gates are green. Repo:
