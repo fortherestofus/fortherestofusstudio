@@ -1,18 +1,17 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import Section from "@/components/ui/Section";
 import EyebrowChip from "@/components/ui/EyebrowChip";
 import PillButton from "@/components/ui/PillButton";
 import TestimonialQuote from "@/components/ui/TestimonialQuote";
+import StatBand from "@/components/studio/StatBand";
+import ClientMarquee from "@/components/services/ClientMarquee";
+import ToolMarquee from "@/components/services/ToolMarquee";
 import CallToAction from "@/components/home/CallToAction";
-import { testimonials, clients } from "@/lib/testimonials";
+import { testimonials } from "@/lib/testimonials";
 import { STUDIO_STATS } from "@/lib/proof";
 import { FOUNDER } from "@/lib/studio";
-import { PROCESS_STEPS } from "@/lib/services";
-import { identityWork, socialSweepCharts } from "@/lib/work";
-import { apps } from "@/lib/apps";
+import { identityWork } from "@/lib/work";
 import { HELLO_EMAIL } from "@/lib/contact";
 
 const DESCRIPTION =
@@ -30,6 +29,42 @@ export const metadata: Metadata = {
   },
 };
 
+/*
+ * Three pieces of real craft beside the intro copy, not a portfolio: the
+ * page's job is to say who we are, and these say it faster than another
+ * paragraph. Deliberately the hand-made end of the work — a wordmark, foiled
+ * cards, a photograph — because the rest of the site is screens.
+ */
+const CRAFT = {
+  tall: identityWork[4], // editorial photography, 4:5
+  top: identityWork[1], // Deja Media gold foil, 4:3
+  bottom: identityWork[0], // Legacy Lab wordmark, 16:9
+};
+
+function Craft({ piece }: { piece: (typeof identityWork)[number] }) {
+  return (
+    <figure className="overflow-hidden rounded-card border border-border bg-surface">
+      <div
+        className="relative"
+        style={{ aspectRatio: `${piece.width} / ${piece.height}` }}
+      >
+        <Image
+          src={piece.src}
+          alt={piece.alt}
+          fill
+          sizes="(max-width: 1024px) 45vw, 260px"
+          className="object-cover"
+        />
+      </div>
+      {piece.caption && (
+        <figcaption className="border-t border-border px-4 py-3 text-[0.8125rem] text-muted">
+          {piece.caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
 export default function StudioPage() {
   return (
     <>
@@ -38,7 +73,9 @@ export default function StudioPage() {
         <div className="mx-auto w-full max-w-content px-5 sm:px-8">
           <EyebrowChip>About the studio</EyebrowChip>
           <h1 className="mt-6 max-w-[18ch] text-balance text-[2.5rem] font-medium leading-[1.03] tracking-[-0.035em] sm:text-[3.75rem]">
-            <span className="text-ink">Technology is still built for people who already understand it.</span>{" "}
+            <span className="text-ink">
+              Technology is still built for people who already understand it.
+            </span>{" "}
             <span className="text-muted">We build for everyone else.</span>
           </h1>
 
@@ -75,108 +112,27 @@ export default function StudioPage() {
               </div>
             </div>
 
-            <dl className="grid gap-8 sm:grid-cols-3 lg:col-span-5 lg:grid-cols-1 lg:gap-6">
-              {STUDIO_STATS.map((stat) => (
-                <div key={stat.label} className="border-t border-border pt-4">
-                  <dd className="nums text-[2rem] font-medium leading-none tracking-[-0.025em] text-ink">
-                    {stat.value}
-                  </dd>
-                  <dt className="mt-2 text-[0.875rem] leading-snug text-muted">
-                    {stat.label}
-                  </dt>
-                </div>
-              ))}
-            </dl>
+            {/* Craft, not portfolio — three pieces, no headline needed */}
+            {/* items-start, or the grid stretches the single tall figure to
+                match the stacked pair and leaves white under its caption. */}
+            <div className="grid grid-cols-2 items-start gap-4 self-start lg:col-span-5">
+              <Craft piece={CRAFT.tall} />
+              <div className="flex flex-col gap-4">
+                <Craft piece={CRAFT.top} />
+                <Craft piece={CRAFT.bottom} />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* What that looks like — real work, no card stack */}
+      {/* The numbers, as the seam between the studio and the person */}
       <Section tone="canvas">
-        <div className="grid gap-4 sm:gap-5 md:grid-cols-3">
-          <figure className="overflow-hidden rounded-card border border-border bg-surface md:col-span-2">
-            <div className="relative" style={{ aspectRatio: "16 / 10" }}>
-              <Image
-                src={socialSweepCharts.src}
-                alt={socialSweepCharts.alt}
-                fill
-                sizes="(max-width: 768px) 92vw, 740px"
-                className="object-cover object-top"
-              />
-            </div>
-            <figcaption className="border-t border-border px-5 py-4 text-[0.875rem] text-muted">
-              {socialSweepCharts.caption} — a research product built for a
-              client, replacing a $8,000/yr licence.
-            </figcaption>
-          </figure>
-
-          <figure className="overflow-hidden rounded-card border border-border bg-surface">
-            <div className="relative" style={{ aspectRatio: "4 / 5" }}>
-              <Image
-                src={identityWork[1].src}
-                alt={identityWork[1].alt}
-                fill
-                sizes="(max-width: 768px) 92vw, 380px"
-                className="object-cover"
-              />
-            </div>
-            <figcaption className="border-t border-border px-5 py-4 text-[0.875rem] text-muted">
-              Identity work — the look and feel that makes a product
-              recognisable.
-            </figcaption>
-          </figure>
-        </div>
-
-        {/* The lifecycle, stated once */}
-        <ol className="mt-12 grid gap-8 border-t border-border pt-8 md:grid-cols-3">
-          {PROCESS_STEPS.map((step) => (
-            <li key={step.step}>
-              <span className="nums text-[0.8125rem] text-accent-deep">
-                {String(step.step).padStart(2, "0")}
-              </span>
-              <h2 className="mt-3 text-[1.375rem] font-medium tracking-[-0.02em] text-ink">
-                {step.title}
-              </h2>
-              <p className="mt-2 max-w-[36ch] text-[0.9375rem] leading-relaxed text-muted">
-                {step.description}
-              </p>
-            </li>
-          ))}
-        </ol>
+        <StatBand stats={STUDIO_STATS} />
       </Section>
 
-      {/* The products, briefly — the proof that we run this on ourselves */}
-      <Section tone="sunken" size="sm">
-        <div className="flex flex-wrap items-end justify-between gap-6">
-          <h2 className="text-[1.75rem] font-medium tracking-[-0.02em] text-ink">
-            We run it on ourselves first.
-          </h2>
-          <Link
-            href="/apps/"
-            className="group inline-flex items-center gap-2 text-[0.9375rem] font-medium text-ink"
-          >
-            All four products
-            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-          </Link>
-        </div>
-        <div className="mt-8 grid gap-x-8 gap-y-1 sm:grid-cols-2">
-          {apps.map((app) => (
-            <Link
-              key={app.slug}
-              href={`/apps/${app.slug}/`}
-              className="group flex items-baseline justify-between gap-4 border-b border-border py-4 transition-colors hover:border-ink"
-            >
-              <span className="text-[1.0625rem] text-ink">{app.name}</span>
-              <span className="flex-1 truncate text-right text-[0.875rem] text-muted">
-                {app.problem}
-              </span>
-            </Link>
-          ))}
-        </div>
-      </Section>
-
-      {/* The person behind it — smaller, factual, one column */}
-      <Section tone="canvas">
+      {/* The person behind it */}
+      <Section tone="sunken">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-3">
             <div className="overflow-hidden rounded-card border border-border shadow-card">
@@ -213,7 +169,7 @@ export default function StudioPage() {
               </p>
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
+            <div className="mt-8">
               <a
                 href={`mailto:${HELLO_EMAIL}`}
                 className="text-[0.9375rem] font-medium text-ink underline decoration-border underline-offset-4 transition-colors hover:decoration-ink"
@@ -223,32 +179,40 @@ export default function StudioPage() {
             </div>
 
             <div className="mt-10 border-t border-border pt-8">
-              <h3 className="text-[0.6875rem] uppercase tracking-[0.14em] text-faint">
-                Work delivered for
-              </h3>
-              <ul className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
-                {clients.map((client) => (
-                  <li
-                    key={client}
-                    className="text-[0.9375rem] font-medium text-muted"
-                  >
-                    {client}
-                  </li>
-                ))}
-              </ul>
+              <TestimonialQuote
+                testimonial={testimonials[0]}
+                size="lg"
+                className="max-w-3xl"
+              />
             </div>
           </div>
         </div>
+      </Section>
+
+      {/*
+        Who the work was for, and what it was built with. The client list was
+        a row of plain text names here; the marks are the same record, read
+        faster. "Work delivered for" — never "trusted by" (AGENTS).
+      */}
+      <Section tone="canvas">
+        <h2 className="text-[0.6875rem] uppercase tracking-[0.14em] text-faint">
+          Work delivered for
+        </h2>
+        <ClientMarquee className="mt-6" />
 
         <div className="mt-12 border-t border-border pt-8">
-          <TestimonialQuote
-            testimonial={testimonials[0]}
-            size="lg"
-            className="max-w-3xl"
-          />
+          <h2 className="text-[0.6875rem] uppercase tracking-[0.14em] text-faint">
+            The bench we build on
+          </h2>
+          <ToolMarquee className="mt-6" />
+          <p className="mt-5 max-w-[60ch] text-[0.9375rem] leading-relaxed text-muted">
+            Every name here has shipped real work in our case studies. We pick
+            per job rather than per habit — and if your stack already runs on
+            something else, we build on that instead.
+          </p>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-12">
           <PillButton href="/services/" variant="ghost" withArrow={false}>
             What we do
           </PillButton>

@@ -60,11 +60,13 @@ InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
   generated faces in `ProcessBand` are the deliberate exception: generic
   personas standing in for roles, in an exchange the page labels as an
   illustration, carrying no names, numbers or results.
-- **Client logos: one sanctioned strip.** They appear beside a testimonial
-  (the speaker's organisation) and in the `ClientMarquee` on `/services`,
-  headed **"Work delivered for"** — a record of engagements, never "trusted
-  by" or wording that implies endorsement. They stay out of the hero and
-  footer. Trademarks belong to their owners and identify the work only.
+- **Client logos: two sanctioned places, one wording.** They appear beside a
+  testimonial (the speaker's organisation) and in the `ClientMarquee` on
+  `/services` and `/studio`, always headed **"Work delivered for"** — a record
+  of engagements, never "trusted by" or wording that implies endorsement. They
+  stay out of the hero and the footer. Trademarks belong to their owners and
+  identify the work only. `/studio` used to list the same names as plain text;
+  the marks are the same record, read faster.
 - **Three pillars, one lifecycle.** Services group as **build → identity →
   grow** (`ServiceLifecycle`, `LIFECYCLE_CHAPTERS`). Automation is not a
   fourth pillar; it sits under grow. The five service slugs and URLs stay
@@ -123,10 +125,14 @@ canvas, ink type, ink buttons. Colour enters a page only through *imagery*,
 through an app's own accent on that app's pages, and through the **tint
 family** (`--tint-amber/olive/rust/lime` + `-deep` text partners, both
 themes) — soft washes derived from the four app accents, allowed **only**
-on the story chapter-card grids (use cases, services) and the closing
-scatter. Everywhere else there is no section-level brand colour and no
-pastel washes. `--color-accent` is a restrained ember kept for small live
-moments (focus rings, hover, status dots) — never a background.
+on the story chapter-card grids (use cases, services), the closing scatter,
+and the **stat cards** (`/contact` hero, `StatBand` on `/studio`). Those two
+are the deliberate extension: a real, sourced number is the one other thing
+on this site that has earned a block of colour, and both replaced generated
+still lifes that were carrying none. Everywhere else there is no
+section-level brand colour and no pastel washes. `--color-accent` is a
+restrained ember kept for small live moments (focus rings, hover, status
+dots) — never a background.
 
 Tokens live as CSS variables in `app/globals.css` and are mapped to Tailwind
 colors in `tailwind.config.ts`. Use tokens, never raw palette hex.
@@ -192,6 +198,15 @@ no height, is a real working link, and retires only on Cal's `linkReady`.
 Colours are read from our tokens at call time and re-sent on a theme flip —
 one frame later, because next-themes swaps the class from a parent effect.
 
+**`/studio` says who we are, and stops there.** It does not restate the
+three-step lifecycle (that is `/services`) and does not list the products
+(that is `/apps`) — both were verbatim repeats that made the page the longest
+on the site while adding nothing. What it does carry: the studio's argument,
+three pieces of real craft beside it (a wordmark, foiled cards, a
+photograph — the hand-made end of the work, because everywhere else is
+screens), the `StatBand` as the seam between the studio and the person, Alroy,
+and then who the work was for and what it was built with.
+
 **Every section must earn its place.** Before adding one, ask what it proves
 that its page does not already prove. The service detail pages carry no
 process strip and no "other things we do" grid: both repeated `/services`
@@ -209,6 +224,16 @@ are editorial: full-bleed alternating bands, big type, screenshots bleeding off
 the outer edge, a hairline spec strip, no card stacks. Keeping each language in
 its own territory is what stops the site reading as two designs.
 
+**The apps index is an app surface, not a studio one.** `/apps` used to be a
+grid of four `AppCard`s on a tray, which broke the rule above and — worse —
+showed four icons on the one page whose entire subject is four products. It is
+now four `AppBand`s in the same editorial language as the detail pages:
+problem line as the headline, real screenshot bleeding past the outer edge,
+hairline spec strip, the app's own accent washed behind its frame. Phone apps
+get a **staggered pair** of screenshots; one 290px handset in a 700px column
+strands 400px of air, and flush handsets read as a comparison rather than a
+product. `AppCard` survives only for the detail pages' "other apps" grid.
+
 ## Layout
 
 - `app/page.tsx` — home; `app/apps/` — apps index; `app/apps/<slug>/` —
@@ -220,8 +245,9 @@ its own territory is what stops the site reading as two designs.
 - `components/` — `home/` (the story chapters: Hero + HeroArtefact,
   WhyChapter, UseCasesChapter, ServicesChapter, ProcessChapter (client,
   state timeline), ProofChapter, CallToAction with scatter), `apps/`
-  (AppDetail, AppStorySection, AppJsonLd…), `layout/` (Navbar, Footer,
-  PageHero), `legal/`, `contact/` (CalBooking), `services/`, `ui/` (the kit: PillButton,
+  (AppDetail, AppBand, AppStorySection, AppJsonLd…), `layout/` (Navbar, Footer,
+  PageHero), `legal/`, `contact/` (CalBooking), `studio/` (StatBand),
+  `services/`, `ui/` (the kit: PillButton,
   EyebrowChip, Section, Card/Well/VignetteCard/IconCard/ProcessStrip,
   ChapterMark, TestimonialQuote, CaseProofCard, PlaceholderBlock, Badge,
   AppCard, Icon).

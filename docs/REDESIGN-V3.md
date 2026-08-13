@@ -351,7 +351,20 @@ iterate")
    booker shows his name on a site that is otherwise deliberately a
    little anonymous — a studio Cal team would fix that, and it is two
    lines in `lib/contact.ts` when one exists.
-8. **CaughtSlipping shipped 2026-08-13** to the Chrome Web Store
+9. **Iteration 7 (2026-08-13) — the two thin pages.** Alroy called `/apps`
+   and `/studio` bland, and both had the same root cause: repetition and
+   no product on screen.
+   - `/apps` was four `AppCard`s on a tray — the studio's card language on
+     an app surface, showing four icons for a page about four products.
+     Now four `AppBand`s (editorial, screenshot-led, per-app accent wash),
+     with a staggered screenshot pair for phone apps. A carousel was
+     considered and rejected: home already pins a scroll-through of the
+     same four, so a second horizontal scroller would read as a repeat.
+   - `/studio` lost the lifecycle steps (verbatim `/services`) and the
+     product list (verbatim `/apps`), gained three pieces of real craft
+     beside the intro, an animated `StatBand` as the seam between the
+     studio and the person, and the client + tool marquees.
+10. **CaughtSlipping shipped 2026-08-13** to the Chrome Web Store
    (`ncepfdipljmhbhehjegfemndcgaclnlg`). Status moved Beta → Live, CTA
    from a dead `#` to "Add to Chrome", and Google's store badge now
    renders beside it. `stores` keys became per-store opt-in so the
