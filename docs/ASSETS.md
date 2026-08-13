@@ -10,7 +10,16 @@ nothing.
 | `public/studio/alroy-portrait.jpg` (512×640) | `alroyportfolio/site/src/assets/images/Alroy-Ndhlovu-FOE.jpeg` — the shot used on alroyndhlovu.com | Founder note (home) + `/studio`, statically imported via `lib/studio.ts` |
 | `public/video/lumiskin-site.mp4` + poster | `alroyportfolio` — LumiSkin storefront filmed scrolling | Home why-chapter artefact, `/services` LumiSkin band (`lib/work.ts`) |
 | `public/work/lumiskin/*.jpg` (6) | `alroyportfolio/site/src/assets/case-studies/lumiskin/` | `lumiskinWork` in `lib/work.ts` |
-| `public/video/social-sweep-demo.mp4` (6.7MB) | `alroyportfolio` — narrated Social Sweep walkthrough | `/services` build-vs-buy band, click-to-play via `WorkVideo` (never autoplays; the file is too heavy) |
+| `public/video/social-sweep-demo.mp4` (5.3MB) | `alroyportfolio` — narrated Social Sweep walkthrough | `/services` build-vs-buy band, click-to-play via `WorkVideo` (never autoplays — it is two minutes long) |
+
+**Re-encoding videos.** There is no system ffmpeg on this machine, but the
+portfolio repo ships one via `ffmpeg-static`:
+`alroyportfolio/site/node_modules/ffmpeg-static/ffmpeg`. Both clips here were
+re-encoded through it at CRF 30 with `+faststart` (LumiSkin also 60→30fps and
+audio stripped, since it autoplays muted; Social Sweep keeps its narration at
+64k mono). Note these sources are already lean — the Social Sweep file is big
+because it runs two minutes at 462 kb/s, not because its bitrate is high, so
+raising the bitrate to "improve" it would only make it larger.
 | `public/work/store-{tapa,isit,caughtslipping}` | `alroyportfolio/media/` — store-listing screen sheets | `storeDesignWork`, the brand & content band on `/services` |
 | `public/logos/{energy-capital-power,ifc,gl-events}` | portfolio logos + Alroy's Downloads | Testimonial attribution (`lib/testimonials.ts`) |
 

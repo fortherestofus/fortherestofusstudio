@@ -247,7 +247,7 @@ export default function ServicesPage() {
               src={socialSweepVideo.src}
               poster={socialSweepVideo.poster}
               label="Play the Social Sweep walkthrough"
-              caption="Recorded from the working tool, not a prototype. Silent by design."
+              caption="Recorded from the working tool, not a prototype. Narrated — two minutes, sound on."
             />
           </div>
         </div>
