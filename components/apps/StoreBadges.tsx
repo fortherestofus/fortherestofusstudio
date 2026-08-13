@@ -1,54 +1,60 @@
 /**
- * StoreBadges — the official badges for whichever stores an app actually ships
- * on: Apple's, Google Play's, and Google's Chrome Web Store badge.
+ * StoreBadges — the official store artwork for an app that ships on one.
  *
- * Used as supplied: every artwork carries its own wordmark and none of the
- * owners permit rebuilding one from an icon plus our own text. They do not
- * share a ratio, so each is sized from its own and they are aligned on height.
+ * Used as supplied: each badge carries its own wordmark and none of the owners
+ * permit rebuilding them from an icon plus our own text. They are close enough
+ * in proportion that a single height keeps them level.
  *
- * A key present with a null value means that store is coming but the listing is
- * not up: the badge renders, it is not a link, and the coming-soon line below
- * names it. Badges are deliberately not dimmed — greying someone else's mark is
- * a modification of it. A key that is absent means the app is not headed for
- * that store at all, so no badge appears: CaughtSlipping is a Chrome extension
- * and was never going to the App Store.
+ * An app declares only the stores it belongs in. A Chrome extension has no App
+ * Store listing to be coming soon to, so listing every store for every app
+ * would advertise a wait that is never going to end.
+ *
+ * A declared store with a null value means the app is coming but the listing is
+ * not up: the badge renders, it is not a link, and the line underneath says so.
+ * It is deliberately not dimmed — greying someone else's mark is a modification
+ * of it.
  */
 import Image from "next/image";
 import type { App } from "@/lib/apps";
 
 const HEIGHT = 44;
 
-const BADGES = {
+const STORE_ART = {
   ios: {
     src: "/icons/download-on-the-app-store-1.svg",
     alt: "Download on the App Store",
     ratio: 3.375,
-    label: "iOS",
+    name: "iOS",
   },
   android: {
     src: "/icons/google-play-badge-2022-2.svg",
     alt: "Get it on Google Play",
     ratio: 3.375,
-    label: "Android",
+    name: "Android",
   },
   chrome: {
-    src: "/icons/chrome-web-store-badge.png",
+    src: "/icons/chrome-web-store.png",
     alt: "Available in the Chrome Web Store",
     ratio: 496 / 150,
-    label: "Chrome",
+    name: "Chrome",
   },
 } as const;
 
-type StoreKey = keyof typeof BADGES;
-const ORDER = ["ios", "android", "chrome"] as const;
+type StoreKey = keyof typeof STORE_ART;
+const ORDER: StoreKey[] = ["ios", "android", "chrome"];
 
-function Badge({ href, store }: { href: string | null; store: StoreKey }) {
-  const { src, alt, ratio } = BADGES[store];
+/** "iOS", "iOS and Android", "iOS, Android and Chrome". */
+function list(names: string[]): string {
+  if (names.length <= 1) return names.join("");
+  return `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
+}
+
+function Badge({ href, art }: { href: string | null; art: (typeof STORE_ART)[StoreKey] }) {
   const img = (
     <Image
-      src={src}
-      alt={alt}
-      width={Math.round(HEIGHT * ratio)}
+      src={art.src}
+      alt={art.alt}
+      width={Math.round(HEIGHT * art.ratio)}
       height={HEIGHT}
       className="h-11 w-auto"
     />
@@ -74,37 +80,24 @@ function Badge({ href, store }: { href: string | null; store: StoreKey }) {
   );
 }
 
-/** "iOS and Android", "iOS, Android and Chrome" — no Oxford comma, site voice. */
-function list(labels: string[]): string {
-  if (labels.length <= 1) return labels[0] ?? "";
-  return `${labels.slice(0, -1).join(", ")} and ${labels[labels.length - 1]}`;
-}
+export default function StoreBadges({ app, className }: { app: App; className?: string }) {
+  if (!app.stores) return null;
 
-export default function StoreBadges({
-  app,
-  className,
-}: {
-  app: App;
-  className?: string;
-}) {
-  const { stores } = app;
-  if (!stores) return null;
+  const declared = ORDER.filter((key) => key in app.stores!);
+  if (declared.length === 0) return null;
 
-  const present = ORDER.filter((key) => key in stores);
-  if (present.length === 0) return null;
-
-  const pending = present.filter((key) => !stores[key]).map((k) => BADGES[k].label);
+  const pending = declared.filter((key) => !app.stores![key]);
 
   return (
     <div className={className}>
       <div className="flex flex-wrap items-center justify-center gap-3">
-        {present.map((key) => (
-          <Badge key={key} href={stores[key] ?? null} store={key} />
+        {declared.map((key) => (
+          <Badge key={key} href={app.stores![key] ?? null} art={STORE_ART[key]} />
         ))}
       </div>
       {pending.length > 0 && (
         <p className="mt-3 text-[0.875rem] text-faint">
-          Coming soon to {list(pending)}.
+          Coming soon to {list(pending.map((key) => STORE_ART[key].name))}.
         </p>
       )}
     </div>
