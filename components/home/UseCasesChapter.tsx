@@ -77,7 +77,7 @@ export default function UseCasesChapter() {
   return (
     <section id="use-cases" className="bg-sunken">
       {/* Heading */}
-      <div className="mx-auto w-full max-w-content px-5 pt-12 sm:px-8 sm:pt-16">
+      <div className="mx-auto w-full max-w-content px-5 pt-10 sm:px-8 sm:pt-12">
         <ChapterMark index={4} total={4} tone="default" />
         <SectionHeading
           align="left"

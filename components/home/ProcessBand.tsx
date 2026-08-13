@@ -74,7 +74,12 @@ const STAGES: Stage[] = [
       {
         who: "studio",
         side: "right",
-        text: "Then that is the first job — finding where they go. No proposal until we can name it.",
+        text: "Then nothing gets built yet. Analytics first: which field they abandon, on which device, and whether the landing page is even sending you the right people.",
+      },
+      {
+        who: "studio",
+        side: "right",
+        text: "A week of session data tells us if this is a form problem or a traffic problem. They need very different fixes.",
       },
     ],
   },
@@ -91,13 +96,17 @@ const STAGES: Stage[] = [
       {
         who: "studio",
         side: "left",
-        text: "Two steps instead of seven, and it remembers what you already typed.",
+        text: "It is step four. Seven fields on a phone, and the date picker breaks on older Android.",
       },
-      { who: "teamA", side: "right", text: "Let us build it." },
+      {
+        who: "teamA",
+        side: "right",
+        text: "Then split it in two and save what they typed. Nobody should lose progress by tapping back.",
+      },
       {
         who: "teamB",
         side: "right",
-        text: "Something you can click by the end of the week.",
+        text: "I will test the native date input against the custom one before we commit to either. Something clickable by Friday.",
       },
     ],
   },
@@ -114,13 +123,17 @@ const STAGES: Stage[] = [
       {
         who: "studio",
         side: "left",
-        text: "It is live. Now we watch what people actually do with it, and fix what moves.",
+        text: "Two steps, progress saved, native date picker. Here is where people used to leave, and where they get to now.",
       },
-      { who: "client", side: "right", text: "This is what we needed." },
+      {
+        who: "client",
+        side: "right",
+        text: "So what was actually wrong with it?",
+      },
       {
         who: "studio",
         side: "left",
-        text: "Good. Launch is the middle — here is the plan for the next quarter.",
+        text: "It asked too much too early, on the device most people were using. Next we watch the drop-off that is left and keep trimming.",
       },
     ],
   },
@@ -172,12 +185,14 @@ export default function ProcessBand() {
 
         <div className="mt-12 grid gap-8 lg:grid-cols-12 lg:gap-14">
           {/* The conversation */}
+          {/* Stretches to the stage-cards column: left shorter than right
+              left a dead block under the conversation. */}
           <div
-            className="lg:col-span-7"
+            className="flex flex-col lg:col-span-7"
             onMouseEnter={() => setHeld(true)}
             onMouseLeave={() => setHeld(false)}
           >
-            <div className="flex min-h-[340px] flex-col justify-center gap-4 rounded-well border border-border bg-surface p-6 sm:min-h-[320px] sm:p-8">
+            <div className="flex min-h-[300px] flex-1 flex-col justify-center gap-4 rounded-well border border-border bg-surface p-6 sm:p-8">
               <AnimatePresence mode="wait" initial={false}>
                 <motion.ul
                   key={stage.key}
@@ -299,7 +314,7 @@ export default function ProcessBand() {
 
         <Link
           href="/services/"
-          className="group mt-10 inline-flex items-center gap-2 text-[0.9375rem] font-medium text-ink"
+          className="group mt-8 inline-flex items-center gap-2 text-[0.9375rem] font-medium text-ink"
         >
           See how a project actually runs
           <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
