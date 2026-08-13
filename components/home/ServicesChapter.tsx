@@ -12,9 +12,10 @@ import { ArrowRight } from "lucide-react";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import ChapterMark from "@/components/ui/ChapterMark";
 import PillButton from "@/components/ui/PillButton";
+import KpiRotator from "@/components/home/KpiRotator";
 import { LIFECYCLE_CHAPTERS, getService } from "@/lib/services";
-import { apps } from "@/lib/apps";
-import { automationStillLife, identityWork, marketingWork } from "@/lib/work";
+import { getApp } from "@/lib/apps";
+import { automationWork, identityWork, marketingWork } from "@/lib/work";
 import { cn } from "@/lib/cn";
 
 /**
@@ -56,27 +57,36 @@ const BLOCKS: Record<
   },
 };
 
-/** Products we shipped — the artefact for the build block. */
+/**
+ * Products we shipped — the artefact for the build block. Hakkan leads
+ * (it is the one that is actually in beta), then CaughtSlipping and tapa.
+ */
+const BUILD_SHOWCASE = ["hakkan", "caught-slipping", "tapa"];
+
 function ProductsArtefact() {
   return (
     <div className="flex h-full items-end gap-3 px-5 pt-5">
-      {apps.slice(0, 3).map((app, i) => (
-        <div
-          key={app.slug}
-          className={cn(
-            "relative flex-1 overflow-hidden rounded-t-[10px] border border-b-0 border-border bg-surface shadow-[0_-8px_24px_rgba(23,21,15,0.12)]",
-            i === 1 ? "h-full" : "h-[86%]"
-          )}
-        >
-          <Image
-            src={app.screenshots[0]}
-            alt={`${app.name} screen`}
-            fill
-            sizes="180px"
-            className="object-cover object-left-top"
-          />
-        </div>
-      ))}
+      {BUILD_SHOWCASE.map((slug, i) => {
+        const app = getApp(slug);
+        if (!app) return null;
+        return (
+          <div
+            key={app.slug}
+            className={cn(
+              "relative flex-1 overflow-hidden rounded-t-[10px] border border-b-0 border-border bg-surface shadow-[0_-8px_24px_rgba(23,21,15,0.12)]",
+              i === 1 ? "h-full" : "h-[86%]"
+            )}
+          >
+            <Image
+              src={app.screenshots[0]}
+              alt={`${app.name} screen`}
+              fill
+              sizes="180px"
+              className="object-cover object-left-top"
+            />
+          </div>
+        );
+      })}
     </div>
   );
 }
@@ -107,7 +117,7 @@ function IdentityStack() {
   );
 }
 
-/** Campaign work — the artefact for the grow block. */
+/** Campaign work — the artefact for the grow block, with rotating results. */
 function CampaignArtefact() {
   const piece = marketingWork[0];
   return (
@@ -120,32 +130,38 @@ function CampaignArtefact() {
           sizes="(max-width: 640px) 92vw, 560px"
           className="object-cover object-top"
         />
-        <div className="absolute bottom-3 left-3 rounded-[10px] bg-ink px-3 py-2 shadow-card">
-          <p className="nums text-[1.125rem] font-medium leading-none text-bg">
-            742 leads
-          </p>
-          <p className="mt-1 text-[0.625rem] uppercase tracking-[0.12em] text-bg opacity-70">
-            at R29.57 · Thrifty Adventures
-          </p>
-        </div>
+        <KpiRotator />
       </div>
     </div>
   );
 }
 
-/** The commissioned still life — the artefact for the automation block. */
+/**
+ * The automation bench — the artefact for the automation block, built the
+ * same way as the products stack so the two read as a pair.
+ */
 function AutomationArtefact() {
   return (
-    <div className="relative h-full px-5 pt-5">
-      <div className="relative h-full overflow-hidden rounded-t-[10px] shadow-[0_-8px_24px_rgba(0,0,0,0.4)]">
-        <Image
-          src={automationStillLife.src}
-          alt={automationStillLife.alt}
-          fill
-          sizes="(max-width: 640px) 92vw, 560px"
-          className="object-cover"
-        />
-      </div>
+    <div className="flex h-full items-end gap-3 px-5 pt-5">
+      {automationWork.map((piece, i) => (
+        <div
+          key={piece.src}
+          className={cn(
+            "relative flex-1 overflow-hidden rounded-t-[10px] border border-b-0 border-ink-border bg-ink-raised shadow-[0_-8px_24px_rgba(0,0,0,0.45)]",
+            i === 1 ? "h-full" : "h-[86%]"
+          )}
+        >
+          <Image
+            src={piece.src}
+            alt={piece.alt}
+            fill
+            sizes="180px"
+            /* Centre-crop: these are wide product screens whose subject sits
+               mid-frame, so a top-left crop lands on empty canvas. */
+            className="object-cover object-center"
+          />
+        </div>
+      ))}
     </div>
   );
 }

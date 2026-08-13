@@ -88,6 +88,35 @@ export const lumiskinWork: WorkImage[] = [
   },
 ];
 
+/**
+ * The automation bench — the platforms we actually build on. Third-party
+ * product screens (Zapier, Claude), shown as the tools of the trade, never
+ * as something we made.
+ */
+export const automationWork: WorkImage[] = [
+  {
+    src: "/work/automation-zapier-canvas.png",
+    alt: "A Zapier Canvas board mapping a lead-triage workflow end to end",
+    width: 1942,
+    height: 1107,
+    caption: "Mapping the workflow before automating it",
+  },
+  {
+    src: "/work/automation-claude-cowork.jpg",
+    alt: "Claude Cowork working through a task list against a folder of documents",
+    width: 1280,
+    height: 720,
+    caption: "AI doing the repetitive reading",
+  },
+  {
+    src: "/work/automation-zapier-pricing.png",
+    alt: "Zapier consulting and automation pricing screen",
+    width: 1140,
+    height: 642,
+    caption: "Costing the automation honestly",
+  },
+];
+
 /** Social Sweep's demo, for the automation and product surfaces. */
 export const socialSweepVideo = {
   src: "/video/social-sweep-demo.mp4",
