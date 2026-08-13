@@ -94,14 +94,30 @@ InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
   meaningful changes.
 - **Commit + push after a coherent change** once gates are green. Repo:
   `github.com/fortherestofus/fortherestofusstudio`.
+- **Pushing to `main` deploys the live site.** `fortherestofus.app` is a
+  Hostinger Node app connected to this repo (`source_type: git`, Node 22,
+  `app_type: next`, build script `build`). A push to `main` fires their webhook
+  within ~30s and the build takes about two minutes; there is no separate
+  deploy step and no `live` branch. Check with the Hostinger MCP
+  (`hosting_listJsDeployments` / `hosting_getNodeJSBuildLogsV1`, user
+  `u456896547`). Because HTML is served with `s-maxage=300`, the new build can
+  take a few minutes more to appear at the edge even after the deploy
+  completes — that lag is the cache, not a failed deploy.
 
 ## Stack
 
 - **Next.js 16 App Router** (`app/`), React 19, TypeScript, **Tailwind 3**
   (`tailwind.config.ts`), `next-themes` for light/dark (manual toggle,
   `enableSystem: false`, light default).
-- **Turbopack** is the bundler for both `next dev` and `next build` (the Next 16
-  default). There is no webpack config and adding one would fail the build.
+- **Bundlers differ between dev and build, deliberately.** `next dev` uses the
+  Next 16 default (Turbopack); `next build` is pinned to **`--webpack`** in
+  `package.json`. That flag is load-bearing for production: the Hostinger build
+  container ships an old glibc, so Next's native SWC binary cannot load there
+  (`GLIBC_2.29 not found`) and it falls back to `@next/swc-wasm-nodejs`. Webpack
+  tolerates that fallback; a native-Rust bundler has nothing to fall back to.
+  The deploy log is full of those SWC warnings on every successful build — they
+  are expected, not a regression. There is still no webpack *config* file, and
+  adding one is a separate question from the flag.
 - React's `react-hooks` rules run at **error** level via `eslint-config-next`,
   including `set-state-in-effect`. Don't reach for `useEffect` + `setState` to
   derive state: adjust it during render, or use `useSyncExternalStore` to read
