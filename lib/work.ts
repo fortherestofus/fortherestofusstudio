@@ -16,13 +16,85 @@ export interface WorkImage {
   caption?: string;
 }
 
-/** The Deja Media site, filmed scrolling — movement, and a real build. */
+/**
+ * The LumiSkin site, filmed scrolling — the studio's most complete
+ * lifecycle piece in one artefact: a product, an identity, and a shop.
+ */
+export const lumiskinVideo = {
+  src: "/video/lumiskin-site.mp4",
+  poster: "/video/lumiskin-site-poster.webp",
+  width: 1280,
+  height: 660,
+  caption: "LumiSkin — the version that made it out of the notes app.",
+};
+
+/** The Deja Media site, filmed scrolling. Kept for the services surfaces. */
 export const dejaMediaVideo = {
   src: "/video/dejamedia-site.mp4",
   poster: "/video/dejamedia-site-poster.webp",
   width: 1280,
   height: 720,
-  caption: "Deja Media — the version that made it out of the notes app.",
+  caption: "Deja Media — a site built to be edited by the people who own it.",
+};
+
+/**
+ * LumiSkin — the storefront in its three colourways plus the product
+ * frames. Captions describe the colourway rather than naming individual
+ * bars: the filenames and the on-screen product cards do not line up
+ * reliably, and guessing a product name would be inventing one.
+ */
+export const lumiskinWork: WorkImage[] = [
+  {
+    src: "/work/lumiskin/hero-aurora.jpg",
+    alt: "LumiSkin storefront hero in lavender, the chameleon matched to the bar beside it",
+    width: 1600,
+    height: 824,
+    caption: "The lavender colourway",
+  },
+  {
+    src: "/work/lumiskin/hero-jade.jpg",
+    alt: "LumiSkin storefront hero in pink, the chameleon matched to the bar beside it",
+    width: 1600,
+    height: 824,
+    caption: "The pink colourway",
+  },
+  {
+    src: "/work/lumiskin/hero-peach.jpg",
+    alt: "LumiSkin storefront hero in amber, the chameleon matched to the bar beside it",
+    width: 1600,
+    height: 824,
+    caption: "The amber colourway",
+  },
+  {
+    src: "/work/lumiskin/collection-aurora.jpg",
+    alt: "A LumiSkin soap bar pressed with dried lavender",
+    width: 1200,
+    height: 1200,
+    caption: "The bar itself",
+  },
+  {
+    src: "/work/lumiskin/macro-mold.jpg",
+    alt: "A carved LumiSkin bar surrounded by botanicals and tools",
+    width: 1200,
+    height: 1200,
+    caption: "Sculptural moulds",
+  },
+  {
+    src: "/work/lumiskin/protocol-research.jpg",
+    alt: "LumiSkin botanical ingredients laid out on a plate",
+    width: 1200,
+    height: 1200,
+    caption: "Botanical research",
+  },
+];
+
+/** Social Sweep's demo, for the automation and product surfaces. */
+export const socialSweepVideo = {
+  src: "/video/social-sweep-demo.mp4",
+  poster: "/work/social-sweep-charts.jpg",
+  width: 1280,
+  height: 720,
+  caption: "Social Sweep — a full study running end to end.",
 };
 
 /** Social content in motion, used where a still would go flat. */
@@ -86,6 +158,35 @@ export const identityWork: WorkImage[] = [
     width: 1200,
     height: 1500,
     caption: "Editorial — photography",
+  },
+];
+
+/**
+ * Store-listing design — where brand and content are the same job: the
+ * screens, the headlines above them and the promise they make, designed
+ * together. Wide sheets; render them contained, never cropped.
+ */
+export const storeDesignWork: WorkImage[] = [
+  {
+    src: "/work/store-tapa.jpg",
+    alt: "tapa. App Store screens with their headlines: cook with what you have, one recipe tailored to you",
+    width: 1926,
+    height: 695,
+    caption: "tapa. — store listing",
+  },
+  {
+    src: "/work/store-isit.jpg",
+    alt: "InSpiritInTruth App Store screens with their headlines: a devotion written just for you",
+    width: 1926,
+    height: 695,
+    caption: "InSpiritInTruth — store listing",
+  },
+  {
+    src: "/work/store-caughtslipping.png",
+    alt: "CaughtSlipping work-mode screen: Caught Grinding, for the overworkers",
+    width: 1280,
+    height: 800,
+    caption: "CaughtSlipping — work mode",
   },
 ];
 

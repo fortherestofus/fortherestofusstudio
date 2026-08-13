@@ -13,7 +13,7 @@ import {
   RedesignArtefact,
   SiteVideoArtefact,
 } from "@/components/home/WhyArtefacts";
-import { dejaMediaVideo } from "@/lib/work";
+import { lumiskinVideo } from "@/lib/work";
 import { testimonials } from "@/lib/testimonials";
 
 const BELIEFS = [
@@ -54,9 +54,9 @@ export default function WhyChapter() {
 
         <div className="lg:col-span-6">
           <SiteVideoArtefact
-            src={dejaMediaVideo.src}
-            poster={dejaMediaVideo.poster}
-            caption={dejaMediaVideo.caption}
+            src={lumiskinVideo.src}
+            poster={lumiskinVideo.poster}
+            caption={lumiskinVideo.caption}
           />
         </div>
       </div>

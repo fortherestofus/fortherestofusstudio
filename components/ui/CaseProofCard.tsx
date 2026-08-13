@@ -19,10 +19,17 @@ export default function CaseProofCard({ proof, className }: CaseProofCardProps) 
         <h3 className="text-lg font-medium tracking-[-0.01em] text-ink">
           {proof.client}
         </h3>
-        <span className="nums shrink-0 rounded-full border border-border px-2.5 py-1 text-[0.6875rem] text-muted">
+        <span className="nums shrink-0 text-[0.6875rem] text-muted">
           {proof.period}
         </span>
       </div>
+
+      {/* Never let an exploration read as a client engagement. */}
+      {proof.kind === "exploration" && (
+        <span className="mt-2 text-[0.6875rem] font-medium uppercase tracking-[0.12em] text-accent-deep">
+          Self-directed exploration
+        </span>
+      )}
       <p className="mt-1.5 text-[0.875rem] leading-relaxed text-muted">
         {proof.engagement}
       </p>

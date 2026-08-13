@@ -4,14 +4,19 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { apps } from "@/lib/apps";
 import { services } from "@/lib/services";
-import { caseProofs } from "@/lib/proof";
+import { clientProofs } from "@/lib/proof";
 import {
   automationStillLife,
   identityWork,
   innovatrRedesign,
+  lumiskinVideo,
   marketingWork,
   socialSweepCharts,
+  socialSweepVideo,
+  storeDesignWork,
 } from "@/lib/work";
+import WorkVideo from "@/components/ui/WorkVideo";
+import { SiteVideoArtefact } from "@/components/home/WhyArtefacts";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import CaseProofCard from "@/components/ui/CaseProofCard";
 import EyebrowChip from "@/components/ui/EyebrowChip";
@@ -170,9 +175,112 @@ export default function ServicesPage() {
           subtitle="Client work we can talk about with numbers attached — including the parts that did not work."
         />
         <div className="mt-12 grid gap-4 md:grid-cols-3 md:gap-5">
-          {caseProofs.map((proof) => (
+          {clientProofs.map((proof) => (
             <CaseProofCard key={proof.slug} proof={proof} />
           ))}
+        </div>
+      </Section>
+
+      {/* Brand & content, shown rather than described */}
+      <Section tone="sunken">
+        <SectionHeading
+          align="left"
+          eyebrow="Brand & content"
+          title="A look and a voice, made together."
+          subtitle="Store listings are the honest test: the screens, the headline above each one and the promise it makes all have to be designed as one thing. These are ours."
+        />
+        <div className="mt-10 flex flex-col gap-4">
+          {storeDesignWork.map((piece) => (
+            <figure
+              key={piece.src}
+              className="overflow-hidden rounded-card border border-border bg-surface"
+            >
+              <Image
+                src={piece.src}
+                alt={piece.alt}
+                width={piece.width}
+                height={piece.height}
+                sizes="(max-width: 1024px) 92vw, 1120px"
+                className="h-auto w-full"
+              />
+              <figcaption className="border-t border-border px-5 py-3 text-[0.8125rem] text-muted">
+                {piece.caption}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <Link
+          href="/services/brand-and-content/"
+          className="group mt-8 inline-flex items-center gap-2 text-[0.9375rem] font-medium text-ink"
+        >
+          How brand and content work together
+          <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+        </Link>
+      </Section>
+
+      {/* Social Sweep, running — the product we built instead of licensing */}
+      <Section tone="sunken">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
+          <div className="lg:col-span-5">
+            <EyebrowChip>Build vs buy</EyebrowChip>
+            <h2 className="mt-5 text-balance text-[1.75rem] font-medium leading-snug tracking-[-0.02em] text-ink sm:text-[2.25rem]">
+              We built the $8,000 licence instead.
+            </h2>
+            <p className="mt-4 max-w-[46ch] text-pretty leading-relaxed text-muted">
+              Innovatr was about to rent a social listening platform. Social
+              Sweep does the job in-house: a plain-language question in, an
+              organised report out where every claim resolves back to a real
+              comment. Two months, two subscriptions, and a line of annual
+              cost became a line of product.
+            </p>
+            <Link
+              href="/services/tech-and-automation/"
+              className="group mt-7 inline-flex items-center gap-2 text-[0.9375rem] font-medium text-ink"
+            >
+              How we approach automation
+              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+            </Link>
+          </div>
+
+          <div className="lg:col-span-7">
+            <WorkVideo
+              src={socialSweepVideo.src}
+              poster={socialSweepVideo.poster}
+              label="Play the Social Sweep walkthrough"
+              caption="Recorded from the working tool, not a prototype. Silent by design."
+            />
+          </div>
+        </div>
+      </Section>
+
+      {/* LumiSkin — clearly labelled as our own exploration */}
+      <Section tone="canvas">
+        <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
+          <div className="lg:col-span-7 lg:order-2">
+            <SiteVideoArtefact
+              src={lumiskinVideo.src}
+              poster={lumiskinVideo.poster}
+              caption="LumiSkin — the hero cycling all three colourways."
+            />
+          </div>
+          <div className="lg:col-span-5 lg:order-1">
+            <EyebrowChip tone="accent">Self-directed exploration</EyebrowChip>
+            <h2 className="mt-5 text-balance text-[1.75rem] font-medium leading-snug tracking-[-0.02em] text-ink sm:text-[2.25rem]">
+              A hero that performs the product.
+            </h2>
+            <p className="mt-4 max-w-[46ch] text-pretty leading-relaxed text-muted">
+              Beauty brands nearly all open the same way: a still on a clean
+              surface and a Shop button. LumiSkin asks what a hero looks like
+              when the thing on screen does the product&rsquo;s promise — a
+              chameleon matches the bar beside it, and the card arrives on the
+              colour match. Every asset generated, one person, under $300
+              against a $6,500+ conventional route.
+            </p>
+            <p className="mt-4 max-w-[46ch] text-[0.875rem] leading-relaxed text-faint">
+              Our own concept, not a client engagement — shown because the
+              production economics are the point.
+            </p>
+          </div>
         </div>
       </Section>
 

@@ -8,6 +8,16 @@ nothing.
 | File | Source | Used by |
 |---|---|---|
 | `public/studio/alroy-portrait.jpg` (512×640) | `alroyportfolio/site/src/assets/images/Alroy-Ndhlovu-FOE.jpeg` — the shot used on alroyndhlovu.com | Founder note (home) + `/studio`, statically imported via `lib/studio.ts` |
+| `public/video/lumiskin-site.mp4` + poster | `alroyportfolio` — LumiSkin storefront filmed scrolling | Home why-chapter artefact, `/services` LumiSkin band (`lib/work.ts`) |
+| `public/work/lumiskin/*.jpg` (6) | `alroyportfolio/site/src/assets/case-studies/lumiskin/` | `lumiskinWork` in `lib/work.ts` |
+| `public/video/social-sweep-demo.mp4` (6.7MB) | `alroyportfolio` — narrated Social Sweep walkthrough | `/services` build-vs-buy band, click-to-play via `WorkVideo` (never autoplays; the file is too heavy) |
+| `public/work/store-{tapa,isit,caughtslipping}` | `alroyportfolio/media/` — store-listing screen sheets | `storeDesignWork`, the brand & content band on `/services` |
+| `public/logos/{energy-capital-power,ifc,gl-events}` | portfolio logos + Alroy's Downloads | Testimonial attribution (`lib/testimonials.ts`) |
+
+**Provenance rule:** LumiSkin is a **self-directed exploration**, not client
+work — `kind: "exploration"` in `lib/proof.ts` makes every surface label it
+as such. Never let it render inside a "real clients" grid (`clientProofs`
+exists for exactly that).
 
 **Rule:** real screenshots and photography appear on the **home hero collage
 only**. App pages stay editorial with placeholder art until we deliberately
