@@ -28,6 +28,17 @@ work — `kind: "exploration"` in `lib/proof.ts` makes every surface label it
 as such. Never let it render inside a "real clients" grid (`clientProofs`
 exists for exactly that).
 
+Second provenance rule, narrower: **the chameleon mechanic is not ours.** It
+came from a concept site that circulated as a meme captioned to say the idea
+was unbuildable, credited to `@uiux_sumeet`; LumiSkin is the answer to it. The
+build, the cosmetics category and the costs are ours, and the `source` line in
+`lib/proof.ts` says so. Any new LumiSkin copy has to keep that split — a
+sentence implying we originated the chameleon is a claim we cannot make. The
+meme clip itself lives in the portfolio repo only
+(`alroyportfolio/site/src/assets/case-studies/lumiskin/inspiration.mp4`) and is
+deliberately **not** imported here: it is someone else's work, and a studio
+showcase is the wrong place for it.
+
 **Rule:** real screenshots and photography appear on the **home hero collage
 only**. App pages stay editorial with placeholder art until we deliberately
 decide otherwise. Home media is registered in `lib/homeMedia.ts`; app media
