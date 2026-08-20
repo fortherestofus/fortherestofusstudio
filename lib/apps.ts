@@ -284,7 +284,7 @@ export const apps: App[] = [
         icon: "Sparkles",
         title: "Devotions on what you're carrying",
         description:
-          "Tell it what you're feeling or facing and a personal, scripture-rooted devotional is written for exactly that moment. Your faith, in your own hands. Every reader gets three free; Premium makes them unlimited.",
+          "Tell it what you're feeling or facing and a personal, scripture-rooted devotional is written for exactly that moment. What you write isn't stored — it's used to write the devotional and then discarded, so there's no copy for anyone to read. Every reader gets three free; Premium makes them unlimited.",
       },
       {
         icon: "Quote",
