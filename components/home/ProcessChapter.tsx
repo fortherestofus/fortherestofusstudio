@@ -5,7 +5,7 @@
  * reference's discovered→saved→confirmed device, retold as identify→build→
  * grow) with a different real project evidencing each state: any problem
  * can arrive (the mosaic), one of ours mid-build (Hakkan), a client
- * campaign growing (Thrifty). Originally it was Hakkan three times —
+ * campaign growing (the travel client). Originally it was Hakkan three times —
  * build screen, its report with the measured result. One story told deeply
  * beats four told thinly.
  *
@@ -39,7 +39,7 @@ export default function ProcessChapter({ chapter }: ProcessChapterProps) {
   const reduced = useReducedMotion();
   const app = getApp("hakkan")!;
   const buildShot = app.screenshots[2]; // the infographic build view
-  const growShot = marketingWork[0]; // the Thrifty campaign grid
+  const growShot = marketingWork[0]; // the travel campaign grid
 
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { margin: "-20%" });
@@ -145,7 +145,7 @@ export default function ProcessChapter({ chapter }: ProcessChapterProps) {
           742 leads at R29.57
         </p>
         <p className="mt-1 text-[0.625rem] uppercase tracking-[0.12em] text-bg opacity-70">
-          Thrifty Adventures · LinkedIn
+          Travel Industry · LinkedIn
         </p>
       </div>
     </div>,

@@ -208,7 +208,7 @@ Per-card accent tint. SEO: collection page metadata.
 
 Story (evolved from current StudioIntro/StudioStory copy), principles (3 cards —
 borrow the honesty ethos: "Receipts, not vibes" energy but studio-flavored),
-founder section (Alroy — builder + product/growth consultant; Innovatr background
+founder section (Alroy — builder + product/growth consultant; consumer insights background
 can inform the copy), stats, CTA.
 
 ### Contact `/contact`

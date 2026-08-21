@@ -282,17 +282,17 @@ export const socialContentVideo = {
   caption: "Campaign content, built to publish.",
 };
 
-/** Innovatr's homepage, before and after the rebuild. */
-export const innovatrRedesign: { before: WorkImage; after: WorkImage } = {
+/** A consumer insights client's homepage, before and after the rebuild. */
+export const siteRedesign: { before: WorkImage; after: WorkImage } = {
   before: {
-    src: "/work/innovatr-home-before.jpg",
-    alt: "The Innovatr homepage before the rebuild",
+    src: "/work/insights-home-before.jpg",
+    alt: "The client homepage before the rebuild",
     width: 2090,
     height: 1292,
   },
   after: {
-    src: "/work/innovatr-home-after.jpg",
-    alt: "The Innovatr homepage after the rebuild",
+    src: "/work/insights-home-after.jpg",
+    alt: "The client homepage after the rebuild",
     width: 2642,
     height: 1508,
   },
@@ -369,18 +369,18 @@ export const storeDesignWork: WorkImage[] = [
 /** Marketing artefacts, for the "be known" side of the lifecycle. */
 export const marketingWork: WorkImage[] = [
   {
-    src: "/work/thrifty-social.webp",
-    alt: "Thrifty Adventures social campaign post grid",
+    src: "/work/travel-social.webp",
+    alt: "Travel campaign post grid",
     width: 1504,
     height: 846,
-    caption: "Thrifty Adventures — campaign",
+    caption: "Travel Industry — campaign",
   },
   {
-    src: "/work/innovatr-social-trends.png",
-    alt: "Innovatr research carousel on Gen Z trends",
+    src: "/work/insights-social-trends.png",
+    alt: "Research carousel on Gen Z trends",
     width: 1200,
     height: 627,
-    caption: "Innovatr — research content",
+    caption: "Consumer Insights Industry — research content",
   },
 ];
 

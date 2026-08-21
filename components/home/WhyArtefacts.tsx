@@ -9,7 +9,7 @@
 import Image from "next/image";
 import { AnimatePresence, motion, useInView, useReducedMotion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { identityWork, innovatrRedesign } from "@/lib/work";
+import { identityWork, siteRedesign } from "@/lib/work";
 import { caseProofs } from "@/lib/proof";
 import { cn } from "@/lib/cn";
 
@@ -33,11 +33,11 @@ function useCycle(length: number, ms: number, enabled = true) {
 }
 
 /* ── 01 · A problem worth solving ─────────────────────────────────────
-   Innovatr's homepage before and after the rebuild. The problem is the
+   A consumer insights client's homepage before and after the rebuild. The problem is the
    "before"; the product is the "after". Nothing states the case better. */
 export function RedesignArtefact() {
   const { ref, index, setIndex, setPaused } = useCycle(2, 3200);
-  const shots = [innovatrRedesign.before, innovatrRedesign.after];
+  const shots = [siteRedesign.before, siteRedesign.after];
   const labels = ["Before", "After"];
 
   return (
@@ -70,7 +70,7 @@ export function RedesignArtefact() {
 
       <div className="flex items-center justify-between gap-3 border-t border-border px-4 py-3">
         <p className="text-[0.75rem] leading-snug text-muted">
-          Innovatr — site rebuilt around what buyers actually needed
+          Consumer insights client — site rebuilt around what buyers actually needed
         </p>
         <div className="flex shrink-0 gap-1">
           {labels.map((label, i) => (
@@ -156,12 +156,12 @@ export function IdentityArtefact() {
    reaching the people who sign. Real numbers from lib/proof.ts. */
 const KNOWN = [
   {
-    slug: "thrifty-adventures",
+    slug: "travel-industry",
     goal: "Goal: leads from a standing start",
     statIndexes: [0, 1],
   },
   {
-    slug: "innovatr",
+    slug: "consumer-insights",
     goal: "Goal: reach the people who sign",
     statIndexes: [1, 0],
   },

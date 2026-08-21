@@ -11,7 +11,7 @@ import {
   automationWork,
   builtSites,
   identityWork,
-  innovatrRedesign,
+  siteRedesign,
   marketingWork,
 } from "@/lib/work";
 import { getApp } from "@/lib/apps";
@@ -67,8 +67,8 @@ function heroArtefact(slug: string): { src: string; alt: string } | null {
     }
     case "websites":
       return {
-        src: innovatrRedesign.after.src,
-        alt: innovatrRedesign.after.alt,
+        src: siteRedesign.after.src,
+        alt: siteRedesign.after.alt,
       };
     case "brand-and-content":
       return { src: identityWork[0].src, alt: identityWork[0].alt };
@@ -303,7 +303,7 @@ export default async function ServiceDetailPage({
             align="left"
             eyebrow="Case in point"
             title="One pipeline, four tools."
-            subtitle="Innovatr's lead engine, tool by tool — what each one actually did. The point is not these four; it is that we pick per job."
+            subtitle="A consumer insights client's lead engine, tool by tool — what each one actually did. The point is not these four; it is that we pick per job."
           />
           <ol className="mt-10 grid gap-x-10 gap-y-0 md:grid-cols-2">
             {TOOLBENCH.map((tool, i) => (

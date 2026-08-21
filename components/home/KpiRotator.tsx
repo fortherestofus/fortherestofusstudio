@@ -25,28 +25,28 @@ const PICKS: {
   sub: string;
 }[] = [
   {
-    proof: "thrifty-adventures",
+    proof: "travel-industry",
     stat: 0,
     bg: "var(--color-ink-surface)",
     fg: "var(--color-ink-text)",
     sub: "var(--color-ink-text-muted)",
   },
   {
-    proof: "thrifty-adventures",
+    proof: "travel-industry",
     stat: 2,
     bg: "var(--color-accent)",
     fg: "var(--color-accent-ink)",
     sub: "var(--color-accent-ink)",
   },
   {
-    proof: "innovatr",
+    proof: "consumer-insights",
     stat: 0,
     bg: "var(--tint-lime)",
     fg: "var(--tint-lime-deep)",
     sub: "var(--tint-lime-deep)",
   },
   {
-    proof: "innovatr",
+    proof: "consumer-insights",
     stat: 1,
     bg: "var(--tint-rust)",
     fg: "var(--tint-rust-deep)",

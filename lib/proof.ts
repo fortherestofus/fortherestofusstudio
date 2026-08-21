@@ -55,9 +55,9 @@ export const STUDIO_STATS: ProofStat[] = [
 
 export const caseProofs: CaseProof[] = [
   {
-    slug: "thrifty-adventures",
+    slug: "travel-industry",
     kind: "client",
-    client: "Thrifty Adventures",
+    client: "Travel Industry",
     engagement: "LinkedIn paid media for a South African travel brand, from zero",
     period: "Jul 2025 – Jan 2026",
     stats: [
@@ -83,9 +83,9 @@ export const caseProofs: CaseProof[] = [
     serviceSlugs: ["product-and-growth", "websites"],
   },
   {
-    slug: "innovatr",
+    slug: "consumer-insights",
     kind: "client",
-    client: "Innovatr",
+    client: "Consumer Insights Industry",
     engagement:
       "Rebrand, website rebuild, content engine, paid programme, and CRM — brand & marketing manager role",
     period: "Mar – Sep 2026",
@@ -117,7 +117,7 @@ export const caseProofs: CaseProof[] = [
   {
     slug: "social-sweep",
     kind: "client",
-    client: "Innovatr — Social Sweep",
+    client: "Consumer Insights Industry — Social Sweep",
     engagement:
       "Built the social-listening capability in-house instead of licensing it: plain-language question in, a cited report out",
     period: "2026 · about two months",
@@ -125,7 +125,7 @@ export const caseProofs: CaseProof[] = [
       {
         value: "$8,000/yr",
         label: "licence it replaced",
-        detail: "the quote Innovatr was working from",
+        detail: "the quote the client was working from",
       },
       {
         value: "46",
@@ -138,7 +138,7 @@ export const caseProofs: CaseProof[] = [
         detail: "a line of cost became a line of product",
       },
     ],
-    note: "The tool Innovatr was about to licence was itself acquired by a market research group a few months later — a company that had spent four years and outside investment getting there. Social Sweep took about two months and two subscriptions. Not a claim of parity: theirs has a roadmap, a support desk and customers who are not us.",
+    note: "The tool the client was about to licence was itself acquired by a market research group a few months later — a company that had spent four years and outside investment getting there. Social Sweep took about two months and two subscriptions. Not a claim of parity: theirs has a roadmap, a support desk and customers who are not us.",
     source:
       "Build and pricing records from the engagement; R20,000 is the price it was positioned at, not revenue booked. Full case study at alroyndhlovu.com.",
     serviceSlugs: ["apps-and-saas", "tech-and-automation"],
@@ -159,7 +159,7 @@ export const caseProofs: CaseProof[] = [
       {
         value: "20 pieces",
         label: "first bulk order",
-        detail: "branded merch produced for Thrifty Adventures",
+        detail: "branded merch produced for a travel client",
       },
       {
         value: "B2C → B2B",

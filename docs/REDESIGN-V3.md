@@ -112,10 +112,11 @@ Julian Shapiro's landing-page rules:
 
 - **Studio stats:** 12+ years, 1,200+ projects/clients. Engagements: Meta,
   IFC — World Bank Group, Digify Africa, Energy Capital & Power, African
-  Agri Council, Jenna Clifford, Innovatr, Thrifty Adventures.
-- **Thrifty Adventures (client, growth):** 742 leads at ~R30; 4.91M
+  Agri Council, Jenna Clifford. (Two further engagements are carried
+  anonymised — see the note in lib/testimonials.ts.)
+- **Travel Industry (client, growth):** 742 leads at ~R30; 4.91M
   impressions; CPM −81%; 0.97% CTR vs 0.52% benchmark.
-- **Innovatr (client, full lifecycle):** rebrand + site rebuild + content
+- **Consumer Insights Industry (client, full lifecycle):** rebrand + site rebuild + content
   engine + paid + CRM; R252 CPL vs ~R744 median; 61% of ad delivery reached
   decision-makers; built Social Sweep, replacing a US$8,000/yr licence.
 - **Own products:** the four apps (with the caveat that Hakkan is private
@@ -159,8 +160,8 @@ code — they die in handoffs between four different agencies). Then the
 1. *Problem worth solving* → a problem→product pair (tapa: "What can I cook
    with this?" card next to the recipe screen).
 2. *Needs an identity* → brand artefact (the four app icon tiles, or an
-   Innovatr before/after pair).
-3. *Needs to be known* → a real campaign numbers card (Thrifty: 742 leads at
+   client before/after pair).
+3. *Needs to be known* → a real campaign numbers card (travel client: 742 leads at
    ~R30, 4.91M impressions — real, attributed).
 
 One early testimonial (Kelly-Ann's "Swiss army knife" line) closes the
@@ -218,7 +219,7 @@ featured story, per the depth-over-breadth rule.
 Forth mapping: the dark trust section, but rendered **light** (sunken well)
 to protect the ink budget. Two beats:
 
-1. **Client proof:** Thrifty + Innovatr result cards (real numbers, honest
+1. **Client proof:** the two anonymised client result cards (real numbers, honest
    captions), engagement list (text, as today), second testimonial inline
    (Hermione, IFC).
 2. **Founder note:** the Basecamp pattern — a short, signed note from Alroy
@@ -256,8 +257,8 @@ ever want a "what's live / in beta / in development" board.
 - **`/services` + `/services/[slug]`:** keep all five SEO pages and URLs,
   but rebuild each detail page **story-style** (per Alroy: "case study,
   use case, problem solution style"): the problem → how we approach it →
-  a real embedded case (Thrifty on marketing/analytics; Innovatr rebrand
-  on brand; Innovatr platform + Social Sweep on custom products and
+  a real embedded case (the travel client on marketing/analytics; the insights client's rebrand
+  on brand; the insights client's platform + Social Sweep on custom products and
   automation; the apps as use cases where client work doesn't exist yet)
   → what's included → good fit → CTA. This replaces a separate `/work`
   section — proof lives next to the claim it verifies. Index reframed
@@ -317,14 +318,14 @@ Everything stays token-driven; changes are additive:
 - `lib/apps.ts`: add a `problem` field per app (the one-line use-case
   problem statement) consumed by the home use-case cards and the new
   problem-first band on detail pages.
-- **New `lib/proof.ts`:** typed registry of real result stats (Thrifty,
-  Innovatr, studio stats) with source notes — same "only real claims"
+- **New `lib/proof.ts`:** typed registry of real result stats (the two client cases,
+  studio stats) with source notes — same "only real claims"
   contract as `lib/testimonials.ts`, enforced by a header comment.
 - **New `lib/studio.ts`** (or extend existing copy): founder note, career
   highlights, portrait import.
 - Assets to bring over from `alroyportfolio` (optimised for web):
   portrait JPEG(s) → `public/studio/`; if the case-study question (§8)
-  lands yes: selected Innovatr before/afters + Social Sweep shots →
+  lands yes: selected client before/afters + Social Sweep shots →
   `public/work/`. All raster art rendered through `next/image`.
 - `docs/ASSETS.md` updated with provenance for every imported file.
 

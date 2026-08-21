@@ -82,7 +82,7 @@ export const SERVICE_SHOWCASE: Record<string, ServiceShowcase> = {
       ...filosofeeIdentity.slice(0, 3),
       storeDesignWork[0],
     ],
-    caseSlug: "innovatr",
+    caseSlug: "consumer-insights",
     caseAngle:
       "A rebrand that had to survive contact with reality: a new line, a rebuilt site, and a content engine the team could actually keep running.",
   },
@@ -91,7 +91,7 @@ export const SERVICE_SHOWCASE: Record<string, ServiceShowcase> = {
     stripIntro:
       "The work that went out, and the decisions behind what did not.",
     pieces: [...marketingWork, ...filosofeeAiMedia.slice(0, 2), filosofeeStickers],
-    caseSlug: "thrifty-adventures",
+    caseSlug: "travel-industry",
     caseAngle:
       "Awareness to leads to sales for a travel brand starting from nothing — including the offer that worked and the one that did not.",
   },

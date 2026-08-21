@@ -20,7 +20,7 @@ const BELIEFS = [
   {
     stage: "Identify",
     title: "Every product starts as a problem worth solving.",
-    body: "Not a market gap — a moment that keeps costing someone money or time. Innovatr's site looked fine and converted badly. We rebuilt it around what buyers actually needed to know.",
+    body: "Not a market gap — a moment that keeps costing someone money or time. A consumer insights client's site looked fine and converted badly. We rebuilt it around what buyers actually needed to know.",
     artefact: <RedesignArtefact />,
   },
   {
