@@ -177,7 +177,7 @@ export const caseProofs: CaseProof[] = [
     kind: "exploration",
     client: "LumiSkin",
     engagement:
-      "A luxury cosmetics storefront whose hero performs the product: a chameleon matches the bar beside it, and the card arrives on the colour match",
+      "A concept that circulated as a joke about impossible briefs, built for real: a luxury cosmetics storefront whose hero performs the product — a chameleon matches the bar beside it, and the card arrives on the colour match",
     period: "Mar 2026",
     stats: [
       {
@@ -196,9 +196,9 @@ export const caseProofs: CaseProof[] = [
         detail: "one person, no crew, no studio, no animal",
       },
     ],
-    note: "The conclusion is narrower than \"AI is cheap\": what collapsed is the cost of producing assets. Deciding that a chameleon is the right idea, and that the sequence must never depend on autoplay, did not get cheaper — and that is what makes the page work.",
+    note: "The conclusion is narrower than \"AI is cheap\": what collapsed is the cost of producing assets. Moving the mechanic to a category whose identity is colour, and making sure the sequence never depends on autoplay, did not get cheaper — and that is what makes the page work.",
     source:
-      "Self-directed design exploration, not client work. Costs are list prices actually paid; comparison ranges are published 2026 market rates, not quotes anyone gave. Full case study at alroyndhlovu.com.",
+      "Self-directed design exploration, not client work. The chameleon mechanic is not ours: it came from a concept site circulated as a meme captioned to say the thing was unbuildable, credited to @uiux_sumeet. The build, the category and the costs are ours. Costs are list prices actually paid; comparison ranges are published 2026 market rates, not quotes anyone gave. Full case study at alroyndhlovu.com.",
     serviceSlugs: ["websites", "brand-and-content", "tech-and-automation"],
   },
 ];

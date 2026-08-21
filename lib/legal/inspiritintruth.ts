@@ -25,7 +25,7 @@ import { HELLO_EMAIL, LEGAL_EMAIL } from "@/lib/contact";
 /** The app's own domain — canonical home of these documents. */
 const SITE_URL = "https://inspiritintruth.net";
 
-export const LEGAL_LAST_UPDATED = "3 August 2026";
+export const LEGAL_LAST_UPDATED = "20 August 2026";
 
 const STUDIO = "For The Rest Of Us";
 
@@ -40,7 +40,7 @@ export const PRIVACY_SECTIONS = [
     bullets: [
       "We do not sell your personal information. Not to advertisers, not to anyone.",
       "There are no ads in InSpiritInTruth, and no ad tracking.",
-      "What you write when you ask for a tailored devotional is used to write that devotional, and to show it back to you later. It is not used to train anyone's AI model.",
+      "What you write when you ask for a tailored devotional is used to write it — and then not kept. We store the devotional, not your words. It is not used to train anyone's AI model.",
       "You can read, export, correct or permanently delete everything we hold about you, at any time.",
       "The rest of this document is the detail behind those four statements.",
     ],
@@ -61,10 +61,10 @@ export const PRIVACY_SECTIONS = [
     ],
     bullets: [
       "Account information — your email address, and your name or display name if you give one. If you sign in with Apple or Google we receive a unique identifier and the email you choose to share, including Apple's private relay address if you opt to hide your real one. We never receive your Apple or Google password.",
-      "What you share for a tailored devotional — the words you write when you tell the app what you are going through, feeling, facing or curious about. This is the most sensitive thing we hold and it has its own section below.",
-      "Your practice in the app — devotionals you read or save, verses you bookmark, notes and reflections you write, reading plans you follow, your streak, and the topics you explore.",
+      "What you share for a tailored devotional — the words you write when you tell the app what you are going through, feeling, facing or curious about. This is the most sensitive thing you give us, and it is the one thing we deliberately do not keep. It has its own section below.",
+      "Your practice in the app — devotionals you read or save, verses you bookmark, notes and reflections you write, your streak, and the themes you explore.",
       "Subscription records — whether your account has an active Premium subscription, so the app knows what to unlock. We never see or store your full card number, CVV, or bank details.",
-      "Technical information — device type, operating system version, app version, language and region, crash and error diagnostics, and your notification token if you turn notifications on. We use this to keep the app working, not to build a profile of you.",
+      "Technical information — device type, operating system version, app version, language and region, and your notification token if you turn notifications on. We use this to keep the app working, not to build a profile of you. We do not currently use any analytics or crash-reporting tools at all; if that changes, this page and our App Store privacy labels change with it.",
       "Giving details — if you give on our website, your first name, surname and email address. We ask for a name so a receipt, a reply, or the email telling you where the kindness share went can address you as a person rather than an inbox. These are held by Paystack, our payment processor, not on our own servers. Giving is entirely optional and none of it is linked to your app account.",
     ],
   },
@@ -74,8 +74,10 @@ export const PRIVACY_SECTIONS = [
     body: [
       "Two categories of what we hold are treated as special or sensitive personal information by law: information revealing your religious beliefs, and anything about your health — including mental and emotional health. Using a devotional app reveals the first. Writing “I am anxious about my marriage” or “I am grieving” reveals the second.",
       "We handle this on the basis of your explicit consent, which you give by choosing to write it and asking for a devotional. You are never required to share anything to use the app: the weekly devotionals, the Bible reader, daily verses, bookmarks and notes all work without you telling us a single personal thing.",
-      "What you share is visible to you. It is not published, not shown to other users, not shared with any church or organisation, and not used to target you with anything. A small number of our team can access it only where strictly necessary — investigating a fault you have reported, or where the law requires it — and we log that access.",
-      "You can delete any individual entry, or all of it at once, from within the app. Deleting it removes it from the devotional it produced as well.",
+      "So we do not store it. Your words are used to write your devotional and are then discarded — they are not saved to your account, and there is no copy on our servers for anyone here to open, no copy to leak in a breach, and no copy we could be compelled to hand over. That is not a policy we promise to follow; it is the way the app is built. What we do keep about the request is deliberately shapeless: which feeling you tapped, how long you asked for, and how many characters you typed. None of it can reconstruct a word of what you said.",
+      "It is never published, never shown to another reader, never shared with any church or organisation, never sold, and never used to target you with anything.",
+      "The devotional that comes back is a different matter, because it is yours to keep: it is saved to your library so you can read it again, and it stays until you delete it. It is private to your account. Deleting it from the app removes it from our systems.",
+      "One honest limit: to write your devotional at all, your words have to reach the model that writes it. That journey is described in the next section.",
     ],
   },
   {
@@ -83,7 +85,7 @@ export const PRIVACY_SECTIONS = [
     heading: "How we use your information",
     bullets: [
       "To create your account, sign you in and keep it secure.",
-      "To write tailored devotionals from what you share, and to show them to you again later in your library.",
+      "To write tailored devotionals from what you share, and to show the finished devotionals to you again later in your library. What you wrote to get there is not retained.",
       "To keep your bookmarks, notes, plans and streak in sync across your devices.",
       "To send the notifications you have asked for, and nothing else. You choose whether to receive them and can turn them off at any time, in the app or in your device settings.",
       "To keep your Premium subscription in step across your devices, and to honour cancellations.",
@@ -97,8 +99,8 @@ export const PRIVACY_SECTIONS = [
     heading: "The AI that writes your devotionals",
     body: [
       "Tailored devotionals are generated using Claude, a large language model provided by Anthropic. When you ask for one, the text you wrote is sent to Anthropic's API together with our instructions and the scripture references involved, and the devotional comes back to us and then to you.",
-      "Anthropic processes that text on our behalf as our service provider. Under our commercial terms with them, your text is not used to train their models. We do not use it to train any model either, and we do not sell or share it.",
-      "AI gets things wrong. Every devotional follows a fixed template and is checked by our system, and we review the content that goes out. Scripture is always the first and governing source. If something reads as off, unbiblical, or simply wrong, please tell us at " +
+      "Anthropic processes that text on our behalf as our service provider. Under our commercial terms with them, your text is not used to train their models. We do not use it to train any model either, and we do not sell or share it. Once the devotional comes back, we keep the devotional and discard what you wrote.",
+      "AI gets things wrong. Every devotional follows a fixed template and goes through an automated check — every verse is re-fetched from the Bible text, so scripture is never quoted from the model, and named claims and quote attributions are fact-checked. But no one here reads a tailored devotional before you do, and Scripture is always the first and governing source. If something reads as off, unbiblical, or simply wrong, please tell us at " +
         HELLO_EMAIL +
         " — reports from readers are how this stays trustworthy.",
       "A devotional is spiritual encouragement. It is not counselling, therapy, medical advice, or a substitute for a pastor, doctor or qualified mental-health professional. If you are in crisis or at risk of harm, please contact your local emergency services or a crisis line.",
@@ -151,10 +153,12 @@ export const PRIVACY_SECTIONS = [
   },
   {
     id: "children",
-    heading: "Children",
+    heading: "Children and young people",
     body: [
-      "InSpiritInTruth is intended for people aged 13 and over, and if you are under 18 we ask that a parent or guardian agrees to this policy with you. South African law requires a competent person's consent for the personal information of anyone under 18.",
-      `We do not knowingly collect information from children under 13. If you believe a child under 13 has given us information, contact ${LEGAL_EMAIL} and we will delete it promptly.`,
+      "You need to be 18 or over to create an InSpiritInTruth account.",
+      "It is worth saying why we set it there, because a devotional app is not an obvious place to find an age limit. South African law requires a competent person's consent before anyone may process the personal information of a person under 18, and the most personal thing this app does is invite you to write about what you are actually going through so a devotional can be shaped around it. Accepting that from a child on the strength of a tick-box claiming a parent agreed would not be real consent. We would rather not collect it at all than pretend otherwise.",
+      `We do not knowingly collect information from anyone under 18. If you believe someone under 18 has given us information, contact ${LEGAL_EMAIL} and we will delete it promptly.`,
+      "None of this stops a young person reading scripture. A verse or a devotional that someone shares with them by link opens without an account, and we ask nothing of them to read it.",
     ],
   },
   {
@@ -211,7 +215,7 @@ export const TERMS_SECTIONS = [
       "You need an account for anything that syncs. You agree to give accurate information, to keep your sign-in details to yourself, and to tell us promptly at " +
         HELLO_EMAIL +
         " if you think someone else has got into your account. What happens under your account is your responsibility.",
-      "You must be at least 13 to use InSpiritInTruth. If you are under 18, you need a parent or guardian to agree to these terms with you.",
+      "You must be 18 or over to create an InSpiritInTruth account. If we find out that an account belongs to someone under 18, we will close it and delete what is on it.",
     ],
   },
   {
@@ -226,7 +230,7 @@ export const TERMS_SECTIONS = [
     id: "ai-content",
     heading: "AI-written devotionals — use your judgement",
     body: [
-      "Tailored devotionals are generated by AI (Anthropic's Claude) working from what you share, our template, and Scripture. Every one is checked by our system and reviewed by us, but AI can still produce something inaccurate, poorly judged, or theologically off.",
+      "Tailored devotionals are generated by AI (Anthropic's Claude) working from what you share, our template, and Scripture. Every one goes through an automated scripture and fact check, but no one here reads it before you do, and AI can still produce something inaccurate, poorly judged, or theologically off.",
       "Scripture is the authority, not the devotional. Read anything the app writes with discernment, weigh it against the Bible, and where it matters, against the counsel of people you trust. You rely on AI-generated content at your own discretion, and we are not liable for decisions you make on the strength of it.",
       `Tell us when something is wrong — ${HELLO_EMAIL}. We would much rather hear it.`,
     ],
