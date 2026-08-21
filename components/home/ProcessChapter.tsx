@@ -142,7 +142,7 @@ export default function ProcessChapter({ chapter }: ProcessChapterProps) {
       />
       <div className="absolute bottom-4 left-4 rounded-[10px] bg-ink px-3.5 py-2 shadow-card">
         <p className="nums text-[0.875rem] font-medium leading-none text-bg">
-          742 leads at R29.57
+          742 leads · CTR ~2× the norm
         </p>
         <p className="mt-1 text-[0.625rem] uppercase tracking-[0.12em] text-bg opacity-70">
           Thrifty Adventures · LinkedIn

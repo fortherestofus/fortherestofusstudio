@@ -64,7 +64,7 @@ export const caseProofs: CaseProof[] = [
       {
         value: "742",
         label: "leads",
-        detail: "at R29.57 each",
+        detail: "from a channel that had never run before — cost per lead stays with the client",
       },
       {
         value: "4.91M",
