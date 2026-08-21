@@ -282,17 +282,17 @@ export const socialContentVideo = {
   caption: "Campaign content, built to publish.",
 };
 
-/** A consumer insights client's homepage, before and after the rebuild. */
+/** Innovatr's homepage, before and after the rebuild. */
 export const siteRedesign: { before: WorkImage; after: WorkImage } = {
   before: {
     src: "/work/insights-home-before.jpg",
-    alt: "The client homepage before the rebuild",
+    alt: "The Innovatr homepage before the rebuild",
     width: 2090,
     height: 1292,
   },
   after: {
     src: "/work/insights-home-after.jpg",
-    alt: "The client homepage after the rebuild",
+    alt: "The Innovatr homepage after the rebuild",
     width: 2642,
     height: 1508,
   },
@@ -370,17 +370,17 @@ export const storeDesignWork: WorkImage[] = [
 export const marketingWork: WorkImage[] = [
   {
     src: "/work/travel-social.webp",
-    alt: "Travel campaign post grid",
+    alt: "Thrifty Adventures social campaign post grid",
     width: 1504,
     height: 846,
-    caption: "Travel Industry — campaign",
+    caption: "Thrifty Adventures — campaign",
   },
   {
     src: "/work/insights-social-trends.png",
-    alt: "Research carousel on Gen Z trends",
+    alt: "Innovatr research carousel on Gen Z trends",
     width: 1200,
     height: 627,
-    caption: "Consumer Insights Industry — research content",
+    caption: "Innovatr — research content",
   },
 ];
 

@@ -33,7 +33,7 @@ function useCycle(length: number, ms: number, enabled = true) {
 }
 
 /* ── 01 · A problem worth solving ─────────────────────────────────────
-   A consumer insights client's homepage before and after the rebuild. The problem is the
+   Innovatr's homepage before and after the rebuild. The problem is the
    "before"; the product is the "after". Nothing states the case better. */
 export function RedesignArtefact() {
   const { ref, index, setIndex, setPaused } = useCycle(2, 3200);
@@ -70,7 +70,7 @@ export function RedesignArtefact() {
 
       <div className="flex items-center justify-between gap-3 border-t border-border px-4 py-3">
         <p className="text-[0.75rem] leading-snug text-muted">
-          Consumer insights client — site rebuilt around what buyers actually needed
+          Innovatr — site rebuilt around what buyers actually needed
         </p>
         <div className="flex shrink-0 gap-1">
           {labels.map((label, i) => (
@@ -156,12 +156,12 @@ export function IdentityArtefact() {
    reaching the people who sign. Real numbers from lib/proof.ts. */
 const KNOWN = [
   {
-    slug: "travel-industry",
+    slug: "thrifty-adventures",
     goal: "Goal: leads from a standing start",
     statIndexes: [0, 1],
   },
   {
-    slug: "consumer-insights",
+    slug: "innovatr",
     goal: "Goal: reach the people who sign",
     statIndexes: [1, 0],
   },

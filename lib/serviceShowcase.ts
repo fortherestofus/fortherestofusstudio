@@ -57,7 +57,7 @@ export const SERVICE_SHOWCASE: Record<string, ServiceShowcase> = {
     ],
     caseSlug: "social-sweep",
     caseAngle:
-      "The clearest version of this service: a client was about to rent a capability for $8,000 a year, so we built it instead and it became something they could sell.",
+      "The clearest version of this service: a client was about to rent a capability on an annual enterprise licence, so we built it instead — and it became something they could sell.",
   },
   websites: {
     stripTitle: "Sites we have built",
@@ -82,7 +82,7 @@ export const SERVICE_SHOWCASE: Record<string, ServiceShowcase> = {
       ...filosofeeIdentity.slice(0, 3),
       storeDesignWork[0],
     ],
-    caseSlug: "consumer-insights",
+    caseSlug: "innovatr",
     caseAngle:
       "A rebrand that had to survive contact with reality: a new line, a rebuilt site, and a content engine the team could actually keep running.",
   },
@@ -91,7 +91,7 @@ export const SERVICE_SHOWCASE: Record<string, ServiceShowcase> = {
     stripIntro:
       "The work that went out, and the decisions behind what did not.",
     pieces: [...marketingWork, ...filosofeeAiMedia.slice(0, 2), filosofeeStickers],
-    caseSlug: "travel-industry",
+    caseSlug: "thrifty-adventures",
     caseAngle:
       "Awareness to leads to sales for a travel brand starting from nothing — including the offer that worked and the one that did not.",
   },
@@ -102,6 +102,6 @@ export const SERVICE_SHOWCASE: Record<string, ServiceShowcase> = {
     pieces: [...automationWork, ...filosofeeAiMedia],
     caseSlug: "social-sweep",
     caseAngle:
-      "Platform APIs and an AI reasoning layer, built in about two months against a licence quoted at $8,000 a year.",
+      "Platform APIs and an AI reasoning layer, built in about two months instead of signing an annual enterprise licence.",
   },
 };

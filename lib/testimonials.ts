@@ -69,10 +69,11 @@ export const testimonials: Testimonial[] = [
  * The marquee used to keep its own longer list alongside a shorter one here,
  * which is how two records of the same fact drift apart. This is the record.
  *
- * Two names are deliberately absent. Their engagements are written up as
- * anonymised cases in lib/proof.ts ("Travel Industry", "Consumer Insights
- * Industry"), and naming them here would undo that in one hop: there is only
- * one travel brand on the list, so the case would re-identify itself.
+ * Naming a client and describing the work is industry-standard (it is how
+ * Innovatr presents its own cases). What we never publish is a client's
+ * commercial data — their pricing, their pipeline size, a vendor's quote to
+ * them, their absolute acquisition costs. That line lives in lib/proof.ts;
+ * the private numbers live in docs/private/ and never ship.
  */
 export const clients = [
   "Meta",
@@ -81,5 +82,7 @@ export const clients = [
   "Energy Capital & Power",
   "African Agri Council",
   "Jenna Clifford",
+  "Innovatr",
+  "Thrifty Adventures",
   "Deep Ocean",
 ];

@@ -300,7 +300,7 @@ export const TOOLBENCH: {
     name: "Apollo.io",
     role: "Finding the right people to talk to",
     detail:
-      "Sourcing qualified contacts against an ICP — filtering by role, seniority and company, enriching what is missing, and pushing the result into a CRM. We built a consumer insights client's pipeline this way, from nothing to a few thousand contacts.",
+      "Sourcing qualified contacts against an ICP — filtering by role, seniority and company, enriching what is missing, and pushing the result into a CRM. We built Innovatr's lead pipeline this way, from nothing to a working, segmented CRM.",
   },
   {
     name: "Zoho",

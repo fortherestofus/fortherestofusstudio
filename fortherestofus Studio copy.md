@@ -87,7 +87,7 @@ We pride ourselves in agility and resourcefulness.
 
 The Team
 
-fortherestofus was founded by Alroy Ndhlovu. One way to describe him is that he is an all-arounder. He was experienced quite a bit. With over 13 years of experience working in multiple industries like product, tech, tourism, e-commerce, research, B2B and B2C etc and having worked for companies like IFC (part of the World Bank), Jenna Clifford, Energy Capital and Power, Africa Energy Council, a consumer insights consultancy (getting exposure to major consumer brands), Digify (which gave him access to work with Meta (Facebook), he has gained a lot of practical experience of what works and what doesn’t. He has also studied in many fields including tech, tourism, digital design, UX/UI, product management and digital marketing making him versatile across solutions.
+fortherestofus was founded by Alroy Ndhlovu. One way to describe him is that he is an all-arounder. He was experienced quite a bit. With over 13 years of experience working in multiple industries like product, tech, tourism, e-commerce, research, B2B and B2C etc and having worked for companies like IFC (part of the World Bank), Jenna Clifford, Energy Capital and Power, Africa Energy Council, Innovatr (getting exposure to companies like Discovery Bank, Rain, DGB, Dairy Maid, Eagle Canyon etc), Digify (which gave him access to work with Meta (Facebook), he has gained a lot of practical experience of what works and what doesn’t. He has also studied in many fields including tech, tourism, digital design, UX/UI, product management and digital marketing making him versatile across solutions.
 
 All this exposure has also allowed him to develop a solid network of fellow professionals who either assist or complement his skillset allowing him to build a studio like foretherestofus.
 
@@ -200,7 +200,7 @@ We pride ourselves on agility and resourcefulness.
 
 ## The Team
 
-fortherestofus was founded by Alroy Ndhlovu, an all-arounder with over 13 years across product, tech, tourism, e-commerce, research, B2B and B2C. He has worked with the IFC (part of the World Bank Group), Jenna Clifford, Energy Capital and Power, Africa Energy Council, and through a consumer insights consultancy and Digify with brands like Meta. He has studied across tech, digital design, UX/UI, product management and digital marketing, which is what makes him versatile across solutions.
+fortherestofus was founded by Alroy Ndhlovu, an all-arounder with over 13 years across product, tech, tourism, e-commerce, research, B2B and B2C. He has worked with the IFC (part of the World Bank Group), Jenna Clifford, Energy Capital and Power, Africa Energy Council, and through Innovatr and Digify with brands like Discovery Bank, Rain and Meta. He has studied across tech, digital design, UX/UI, product management and digital marketing, which is what makes him versatile across solutions.
 
 All that exposure built a solid network of professionals who assist or complement his skillset, which is what makes a studio like fortherestofus possible. A child at heart, Alroy loves what he does, and he's been consistently building products and services for years.
 

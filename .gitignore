@@ -48,3 +48,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# closed-door pitch material — client commercial data that must never ship
+# with the public repo or the site (see the note in lib/testimonials.ts)
+/docs/private/

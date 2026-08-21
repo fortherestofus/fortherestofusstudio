@@ -112,13 +112,13 @@ Julian Shapiro's landing-page rules:
 
 - **Studio stats:** 12+ years, 1,200+ projects/clients. Engagements: Meta,
   IFC — World Bank Group, Digify Africa, Energy Capital & Power, African
-  Agri Council, Jenna Clifford. (Two further engagements are carried
-  anonymised — see the note in lib/testimonials.ts.)
-- **Travel Industry (client, growth):** 742 leads at ~R30; 4.91M
+  Agri Council, Jenna Clifford, Innovatr, Thrifty Adventures.
+- **Thrifty Adventures (client, growth):** 742 leads at ~R30; 4.91M
   impressions; CPM −81%; 0.97% CTR vs 0.52% benchmark.
-- **Consumer Insights Industry (client, full lifecycle):** rebrand + site rebuild + content
-  engine + paid + CRM; R252 CPL vs ~R744 median; 61% of ad delivery reached
-  decision-makers; built Social Sweep, replacing a US$8,000/yr licence.
+- **Innovatr (client, full lifecycle):** rebrand + site rebuild + content
+  engine + paid + CRM; ~3× better CPL than the category median; 61% of ad
+  delivery reached decision-makers; built Social Sweep in-house instead of
+  licensing. (Absolute client figures live in docs/private/, never here.)
 - **Own products:** the four apps (with the caveat that Hakkan is private
   beta and nothing may be described as launched).
 - **Testimonials:** the three real quotes already in `lib/testimonials.ts`

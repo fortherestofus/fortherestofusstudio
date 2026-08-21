@@ -7,7 +7,7 @@
  * Typographic, not logos. It carried the real marks until Alroy pointed out
  * what they actually looked like in a 44px row: several of these companies
  * only publish a dense horizontal lockup or a dark square, so at that height
- * one read as a black box, two more as illegible smudges,
+ * Jenna Clifford read as a black box, Thrifty and Digify as illegible smudges,
  * and African Agri Council as three coloured dots. A wall of marks that cannot
  * be read is worse than the names, and the site is type-led anyway — this
  * matches the wordmark rather than fighting it.

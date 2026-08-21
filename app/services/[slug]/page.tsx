@@ -303,7 +303,7 @@ export default async function ServiceDetailPage({
             align="left"
             eyebrow="Case in point"
             title="One pipeline, four tools."
-            subtitle="A consumer insights client's lead engine, tool by tool — what each one actually did. The point is not these four; it is that we pick per job."
+            subtitle="Innovatr's lead engine, tool by tool — what each one actually did. The point is not these four; it is that we pick per job."
           />
           <ol className="mt-10 grid gap-x-10 gap-y-0 md:grid-cols-2">
             {TOOLBENCH.map((tool, i) => (

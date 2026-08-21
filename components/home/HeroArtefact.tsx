@@ -6,7 +6,7 @@
  *
  * Composition: the real Hakkan window as the anchor, with one small campaign
  * card overlapping its corner — build and grow in a single object. The
- * campaign numbers are real (a travel client, LinkedIn) and attributed;
+ * campaign numbers are real (Thrifty Adventures, LinkedIn) and attributed;
  * an unattributed dashboard reads as decoration.
  *
  * Motion: entrance + a slow idle float, both off under reduced motion.
@@ -180,7 +180,7 @@ export default function HeroArtefact() {
           </div>
 
           <p className="mt-3 border-t border-border pt-2 text-[0.5625rem] text-faint">
-            Travel Industry · LinkedIn · 2025–26
+            Thrifty Adventures · LinkedIn · 2025–26
           </p>
         </motion.div>
       </motion.div>
