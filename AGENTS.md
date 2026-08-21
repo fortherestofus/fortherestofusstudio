@@ -29,6 +29,13 @@ InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
   (case proofs + studio stats), each with a `source` note. Never add an
   unmeasured or rounded-up number; honest "what didn't work" notes are a
   feature, not a bug.
+- **Name clients; never publish their commercial data.** Naming a client and
+  the problem solved is industry standard. What never ships — site, docs, or
+  this public repo — is a client's pricing, pipeline/CRM volumes, media spend,
+  absolute acquisition costs, or a vendor's quote to them. State those as
+  ratios or outcomes ("~3× better than the category median", "0 → live").
+  The absolute figures live in `docs/private/case-numbers.html` (gitignored)
+  for closed-door pitches; add new ones there, not here.
 - **`lib/apps.ts` is the single source of truth** for everything app-related:
   card + detail-page content, features, screenshots, status, accent colors,
   CTA, SEO, giving/legal paths. **`lib/services.ts`** does the same for the
