@@ -404,8 +404,8 @@ export const automationStillLife: WorkImage = {
 /** Social Sweep's report charts — the automation/product artefact. */
 export const socialSweepCharts: WorkImage = {
   src: "/work/social-sweep-charts.jpg",
-  alt: "Social Sweep report charts across 46 platforms",
+  alt: "Social Sweep report charts, drawn from the platforms the question actually lives on",
   width: 2332,
   height: 1512,
-  caption: "Social Sweep — one report, 46 platforms",
+  caption: "Social Sweep — one question, the platforms that carry it",
 };

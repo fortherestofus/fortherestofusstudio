@@ -128,9 +128,9 @@ export const caseProofs: CaseProof[] = [
         detail: "the alternative was an annual enterprise licence",
       },
       {
-        value: "46",
+        value: "49",
         label: "platforms reachable through one API",
-        detail: "368 endpoints; it picks the subset each question needs",
+        detail: "395 endpoints; it picks the subset each question needs",
       },
       {
         value: "Cost → product",
