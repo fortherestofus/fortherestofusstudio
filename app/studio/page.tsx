@@ -15,7 +15,7 @@ import { identityWork } from "@/lib/work";
 import { HELLO_EMAIL } from "@/lib/contact";
 
 const DESCRIPTION =
-  "For The Rest Of Us is a solutions and consulting studio in Johannesburg. We build products that solve real problems, give them an identity, and grow their visibility.";
+  "For The Rest Of Us is a solutions and product development consultancy in Johannesburg. We identify real problems, build products that solve them, and grow them.";
 
 export const metadata: Metadata = {
   title: "About",
@@ -83,31 +83,26 @@ export default function StudioPage() {
             <div className="lg:col-span-7">
               <div className="max-w-reading space-y-5 text-pretty text-[1.0625rem] leading-relaxed text-muted sm:text-[1.125rem]">
                 <p className="text-ink">
-                  For The Rest Of Us is a solutions and consulting studio in
-                  Johannesburg. We build products because they solve real
-                  problems — then give them an identity, and the marketing to
-                  be found.
+                  For The Rest Of Us is a solutions and product development
+                  consultancy in Johannesburg. We identify real problems, build
+                  products that solve them, and grow them.
                 </p>
                 <p>
-                  Most studios take one slice of that. A developer builds and
-                  hands you a thing nobody has named. An agency names it and
-                  cannot build it. A marketer arrives last and asks why it is
-                  hard to sell. The gaps between them are where good ideas
-                  quietly die.
+                  Most firms take one slice. A developer hands you something
+                  unnamed. An agency names what it cannot build. Ideas die in
+                  the gaps between them.
                 </p>
                 <p>
-                  So we run the whole lifecycle: identify the problem, build
-                  the product, grow its visibility — with business tech, AI and
-                  automation used wherever they genuinely remove work rather
-                  than add software.
+                  So we run all three steps: identify the problem, build the
+                  product, grow it. Business tech, AI and automation come in
+                  wherever they genuinely remove work.
                 </p>
                 <p>
                   It is deliberately small. Projects run as a small team
                   assembled for the job, and the person who scopes your work is
-                  the person who leads it through to launch — no account layer,
+                  the person who leads it through to launch. No account layer,
                   no work handed down. Your repositories, accounts and content
-                  are yours from day one, documented. We would rather you could
-                  leave than have you locked in.
+                  are yours from day one, documented.
                 </p>
               </div>
             </div>
