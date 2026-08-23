@@ -19,18 +19,19 @@ export default function Hero() {
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
           {/* Copy */}
           <div className="lg:col-span-6">
-            <EyebrowChip>Solutions &amp; consulting studio · Johannesburg</EyebrowChip>
+            <EyebrowChip>
+              Solutions &amp; product development consultancy · Johannesburg
+            </EyebrowChip>
 
             <h1 className="mt-7 text-balance text-[2.5rem] font-medium leading-[1.03] tracking-[-0.035em] sm:text-[3.5rem] lg:text-[4rem]">
               <span className="block text-ink">Products that solve</span>
               <span className="block text-ink">real problems.</span>
-              <span className="block text-muted">Built. Branded. Grown.</span>
             </h1>
 
             <p className="mt-7 max-w-[46ch] text-pretty leading-relaxed text-muted sm:text-lg">
-              We build apps, SaaS, and websites — for clients and for our own
-              ideas — then give them an identity and the marketing to be
-              found. One studio, every side of the product.
+              We identify the problem worth solving, build the product, and
+              grow it. Apps, SaaS, websites, brand, data-driven marketing, and
+              automation, from one team.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">

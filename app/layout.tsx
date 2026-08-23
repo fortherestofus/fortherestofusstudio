@@ -35,19 +35,20 @@ const apfel = localFont({
 });
 
 const SITE_DESCRIPTION =
-  "For The Rest Of Us is a solutions and consulting studio in Johannesburg. We build products that solve real problems — apps, SaaS and websites — and consult on brand, marketing and automation for people building their own.";
+  "For The Rest Of Us is a solutions and product development consultancy in Johannesburg. We identify the real problem, build the product, and grow it: apps, SaaS, websites, brand, data-driven marketing, and business automation.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://fortherestofus.app"),
   title: {
-    default: "For The Rest Of Us — Products that solve real problems",
-    template: "%s — For The Rest Of Us",
+    default: "For The Rest Of Us · Products that solve real problems",
+    template: "%s · For The Rest Of Us",
   },
   description: SITE_DESCRIPTION,
   keywords: [
     "For The Rest Of Us",
     "Alroy Ndhlovu",
-    "solutions studio",
+    "solutions consultancy",
+    "product development consultancy",
     "app development",
     "SaaS development",
     "website studio",
@@ -60,7 +61,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "For The Rest Of Us — Products that solve real problems",
+    title: "For The Rest Of Us · Products that solve real problems",
     description: SITE_DESCRIPTION,
     url: "https://fortherestofus.app",
     siteName: "For The Rest Of Us",
@@ -68,7 +69,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "For The Rest Of Us — Products that solve real problems",
+    title: "For The Rest Of Us · Products that solve real problems",
     description: SITE_DESCRIPTION,
   },
 };

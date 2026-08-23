@@ -174,7 +174,7 @@ export default function HeroArtefact() {
 
           <div className="mt-3 grid grid-cols-2 gap-x-2 gap-y-2.5">
             <Kpi label="Leads" value={742} play={inView} />
-            <Kpi label="Cost / lead" value={29.57} decimals={2} prefix="R" play={inView} />
+            <Kpi label="CTR" value={0.97} decimals={2} suffix="%" play={inView} />
             <Kpi label="Impressions" value={4.91} decimals={2} suffix="M" play={inView} />
             <Kpi label="CPM" value={81} prefix="−" suffix="%" play={inView} />
           </div>

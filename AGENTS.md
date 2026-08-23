@@ -85,11 +85,19 @@ InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
   have not billed for yet. `ToolMarquee` is now explicitly non-exhaustive. The
   line that still must not be written is an aspirational one: add a tool only
   if someone here has actually run it.
-- **Three pillars, one lifecycle.** Services group as **build → identity →
-  grow** (`ServiceLifecycle`, `LIFECYCLE_CHAPTERS`). Automation is not a
-  fourth pillar; it sits under grow. The five service slugs and URLs stay
-  as they are — the grouping is presentational, and those pages carry real
-  search intent.
+- **One process: identify → build → grow.** Services group into those three
+  chapters (`ServiceLifecycle`, `LIFECYCLE_CHAPTERS`). Two things this
+  encodes deliberately. **Identity is not a step**: a product and its brand
+  ship together, so `brand-and-content` sits under build — the old
+  build → identity → grow order is retired, and any copy still implying it
+  is a bug. **Identify carries no services**: it is the phase every project
+  starts in rather than a line item, so its homepage card links to contact
+  and its `/services` column lists what the phase hands over
+  (`IDENTIFY_OUTPUTS`) instead of a service list. Automation is not a fourth
+  pillar; it sits under grow. The five service slugs and URLs stay as they
+  are — the grouping is presentational, and those pages carry real search
+  intent. Identify takes the full-saturation ember card on both pages, which
+  puts the first step in front.
 - **One case anchors one page.** `lib/serviceShowcase.ts` maps each service
   to a work strip and a single case from `lib/proof.ts`. Filosofee spans
   three pillars, so it appears on three pages — but each shows a different

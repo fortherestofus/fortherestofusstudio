@@ -180,7 +180,7 @@ export default function ProcessBand() {
           className="mt-4"
           eyebrow="How we work"
           title="Identify. Build. Grow."
-          subtitle="One lifecycle, whether the product is ours or yours — powered by business tech, AI, and automation wherever they genuinely remove work. Here is how it sounds from the inside."
+          subtitle="One process, whether the product is ours or yours, using business tech, AI, and automation wherever they genuinely remove work. Here is how it sounds from the inside."
         />
 
         <div className="mt-12 grid gap-8 lg:grid-cols-12 lg:gap-14">

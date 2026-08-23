@@ -19,20 +19,20 @@ import { testimonials } from "@/lib/testimonials";
 const BELIEFS = [
   {
     stage: "Identify",
-    title: "Every product starts as a problem worth solving.",
-    body: "Not a market gap — a moment that keeps costing someone money or time. Innovatr's site looked fine and converted badly. We rebuilt it around what buyers actually needed to know.",
+    title: "Most products fail because nobody needed them.",
+    body: "The job is to find the moment that keeps costing someone money or time, not a market gap. Innovatr's site looked fine and converted badly. We rebuilt it around what buyers actually needed to know.",
     artefact: <RedesignArtefact />,
   },
   {
     stage: "Build",
-    title: "Every product needs an identity.",
-    body: "A look, a voice, a name people can hold onto. Wordmarks, packaging, print, photography — made as one system so the thing still looks like itself on a Tuesday afternoon post.",
+    title: "The product and its brand are one build.",
+    body: "Software people can use, with a name and a face they remember. Wordmarks, packaging, print, and photography made as one system, so the thing still looks like itself on a Tuesday afternoon post.",
     artefact: <IdentityArtefact />,
   },
   {
     stage: "Grow",
-    title: "Every product needs to be known.",
-    body: "Building it is half the work. Marketing and analytics decide whether the right people ever find it — and tell you what to fix next. Two clients, two very different goals.",
+    title: "A product nobody finds solves nothing.",
+    body: "Building it is half the work. Marketing and analytics decide whether the right people ever find it, and tell you what to fix next. Two clients, two very different goals.",
     artefact: <KnownArtefact />,
   },
 ];
@@ -48,7 +48,7 @@ export default function WhyChapter() {
             align="left"
             eyebrow="Why we build"
             title="The problem you've learned to live with."
-            subtitle="Every business has one — the process held together with copy-paste, the idea that never left the notes app, the product nobody can find. Good ideas rarely die from bad code. They die in handoffs. We run on three convictions instead:"
+            subtitle="Every business has one: a process held together with copy-paste, or an idea stuck in the notes app. Good ideas rarely die from bad code. They die in the handoffs between agencies."
           />
         </div>
 

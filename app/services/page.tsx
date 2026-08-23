@@ -12,7 +12,7 @@ import CallToAction from "@/components/home/CallToAction";
 import { cn } from "@/lib/cn";
 
 const DESCRIPTION =
-  "We build custom apps, SaaS and websites, give them an identity, and grow them with marketing, analytics and automation. A solutions and consulting studio in Johannesburg.";
+  "We identify the problem, build the product (custom apps, SaaS, websites, brand), and grow it with data-driven marketing, analytics and automation. A solutions and product development consultancy in Johannesburg.";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -33,10 +33,30 @@ export const metadata: Metadata = {
  * on hover like cards because they are the click targets.
  */
 const PILLARS: Record<string, { card: string; deep: string }> = {
-  build: { card: "bg-tint-rust", deep: "text-tint-rust-deep" },
-  identity: { card: "bg-tint-amber", deep: "text-tint-amber-deep" },
+  identify: { card: "bg-tint-rust", deep: "text-tint-rust-deep" },
+  build: { card: "bg-tint-amber", deep: "text-tint-amber-deep" },
   grow: { card: "bg-tint-olive", deep: "text-tint-olive-deep" },
 };
+
+/**
+ * What the identify phase hands over. It carries no services, so the
+ * pillar's second column would otherwise render empty — and what this
+ * phase produces is the more useful answer anyway.
+ */
+const IDENTIFY_OUTPUTS = [
+  {
+    title: "A written problem statement",
+    body: "What is broken, who it affects, and what success would look like.",
+  },
+  {
+    title: "Scope, time, and cost",
+    body: "Before any of it is committed, so nothing arrives as a surprise later.",
+  },
+  {
+    title: "An honest recommendation",
+    body: "Including do not build this, when that is the right answer.",
+  },
+];
 
 export default function ServicesPage() {
   return (
@@ -48,12 +68,12 @@ export default function ServicesPage() {
             <div className="lg:col-span-6">
               <EyebrowChip>Services &amp; consulting</EyebrowChip>
               <h1 className="mt-6 text-balance text-[2.5rem] font-medium leading-[1.04] tracking-[-0.035em] sm:text-[3.5rem]">
-                <span className="block text-ink">Build it. Name it.</span>
-                <span className="block text-muted">Get it known.</span>
+                <span className="block text-ink">Identify. Build.</span>
+                <span className="block text-muted">Grow.</span>
               </h1>
               <p className="mt-6 max-w-[50ch] text-pretty leading-relaxed text-muted sm:text-lg">
-                Three things, in the order they happen. Most projects need all
-                of them, and the parts you already have we leave alone.
+                Three steps, in the order they happen. Most projects need all
+                three. Whatever already works, we keep.
               </p>
               <div className="mt-9">
                 <PillButton href="/contact/" size="lg">
@@ -107,6 +127,25 @@ export default function ServicesPage() {
                   </p>
                 </div>
 
+                {/* Identify sells nothing on its own, so its column shows
+                    what the phase produces instead of a service list. */}
+                {chapter.serviceSlugs.length === 0 ? (
+                  <ul className="flex flex-col gap-3 self-center lg:col-span-7">
+                    {IDENTIFY_OUTPUTS.map((output) => (
+                      <li
+                        key={output.title}
+                        className="rounded-card bg-surface p-5 shadow-card"
+                      >
+                        <span className="block text-[1.0625rem] font-medium text-ink">
+                          {output.title}
+                        </span>
+                        <span className="mt-0.5 block text-[0.9375rem] leading-relaxed text-muted">
+                          {output.body}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
                 <ul className="flex flex-col gap-3 self-center lg:col-span-7">
                   {chapter.serviceSlugs.map((slug) => {
                     const service = getService(slug);
@@ -131,6 +170,7 @@ export default function ServicesPage() {
                     );
                   })}
                 </ul>
+                )}
               </li>
             );
           })}

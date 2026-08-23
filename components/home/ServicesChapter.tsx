@@ -20,22 +20,23 @@ import { automationWork, identityWork, marketingWork } from "@/lib/work";
 import { cn } from "@/lib/cn";
 
 /**
- * Block treatments. "build" commits to the brand ember at full saturation
- * (the reference's orange card); the washes are strong tints; "automate"
- * is the ink block.
+ * Block treatments. "identify" commits to the brand ember at full
+ * saturation (the reference's orange card), which puts the first step of
+ * the process in front; "build" takes the amber wash; "grow" is the ink
+ * block.
  */
 const BLOCKS: Record<
   string,
   { card: string; mark: string; title: string; body: string; link: string }
 > = {
-  build: {
+  identify: {
     card: "bg-accent border-transparent",
     mark: "text-accent-ink opacity-70",
     title: "text-accent-ink",
     body: "text-accent-ink opacity-80",
     link: "text-accent-ink",
   },
-  identity: {
+  build: {
     card: "bg-tint-amber border-transparent",
     mark: "text-tint-amber-deep opacity-70",
     title: "text-tint-amber-deep",
@@ -57,35 +58,34 @@ const BLOCKS: Record<
  */
 const BUILD_SHOWCASE = ["hakkan", "caught-slipping", "tapa"];
 
-function ProductsArtefact() {
-  return (
-    <div className="flex h-full items-end gap-3 overflow-hidden px-5 pt-5">
-      {BUILD_SHOWCASE.map((slug) => {
-        const app = getApp(slug);
-        if (!app) return null;
-        return (
-          <Image
-            key={app.slug}
-            src={app.screenshots[0]}
-            alt={`${app.name} screen`}
-            sizes="320px"
-            /* Height-sized, width automatic: Hakkan is a browser window and
-               tapa is a handset, and forcing both into one box crops
-               whichever does not fit. The row bleeds off the card edge by
-               design, the same way the artefacts bleed off the bottom. */
-            className="h-full w-auto shrink-0 rounded-t-[10px] border border-b-0 border-border object-contain shadow-[0_-8px_24px_rgba(23,21,15,0.12)]"
-          />
-        );
-      })}
-    </div>
-  );
-}
+/** Shared frame treatment for anything sitting in the build row. */
+const ARTEFACT_FRAME =
+  "h-full w-auto shrink-0 rounded-t-[10px] border border-b-0 border-border object-contain shadow-[0_-8px_24px_rgba(23,21,15,0.12)]";
 
-/** Identity work — the artefact for the brand block. */
-function IdentityStack() {
+/**
+ * Build's artefact: products first, then the identity work, in one row.
+ * Brand is no longer a chapter of its own, so the proof for this block has
+ * to show both halves — a shipped product and the identity around it. The
+ * row is height-sized and bleeds off the card edge by design, which is what
+ * lets a browser window, a handset, and a wordmark share it uncropped.
+ */
+function BuildArtefact() {
+  const products = BUILD_SHOWCASE.slice(0, 2)
+    .map((slug) => getApp(slug))
+    .filter((app) => app !== undefined);
+
   return (
     <div className="flex h-full items-end gap-3 overflow-hidden px-5 pt-5">
-      {identityWork.slice(0, 3).map((piece) => (
+      {products.map((app) => (
+        <Image
+          key={app.slug}
+          src={app.screenshots[0]}
+          alt={`${app.name} screen`}
+          sizes="320px"
+          className={ARTEFACT_FRAME}
+        />
+      ))}
+      {identityWork.slice(0, 2).map((piece) => (
         <Image
           key={piece.src}
           src={piece.src}
@@ -93,9 +93,24 @@ function IdentityStack() {
           width={piece.width}
           height={piece.height}
           sizes="320px"
-          className="h-full w-auto shrink-0 rounded-t-[10px] border border-b-0 border-border object-contain shadow-[0_-8px_24px_rgba(23,21,15,0.12)]"
+          className={ARTEFACT_FRAME}
         />
       ))}
+    </div>
+  );
+}
+
+/**
+ * Identify has no artefact to photograph — it is a conversation, and the
+ * house rule is real screenshots or nothing. So its card closes on the
+ * question the phase actually asks, set large on the ember.
+ */
+function IdentifyArtefact() {
+  return (
+    <div className="flex h-full items-end px-6 pb-7 sm:px-7">
+      <p className="text-balance text-[1.375rem] font-medium leading-snug tracking-[-0.015em] text-accent-ink opacity-90 sm:text-[1.5rem]">
+        “What is actually broken, and is it worth building for?”
+      </p>
     </div>
   );
 }
@@ -125,8 +140,8 @@ function GrowArtefact() {
 }
 
 const ARTEFACTS: Record<string, React.ReactNode> = {
-  build: <ProductsArtefact />,
-  identity: <IdentityStack />,
+  identify: <IdentifyArtefact />,
+  build: <BuildArtefact />,
   grow: <GrowArtefact />,
 };
 
@@ -138,8 +153,8 @@ export default function ServicesChapter() {
         align="left"
         className="mt-4"
         eyebrow="Services & consulting"
-        title="The same lifecycle, run for you."
-        subtitle="Custom products and solutions, brand and identity, marketing and analytics, automation — run by the same hands that ship our own products. Each one opens to how it works and what it did for a real client."
+        title="The same process, run for you."
+        subtitle="Custom products, brand, data-driven marketing, and automation, from the same hands that ship our own. Each one opens to how it works and what it did for a real client."
       />
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2 sm:gap-5">
@@ -178,6 +193,22 @@ export default function ServicesChapter() {
                   {chapter.blurb}
                 </p>
 
+                {/* Identify sells no line items, so its card points at the
+                    conversation instead of a service list. */}
+                {chapter.serviceSlugs.length === 0 ? (
+                  <div className="mb-6 mt-5">
+                    <Link
+                      href="/contact/"
+                      className={cn(
+                        "group inline-flex items-center gap-1.5 text-[0.9375rem] font-medium underline-offset-4 hover:underline",
+                        block.link
+                      )}
+                    >
+                      Start with the problem
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </Link>
+                  </div>
+                ) : (
                 <ul className="mb-6 mt-5 flex flex-wrap gap-x-6 gap-y-2">
                   {chapter.serviceSlugs.map((slug) => {
                     const service = getService(slug);
@@ -198,6 +229,7 @@ export default function ServicesChapter() {
                     );
                   })}
                 </ul>
+                )}
               </div>
 
               {/* Real work, bleeding off the block's bottom edge. The
@@ -223,8 +255,8 @@ export default function ServicesChapter() {
             Not sure which you need?
           </h3>
           <p className="mt-1.5 max-w-[52ch] text-[0.9375rem] leading-relaxed text-muted">
-            Most projects are a mix. Tell us what you are trying to do and we
-            will tell you honestly what it takes.
+            Most projects are a mix. Send the problem and we will come back
+            with scope, time, and cost.
           </p>
         </div>
         <PillButton href="/contact/">Start a project</PillButton>

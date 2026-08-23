@@ -12,12 +12,18 @@ export interface ServiceSection {
 }
 
 /**
- * The three things the studio does, in the order they happen: build the
- * product, give it an identity, grow its visibility. Automation is not a
- * fourth pillar — it is how growth happens without adding headcount, so it
- * lives under "grow" (Alroy's framing, iteration 5).
+ * The three steps of the process, in the order they happen: identify the
+ * problem worth solving, build the product, grow it.
+ *
+ * Two things this encodes deliberately. Identity is not a step of its own:
+ * a product and its brand ship together, so brand-and-content sits under
+ * "build". And automation is not a fourth pillar; it is how growth happens
+ * without adding headcount, so it lives under "grow".
+ *
+ * "identify" is a valid chapter key but no service carries it — the phase
+ * every engagement starts in, not something bought separately.
  */
-export type ServiceLifecycle = "build" | "identity" | "grow";
+export type ServiceLifecycle = "identify" | "build" | "grow";
 
 export interface Service {
   slug: string;
@@ -194,7 +200,7 @@ export const services: Service[] = [
   {
     slug: "brand-and-content",
     arm: "consult",
-    lifecycle: "identity",
+    lifecycle: "build",
     icon: "Palette",
     title: "Brand, design & content",
     summary:
@@ -344,10 +350,14 @@ export const PROCESS_STEPS = [
 ];
 
 /**
- * The four lifecycle chapters — how the services chapter on the homepage
- * groups the five services (see docs/REDESIGN-V3.md §4, chapter 04).
+ * The three chapters of the process — how the services chapter on the
+ * homepage groups the five services (see docs/REDESIGN-V3.md §4, chapter 04).
  * `tint` keys into the tint tokens in globals.css; "ink" renders the dark
  * card in the grid.
+ *
+ * "identify" carries no services on purpose: it is the phase every project
+ * starts in rather than a line item, so its card sells the conversation and
+ * takes the full-saturation ember to put the first step in front.
  */
 export const LIFECYCLE_CHAPTERS: {
   key: ServiceLifecycle;
@@ -360,30 +370,30 @@ export const LIFECYCLE_CHAPTERS: {
   serviceSlugs: string[];
 }[] = [
   {
+    key: "identify",
+    title: "We identify",
+    blurb:
+      "The problem, who it affects, and whether it is worth building for. Every project starts here, before anyone writes code.",
+    belief:
+      "Most products fail because nobody needed them. Finding that out early is cheaper than finding out at launch.",
+    tint: "rust",
+    serviceSlugs: [],
+  },
+  {
     key: "build",
     title: "We build",
     blurb:
-      "Custom products and solutions — apps, SaaS, and websites, from scoped idea to shipped thing.",
+      "Apps, SaaS, and websites, with the brand around them. Product and identity ship together, from scoped idea to the thing itself.",
     belief:
       "A product only exists once someone can use it. Everything before that is a document.",
-    tint: "rust",
-    serviceSlugs: ["apps-and-saas", "websites"],
-  },
-  {
-    key: "identity",
-    title: "We give it identity",
-    blurb:
-      "Branding, design and content — a look and a voice that stay consistent everywhere you show up.",
-    belief:
-      "Products without a face get forgotten, even the useful ones. Design and words are the same job.",
     tint: "amber",
-    serviceSlugs: ["brand-and-content"],
+    serviceSlugs: ["apps-and-saas", "websites", "brand-and-content"],
   },
   {
     key: "grow",
     title: "We grow it",
     blurb:
-      "Marketing, analytics and automation — being found, and running without you.",
+      "Marketing, analytics, and automation. Being found, and running without you.",
     belief:
       "Launch is the middle. What you measure next decides whether any of it mattered.",
     tint: "ink",

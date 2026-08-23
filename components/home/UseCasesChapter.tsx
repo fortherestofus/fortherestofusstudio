@@ -84,7 +84,7 @@ export default function UseCasesChapter() {
           className="mt-4"
           eyebrow="Built by us"
           title="Built by us. For us, and for everyone else."
-          subtitle="We went looking for the ordinary problems — the ones nobody writes a brief for, that everyone recognises the second you name them. Losing an evening to the scroll. Standing in front of a fridge with no idea what to make. Reading something you cannot tell was written by a person. Four products of our own came out of that, each one identified, built, named and now growing — the same lifecycle we just described, run on ourselves first."
+          subtitle="We went looking for ordinary problems, the kind nobody writes a brief for. Four products of our own came out of that. Each one was identified, built, and is now growing: the same process we run for clients, tested on ourselves first."
         />
       </div>
 

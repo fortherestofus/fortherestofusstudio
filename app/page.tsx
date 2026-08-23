@@ -24,8 +24,8 @@ export default function Home() {
       <UseCasesChapter />
       <TrustBand />
       <CallToAction
-        title="Real problems. Actual products."
-        body="Tell us the problem. One email gets you an honest answer about what it takes — and if we are not the right studio for it, we will say so."
+        title="Bring us a real problem."
+        body="One email gets you a straight answer on what it takes. If we are not the right people for it, we will say so."
         secondaryLabel="See the apps"
         secondaryHref="/apps/"
         scatter
