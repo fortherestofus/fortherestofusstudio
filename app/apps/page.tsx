@@ -5,14 +5,14 @@ import AppBand from "@/components/apps/AppBand";
 import CallToAction from "@/components/home/CallToAction";
 
 const DESCRIPTION =
-  "The products For The Rest Of Us designs and builds for itself — CaughtSlipping, InSpiritInTruth, tapa., and Hakkan. Each one started as a problem we had ourselves.";
+  "The products For The Rest Of Us designs and builds for itself: CaughtSlipping, InSpiritInTruth, tapa., and Hakkan. Each one started as a problem we had ourselves.";
 
 export const metadata: Metadata = {
   title: "Apps",
   description: DESCRIPTION,
   alternates: { canonical: "/apps/" },
   openGraph: {
-    title: "Apps — For The Rest Of Us",
+    title: "Apps · For The Rest Of Us",
     description: DESCRIPTION,
     url: "https://fortherestofus.app/apps/",
     type: "website",
@@ -26,7 +26,7 @@ export default function AppsIndexPage() {
         eyebrow="Built by us"
         title="Our own products."
         titleMuted="Built the way we would build yours."
-        lead="We keep a small shelf of products of our own. They are where we test ideas, learn what actually holds up in people's hands, and stay honest about how long good work takes. They are also the clearest proof of what this studio can do."
+        lead="We keep a small shelf of products of our own. They are where we test ideas and learn what holds up in people's hands, and they are the clearest proof of what we can do."
       />
 
       {/*

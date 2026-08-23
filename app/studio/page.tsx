@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   alternates: { canonical: "/studio/" },
   openGraph: {
-    title: "About — For The Rest Of Us",
+    title: "About · For The Rest Of Us",
     description: DESCRIPTION,
     url: "https://fortherestofus.app/studio/",
     type: "website",
@@ -150,7 +150,7 @@ export default function StudioPage() {
             <div className="mt-6 max-w-reading space-y-4 text-pretty leading-relaxed text-muted">
               <p>
                 Twelve years across digital marketing, branding strategy and
-                business technology — campaigns and content for organisations
+                business technology: campaigns and content for organisations
                 from Meta to the IFC, Meta-certified lead trainer at Digify
                 Africa, and e-commerce, identity and analytics for brands in
                 jewellery, sport, energy and agriculture.
@@ -201,7 +201,7 @@ export default function StudioPage() {
           </h2>
           <ToolMarquee className="mt-6" />
           <p className="mt-5 max-w-[60ch] text-[0.9375rem] leading-relaxed text-muted">
-            We pick per job rather than per habit — and if your stack already
+            We pick per job rather than per habit, and if your stack already
             runs on something else, we build on that instead.
           </p>
         </div>

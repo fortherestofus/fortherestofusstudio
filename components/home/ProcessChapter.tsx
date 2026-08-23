@@ -127,7 +127,7 @@ export default function ProcessChapter({ chapter }: ProcessChapterProps) {
       />
       <div className="absolute bottom-4 left-4 rounded-[10px] border border-border bg-surface px-3.5 py-1.5 shadow-card">
         <p className="text-[0.75rem] font-medium text-ink">
-          Hakkan — a build cycle in progress
+          Hakkan · a build cycle in progress
         </p>
       </div>
     </div>,
@@ -160,7 +160,7 @@ export default function ProcessChapter({ chapter }: ProcessChapterProps) {
           className={chapter ? "mt-4" : undefined}
           eyebrow="How it works"
           title="From problem to product."
-          subtitle="Three states, and you can always see which one we are in — shown here with three different projects, because the spine is the same whatever arrives."
+          subtitle="Three states, and you can always see which one we are in. Shown here with three different projects, because the spine is the same whatever arrives."
         />
 
         <div className="mt-12 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">

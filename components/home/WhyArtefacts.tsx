@@ -70,7 +70,7 @@ export function RedesignArtefact() {
 
       <div className="flex items-center justify-between gap-3 border-t border-border px-4 py-3">
         <p className="text-[0.75rem] leading-snug text-muted">
-          Innovatr — site rebuilt around what buyers actually needed
+          Innovatr · site rebuilt around what buyers actually needed
         </p>
         <div className="flex shrink-0 gap-1">
           {labels.map((label, i) => (

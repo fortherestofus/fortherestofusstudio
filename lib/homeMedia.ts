@@ -43,7 +43,7 @@ export const contentSamples: ContentSample[] = [
  * one sentence. Kept short so they never run past two lines in the tile.
  */
 export const contentTypedLines = [
-  "Marketing that earns attention.",
+  "Marketing measured by what it returns.",
   "Design with a system behind it.",
   "Photography, film, and social.",
   "Words that sound like you.",

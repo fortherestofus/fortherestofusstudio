@@ -74,7 +74,7 @@ const STAGES: Stage[] = [
       {
         who: "studio",
         side: "right",
-        text: "That is a painful one — you are paying to bring people in and losing them at the last step. We have seen it before, and it is usually fixable.",
+        text: "That is a painful one. You are paying to bring people in and losing them at the last step. We have seen it before, and it is usually fixable.",
       },
       {
         who: "studio",
@@ -101,7 +101,7 @@ const STAGES: Stage[] = [
       {
         who: "teamA",
         side: "right",
-        text: "No wonder they give up. Split it into two short steps and save what they typed — nobody should lose progress by tapping back.",
+        text: "No wonder they give up. Split it into two short steps and save what they typed, so nobody loses progress by tapping back.",
       },
       {
         who: "teamB",
@@ -133,7 +133,7 @@ const STAGES: Stage[] = [
       {
         who: "studio",
         side: "left",
-        text: "Glad it is working. Launch is the middle, though — we keep watching the drop-off that is left, and here is the growth plan for the next quarter.",
+        text: "Good to see. We keep watching the drop-off that is left, and here is the growth plan for the next quarter.",
       },
     ],
   },
@@ -180,7 +180,7 @@ export default function ProcessBand() {
           className="mt-4"
           eyebrow="How we work"
           title="Identify. Build. Grow."
-          subtitle="One process, whether the product is ours or yours, using business tech, AI, and automation wherever they genuinely remove work. Here is how it sounds from the inside."
+          subtitle="One process, whether the product is ours or yours. Here is how it sounds from the inside."
         />
 
         <div className="mt-12 grid gap-8 lg:grid-cols-12 lg:gap-14">

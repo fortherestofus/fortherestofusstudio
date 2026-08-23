@@ -4,7 +4,7 @@
  *
  * The rule that keeps this honest and non-repetitive: **one case anchors
  * one page**. Filosofee touches all three pillars, so it appears on three
- * pages — but each shows a different face of it (the store, the identity,
+ * pages, but each shows a different face of it (the store, the identity,
  * the economics), never the same artefact twice. Anything a page cannot
  * evidence, it does not claim.
  */
@@ -37,7 +37,7 @@ const appShot = (slug: string): WorkImage => {
   const shot = app.screenshots[0];
   return {
     src: shot.src,
-    alt: `${app.name} — ${app.tagline}`,
+    alt: `${app.name}: ${app.tagline}`,
     width: shot.width,
     height: shot.height,
     caption: app.name,
@@ -57,7 +57,7 @@ export const SERVICE_SHOWCASE: Record<string, ServiceShowcase> = {
     ],
     caseSlug: "social-sweep",
     caseAngle:
-      "The clearest version of this service: a client was about to rent a capability on an annual enterprise licence, so we built it instead — and it became something they could sell.",
+      "The clearest version of this service. A client was about to rent a capability on an annual enterprise licence, so we built it instead, and it became something they could sell.",
   },
   websites: {
     stripTitle: "Sites we have built",
@@ -71,7 +71,7 @@ export const SERVICE_SHOWCASE: Record<string, ServiceShowcase> = {
     pieces: [],
     caseSlug: "filosofee",
     caseAngle:
-      "Our own store, end to end: product, site, payment gateways — then the only validation that counts, people paying for it.",
+      "Our own store, end to end: product, site, payments. People paid in month one.",
   },
   "brand-and-content": {
     stripTitle: "Identity we have made",
@@ -93,7 +93,7 @@ export const SERVICE_SHOWCASE: Record<string, ServiceShowcase> = {
     pieces: [...marketingWork, ...filosofeeAiMedia.slice(0, 2), filosofeeStickers],
     caseSlug: "thrifty-adventures",
     caseAngle:
-      "Awareness to leads to sales for a travel brand starting from nothing — including the offer that worked and the one that did not.",
+      "Awareness to leads to sales for a travel brand starting from nothing, including the offer that worked and the one that did not.",
   },
   "tech-and-automation": {
     stripTitle: "The bench we build on",

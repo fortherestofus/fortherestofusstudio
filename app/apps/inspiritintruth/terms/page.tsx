@@ -9,9 +9,9 @@ import {
 } from "@/lib/legal/inspiritintruth";
 
 export const metadata: Metadata = {
-  title: { absolute: "InSpiritInTruth — Terms of Service" },
+  title: { absolute: "InSpiritInTruth · Terms of Service" },
   description:
-    "The agreement between you and For The Rest Of Us for using InSpiritInTruth — accounts, AI-written devotionals, scripture licensing, subscriptions, giving and liability.",
+    "The agreement between you and For The Rest Of Us for using InSpiritInTruth: accounts, AI-written devotionals, scripture licensing, subscriptions, giving and liability.",
   // Canonical lives on the app's own domain — this is the mirror.
   alternates: { canonical: "https://inspiritintruth.net/terms/" },
 };

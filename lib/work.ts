@@ -25,7 +25,7 @@ export const lumiskinVideo = {
   poster: "/video/lumiskin-site-poster.webp",
   width: 1280,
   height: 660,
-  caption: "LumiSkin — the version that made it out of the notes app.",
+  caption: "LumiSkin: the version that got built.",
 };
 
 /**
@@ -44,13 +44,13 @@ export const builtSites: {
     src: "/video/filosofee-site.mp4",
     poster: "/video/filosofee-site-poster.webp",
     title: "Filosofee",
-    caption: "Our own store — product, checkout, payment gateways.",
+    caption: "Our own store: product, checkout, payment gateways.",
   },
   {
     src: "/video/festival-site.mp4",
     poster: "/video/festival-site-poster.webp",
     title: "Festival of Eventing",
-    caption: "An event brand's home — programme, partners, registration.",
+    caption: "An event brand's home: programme, partners, registration.",
   },
   {
     src: "/video/dejamedia-site.mp4",
@@ -66,14 +66,14 @@ export const dejaMediaVideo = {
   poster: "/video/dejamedia-site-poster.webp",
   width: 1280,
   height: 720,
-  caption: "Deja Media — a site built to be edited by the people who own it.",
+  caption: "Deja Media: a site built to be edited by the people who own it.",
   /** The poster as a still, for rails that cannot hold a video. */
   posterAsWork: {
     src: "/video/dejamedia-site-poster.webp",
     alt: "The Deja Media site",
     width: 1280,
     height: 720,
-    caption: "Deja Media — built to be edited by its owners",
+    caption: "Deja Media: built to be edited by its owners",
   } satisfies WorkImage,
 };
 
@@ -168,7 +168,7 @@ export const filosofeeVideo = {
   poster: "/video/filosofee-site-poster.webp",
   width: 1280,
   height: 720,
-  caption: "filosofee.shop — the store, built and taking payments.",
+  caption: "filosofee.shop: the store, built and taking payments.",
 };
 
 /**
@@ -255,13 +255,13 @@ export const filosofeeAiMedia: WorkImage[] = [
   },
 ];
 
-/** The product we stopped making — the honest chapter. */
+/** The product we stopped making: the honest chapter. */
 export const filosofeeStickers: WorkImage = {
   src: "/work/filosofee/site-stickers.jpg",
   alt: "Filosofee sticker product photographed on a laptop",
   width: 570,
   height: 600,
-  caption: "Stickers — the line we closed",
+  caption: "Stickers · the line we closed",
 };
 
 /** Social Sweep's demo, for the automation and product surfaces. */
@@ -270,7 +270,7 @@ export const socialSweepVideo = {
   poster: "/work/social-sweep-charts.jpg",
   width: 1280,
   height: 720,
-  caption: "Social Sweep — a full study running end to end.",
+  caption: "Social Sweep: a full study running end to end.",
 };
 
 /** Social content in motion, used where a still would go flat. */
@@ -298,42 +298,42 @@ export const siteRedesign: { before: WorkImage; after: WorkImage } = {
   },
 };
 
-/** Identity work — the look and feel of things we have named. */
+/** Identity work: the look and feel of things we have named. */
 export const identityWork: WorkImage[] = [
   {
     src: "/media/brand-logo-legacylab.webp",
     alt: "Legacy Lab wordmark and identity system",
     width: 2048,
     height: 1146,
-    caption: "Legacy Lab — wordmark",
+    caption: "Legacy Lab · wordmark",
   },
   {
     src: "/media/brand-cards-gold.webp",
     alt: "Gold-foil business cards for Deja Media",
     width: 2048,
     height: 1536,
-    caption: "Deja Media — gold foil",
+    caption: "Deja Media · gold foil",
   },
   {
     src: "/media/design-packaging.webp",
     alt: "Wine label design across three bottle mockups",
     width: 1200,
     height: 900,
-    caption: "Wine label — packaging",
+    caption: "Wine label · packaging",
   },
   {
     src: "/media/brand-magazine.webp",
     alt: "Magazine cover and spread design",
     width: 1200,
     height: 1697,
-    caption: "LE'CONTENT — editorial",
+    caption: "LE'CONTENT · editorial",
   },
   {
     src: "/media/photography-editorial-mag.webp",
     alt: "Editorial beauty photography shot for a magazine feature",
     width: 1200,
     height: 1500,
-    caption: "Editorial — photography",
+    caption: "Editorial · photography",
   },
 ];
 
@@ -348,21 +348,21 @@ export const storeDesignWork: WorkImage[] = [
     alt: "tapa. App Store screens with their headlines: cook with what you have, one recipe tailored to you",
     width: 1926,
     height: 695,
-    caption: "tapa. — store listing",
+    caption: "tapa. · store listing",
   },
   {
     src: "/work/store-isit.jpg",
     alt: "InSpiritInTruth App Store screens with their headlines: a devotion written just for you",
     width: 1926,
     height: 695,
-    caption: "InSpiritInTruth — store listing",
+    caption: "InSpiritInTruth · store listing",
   },
   {
     src: "/work/store-caughtslipping.png",
     alt: "CaughtSlipping work-mode screen: Caught Grinding, for the overworkers",
     width: 1280,
     height: 800,
-    caption: "CaughtSlipping — work mode",
+    caption: "CaughtSlipping · work mode",
   },
 ];
 
@@ -373,14 +373,14 @@ export const marketingWork: WorkImage[] = [
     alt: "Thrifty Adventures social campaign post grid",
     width: 1504,
     height: 846,
-    caption: "Thrifty Adventures — campaign",
+    caption: "Thrifty Adventures · campaign",
   },
   {
     src: "/work/insights-social-trends.png",
     alt: "Innovatr research carousel on Gen Z trends",
     width: 1200,
     height: 627,
-    caption: "Innovatr — research content",
+    caption: "Innovatr · research content",
   },
 ];
 
@@ -398,14 +398,14 @@ export const automationStillLife: WorkImage = {
   alt: "Brass clockwork mechanism driving a cascade of dominoes, one glowing ember-orange",
   width: 1248,
   height: 832,
-  caption: "One thing sets off the next. That is the whole idea.",
+  caption: "One thing sets off the next.",
 };
 
-/** Social Sweep's report charts — the automation/product artefact. */
+/** Social Sweep's report charts: the automation/product artefact. */
 export const socialSweepCharts: WorkImage = {
   src: "/work/social-sweep-charts.jpg",
   alt: "Social Sweep report charts, drawn from the platforms the question actually lives on",
   width: 2332,
   height: 1512,
-  caption: "Social Sweep — one question, the platforms that carry it",
+  caption: "Social Sweep · one question, the platforms that carry it",
 };

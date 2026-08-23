@@ -30,7 +30,7 @@ export const LEGAL_LAST_UPDATED = "20 August 2026";
 const STUDIO = "For The Rest Of Us";
 
 export const PRIVACY_INTRO = [
-  "InSpiritInTruth is a devotional app, and a devotional app works best when you can be honest in it. That means some of what you tell us is genuinely personal — what you are struggling with, what you are praying about, what you are carrying. This policy explains, in plain language, what we collect, why, who else touches it, and how to get it back or get rid of it.",
+  "InSpiritInTruth is a devotional app, and a devotional app works best when you can be honest in it. That means some of what you tell us is genuinely personal: what you are struggling with, what you are praying about, what you are carrying. This policy explains, in plain language, what we collect, why, who else touches it, and how to get it back or get rid of it.",
 ];
 
 export const PRIVACY_SECTIONS = [
@@ -40,7 +40,7 @@ export const PRIVACY_SECTIONS = [
     bullets: [
       "We do not sell your personal information. Not to advertisers, not to anyone.",
       "There are no ads in InSpiritInTruth, and no ad tracking.",
-      "What you write when you ask for a tailored devotional is used to write it — and then not kept. We store the devotional, not your words. It is not used to train anyone's AI model.",
+      "What you write when you ask for a tailored devotional is used to write it, then not kept. We store the devotional, not your words. It is not used to train anyone's AI model.",
       "You can read, export, correct or permanently delete everything we hold about you, at any time.",
       "The rest of this document is the detail behind those four statements.",
     ],
@@ -49,7 +49,7 @@ export const PRIVACY_SECTIONS = [
     id: "who-we-are",
     heading: "Who we are",
     body: [
-      `InSpiritInTruth is built and operated by ${STUDIO}, a solutions studio based in Johannesburg, South Africa. In this policy "we", "us" and "our" mean ${STUDIO}, and "the app" means the InSpiritInTruth mobile app together with this website at ${SITE_URL}.`,
+      `InSpiritInTruth is built and operated by ${STUDIO}, a solutions and product development consultancy based in Johannesburg, South Africa. In this policy "we", "us" and "our" mean ${STUDIO}, and "the app" means the InSpiritInTruth mobile app together with this website at ${SITE_URL}.`,
       `We are the responsible party (under South Africa's Protection of Personal Information Act) and the data controller (under the UK and EU GDPR) for the information described here. For anything in this policy, write to ${LEGAL_EMAIL}.`,
     ],
   },
@@ -60,21 +60,21 @@ export const PRIVACY_SECTIONS = [
       "We collect the following kinds of information, and only what we actually need. Most of it comes from using the app; the last one only applies if you give on our website.",
     ],
     bullets: [
-      "Account information — your email address, and your name or display name if you give one. If you sign in with Apple or Google we receive a unique identifier and the email you choose to share, including Apple's private relay address if you opt to hide your real one. We never receive your Apple or Google password.",
-      "What you share for a tailored devotional — the words you write when you tell the app what you are going through, feeling, facing or curious about. This is the most sensitive thing you give us, and it is the one thing we deliberately do not keep. It has its own section below.",
-      "Your practice in the app — devotionals you read or save, verses you bookmark, notes and reflections you write, your streak, and the themes you explore.",
-      "Subscription records — whether your account has an active Premium subscription, so the app knows what to unlock. We never see or store your full card number, CVV, or bank details.",
-      "Technical information — device type, operating system version, app version, language and region, and your notification token if you turn notifications on. We use this to keep the app working, not to build a profile of you. We do not currently use any analytics or crash-reporting tools at all; if that changes, this page and our App Store privacy labels change with it.",
-      "Giving details — if you give on our website, your first name, surname and email address. We ask for a name so a receipt, a reply, or the email telling you where the kindness share went can address you as a person rather than an inbox. These are held by Paystack, our payment processor, not on our own servers. Giving is entirely optional and none of it is linked to your app account.",
+      "Account information : your email address, and your name or display name if you give one. If you sign in with Apple or Google we receive a unique identifier and the email you choose to share, including Apple's private relay address if you opt to hide your real one. We never receive your Apple or Google password.",
+      "What you share for a tailored devotional: the words you write when you tell the app what you are going through, feeling, facing or curious about. This is the most sensitive thing you give us, and it is the one thing we deliberately do not keep. It has its own section below.",
+      "Your practice in the app : devotionals you read or save, verses you bookmark, notes and reflections you write, your streak, and the themes you explore.",
+      "Subscription records : whether your account has an active Premium subscription, so the app knows what to unlock. We never see or store your full card number, CVV, or bank details.",
+      "Technical information : device type, operating system version, app version, language and region, and your notification token if you turn notifications on. We use this to keep the app working, not to build a profile of you. We do not currently use any analytics or crash-reporting tools at all; if that changes, this page and our App Store privacy labels change with it.",
+      "Giving details : if you give on our website, your first name, surname and email address. We ask for a name so a receipt, a reply, or the email telling you where the kindness share went can address you as a person rather than an inbox. These are held by Paystack, our payment processor, not on our own servers. Giving is entirely optional and none of it is linked to your app account.",
     ],
   },
   {
     id: "sensitive",
     heading: "The sensitive part, treated as such",
     body: [
-      "Two categories of what we hold are treated as special or sensitive personal information by law: information revealing your religious beliefs, and anything about your health — including mental and emotional health. Using a devotional app reveals the first. Writing “I am anxious about my marriage” or “I am grieving” reveals the second.",
+      "Two categories of what we hold are treated as special or sensitive personal information by law: information revealing your religious beliefs, and anything about your health, including mental and emotional health. Using a devotional app reveals the first. Writing “I am anxious about my marriage” or “I am grieving” reveals the second.",
       "We handle this on the basis of your explicit consent, which you give by choosing to write it and asking for a devotional. You are never required to share anything to use the app: the weekly devotionals, the Bible reader, daily verses, bookmarks and notes all work without you telling us a single personal thing.",
-      "So we do not store it. Your words are used to write your devotional and are then discarded — they are not saved to your account, and there is no copy on our servers for anyone here to open, no copy to leak in a breach, and no copy we could be compelled to hand over. That is not a policy we promise to follow; it is the way the app is built. What we do keep about the request is deliberately shapeless: which feeling you tapped, how long you asked for, and how many characters you typed. None of it can reconstruct a word of what you said.",
+      "So we do not store it. Your words are used to write your devotional and are then discarded. They are not saved to your account, and there is no copy on our servers for anyone here to open, no copy to leak in a breach, and no copy we could be compelled to hand over. That is not a policy we promise to follow; it is the way the app is built. What we do keep about the request is deliberately shapeless: which feeling you tapped, how long you asked for, and how many characters you typed. None of it can reconstruct a word of what you said.",
       "It is never published, never shown to another reader, never shared with any church or organisation, never sold, and never used to target you with anything.",
       "The devotional that comes back is a different matter, because it is yours to keep: it is saved to your library so you can read it again, and it stays until you delete it. It is private to your account. Deleting it from the app removes it from our systems.",
       "One honest limit: to write your devotional at all, your words have to reach the model that writes it. That journey is described in the next section.",
@@ -100,9 +100,9 @@ export const PRIVACY_SECTIONS = [
     body: [
       "Tailored devotionals are generated using Claude, a large language model provided by Anthropic. When you ask for one, the text you wrote is sent to Anthropic's API together with our instructions and the scripture references involved, and the devotional comes back to us and then to you.",
       "Anthropic processes that text on our behalf as our service provider. Under our commercial terms with them, your text is not used to train their models. We do not use it to train any model either, and we do not sell or share it. Once the devotional comes back, we keep the devotional and discard what you wrote.",
-      "AI gets things wrong. Every devotional follows a fixed template and goes through an automated check — every verse is re-fetched from the Bible text, so scripture is never quoted from the model, and named claims and quote attributions are fact-checked. But no one here reads a tailored devotional before you do, and Scripture is always the first and governing source. If something reads as off, unbiblical, or simply wrong, please tell us at " +
+      "AI gets things wrong. Every devotional follows a fixed template and goes through an automated check: every verse is re-fetched from the Bible text, so scripture is never quoted from the model, and named claims and quote attributions are fact-checked. But no one here reads a tailored devotional before you do, and Scripture is always the first and governing source. If something reads as off, unbiblical, or simply wrong, please tell us at " +
         HELLO_EMAIL +
-        " — reports from readers are how this stays trustworthy.",
+        ". Reports from readers are how this stays trustworthy.",
       "A devotional is spiritual encouragement. It is not counselling, therapy, medical advice, or a substitute for a pastor, doctor or qualified mental-health professional. If you are in crisis or at risk of harm, please contact your local emergency services or a crisis line.",
     ],
   },
@@ -113,14 +113,14 @@ export const PRIVACY_SECTIONS = [
       "We keep this list short on purpose. Each of these is a service provider acting on our instructions, under contract, and none of them may use your information for their own purposes.",
     ],
     bullets: [
-      "Supabase — accounts, authentication, and the database where your devotionals, notes, bookmarks and preferences are stored.",
-      "Anthropic — generates tailored devotionals from the text you share, as described above.",
-      "API.Bible and helloao — supply the Bible text you read. Passage requests are served without an account, and we do not send them anything that identifies you.",
-      "RevenueCat — manages Premium subscription status across platforms. We send it your account id, and your name and email address, so we can recognise your subscription and find your account if you contact us for help.",
-      "Paystack — processes gifts made on our website. Your first name, surname and email address are stored against a Paystack customer record so gifts, receipts and our kindness-report email can reach the right person; your card details go directly to Paystack. None of it reaches our own servers, and we keep no separate record of the gift. Paystack's own privacy terms govern what they hold.",
-      "Apple and Google — process subscription payments made through their stores under their own terms, and deliver push notifications.",
-      "Expo — delivers push notifications to your device.",
-      "We may also disclose information where the law genuinely requires it, to protect someone's safety, or to a buyer if the app is ever transferred — in which case this policy travels with it and we will tell you first.",
+      "Supabase : accounts, authentication, and the database where your devotionals, notes, bookmarks and preferences are stored.",
+      "Anthropic : generates tailored devotionals from the text you share, as described above.",
+      "API.Bible and helloao : supply the Bible text you read. Passage requests are served without an account, and we do not send them anything that identifies you.",
+      "RevenueCat : manages Premium subscription status across platforms. We send it your account id, and your name and email address, so we can recognise your subscription and find your account if you contact us for help.",
+      "Paystack : processes gifts made on our website. Your first name, surname and email address are stored against a Paystack customer record so gifts, receipts and our kindness-report email can reach the right person; your card details go directly to Paystack. None of it reaches our own servers, and we keep no separate record of the gift. Paystack's own privacy terms govern what they hold.",
+      "Apple and Google : process subscription payments made through their stores under their own terms, and deliver push notifications.",
+      "Expo : delivers push notifications to your device.",
+      "We may also disclose information where the law genuinely requires it, to protect someone's safety, or to a buyer if the app is ever transferred, in which case this policy travels with it and we will tell you first.",
     ],
   },
   {
@@ -138,7 +138,7 @@ export const PRIVACY_SECTIONS = [
     id: "storage",
     heading: "Where your information is kept",
     body: [
-      "Your information is stored on servers operated by our providers, which are located outside South Africa — principally in the United States and the European Union. Our service providers are bound by contract to protect it to a standard consistent with POPIA and the GDPR, including standard contractual clauses where those apply.",
+      "Your information is stored on servers operated by our providers, which are located outside South Africa, principally in the United States and the European Union. Our service providers are bound by contract to protect it to a standard consistent with POPIA and the GDPR, including standard contractual clauses where those apply.",
       "Information is encrypted in transit and at rest. No system is perfectly secure, and we will not pretend otherwise, but we limit who can access what, and we will notify you and the relevant regulator without undue delay if a breach affects your information.",
     ],
   },
@@ -147,7 +147,7 @@ export const PRIVACY_SECTIONS = [
     heading: "How long we keep it, and how to delete it",
     body: [
       "We keep your account information and your practice in the app for as long as your account exists. Delete your account and we remove your personal information from our live systems within 30 days, and from routine backups within 90 days.",
-      "Two exceptions: records of subscription payments are kept for as long as tax and financial law requires, and anonymised statistics that can no longer identify you may be retained. Gifts are not stored by us at all — those records live with Paystack.",
+      "Two exceptions: records of subscription payments are kept for as long as tax and financial law requires, and anonymised statistics that can no longer identify you may be retained. Gifts are not stored by us at all: those records live with Paystack.",
       `You can delete your account from within the app. If you cannot reach it, email ${LEGAL_EMAIL} from your account address and we will do it for you.`,
     ],
   },
@@ -168,12 +168,12 @@ export const PRIVACY_SECTIONS = [
       "Wherever you live, you can exercise all of the following with us. We do not charge for it and we will respond within 30 days.",
     ],
     bullets: [
-      "Access — ask what we hold about you and get a copy.",
-      "Correction — fix anything inaccurate or incomplete.",
-      "Deletion — have your information erased, as described above.",
-      "Portability — receive your devotionals, notes and bookmarks in a machine-readable format.",
-      "Objection and restriction — object to a particular use, or ask us to pause it.",
-      "Withdraw consent — stop the tailored-devotional feature processing what you share, at any time, without affecting anything done before you withdrew.",
+      "Access : ask what we hold about you and get a copy.",
+      "Correction : fix anything inaccurate or incomplete.",
+      "Deletion : have your information erased, as described above.",
+      "Portability : receive your devotionals, notes and bookmarks in a machine-readable format.",
+      "Objection and restriction : object to a particular use, or ask us to pause it.",
+      "Withdraw consent : stop the tailored-devotional feature processing what you share, at any time, without affecting anything done before you withdrew.",
       `To exercise any of these, email ${LEGAL_EMAIL}.`,
       "If we do not resolve it, you may complain to the Information Regulator of South Africa (inforegulator.org.za), or to your local data protection authority if you are in the UK or EU.",
     ],
@@ -228,18 +228,18 @@ export const TERMS_SECTIONS = [
   },
   {
     id: "ai-content",
-    heading: "AI-written devotionals — use your judgement",
+    heading: "AI-written devotionals: use your judgement",
     body: [
       "Tailored devotionals are generated by AI (Anthropic's Claude) working from what you share, our template, and Scripture. Every one goes through an automated scripture and fact check, but no one here reads it before you do, and AI can still produce something inaccurate, poorly judged, or theologically off.",
       "Scripture is the authority, not the devotional. Read anything the app writes with discernment, weigh it against the Bible, and where it matters, against the counsel of people you trust. You rely on AI-generated content at your own discretion, and we are not liable for decisions you make on the strength of it.",
-      `Tell us when something is wrong — ${HELLO_EMAIL}. We would much rather hear it.`,
+      `Tell us when something is wrong: ${HELLO_EMAIL}. We would much rather hear it.`,
     ],
   },
   {
     id: "scripture",
     heading: "Scripture and third-party content",
     body: [
-      "Bible text in the app is supplied by third parties, including API.Bible and helloao. Each translation remains the copyright of its publisher and is used under the licence that publisher grants. Those licences, not these terms, govern what you may do with the translation text — in general, personal reading and reasonable quotation are fine, and republishing at scale is not.",
+      "Bible text in the app is supplied by third parties, including API.Bible and helloao. Each translation remains the copyright of its publisher and is used under the licence that publisher grants. Those licences, not these terms, govern what you may do with the translation text. In general, personal reading and reasonable quotation are fine, and republishing at scale is not.",
       "Quotations from commentators and authors are used for the purpose of comment and study, and remain the property of their copyright holders.",
     ],
   },
@@ -257,7 +257,7 @@ export const TERMS_SECTIONS = [
     heading: "Acceptable use",
     body: ["You agree not to:"],
     bullets: [
-      "Use the app for anything unlawful, or to harm, harass or exploit anyone — children above all.",
+      "Use the app for anything unlawful, or to harm, harass or exploit anyone, children above all.",
       "Try to break, overload, probe or gain unauthorised access to the app, our servers, or anyone's account.",
       "Copy, scrape, resell or redistribute the app's content, including bulk extraction of devotionals or Bible text.",
       "Reverse engineer the app, or strip out any notice of ownership.",
@@ -271,7 +271,7 @@ export const TERMS_SECTIONS = [
     heading: "Premium subscriptions",
     body: [
       "Some features, including unlimited tailored devotionals, require a paid Premium subscription. Prices are shown in the app before you buy.",
-      "Subscriptions bought through the App Store or Google Play are billed by Apple or Google under their terms. They renew automatically at the end of each period unless you cancel at least 24 hours before it ends, and you manage or cancel them in your Apple or Google account settings — not through us.",
+      "Subscriptions bought through the App Store or Google Play are billed by Apple or Google under their terms. They renew automatically at the end of each period unless you cancel at least 24 hours before it ends, and you manage or cancel them in your Apple or Google account settings, not through us.",
       "Refunds for store purchases are handled by Apple or Google under their policies. We will help where we can, but we cannot issue a refund for a payment we did not take.",
       "We may change what Premium includes or what it costs. If a price goes up, we will tell you before it applies to you, and you can cancel.",
     ],
@@ -280,10 +280,10 @@ export const TERMS_SECTIONS = [
     id: "giving",
     heading: "Giving",
     body: [
-      "Giving is a gift, not a purchase. It does not unlock features, it is never required, and it buys you nothing. Half of every gift funds the work behind the app; half goes to acts of kindness — people and organisations we support directly. The halves are calculated on the amount remaining after our payment processor's card fee, which is deducted before the money reaches us and is borne equally by both halves. Every cost after that — transfers, travel and administration — is met from the work half. We additionally commit a tenth of the Premium subscription income we receive, after the app stores' commission, to the same kindness fund. These are commitments we make and report on, not a trust or a legal obligation, and we may change the proportions in future — if we do, we will say so plainly here and on the giving page rather than quietly.",
+      "Giving is a gift, not a purchase. It does not unlock features, it is never required, and it buys you nothing. Half of every gift funds the work behind the app; half goes to acts of kindness: people and organisations we support directly. The halves are calculated on the amount remaining after our payment processor's card fee, which is deducted before the money reaches us and is borne equally by both halves. Every cost after that, including transfers, travel and administration, is met from the work half. We additionally commit a tenth of the Premium subscription income we receive, after the app stores' commission, to the same kindness fund. These are commitments we make and report on, not a trust or a legal obligation, and we may change the proportions in future. If we do, we will say so plainly here and on the giving page rather than quietly.",
       `${STUDIO} is not a registered public-benefit organisation, so gifts are not tax-deductible and we cannot issue a tax certificate.`,
-      `Giving happens on this website, through Paystack, and never inside the app. You give your first name, surname and an email address — the name so we can thank you, reply to you, and tell you where the kindness share went by name rather than by inbox. There is no account to create, and none of it is linked to your app account.`,
-      `Recurring gifts can be changed or cancelled at any time, with no penalty — Paystack's subscription emails carry a link to do it yourself. Because a gift is voluntary and nothing is supplied in return, gifts are generally non-refundable, but if you gave by mistake or something went wrong, email ${HELLO_EMAIL} and we will sort it out.`,
+      `Giving happens on this website, through Paystack, and never inside the app. You give your first name, surname and an email address, the name so we can thank you, reply to you, and tell you where the kindness share went by name rather than by inbox. There is no account to create, and none of it is linked to your app account.`,
+      `Recurring gifts can be changed or cancelled at any time, with no penalty. Paystack's subscription emails carry a link to do it yourself. Because a gift is voluntary and nothing is supplied in return, gifts are generally non-refundable, but if you gave by mistake or something went wrong, email ${HELLO_EMAIL} and we will sort it out.`,
     ],
   },
   {
@@ -298,7 +298,7 @@ export const TERMS_SECTIONS = [
     id: "ip",
     heading: "Our intellectual property",
     body: [
-      `The app itself — its name, design, code, original devotional content and templates — belongs to ${STUDIO} and is protected by copyright and trade mark law. These terms give you a personal, limited, non-transferable, revocable licence to use the app. They do not give you any ownership of it.`,
+      `The app itself, including its name, design, code, original devotional content and templates, belongs to ${STUDIO} and is protected by copyright and trade mark law. These terms give you a personal, limited, non-transferable, revocable licence to use the app. They do not give you any ownership of it.`,
     ],
   },
   {
@@ -313,7 +313,7 @@ export const TERMS_SECTIONS = [
     id: "warranty",
     heading: "No warranty",
     body: [
-      "The app is provided as it is and as it is available. To the fullest extent the law allows, we make no warranties of any kind — express or implied — about the app's accuracy, reliability, availability, or fitness for a particular purpose, including any spiritual, emotional or practical outcome.",
+      "The app is provided as it is and as it is available. To the fullest extent the law allows, we make no warranties of any kind, express or implied, about the app's accuracy, reliability, availability, or fitness for a particular purpose, including any spiritual, emotional or practical outcome.",
       "Nothing here takes away rights you have under South Africa's Consumer Protection Act or any other law that cannot be excluded by agreement.",
     ],
   },
@@ -330,7 +330,7 @@ export const TERMS_SECTIONS = [
     id: "indemnity",
     heading: "Indemnity",
     body: [
-      "If someone brings a claim against us because of how you used the app — content you put into it, terms you broke, or rights you infringed — you agree to cover the reasonable costs of defending it.",
+      "If someone brings a claim against us because of how you used the app, whether content you put into it, terms you broke, or rights you infringed, you agree to cover the reasonable costs of defending it.",
     ],
   },
   {

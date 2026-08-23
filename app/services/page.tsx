@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   alternates: { canonical: "/services/" },
   openGraph: {
-    title: "Services — For The Rest Of Us",
+    title: "Services · For The Rest Of Us",
     description: DESCRIPTION,
     url: "https://fortherestofus.app/services/",
     type: "website",
@@ -193,7 +193,7 @@ export default function ServicesPage() {
       <CallToAction
         eyebrow="Start here"
         title="Tell us what you are building."
-        body="Send a short note about the problem you are trying to solve. We will tell you honestly whether we are the right studio for it, and what it would take."
+        body="Send a short note about the problem you are trying to solve. We will come back with scope, time, and cost."
         primaryLabel="Start a project"
         primaryHref="/contact/"
         secondaryLabel="See our apps"

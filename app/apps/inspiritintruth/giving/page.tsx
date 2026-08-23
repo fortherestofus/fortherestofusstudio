@@ -6,14 +6,14 @@ import AppThemeProvider from "@/components/apps/AppThemeProvider";
 import { HELLO_EMAIL, LEGAL_EMAIL } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: { absolute: "InSpiritInTruth — Giving" },
+  title: { absolute: "InSpiritInTruth · Giving" },
   description:
     "How giving funds the work behind InSpiritInTruth, where your gift goes, and what it means to become a Keeper. A gift, never a purchase.",
   alternates: { canonical: "/apps/inspiritintruth/giving/" },
   openGraph: {
-    title: "InSpiritInTruth — Giving",
+    title: "InSpiritInTruth · Giving",
     description:
-      "Giving funds the work behind InSpiritInTruth — and 10% goes to acts of kindness.",
+      "Giving funds the work behind InSpiritInTruth, and 10% goes to acts of kindness.",
     url: "/apps/inspiritintruth/giving/",
     type: "website",
   },
@@ -43,7 +43,7 @@ export default function GivingPage() {
           You can help keep this going.
         </h1>
         <p className="mt-5 text-pretty text-lg leading-relaxed text-ink">
-          InSpiritInTruth is built with care — the devotionals, the Bible, the
+          InSpiritInTruth is built with care: the devotionals, the Bible, the
           daily verses. If it&rsquo;s meant something to you, a gift funds the
           work behind it and helps it reach more hearts.
         </p>
@@ -54,7 +54,7 @@ export default function GivingPage() {
             Where your gift goes
           </h2>
           <p className="mt-4 text-pretty leading-relaxed text-muted">
-            Every gift does two things. Most of it funds the work — building new
+            Every gift does two things. Most of it funds the work: building new
             features, keeping the quality high, and creating the devotional
             content itself: the design, the writing, the servers. And 10% of all
             giving goes to acts of kindness: donations to people and
@@ -83,7 +83,7 @@ export default function GivingPage() {
                 style={{ backgroundColor: KINDNESS }}
               />
               <span className="ml-3 flex-1 text-ink">
-                Acts of kindness — helping others
+                Acts of kindness: helping others
               </span>
               <span className="nums font-medium text-ink">10%</span>
             </div>
@@ -109,7 +109,7 @@ export default function GivingPage() {
           <p className="mt-5 text-pretty leading-relaxed text-muted">
             &ldquo;Am I my brother&rsquo;s keeper?&rdquo; someone once asked,
             hoping the answer was no. A Keeper gives a little each month to keep
-            InSpiritInTruth going — for themselves, and for the next person who
+            InSpiritInTruth going, for themselves and for the next person who
             needs it. It&rsquo;s an ordinary way to answer yes. You choose the
             amount and how often, and you can change or cancel anytime.
           </p>
@@ -121,11 +121,11 @@ export default function GivingPage() {
             A gift, not a purchase
           </h2>
           <p className="mt-4 text-pretty leading-relaxed text-muted">
-            Giving is exactly that — a gift. It doesn&rsquo;t unlock anything,
+            Giving is exactly that: a gift. It doesn&rsquo;t unlock anything,
             and it isn&rsquo;t required. You give because you want to keep
             something good going, not to get something back. (If you&rsquo;d
             rather get something in return, the app&rsquo;s optional Pro
-            subscription — unlimited AI devotionals and deeper reflections —
+            subscription, unlimited AI devotionals and deeper reflections,
             supports the work too, and is entirely separate from giving.)
           </p>
         </section>
@@ -136,7 +136,7 @@ export default function GivingPage() {
             Your privacy
           </h2>
           <p className="mt-4 text-pretty leading-relaxed text-muted">
-            Payments are handled securely by Paystack — we never see or store
+            Payments are handled securely by Paystack. We never see or store
             your card details. You give an email address so Paystack can send
             your receipt, and nothing more; there is no account to create and we
             keep no record of the gift ourselves. Ask us anything at{" "}
@@ -153,7 +153,7 @@ export default function GivingPage() {
         {/* Footer actions */}
         <div className="mt-14 border-t border-border pt-8">
           <p className="text-muted">
-            Giving lives on the InSpiritInTruth website — this page only
+            Giving lives on the InSpiritInTruth website. This page only
             explains how it works.
           </p>
           <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3">

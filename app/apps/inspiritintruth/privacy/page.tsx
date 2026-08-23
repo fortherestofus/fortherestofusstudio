@@ -9,7 +9,7 @@ import {
 } from "@/lib/legal/inspiritintruth";
 
 export const metadata: Metadata = {
-  title: { absolute: "InSpiritInTruth — Privacy Policy" },
+  title: { absolute: "InSpiritInTruth · Privacy Policy" },
   description:
     "What InSpiritInTruth collects, why, who processes it, and how to get it back or delete it. Including how we handle the personal things you share to get a devotional.",
   // Canonical lives on the app's own domain — this is the mirror.

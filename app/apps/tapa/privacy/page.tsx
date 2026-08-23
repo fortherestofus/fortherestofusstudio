@@ -3,7 +3,7 @@ import LegalDocument from "@/components/legal/LegalDocument";
 import { LEGAL_EMAIL } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: { absolute: "tapa. — Privacy Policy" },
+  title: { absolute: "tapa. · Privacy Policy" },
   description:
     "How tapa. handles your data. Your account and preferences are yours; ingredients you share are used only to generate your recipes.",
 };
@@ -19,7 +19,7 @@ export default function TapaPrivacyPage() {
       backHref="/apps/tapa/"
       backLabel="Back to tapa."
       intro={[
-        "tapa. is a cooking app that turns the ingredients you have into a real recipe. To do that it needs a little information from you — an account to save your recipes, your tastes and dietary needs, and the ingredients you want to cook with. This policy explains exactly what we collect, who processes it, and why.",
+        "tapa. is a cooking app that turns the ingredients you have into a real recipe. To do that it needs a little information from you: an account to save your recipes, your tastes and dietary needs, and the ingredients you want to cook with. This policy explains exactly what we collect, who processes it, and why.",
         "The short version: we don't sell your data, we don't show ads, and the ingredients you share are used only to generate recipes for you.",
       ]}
       sections={[
@@ -82,7 +82,7 @@ export default function TapaPrivacyPage() {
               by the Apple App Store or Google Play and managed through{" "}
               <strong className="text-ink">RevenueCat</strong>, which tells us
               whether your subscription is active so we can unlock Pro features.
-              We never see or store your card or payment details — those stay
+              We never see or store your card or payment details. Those stay
               with Apple, Google, and their payment processors.
             </>,
           ],
@@ -94,20 +94,20 @@ export default function TapaPrivacyPage() {
           ],
           bullets: [
             <>
-              <strong className="text-ink">Supabase</strong> — hosts our
+              <strong className="text-ink">Supabase</strong>: hosts our
               database, authentication, and storage (your account, saved
               recipes, preferences, and profile picture).
             </>,
             <>
-              <strong className="text-ink">Anthropic</strong> — generates
+              <strong className="text-ink">Anthropic</strong>: generates
               recipes and reads ingredient photos, as described above.
             </>,
             <>
-              <strong className="text-ink">RevenueCat</strong> — manages your
+              <strong className="text-ink">RevenueCat</strong>: manages your
               subscription status.
             </>,
             <>
-              <strong className="text-ink">Apple &amp; Google</strong> — process
+              <strong className="text-ink">Apple &amp; Google</strong>: process
               payments and distribute the app through their stores.
             </>,
           ],
@@ -142,7 +142,7 @@ export default function TapaPrivacyPage() {
         {
           heading: "Your rights",
           body: [
-            "Depending on where you live, you may have rights over your personal data under laws such as POPIA or the GDPR — including access, correction, and deletion. You can handle most of this yourself in the app, and we're happy to help with anything else. Just get in touch.",
+            "Depending on where you live, you may have rights over your personal data under laws such as POPIA or the GDPR, including access, correction, and deletion. You can handle most of this yourself in the app, and we're happy to help with anything else. Just get in touch.",
           ],
         },
         {

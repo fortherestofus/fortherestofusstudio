@@ -321,7 +321,7 @@ export default function CalBooking({
           aria-hidden
         />
         <p className="max-w-[38ch] text-pretty leading-relaxed text-muted">
-          Pick a slot that suits you — the calendar loads as you reach it.
+          Pick a slot that suits you. The calendar loads as you reach it.
         </p>
         <a
           href={fallbackHref}

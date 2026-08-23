@@ -105,7 +105,7 @@ export default function HeroArtefact() {
           {/* The product window */}
           <Link
             href={`/apps/${app.slug}/`}
-            aria-label={`${app.name} — see the product`}
+            aria-label={`${app.name}: see the product`}
             className={cn(
               TILE,
               "block overflow-hidden transition-shadow hover:shadow-card-hover"

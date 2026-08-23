@@ -29,6 +29,17 @@ InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
   (case proofs + studio stats), each with a `source` note. Never add an
   unmeasured or rounded-up number; honest "what didn't work" notes are a
   feature, not a bug.
+- **Our results and other people's research never share a container.**
+  A handful of service pages cite outside research to size the problem
+  (McKinsey on IT overruns, Slack on owner busywork, Deloitte/Google on page
+  speed, CB Insights on why startups fail). Those live **inline in prose with
+  the source named in the sentence** — never in `lib/proof.ts`, never on a
+  stat card, never in a `StatBand`. Stat cards are reserved for numbers we
+  measured ourselves, and a borrowed figure sitting in one would read as our
+  result. Before citing new research, check the attribution survives contact
+  with the source: the widely-quoted IDC "20–30% of revenue lost to
+  inefficiency" and the "$62k average app cost" listicle figures do not, and
+  are not to be used.
 - **Name clients; never publish their commercial data.** Naming a client and
   the problem solved is industry standard. What never ships — site, docs, or
   this public repo — is a client's pricing, pipeline/CRM volumes, media spend,
@@ -341,3 +352,28 @@ Runtime:
   `docs/store-listing.md` should match the listing page here.
 - `Hakkan` (local: `~/Documents/CODING/Hakkan`) — web app, private beta;
   its privacy/terms live on hakkan.app, linked externally from the listing.
+
+## Copy rules (audit, Aug 2026)
+
+- **No em dashes in user-facing copy.** They were the house punctuation and
+  the most consistent AI tell on the site (~180 instances). Use a colon when
+  the second half explains the first, a full stop when it is a new thought,
+  commas for a parenthetical. Comments in the source may keep them. The one
+  survivor is "IFC — International Finance Corporation" in
+  `lib/testimonials.ts`, which is the organisation's own name.
+- **The honesty line lives on `/contact` only.** "Tell us X and we will tell
+  you honestly Y" was on six surfaces and read as a template. Elsewhere the
+  CTA says what actually happens next ("We will come back with scope, time,
+  and cost").
+- **One quip per page, not five.** The voice keeps its wit — "A tiger,
+  obviously", the CaughtSlipping verdicts — but rule-of-three fragments,
+  "not X but Y" antitheses, and punchline-fragments were stacking up. Thin
+  them; do not purge them.
+- **Say it once.** Four sentences were duplicated verbatim across pages
+  ("we would rather you could leave…", "Launch is the middle", "wherever they
+  genuinely remove work", "whether there is a project here"). Each now has one
+  home. Before reusing a good line on a second surface, change it or cut it.
+- **Lead with the symptom, not the service.** Buyers search "why is my
+  website not converting", not "conversion rate optimisation"; and every
+  high-intent query is a cost query. Page copy should name the problem in the
+  reader's words before naming what we sell.

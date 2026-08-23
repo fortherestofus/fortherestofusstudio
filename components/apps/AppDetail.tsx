@@ -180,7 +180,7 @@ export default function AppDetail({ app }: { app: App }) {
               <PlaceholderBlock
                 ratio={isPhoneApp ? "phone" : "browser"}
                 tint={app.accentColor}
-                label={`${app.name} — hero screenshot`}
+                label={`${app.name}: hero screenshot`}
                 className={`mx-auto rounded-t-well border-b-0 ${
                   isPhoneApp ? "max-w-[320px]" : "max-w-4xl"
                 }`}
@@ -238,9 +238,9 @@ export default function AppDetail({ app }: { app: App }) {
               Help keep it going
             </h2>
             <p className="mt-4 text-pretty leading-relaxed text-muted">
-              Gifts fund the work behind {app.name} — new features, quality, and
-              the devotional content itself — and 10% of all giving goes to acts
-              of kindness. A gift never unlocks anything.
+              Gifts fund the work behind {app.name}: new features, quality,
+              and the devotional content itself. 10% of all giving goes to acts
+              of kindness, and a gift never unlocks anything.
             </p>
             <Link
               href={app.giving}
@@ -296,7 +296,7 @@ export default function AppDetail({ app }: { app: App }) {
       <CallToAction
         eyebrow="Work with us"
         title="Want something like this built?"
-        body="We build products like this one for other people too, and consult on the product, brand, and growth work around them."
+        body="We build products like this one for other people too, and run the identify, build and grow work around them."
         primaryLabel="Start a project"
         primaryHref="/contact"
         secondaryLabel="See our services"

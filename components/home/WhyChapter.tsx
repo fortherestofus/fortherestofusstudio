@@ -20,7 +20,7 @@ const BELIEFS = [
   {
     stage: "Identify",
     title: "Most products fail because nobody needed them.",
-    body: "The job is to find the moment that keeps costing someone money or time, not a market gap. Innovatr's site looked fine and converted badly. We rebuilt it around what buyers actually needed to know.",
+    body: "CB Insights puts \"no market need\" at the top of the reasons startups fail. The job is to find the moment that keeps costing someone money or time, not a market gap. Innovatr's site looked fine and converted badly. We rebuilt it around what buyers actually needed to know.",
     artefact: <RedesignArtefact />,
   },
   {

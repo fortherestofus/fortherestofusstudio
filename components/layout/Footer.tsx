@@ -37,7 +37,7 @@ const SERVICE_LINKS = [
   { label: "Custom apps & SaaS", href: "/services/apps-and-saas/" },
   { label: "Websites", href: "/services/websites/" },
   { label: "Brand & content", href: "/services/brand-and-content/" },
-  { label: "Marketing & analytics", href: "/services/product-and-growth/" },
+  { label: "Product & growth direction", href: "/services/product-and-growth/" },
   { label: "Tech & automation", href: "/services/tech-and-automation/" },
 ];
 
@@ -103,9 +103,9 @@ export default function Footer() {
               className="h-7 w-auto"
             />
             <p className="mt-6 max-w-sm text-pretty text-[0.9375rem] leading-relaxed text-ink-muted">
-              A solutions &amp; consulting studio in Johannesburg. We build
-              products that solve real problems — for our clients, and for
-              our own ideas.
+              A solutions &amp; product development consultancy in
+              Johannesburg. We build products that solve real problems, for our
+              clients and for our own ideas.
             </p>
             <div className="mt-8 flex items-center gap-3">
               {SOCIALS.map(({ label, href, Icon: Mark }) => (

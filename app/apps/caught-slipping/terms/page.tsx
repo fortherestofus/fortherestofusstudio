@@ -3,9 +3,9 @@ import LegalDocument from "@/components/legal/LegalDocument";
 import { LEGAL_EMAIL } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: { absolute: "CaughtSlipping — Terms & Conditions" },
+  title: { absolute: "CaughtSlipping · Terms & Conditions" },
   description:
-    "The terms for using CaughtSlipping — a free, private browser extension.",
+    "The terms for using CaughtSlipping, a free and private browser extension.",
 };
 
 const LAST_UPDATED = "9 June 2026";

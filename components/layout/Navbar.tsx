@@ -74,7 +74,7 @@ export default function Navbar() {
         <Link
           href="/"
           className="flex shrink-0 items-center"
-          aria-label="For The Rest Of Us — home"
+          aria-label="For The Rest Of Us, home"
         >
           <Image
             src="/icons/logo-light.png"

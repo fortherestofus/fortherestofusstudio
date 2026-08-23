@@ -3,7 +3,7 @@ import LegalDocument from "@/components/legal/LegalDocument";
 import { LEGAL_EMAIL } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: { absolute: "CaughtSlipping — Privacy Policy" },
+  title: { absolute: "CaughtSlipping · Privacy Policy" },
   description:
     "How CaughtSlipping handles your data. Short version: your browsing stays on your device. No accounts, no servers, no tracking.",
 };
@@ -54,7 +54,7 @@ export default function CaughtSlippingPrivacyPage() {
           bullets: [
             "No accounts. There is no sign-up, login, email, or password.",
             "No analytics, telemetry, advertising, or tracking pixels.",
-            "No servers of ours ever receive your browsing data — it physically does not leave your device.",
+            "No servers of ours ever receive your browsing data. It physically does not leave your device.",
             "We never sell, rent, or share your data, because we never have it.",
           ],
         },
@@ -82,7 +82,7 @@ export default function CaughtSlippingPrivacyPage() {
           heading: "Why the extension needs each permission",
           bullets: [
             <>
-              <strong className="text-ink">Tabs &amp; host access</strong> — to
+              <strong className="text-ink">Tabs &amp; host access</strong>: to
               see which site is in your active tab so it can measure time on it.
               By default this covers only the built-in platforms (YouTube,
               Facebook, X/Twitter, LinkedIn, Reddit). Access to any other site is
@@ -90,32 +90,32 @@ export default function CaughtSlippingPrivacyPage() {
               permission at that moment.
             </>,
             <>
-              <strong className="text-ink">Idle detection</strong> — to pause
+              <strong className="text-ink">Idle detection</strong>: to pause
               tracking when you step away, so only real attention counts.
             </>,
             <>
-              <strong className="text-ink">Storage</strong> — to save your stats
+              <strong className="text-ink">Storage</strong>: to save your stats
               and settings on your device.
             </>,
             <>
-              <strong className="text-ink">Alarms</strong> — to periodically save
+              <strong className="text-ink">Alarms</strong>: to periodically save
               your latest totals and reset the day&rsquo;s counters at midnight.
             </>,
             <>
-              <strong className="text-ink">declarativeNetRequest</strong> — to
+              <strong className="text-ink">declarativeNetRequest</strong>: to
               block a site once you hit a limit you set.
             </>,
             <>
-              <strong className="text-ink">Scripting</strong> — to show the
+              <strong className="text-ink">Scripting</strong>: to show the
               on-site pause screen when you reach a limit you set.
             </>,
             <>
-              <strong className="text-ink">Offscreen</strong> — reserved for an
+              <strong className="text-ink">Offscreen</strong>: reserved for an
               optional spoken line on your most extreme days. No audio ships by
               default, and this collects no data.
             </>,
             <>
-              <strong className="text-ink">Clipboard</strong> — only used when you
+              <strong className="text-ink">Clipboard</strong>: only used when you
               tap &ldquo;Copy&rdquo; on a share card, to place that image on your
               clipboard.
             </>,

@@ -82,7 +82,7 @@ export default function AppStorySection({
               >
                 <Image
                   src={story.image}
-                  alt={`${app.name} — ${story.title}`}
+                  alt={`${app.name}: ${story.title}`}
                   sizes="(max-width: 1024px) 90vw, 45vw"
                   className="h-auto w-full"
                   priority={index === 0}

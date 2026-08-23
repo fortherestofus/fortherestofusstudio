@@ -3,9 +3,9 @@ import LegalDocument from "@/components/legal/LegalDocument";
 import { HELLO_EMAIL } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: { absolute: "InSpiritInTruth — Giving FAQs" },
+  title: { absolute: "InSpiritInTruth · Giving FAQs" },
   description:
-    "Answers about giving to InSpiritInTruth — where gifts go, what a Keeper is, recurring gifts, receipts, security, and tax.",
+    "Answers about giving to InSpiritInTruth: where gifts go, what a Keeper is, recurring gifts, receipts, security, and tax.",
   alternates: { canonical: "/apps/inspiritintruth/giving/faq/" },
 };
 
@@ -25,26 +25,26 @@ export default function GivingFaqPage() {
         {
           heading: "Where does my gift go?",
           body: [
-            "Two places. Most of it funds the work behind InSpiritInTruth — building new features, keeping the quality high, and creating the devotional content itself: the design, the writing, the servers. And 10% of all giving goes to acts of kindness: donations to people and organisations doing good for others.",
+            "Two places. Most of it funds the work behind InSpiritInTruth: building new features, keeping the quality high, and creating the devotional content itself: the design, the writing, the servers. And 10% of all giving goes to acts of kindness: donations to people and organisations doing good for others.",
           ],
         },
         {
           heading: "Do I get anything in return?",
           body: [
-            "No — and that's the point. Giving is a gift, not a purchase: it doesn't unlock features or content. (The app does have an optional Pro subscription — unlimited AI devotionals and deeper reflections — but that's entirely separate from giving, and giving is never required for it.)",
+            "No, and that's the point. Giving is a gift, not a purchase: it doesn't unlock features or content. (The app does have an optional Pro subscription, unlimited AI devotionals and deeper reflections, but that's entirely separate from giving, and giving is never required for it.)",
           ],
         },
         {
           heading: "What is a Keeper?",
           body: [
-            "A Keeper gives a little on a regular schedule to keep InSpiritInTruth going — for themselves and for the next person. The name comes from an old question, “Am I my brother's keeper?” — giving is one small way to answer yes. You choose the amount and how often, and you can cancel anytime.",
+            "A Keeper gives a little on a regular schedule to keep InSpiritInTruth going, for themselves and for the next person. The name comes from an old question, “Am I my brother's keeper?” Giving is one small way to answer yes. You choose the amount and how often, and you can cancel anytime.",
           ],
         },
         {
           heading: "Can I change or cancel a recurring gift?",
           body: [
             <>
-              Anytime — there&rsquo;s no lock-in and no penalty. If you&rsquo;d like
+              Anytime. There&rsquo;s no lock-in and no penalty. If you&rsquo;d like
               a hand, email us at{" "}
               <a className="text-accent-deep underline" href={`mailto:${CONTACT}`}>
                 {CONTACT}

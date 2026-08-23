@@ -15,14 +15,14 @@ import CallToAction from "@/components/home/CallToAction";
 const EMAIL = HELLO_EMAIL;
 
 const DESCRIPTION =
-  "Start a project with For The Rest Of Us. Tell us what you are trying to build or fix and we will tell you honestly what it takes.";
+  "Start a project with For The Rest Of Us. Tell us what you are trying to build or fix and we will tell you honestly what it takes, including whether we are the right people for it.";
 
 export const metadata: Metadata = {
   title: "Contact",
   description: DESCRIPTION,
   alternates: { canonical: "/contact/" },
   openGraph: {
-    title: "Contact — For The Rest Of Us",
+    title: "Contact · For The Rest Of Us",
     description: DESCRIPTION,
     url: "https://fortherestofus.app/contact/",
     type: "website",
@@ -62,10 +62,10 @@ export default function ContactPage() {
                 </span>
               </h1>
               <p className="mt-6 max-w-[48ch] text-pretty leading-relaxed text-muted sm:text-lg">
-                Send an email or book a call — either one reaches the person who
-                would do the work. You get an honest answer about scope, time
-                and cost, and if we are not the right studio for it, we will say
-                so and point you somewhere better.
+                Email or book a call. Either one reaches the person who would
+                do the work, and you get a straight answer on scope, time and
+                cost. If we are not the right fit, we will point you somewhere
+                better.
               </p>
 
               <div className="mt-9 flex flex-wrap items-center gap-3">
@@ -82,7 +82,7 @@ export default function ContactPage() {
               <p className="mt-6 max-w-[52ch] text-pretty text-[0.9375rem] leading-relaxed text-muted">
                 In the email: what you are building or the problem you want
                 solved, who it is for, where you are now, and roughly when you
-                want it done. A paragraph is plenty — we will ask the rest.
+                want it done. A paragraph is plenty. We will ask the rest.
               </p>
 
               <dl className="mt-10 grid gap-6 border-t border-border pt-8 sm:grid-cols-3">
@@ -153,8 +153,8 @@ export default function ContactPage() {
           </h2>
           <p className="mt-3 text-pretty leading-relaxed text-muted">
             Fifteen minutes, no deck. Bring the problem as you understand it
-            today — half-formed is normal, and it is usually the fastest way to
-            find out whether there is a project here.
+            today. Half-formed is normal, and usually the fastest way to find
+            out whether there is a project here.
           </p>
         </div>
 
@@ -177,9 +177,8 @@ export default function ContactPage() {
               Or something more involved
             </h3>
             <p className="mt-2 max-w-[54ch] text-pretty text-[0.9375rem] leading-relaxed text-muted">
-              A longer, paid session — for when you already know what you want
-              and need to work through the how, rather than find out whether
-              there is a project here.
+              A longer, paid session for when you already know what you want
+              built and need to plan the how.
             </p>
           </div>
           <PillButton href={CAL_CONSULT} external variant="ghost" size="lg">

@@ -30,7 +30,7 @@ export default function AppJourneySection({ app }: { app: App }) {
             <div className="mx-auto w-full max-w-[240px] overflow-hidden rounded-well border border-border bg-surface">
               <Image
                 src={step.image}
-                alt={`${app.name} — ${step.label}`}
+                alt={`${app.name}: ${step.label}`}
                 sizes="(max-width: 640px) 80vw, 240px"
                 className="h-auto w-full"
               />

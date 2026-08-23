@@ -42,7 +42,7 @@ export async function generateMetadata({
     description: service.seo.description,
     alternates: { canonical: `/services/${service.slug}/` },
     openGraph: {
-      title: `${service.seo.title} — For The Rest Of Us`,
+      title: `${service.seo.title} · For The Rest Of Us`,
       description: service.seo.description,
       url: `https://fortherestofus.app/services/${service.slug}/`,
       type: "website",
@@ -210,7 +210,7 @@ export default async function ServiceDetailPage({
                   {quote.quote}
                 </blockquote>
                 <figcaption className="mt-3 text-[0.8125rem] text-muted">
-                  {quote.name} — {quote.title}, {quote.company}
+                  {quote.name} · {quote.title}, {quote.company}
                 </figcaption>
               </figure>
             </div>
@@ -303,7 +303,7 @@ export default async function ServiceDetailPage({
             align="left"
             eyebrow="Case in point"
             title="One pipeline, four tools."
-            subtitle="Innovatr's lead engine, tool by tool — what each one actually did. The point is not these four; it is that we pick per job."
+            subtitle="Innovatr's lead engine, tool by tool, and what each one actually did. The point is not these four; it is that we pick per job."
           />
           <ol className="mt-10 grid gap-x-10 gap-y-0 md:grid-cols-2">
             {TOOLBENCH.map((tool, i) => (
@@ -332,7 +332,7 @@ export default async function ServiceDetailPage({
             </h3>
             <ToolMarquee className="mt-5" />
             <p className="mt-4 max-w-[56ch] text-[0.875rem] leading-relaxed text-muted">
-              We pick per job rather than per habit — and if your stack
+              We pick per job rather than per habit, and if your stack
               already runs on something else, we build on that instead.
             </p>
           </div>
@@ -342,7 +342,7 @@ export default async function ServiceDetailPage({
       <CallToAction
         eyebrow="Start here"
         title={`Need help with ${service.title.toLowerCase()}?`}
-        body="Send a short note about where you are and what you are trying to reach. We will tell you honestly whether we are the right studio for it."
+        body="Send a short note about where you are and what you are trying to reach. We will come back with what it would take."
         primaryLabel="Start a project"
         primaryHref="/contact/"
         secondaryLabel="See all services"

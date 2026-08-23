@@ -191,7 +191,7 @@ export default function AppBand({
                 <div className="relative mx-auto flex w-full max-w-[540px] items-start justify-center gap-4 sm:gap-6">
                   <Frame
                     image={shot}
-                    alt={`${app.name} — ${app.tagline}`}
+                    alt={`${app.name}: ${app.tagline}`}
                     className="w-1/2"
                     priority={index === 0}
                   />
@@ -199,14 +199,14 @@ export default function AppBand({
                       a comparison, two staggered ones read as a product. */}
                   <Frame
                     image={app.screenshots[1] ?? shot}
-                    alt={`${app.name} — a second screen`}
+                    alt={`${app.name}: a second screen`}
                     className="mt-10 w-1/2 sm:mt-16"
                   />
                 </div>
               ) : (
                 <Frame
                   image={shot}
-                  alt={`${app.name} — ${app.tagline}`}
+                  alt={`${app.name}: ${app.tagline}`}
                   className={SHAPE_WIDTH[shape]}
                   priority={index === 0}
                 />

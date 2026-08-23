@@ -3,9 +3,9 @@ import LegalDocument from "@/components/legal/LegalDocument";
 import { LEGAL_EMAIL } from "@/lib/contact";
 
 export const metadata: Metadata = {
-  title: { absolute: "tapa. — Terms of Service" },
+  title: { absolute: "tapa. · Terms of Service" },
   description:
-    "The terms for using tapa. — the AI cooking app that turns your ingredients into recipes.",
+    "The terms for using tapa., the AI cooking app that turns your ingredients into recipes.",
 };
 
 const LAST_UPDATED = "8 July 2026";
@@ -25,16 +25,16 @@ export default function TapaTermsPage() {
         {
           heading: "The app",
           body: [
-            "tapa. takes the ingredients you have — typed, spoken, or photographed — and uses AI to generate recipes built around your tastes and dietary needs. It's a cooking aid to help you decide what to make. It is not a professional nutrition, dietary, medical, or food-safety service.",
+            "tapa. takes the ingredients you have, typed, spoken, or photographed, and uses AI to generate recipes built around your tastes and dietary needs. It's a cooking aid to help you decide what to make. It is not a professional nutrition, dietary, medical, or food-safety service.",
           ],
         },
         {
-          heading: "Recipes are AI-generated — use your judgement",
+          heading: "Recipes are AI-generated: use your judgement",
           body: [
             "Recipes, ingredient readings, and other content in tapa. are generated automatically by AI and may be inaccurate, incomplete, or unsuitable for you. Always use your own judgement before cooking or eating anything it suggests.",
           ],
           bullets: [
-            "Check every ingredient yourself, especially if you have allergies or intolerances. The dietary settings are a guide, not a guarantee — never rely on them alone to keep you safe.",
+            "Check every ingredient yourself, especially if you have allergies or intolerances. The dietary settings are a guide, not a guarantee. Never rely on them alone to keep you safe.",
             "Follow safe food-handling, cooking temperatures, and storage practices. tapa. can't see your kitchen or the state of your ingredients.",
             "If you have a medical condition, allergy, or specific dietary requirement, confirm suitability with a qualified professional. tapa. does not give medical or nutritional advice.",
           ],
@@ -59,7 +59,7 @@ export default function TapaTermsPage() {
         {
           heading: "Acceptable use",
           body: [
-            "You agree not to misuse tapa. — including reverse-engineering or tampering with it, abusing or overloading the service, attempting to bypass Pro limits, or using it to break any law. The recipes you generate are for your own personal, non-commercial cooking.",
+            "You agree not to misuse tapa., including reverse-engineering or tampering with it, abusing or overloading the service, attempting to bypass Pro limits, or using it to break any law. The recipes you generate are for your own personal, non-commercial cooking.",
           ],
         },
         {

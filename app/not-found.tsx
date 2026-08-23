@@ -16,7 +16,7 @@ export default function NotFound() {
         <EyebrowChip>404</EyebrowChip>
         <h1 className="mx-auto mt-6 max-w-2xl text-balance text-[2.25rem] font-medium leading-[1.08] tracking-[-0.03em] sm:text-[3rem]">
           <span className="text-ink">This page does not exist.</span>{" "}
-          <span className="text-muted">Everything else still does.</span>
+          <span className="text-muted">Let us get you back.</span>
         </h1>
         <p className="mx-auto mt-6 max-w-reading text-pretty leading-relaxed text-muted">
           The link may be old, or we may have moved something. Head back to the
