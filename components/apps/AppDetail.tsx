@@ -18,6 +18,7 @@ import StoreBadges from "@/components/apps/StoreBadges";
 import AppIcon from "@/components/ui/AppIcon";
 import Badge from "@/components/ui/Badge";
 import PillButton from "@/components/ui/PillButton";
+import PhoneFrame from "@/components/ui/PhoneFrame";
 import PlaceholderBlock from "@/components/ui/PlaceholderBlock";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import AppCard from "@/components/ui/AppCard";
@@ -160,9 +161,20 @@ export default function AppDetail({ app }: { app: App }) {
             <StoreBadges app={app} className="mt-8" />
           </div>
 
-          {/* Hero screenshot rising from the fold */}
+          {/* Hero screenshot rising from the fold. A phone gets the device
+              bezel the story bands use, minus its bottom edge, so the same
+              product is framed the same way all the way down the page. */}
           <div className="mt-12 sm:mt-16">
-            {heroShot ? (
+            {heroShot && isPhoneApp ? (
+              <PhoneFrame
+                image={heroShot}
+                alt={`${app.name} screenshot`}
+                className={`mx-auto ${heroFrame.width}`}
+                ratio={heroFrame.ratio}
+                sizes="(max-width: 768px) 80vw, 320px"
+                priority
+              />
+            ) : heroShot ? (
               <div
                 className={`relative mx-auto overflow-hidden rounded-t-well border border-b-0 border-border bg-surface ${heroFrame.width}`}
                 style={{ aspectRatio: heroFrame.ratio }}

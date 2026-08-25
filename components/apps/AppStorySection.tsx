@@ -10,6 +10,7 @@ import Image from "next/image";
 import type { App } from "@/lib/apps";
 import { cn } from "@/lib/cn";
 import ChapterMark from "@/components/ui/ChapterMark";
+import PhoneFrame from "@/components/ui/PhoneFrame";
 import PlaceholderBlock from "@/components/ui/PlaceholderBlock";
 
 type Story = NonNullable<App["story"]>[number];
@@ -73,7 +74,15 @@ export default function AppStorySection({
               flipped ? "lg:order-1 lg:-ml-24" : "lg:-mr-24"
             )}
           >
-            {story.image ? (
+            {story.image && isPhone ? (
+              <PhoneFrame
+                image={story.image}
+                alt={`${app.name}: ${story.title}`}
+                className={SHAPE_WIDTH.phone}
+                sizes="(max-width: 1024px) 70vw, 300px"
+                priority={index === 0}
+              />
+            ) : story.image ? (
               <div
                 className={cn(
                   "overflow-hidden rounded-well border border-border bg-surface",

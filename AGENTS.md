@@ -242,6 +242,26 @@ never cropped. Only the detail-page hero crops, deliberately, at the fold
 (bottom-only via `object-top`). Frame shapes: `phone`, `browser`, and `panel`
 (the extension popup, ~3:4).
 
+**A phone shot goes in a phone.** `components/ui/PhoneFrame.tsx` is the CSS
+device bezel every `phone`-shaped screenshot renders in: the apps index pairs
+(`AppBand`), the story bands (`AppStorySection`), and the detail hero
+(`AppDetail`, via `ratio`, which drops the bottom edge so the device rises out
+of the fold like the browser frame does). It exists because every other shape
+was already framed as the thing it is and phones were not: a capture whose own
+status bar says "phone" was sitting in the same generic rounded rectangle as a
+browser shot. Two rules inside it, both load-bearing:
+
+- **`bg-ink-surface`, never `bg-ink`.** They are identical in light mode,
+  which is the trap: `ink` is the *text* token and flips to near-white under
+  `.dark`, so the device would come back as a glowing white slab. Plus a
+  `border-white/10` hairline, which is what stops a dark bezel dissolving into
+  the dark canvas when the app screen inside it is also dark.
+- **A frame, not a device.** No notch, no side buttons, no speaker grille.
+  Half our captures include the status bar and half are cropped above it, so a
+  drawn notch lands on blank chrome in one app and on real content in the next
+   — and it would be hardware the screenshot does not have. This is the line
+  the rule below is really about: framing is fine, inventing is not.
+
 **No simulated UI anywhere.** `components/services/Vignettes.tsx` (miniature
 product UI built in HTML/CSS) was retired: every service page now opens on a
 real artefact of what that service actually sells, via `heroArtefact()` in

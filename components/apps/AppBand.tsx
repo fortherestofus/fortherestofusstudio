@@ -22,6 +22,7 @@ import type { App } from "@/lib/apps";
 import { cn } from "@/lib/cn";
 import Badge from "@/components/ui/Badge";
 import ChapterMark from "@/components/ui/ChapterMark";
+import PhoneFrame from "@/components/ui/PhoneFrame";
 import AppIcon from "@/components/ui/AppIcon";
 import AppThemeProvider from "@/components/apps/AppThemeProvider";
 
@@ -189,18 +190,20 @@ export default function AppBand({
               />
               {shape === "phone" ? (
                 <div className="relative mx-auto flex w-full max-w-[540px] items-start justify-center gap-4 sm:gap-6">
-                  <Frame
+                  <PhoneFrame
                     image={shot}
                     alt={`${app.name}: ${app.tagline}`}
                     className="w-1/2"
+                    sizes="(max-width: 1024px) 42vw, 260px"
                     priority={index === 0}
                   />
                   {/* The offset is the whole point: two flush handsets read as
                       a comparison, two staggered ones read as a product. */}
-                  <Frame
+                  <PhoneFrame
                     image={app.screenshots[1] ?? shot}
                     alt={`${app.name}: a second screen`}
                     className="mt-10 w-1/2 sm:mt-16"
+                    sizes="(max-width: 1024px) 42vw, 260px"
                   />
                 </div>
               ) : (
