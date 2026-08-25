@@ -83,7 +83,7 @@ export const clients = [
   "African Agri Council",
   "Jenna Clifford",
   "Total Sports",
-  "Zimbabwea Tourism",
+  "Zimbabwe Tourism",
   "Innovatr",
   "Thrifty Adventures",
   "Deep Ocean",
