@@ -6,7 +6,6 @@ import { HELLO_EMAIL, CAL_INTRO, CAL_CONSULT, calLink } from "@/lib/contact";
 import { STUDIO_STATS } from "@/lib/proof";
 import { testimonials } from "@/lib/testimonials";
 import Section from "@/components/ui/Section";
-import EyebrowChip from "@/components/ui/EyebrowChip";
 import PillButton from "@/components/ui/PillButton";
 import TestimonialQuote from "@/components/ui/TestimonialQuote";
 import CalBooking from "@/components/contact/CalBooking";
@@ -53,9 +52,11 @@ export default function ContactPage() {
       <section className="bg-bg pb-12 pt-28 sm:pb-16 sm:pt-36">
         <div className="mx-auto w-full max-w-content px-5 sm:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-14">
+            {/* No eyebrow. "Start a project" is already the navbar button on
+                this screen and the words above are already the instruction —
+                three ways of saying the same thing in one viewport. */}
             <div className="lg:col-span-6">
-              <EyebrowChip>Start a project</EyebrowChip>
-              <h1 className="mt-6 text-balance text-[2.5rem] font-medium leading-[1.04] tracking-[-0.035em] sm:text-[3.25rem]">
+              <h1 className="text-balance text-[2.5rem] font-medium leading-[1.04] tracking-[-0.035em] sm:text-[3.25rem]">
                 <span className="block text-ink">Tell us the problem.</span>
                 <span className="block text-muted">
                   We will tell you what it takes.

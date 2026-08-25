@@ -90,7 +90,7 @@ export default function AppDetail({ app }: { app: App }) {
 
         <div className="relative mx-auto w-full max-w-content px-5 sm:px-8">
           <Link
-            href="/apps"
+            href="/apps/"
             className="inline-flex items-center gap-1.5 text-[0.9375rem] text-muted transition-colors hover:text-ink"
           >
             <ArrowLeft className="h-4 w-4" />
@@ -206,11 +206,11 @@ export default function AppDetail({ app }: { app: App }) {
       {/* How it actually happens — real captures, only for apps that carry one */}
       <AppJourneySection app={app} />
 
-      {/* Everything else it does */}
+      {/* Everything else it does. No eyebrow: "Everything else" was the
+          headline again in smaller caps. */}
       <Section tone="sunken">
         <SectionHeading
           align="left"
-          eyebrow="Everything else"
           title={`The rest of what ${app.name} does`}
         />
         <ul className="mt-10 grid gap-x-12 gap-y-8 md:grid-cols-2">
@@ -255,11 +255,7 @@ export default function AppDetail({ app }: { app: App }) {
 
       {/* More apps */}
       <Section tone="canvas">
-        <SectionHeading
-          align="left"
-          eyebrow="More from the studio"
-          title="Our other apps"
-        />
+        <SectionHeading align="left" title="Our other apps" />
         <div className="mt-10 grid gap-3 sm:gap-4 md:grid-cols-3">
           {others.map((other) => (
             <AppCard key={other.slug} app={other} />
@@ -297,9 +293,9 @@ export default function AppDetail({ app }: { app: App }) {
         title="Want something like this built?"
         body="We build products like this one for other people too, and run the identify, build and grow work around them."
         primaryLabel="Start a project"
-        primaryHref="/contact"
+        primaryHref="/contact/"
         secondaryLabel="See our services"
-        secondaryHref="/services"
+        secondaryHref="/services/"
       />
     </AppThemeProvider>
   );

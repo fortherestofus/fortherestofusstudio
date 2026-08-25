@@ -26,7 +26,7 @@ export default function NotFound() {
           <PillButton href="/" size="lg">
             Back to home
           </PillButton>
-          <PillButton href="/apps" variant="ghost" size="lg" withArrow={false}>
+          <PillButton href="/apps/" variant="ghost" size="lg" withArrow={false}>
             See our apps
           </PillButton>
         </div>

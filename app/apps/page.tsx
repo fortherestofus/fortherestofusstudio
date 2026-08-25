@@ -22,8 +22,9 @@ export const metadata: Metadata = {
 export default function AppsIndexPage() {
   return (
     <>
+      {/* No eyebrow: it read "Built by us" directly above a headline whose
+          second half already said "Built the way we would build yours." */}
       <PageHero
-        eyebrow="Built by us"
         title="Our own products."
         titleMuted="Built the way we would build yours."
         lead="We keep a small shelf of products of our own. They are where we test ideas and learn what holds up in people's hands, and they are the clearest proof of what we can do."

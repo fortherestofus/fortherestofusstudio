@@ -24,7 +24,7 @@ interface AppCardProps {
 export default function AppCard({ app, className }: AppCardProps) {
   return (
     <Link
-      href={`/apps/${app.slug}`}
+      href={`/apps/${app.slug}/`}
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-card border border-border bg-surface p-6",
         "shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover",

@@ -47,6 +47,19 @@ export interface Service {
     /** Muted second line. */
     titleMuted: string;
     lead: string;
+    /**
+     * Headline over the explainer sections. Written out per service rather
+     * than templated from `title`: `What ${title.toLowerCase()} looks like`
+     * produced "What websites looks like with us" (plural subject, singular
+     * verb) and lowercased SaaS into "saas".
+     */
+    howTitle: string;
+    /**
+     * Lowercase noun phrase for the closing ask ("Need help with ...?").
+     * Also written out per service: lowercasing `title` turned SaaS into
+     * "saas".
+     */
+    ctaSubject: string;
     /** Two or three explainer sections. */
     sections: ServiceSection[];
     /** Who this is usually for. */
@@ -79,6 +92,8 @@ export const services: Service[] = [
       title: "Software that ships.",
       titleMuted: "And keeps working after launch.",
       lead: "Most app projects die between the idea and the store listing. We build the whole path: the product, the plumbing underneath it, and the launch.",
+      howTitle: "What a custom app or SaaS build looks like with us",
+      ctaSubject: "a custom app or SaaS build",
       sections: [
         {
           heading: "We start by cutting the scope",
@@ -125,6 +140,8 @@ export const services: Service[] = [
       title: "A site that earns its traffic.",
       titleMuted: "And loads before people leave.",
       lead: "A website is the one piece of marketing you fully control. It should be quick, say something specific, and make the next step obvious.",
+      howTitle: "What a website build looks like with us",
+      ctaSubject: "a website",
       sections: [
         {
           heading: "Structure before decoration",
@@ -171,6 +188,8 @@ export const services: Service[] = [
       title: "Know what to build next.",
       titleMuted: "And who it is actually for.",
       lead: "Ten years of running campaigns and shipping products, applied to the two questions that decide whether yours works: what goes in the next release, and how anyone hears about it.",
+      howTitle: "What product and growth direction looks like with us",
+      ctaSubject: "product and growth direction",
       sections: [
         {
           heading: "Positioning comes first",
@@ -217,6 +236,8 @@ export const services: Service[] = [
       title: "Look like yourself.",
       titleMuted: "Everywhere, without thinking about it.",
       lead: "Brand falls apart in the gap between the logo file and the Tuesday afternoon social post. We close that gap with a system, not a mood board.",
+      howTitle: "What brand, design and content looks like with us",
+      ctaSubject: "brand, design and content",
       sections: [
         {
           heading: "Identity as a working system",
@@ -263,6 +284,8 @@ export const services: Service[] = [
       title: "Stop doing it by hand.",
       titleMuted: "Especially the parts nobody enjoys.",
       lead: "Most small businesses run on copy-paste between four tools and one person's memory. We map what is actually happening, then remove the steps that should never have been manual.",
+      howTitle: "What business tech and automation looks like with us",
+      ctaSubject: "business tech and automation",
       sections: [
         {
           heading: "Audit before automation",

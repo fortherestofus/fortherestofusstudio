@@ -16,7 +16,7 @@ export default function GivingFaqPage() {
     <LegalDocument
       title="Giving FAQs"
       lastUpdated="10 July 2026"
-      backHref="/apps/inspiritintruth/giving"
+      backHref="/apps/inspiritintruth/giving/"
       backLabel="Back to Giving"
       intro={[
         "Everything you might want to know before you give to InSpiritInTruth. Still stuck? Email us and a real person will help.",

@@ -169,7 +169,7 @@ export default function GivingPage() {
               <ArrowUpRight className="h-4 w-4" />
             </a>
             <Link
-              href="/apps/inspiritintruth/giving/faq"
+              href="/apps/inspiritintruth/giving/faq/"
               className="inline-flex items-center gap-2 text-[0.9375rem] font-medium text-ink transition-colors hover:text-accent-deep"
             >
               Giving FAQs

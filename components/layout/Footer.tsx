@@ -42,8 +42,8 @@ const SERVICE_LINKS = [
 ];
 
 const STUDIO_LINKS = [
-  { label: "About the studio", href: "/studio" },
-  { label: "Start a project", href: "/contact" },
+  { label: "About the studio", href: "/studio/" },
+  { label: "Start a project", href: "/contact/" },
   { label: "Email us", href: `mailto:${HELLO_EMAIL}` },
 ];
 
@@ -128,7 +128,7 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
             <FooterColumn title="Apps">
               {apps.map((app) => (
-                <FooterLink key={app.slug} href={`/apps/${app.slug}`}>
+                <FooterLink key={app.slug} href={`/apps/${app.slug}/`}>
                   {app.name}
                 </FooterLink>
               ))}

@@ -353,7 +353,13 @@ product. `AppCard` survives only for the detail pages' "other apps" grid.
 - Copy voice: second person, active, short sentences, verb-first buttons,
   concrete numbers. Avoid "unlock / supercharge / seamless / empower / delve".
 - The site is served with `trailingSlash: true` — canonicals, `alternates`,
-  OG `url`s, sitemap entries, and registry paths must all end in a slash.
+  OG `url`s, sitemap entries, registry paths, **and every internal `href`**
+  must end in a slash. A missing one is not cosmetic: it costs a 308 redirect
+  on the way to the page. The whole navbar, the footer's studio column, the
+  app cards and the 404 were all shipping without one, so the most-used links
+  on the site each took a redirect hop. Sweep with
+  `grep -rnoE 'href=\{?"/[a-z][a-z/-]*"' app components lib | grep -v '/"'`
+  before a release.
 - Motion stays calm and must respect reduced-motion.
 
 ## Verify

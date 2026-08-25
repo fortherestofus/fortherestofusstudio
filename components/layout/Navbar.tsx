@@ -16,10 +16,10 @@ import PillButton from "@/components/ui/PillButton";
 import DarkModeToggle from "@/components/ui/DarkModeToggle";
 
 const NAV_LINKS = [
-  { label: "Apps", href: "/apps" },
-  { label: "Services", href: "/services" },
-  { label: "About", href: "/studio" },
-  { label: "Contact", href: "/contact" },
+  { label: "Apps", href: "/apps/" },
+  { label: "Services", href: "/services/" },
+  { label: "About", href: "/studio/" },
+  { label: "Contact", href: "/contact/" },
 ];
 
 export default function Navbar() {
@@ -112,7 +112,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2">
           <DarkModeToggle />
-          <PillButton href="/contact" className="hidden sm:inline-flex">
+          <PillButton href="/contact/" className="hidden sm:inline-flex">
             Start a project
           </PillButton>
           <button
@@ -154,7 +154,7 @@ export default function Navbar() {
               ))}
             </ul>
             <div className="mt-2 px-1 pb-1">
-              <PillButton href="/contact" className="w-full justify-between">
+              <PillButton href="/contact/" className="w-full justify-between">
                 Start a project
               </PillButton>
             </div>

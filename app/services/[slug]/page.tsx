@@ -156,7 +156,7 @@ export default async function ServiceDetailPage({
             <SectionHeading
               align="left"
               eyebrow="How it works"
-              title={`What ${service.title.toLowerCase()} looks like with us`}
+              title={service.page.howTitle}
             />
             <div className="mt-10 space-y-10">
               {service.page.sections.map((section) => (
@@ -340,7 +340,7 @@ export default async function ServiceDetailPage({
       )}
 
       <CallToAction
-        title={`Need help with ${service.title.toLowerCase()}?`}
+        title={`Need help with ${service.page.ctaSubject}?`}
         body="Send a short note about where you are and what you are trying to reach. We will come back with what it would take."
         primaryLabel="Start a project"
         primaryHref="/contact/"
