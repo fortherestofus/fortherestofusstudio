@@ -2,6 +2,13 @@
  * CallToAction — the full-width dark rounded block that closes a page. This is
  * the page's ink moment; nothing else above it should be dark.
  *
+ * No eyebrow. An eyebrow earns its place when it is a category the reader can
+ * scan for and the headline does not already carry — which is why "Why we
+ * build" and "Work delivered for" stay. The closing ask is the opposite case:
+ * its headline is already a verb, the button underneath names the action, and
+ * "Start here" / "Say hello" / "Your turn" added a label layer that carried no
+ * keyword. Cut them rather than let the pattern read as decoration.
+ *
  * With `scatter`, real artefacts (the app marks and two product chips) orbit
  * the ask, the reference's closing-photos move told with the things we
  * actually make. Decorative only — hidden from assistive tech and from
@@ -9,7 +16,6 @@
  */
 import Image from "next/image";
 import PillButton from "@/components/ui/PillButton";
-import EyebrowChip from "@/components/ui/EyebrowChip";
 import AppIcon from "@/components/ui/AppIcon";
 import Badge from "@/components/ui/Badge";
 import { getApp } from "@/lib/apps";
@@ -17,7 +23,6 @@ import { contentSamples } from "@/lib/homeMedia";
 import { cn } from "@/lib/cn";
 
 interface CallToActionProps {
-  eyebrow?: string;
   title?: string;
   body?: string;
   primaryLabel?: string;
@@ -99,7 +104,6 @@ function MarkChip({ slug, className }: { slug: string; className?: string }) {
 }
 
 export default function CallToAction({
-  eyebrow = "Start here",
   title = "Have an idea worth building?",
   body = "Tell us what you are trying to make or fix. You get a straight answer on what it takes, and if we are not the right people for it we will say so.",
   primaryLabel = "Start a project",
@@ -143,18 +147,16 @@ export default function CallToAction({
           </div>
         )}
 
-        <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center gap-6">
-          <EyebrowChip tone="onInk">{eyebrow}</EyebrowChip>
-
-          <h2 className="text-balance text-[2rem] font-medium leading-[1.1] tracking-[-0.02em] text-ink-text sm:text-[3rem]">
+        <div className="relative z-10 mx-auto flex max-w-2xl flex-col items-center">
+          <h2 className="text-balance text-[2rem] font-medium leading-[1.08] tracking-[-0.02em] text-ink-text sm:text-[3rem]">
             {title}
           </h2>
 
-          <p className="max-w-xl text-pretty leading-relaxed text-ink-muted">
+          <p className="mt-6 max-w-xl text-pretty leading-relaxed text-ink-muted">
             {body}
           </p>
 
-          <div className="mt-2 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <PillButton href={primaryHref} variant="onInk" size="lg">
               {primaryLabel}
             </PillButton>

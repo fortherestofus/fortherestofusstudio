@@ -180,7 +180,9 @@ export function KnownArtefact() {
       onMouseLeave={() => setPaused(false)}
       className="flex h-full flex-col overflow-hidden rounded-card border border-border bg-surface"
     >
-      <div className="relative flex-1 px-5 py-6" style={{ minHeight: 190 }}>
+      {/* Same 16/10 footprint as the two image artefacts beside it, so the
+          three cards land on one shared baseline instead of three. */}
+      <div className="relative flex-1 px-5 py-6" style={{ aspectRatio: "16 / 10" }}>
         <AnimatePresence initial={false} mode="wait">
           <motion.div
             key={entry.slug}

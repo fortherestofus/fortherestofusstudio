@@ -340,7 +340,6 @@ export default async function ServiceDetailPage({
       )}
 
       <CallToAction
-        eyebrow="Start here"
         title={`Need help with ${service.title.toLowerCase()}?`}
         body="Send a short note about where you are and what you are trying to reach. We will come back with what it would take."
         primaryLabel="Start a project"

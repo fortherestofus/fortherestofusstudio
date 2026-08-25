@@ -28,7 +28,6 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Section, { SectionHeading } from "@/components/ui/Section";
-import ChapterMark from "@/components/ui/ChapterMark";
 import { cn } from "@/lib/cn";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -174,10 +173,9 @@ export default function ProcessBand() {
   return (
     <Section tone="sunken" id="process">
       <div ref={ref}>
-        <ChapterMark index={3} total={4} />
         <SectionHeading
           align="left"
-          className="mt-4"
+          chapter={3}
           eyebrow="How we work"
           title="Identify. Build. Grow."
           subtitle="One process, whether the product is ours or yours. Here is how it sounds from the inside."

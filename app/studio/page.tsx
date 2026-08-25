@@ -6,7 +6,6 @@ import PillButton from "@/components/ui/PillButton";
 import TestimonialQuote from "@/components/ui/TestimonialQuote";
 import StatBand from "@/components/studio/StatBand";
 import ClientMarquee from "@/components/services/ClientMarquee";
-import ToolMarquee from "@/components/services/ToolMarquee";
 import CallToAction from "@/components/home/CallToAction";
 import { testimonials } from "@/lib/testimonials";
 import { STUDIO_STATS } from "@/lib/proof";
@@ -185,26 +184,16 @@ export default function StudioPage() {
       </Section>
 
       {/*
-        Who the work was for, and what it was built with. The client list was
-        a row of plain text names here; the marks are the same record, read
-        faster. "Work delivered for" — never "trusted by" (AGENTS).
+        Who the work was for. One rail, not two: the tool rail used to stack
+        under this one and the pairing read as a messy repeat — tools now
+        live on /services with the pillars they serve. "Work delivered for"
+        — never "trusted by" (AGENTS).
       */}
       <Section tone="canvas">
         <h2 className="text-[0.6875rem] uppercase tracking-[0.14em] text-faint">
           Work delivered for
         </h2>
         <ClientMarquee className="mt-6" />
-
-        <div className="mt-12 border-t border-border pt-8">
-          <h2 className="text-[0.6875rem] uppercase tracking-[0.14em] text-faint">
-            The tools we use
-          </h2>
-          <ToolMarquee className="mt-6" />
-          <p className="mt-5 max-w-[60ch] text-[0.9375rem] leading-relaxed text-muted">
-            We pick per job rather than per habit, and if your stack already
-            runs on something else, we build on that instead.
-          </p>
-        </div>
 
         <div className="mt-12">
           <PillButton href="/services/" variant="ghost" withArrow={false}>
@@ -214,7 +203,6 @@ export default function StudioPage() {
       </Section>
 
       <CallToAction
-        eyebrow="Say hello"
         title="Come build something with us."
         body="Whether you want a product made or help working out what the product should be, start with a short note about where you are."
         primaryLabel="Start a project"

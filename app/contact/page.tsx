@@ -222,7 +222,6 @@ export default function ContactPage() {
       </Section>
 
       <CallToAction
-        eyebrow="No pressure"
         title="Still deciding?"
         body="Read how a project actually runs, or look at the products we have built for ourselves. Then email or book a call whenever you are ready."
         primaryLabel="See how we work"

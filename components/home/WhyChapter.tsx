@@ -5,7 +5,7 @@
  * by a real artefact from real work. Closes on the first trust marker.
  */
 import Section, { SectionHeading } from "@/components/ui/Section";
-import ChapterMark from "@/components/ui/ChapterMark";
+import EyebrowChip from "@/components/ui/EyebrowChip";
 import TestimonialQuote from "@/components/ui/TestimonialQuote";
 import {
   IdentityArtefact,
@@ -20,7 +20,7 @@ const BELIEFS = [
   {
     stage: "Identify",
     title: "Most products fail because nobody needed them.",
-    body: "CB Insights puts \"no market need\" at the top of the reasons startups fail. The job is to find the moment that keeps costing someone money or time, not a market gap. Innovatr's site looked fine and converted badly. We rebuilt it around what buyers actually needed to know.",
+    body: "CB Insights puts \"no market need\" at the top of why startups fail. So we start from the moment that costs you money or time. Innovatr's site looked fine and converted badly; we rebuilt it around the buyer.",
     artefact: <RedesignArtefact />,
   },
   {
@@ -40,12 +40,11 @@ const BELIEFS = [
 export default function WhyChapter() {
   return (
     <Section tone="canvas" id="why">
-      <ChapterMark index={1} total={4} />
-
-      <div className="mt-4 grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
+      <div className="grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-14">
         <div className="lg:col-span-6">
           <SectionHeading
             align="left"
+            chapter={1}
             eyebrow="Why we build"
             title="The problem you've learned to live with."
             subtitle="Every business has one: a process held together with copy-paste, or an idea stuck in the notes app. Good ideas rarely die from bad code. They die in the handoffs between agencies."
@@ -61,28 +60,30 @@ export default function WhyChapter() {
         </div>
       </div>
 
-      <div className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
-        {BELIEFS.map((belief, i) => (
+      {/* One label layer per card: the stage word alone. These used to carry
+          their own 01–03 ChapterMarks, which double-numbered the page —
+          chapter 01 held a second 01/02/03, and the process chapter numbers
+          the same three stages again further down. */}
+      <div className="mt-16 grid gap-12 md:grid-cols-3 md:gap-8">
+        {BELIEFS.map((belief) => (
           <div key={belief.title} className="flex flex-col">
-            <div className="flex items-center gap-3">
-              <ChapterMark index={i + 1} />
-              <span className="text-[0.8125rem] uppercase tracking-[0.14em] text-accent-deep">
-                {belief.stage}
-              </span>
-            </div>
-            <h3 className="mt-4 text-balance text-[1.25rem] font-medium leading-snug tracking-[-0.015em] text-ink">
+            <EyebrowChip tone="accent">{belief.stage}</EyebrowChip>
+            {/* A clear step above the body rather than a whisker above it:
+                1.375 to 0.9375 is the size jump that lets the eye find the
+                three claims without reading the paragraphs first. */}
+            <h3 className="mt-5 text-balance text-[1.375rem] font-medium leading-[1.25] tracking-[-0.015em] text-ink">
               {belief.title}
             </h3>
-            <p className="mt-3 flex-1 text-[0.9375rem] leading-relaxed text-muted">
+            <p className="mt-4 flex-1 text-[0.9375rem] leading-relaxed text-muted">
               {belief.body}
             </p>
-            <div className="mt-6">{belief.artefact}</div>
+            <div className="mt-7">{belief.artefact}</div>
           </div>
         ))}
       </div>
 
       {/* First trust marker */}
-      <div className="mt-12 border-t border-border pt-8">
+      <div className="mt-16 border-t border-border pt-10">
         <TestimonialQuote
           testimonial={testimonials[0]}
           size="lg"

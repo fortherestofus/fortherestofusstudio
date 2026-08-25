@@ -156,15 +156,35 @@ export default function Footer() {
           <p className="text-sm text-ink-text/40">
             © {year} For The Rest Of Us. Built in Johannesburg.
           </p>
-          <p className="text-sm text-ink-text/40">
-            Studio of{" "}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
+            {/* Partner badge — Hostinger's own dark variant, used as supplied
+                (never recoloured or dimmed), on the one dark surface every
+                page shares. */}
             <a
-              href={`mailto:${HELLO_EMAIL}`}
-              className="transition-colors hover:text-ink-text"
+              href="https://www.hostinger.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Hostinger partner"
+              className="opacity-80 transition-opacity hover:opacity-100"
             >
-              Alroy Ndhlovu
+              <Image
+                src="/partners/Badge_dark.svg"
+                alt="Hostinger partner"
+                width={80}
+                height={30}
+                className="h-[30px] w-auto"
+              />
             </a>
-          </p>
+            <p className="text-sm text-ink-text/40">
+              Studio of{" "}
+              <a
+                href={`mailto:${HELLO_EMAIL}`}
+                className="transition-colors hover:text-ink-text"
+              >
+                Alroy Ndhlovu
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

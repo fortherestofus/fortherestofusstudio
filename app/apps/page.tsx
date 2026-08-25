@@ -47,7 +47,6 @@ export default function AppsIndexPage() {
       ))}
 
       <CallToAction
-        eyebrow="Your turn"
         title="Want something like this for your idea?"
         body="We take on a small number of client projects at a time. If you have something you want built properly, tell us about it."
         primaryLabel="Start a project"

@@ -2,12 +2,10 @@
  * Hero — the promise. Descriptive first (a visitor who reads only the H1
  * knows what we sell), with the lifecycle compressed into the muted line.
  * One floating artefact beside it (see HeroArtefact); the proof line under
- * the CTAs is real studio numbers, and the client names are real engagements
- * shown as text: a logo strip reads as endorsement, where a list reads as
- * a record. (Organisation logos do appear beside testimonials, where the
- * person actually spoke — see components/ui/TestimonialQuote.tsx.)
+ * the CTAs is real studio numbers. The named engagements used to sit here
+ * too, but that was the same record twice on one page and it crowded the
+ * hero — the full rail now lives once, beside the closing ask (TrustBand).
  */
-import { clients } from "@/lib/testimonials";
 import PillButton from "@/components/ui/PillButton";
 import EyebrowChip from "@/components/ui/EyebrowChip";
 import HeroArtefact from "@/components/home/HeroArtefact";
@@ -52,23 +50,6 @@ export default function Hero() {
             <p className="nums mt-6 text-[0.9375rem] text-muted">
               12+ years · 1,200+ projects and clients served
             </p>
-
-            {/* Named work. */}
-            <div className="mt-10 border-t border-border pt-8">
-              <h2 className="text-xs font-medium uppercase tracking-[0.14em] text-faint">
-                Featured engagements
-              </h2>
-              <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-2">
-                {clients.slice(0, 4).map((client) => (
-                  <li
-                    key={client}
-                    className="text-[0.9375rem] font-medium text-muted"
-                  >
-                    {client}
-                  </li>
-                ))}
-              </ul>
-            </div>
           </div>
 
           {/* The artefact */}

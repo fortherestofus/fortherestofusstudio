@@ -82,6 +82,8 @@ export const clients = [
   "Energy Capital & Power",
   "African Agri Council",
   "Jenna Clifford",
+  "Total Sports",
+  "Zimbabwean Tourism",
   "Innovatr",
   "Thrifty Adventures",
   "Deep Ocean",

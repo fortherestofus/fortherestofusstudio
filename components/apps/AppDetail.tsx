@@ -294,7 +294,6 @@ export default function AppDetail({ app }: { app: App }) {
       </Section>
 
       <CallToAction
-        eyebrow="Work with us"
         title="Want something like this built?"
         body="We build products like this one for other people too, and run the identify, build and grow work around them."
         primaryLabel="Start a project"

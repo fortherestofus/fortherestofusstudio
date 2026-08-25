@@ -78,11 +78,10 @@ export default function UseCasesChapter() {
     <section id="use-cases" className="bg-sunken">
       {/* Heading */}
       <div className="mx-auto w-full max-w-content px-5 pt-10 sm:px-8 sm:pt-12">
-        <ChapterMark index={4} total={4} tone="default" />
         <SectionHeading
           align="left"
-          className="mt-4"
-          eyebrow="Built by us"
+          chapter={4}
+          eyebrow="Our own products"
           title="Built by us. For us, and for everyone else."
           subtitle="We went looking for ordinary problems, the kind nobody writes a brief for. Four products of our own came out of that. Each one was identified, built, and is now growing: the same process we run for clients, tested on ourselves first."
         />

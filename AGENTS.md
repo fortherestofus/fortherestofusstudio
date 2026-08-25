@@ -79,23 +79,35 @@ InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
   personas standing in for roles, in an exchange the page labels as an
   illustration, carrying no names, numbers or results.
 - **Client names are typographic; logos survive in one place only.** The
-  `ClientMarquee` on `/services` and `/studio` is a rail of **names**, not
-  marks. It carried the real logos until we looked at them at 44px: several of
-  these companies only publish a dense lockup or a dark square, so Jenna
-  Clifford read as a black box and African Agri Council as three coloured
-  dots. A logo wall you cannot read is worse than the words, and this site is
-  type-led. Organisation marks remain **only** beside a testimonial, at 64px,
-  identifying the speaker. Every list reads from `clients` in
-  `lib/testimonials.ts` — the marquee used to keep its own longer copy, which
-  is how two records of the same fact drift apart. Always headed **"Work
-  delivered for"**, never "trusted by" or anything implying endorsement; never
-  in the hero or footer. Trademarks belong to their owners.
-- **The tool rail says "the tools we use", and ends on "and more".** It was
-  once a stricter claim — every name evidenced by a shipped case study — which
-  was true but meant the list could never name something we can do and simply
-  have not billed for yet. `ToolMarquee` is now explicitly non-exhaustive. The
-  line that still must not be written is an aspirational one: add a tool only
-  if someone here has actually run it.
+  `ClientMarquee` (home `TrustBand`, `/services`, `/studio`) is a rail of
+  **names**, not marks. It carried the real logos until we looked at them at
+  44px: several of these companies only publish a dense lockup or a dark
+  square, so Jenna Clifford read as a black box and African Agri Council as
+  three coloured dots. A logo wall you cannot read is worse than the words,
+  and this site is type-led. Organisation marks remain **only** beside a
+  testimonial, at 64px, identifying the speaker. Every list reads from
+  `clients` in `lib/testimonials.ts` — the marquee used to keep its own longer
+  copy, which is how two records of the same fact drift apart. The rail ends
+  on "and more" (like the tool rail) and **sits beside the closing ask**, not
+  mid-page: proof next to the decision, once per page — the hero's "Featured
+  engagements" repeat was removed for exactly that reason. Always headed
+  **"Work delivered for"**, never "trusted by" or anything implying
+  endorsement; never in the hero or footer. Trademarks belong to their owners.
+- **The footer carries the partner badge.** Hostinger's own dark badge
+  (`public/partners/Badge_dark.svg`, the variant that sits on the ink
+  footer), used exactly as supplied — never recoloured, dimmed, or redrawn —
+  in the legal strip. Partner and certification marks live there, not in
+  page bodies, and a partner badge is not a client credit: it never joins
+  the "Work delivered for" rail.
+- **The tool rail says "the tools we work with", and ends on "and more".** It
+  was once a stricter claim — every name evidenced by a shipped case study —
+  which was true but meant the list could never name something we can do and
+  simply have not billed for yet. `ToolMarquee` is now explicitly
+  non-exhaustive. The line that still must not be written is an aspirational
+  one: add a tool only if someone here has actually run it. It lives in two
+  places: the foot of the pillars on `/services` and the toolbench on the
+  tech-and-automation detail page — **not** on `/studio`, where stacking it
+  under the client rail read as a messy repeat.
 - **One process: identify → build → grow.** Services group into those three
   chapters (`ServiceLifecycle`, `LIFECYCLE_CHAPTERS`). Two things this
   encodes deliberately. **Identity is not a step**: a product and its brand
@@ -263,6 +275,24 @@ three pieces of real craft beside it (a wordmark, foiled cards, a
 photograph — the hand-made end of the work, because everywhere else is
 screens), the `StatBand` as the seam between the studio and the person, Alroy,
 and then who the work was for and what it was built with.
+
+**One label layer above a headline, never three.** A section used to open on a
+stacked `ChapterMark`, then an `EyebrowChip`, then the headline, and the same
+stage numbers then reappeared inside the section. `SectionHeading` takes a
+`chapter` prop and sets the numeral **inline with the eyebrow**, one row.
+Spacing between the levels is deliberately uneven (label→title `mt-5`,
+title→sub `mt-6`): equal gaps are what make a heading stack read as one block.
+
+**An eyebrow is a category, not a mood.** It earns its place when it hands the
+reader a keyword to scan for that the headline does not carry ("Why we build"
+over an emotive line, "Work delivered for", "The work", "Case in point"). It is
+clutter when the headline is already clear and the eyebrow is conversational
+filler, which is why every closing `CallToAction` lost its one: "Start here",
+"Say hello", "No pressure", "Your turn" and "Work with us" carried no keyword,
+above a headline that is already a verb, above a button that already names the
+action. `CallToAction` therefore takes no `eyebrow` prop at all. And never let
+an eyebrow restate its own headline: the apps chapter read "Built by us" above
+"Built by us. For us, and for everyone else.", and is now "Our own products".
 
 **Every section must earn its place.** Before adding one, ask what it proves
 that its page does not already prove. The service detail pages carry no

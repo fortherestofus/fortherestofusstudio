@@ -21,7 +21,6 @@ import {
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import Section, { SectionHeading } from "@/components/ui/Section";
-import ChapterMark from "@/components/ui/ChapterMark";
 import { getApp } from "@/lib/apps";
 import { PROCESS_STEPS } from "@/lib/services";
 import { filosofeeIdentity, identityWork, marketingWork } from "@/lib/work";
@@ -154,10 +153,9 @@ export default function ProcessChapter({ chapter }: ProcessChapterProps) {
   return (
     <Section tone="sunken" id="process">
       <div ref={ref}>
-        {chapter && <ChapterMark index={chapter.index} total={chapter.total} />}
         <SectionHeading
           align="left"
-          className={chapter ? "mt-4" : undefined}
+          chapter={chapter?.index}
           eyebrow="How it works"
           title="From problem to product."
           subtitle="Three states, and you can always see which one we are in. Shown here with three different projects, because the spine is the same whatever arrives."

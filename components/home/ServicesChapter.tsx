@@ -148,10 +148,9 @@ const ARTEFACTS: Record<string, React.ReactNode> = {
 export default function ServicesChapter() {
   return (
     <Section tone="canvas" id="services">
-      <ChapterMark index={2} total={4} />
       <SectionHeading
         align="left"
-        className="mt-4"
+        chapter={2}
         eyebrow="Services & consulting"
         title="The same process, run for you."
         subtitle="Custom products, brand, data-driven marketing, and automation, from the same hands that ship our own. Each one opens to how it works and what it did for a real client."

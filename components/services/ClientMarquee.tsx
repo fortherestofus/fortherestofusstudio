@@ -43,6 +43,19 @@ function Dot() {
   );
 }
 
+/**
+ * Closes each pass of the rail, the same way the tool rail does: the list is
+ * real engagements, not the whole record. Set smaller and fainter than the
+ * names so it reads as an aside, not another client.
+ */
+function AndMore() {
+  return (
+    <span className="shrink-0 self-center whitespace-nowrap text-[0.875rem] uppercase tracking-[0.14em] text-faint">
+      and more
+    </span>
+  );
+}
+
 export default function ClientMarquee({ className }: { className?: string }) {
   const reduced = useReducedMotion();
 
@@ -54,6 +67,9 @@ export default function ClientMarquee({ className }: { className?: string }) {
             <Name name={name} />
           </li>
         ))}
+        <li>
+          <AndMore />
+        </li>
       </ul>
     );
   }
@@ -68,9 +84,18 @@ export default function ClientMarquee({ className }: { className?: string }) {
       )}
     >
       <div className="flex w-max animate-marquee items-center gap-6 hover:[animation-play-state:paused] sm:gap-8">
-        {[...clients, ...clients].map((name, i) => (
-          <span key={`${name}-${i}`} className="flex items-center gap-6 sm:gap-8">
-            <Name name={name} />
+        {[0, 1].map((pass) => (
+          <span key={pass} className="flex items-center gap-6 sm:gap-8">
+            {clients.map((name) => (
+              <span
+                key={`${pass}-${name}`}
+                className="flex items-center gap-6 sm:gap-8"
+              >
+                <Name name={name} />
+                <Dot />
+              </span>
+            ))}
+            <AndMore />
             <Dot />
           </span>
         ))}

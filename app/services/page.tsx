@@ -7,6 +7,7 @@ import EyebrowChip from "@/components/ui/EyebrowChip";
 import PillButton from "@/components/ui/PillButton";
 import ServicesHero from "@/components/services/ServicesHero";
 import ClientMarquee from "@/components/services/ClientMarquee";
+import ToolMarquee from "@/components/services/ToolMarquee";
 import ProcessChapter from "@/components/home/ProcessChapter";
 import CallToAction from "@/components/home/CallToAction";
 import { cn } from "@/lib/cn";
@@ -175,9 +176,22 @@ export default function ServicesPage() {
             );
           })}
         </ol>
+
+        {/* What the work gets done with — the tools live here now, at the
+            foot of the pillars they serve, instead of as their own section
+            on /studio (where they doubled up with the client rail). */}
+        <div className="mt-12 border-t border-border pt-8">
+          <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-faint">
+            The tools we work with
+          </h3>
+          <ToolMarquee className="mt-5" />
+        </div>
       </Section>
 
-      {/* Who we have done it for */}
+      {/* How a project runs */}
+      <ProcessChapter />
+
+      {/* Who we have done it for — proof sits beside the ask, not mid-story */}
       <Section tone="sunken" size="sm">
         <SectionHeading
           align="left"
@@ -187,11 +201,7 @@ export default function ServicesPage() {
         <ClientMarquee className="mt-8" />
       </Section>
 
-      {/* How a project runs */}
-      <ProcessChapter />
-
       <CallToAction
-        eyebrow="Start here"
         title="Tell us what you are building."
         body="Send a short note about the problem you are trying to solve. We will come back with scope, time, and cost."
         primaryLabel="Start a project"
