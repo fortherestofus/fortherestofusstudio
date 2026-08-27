@@ -265,7 +265,7 @@ export const apps: App[] = [
       "InSpiritInTruth puts your faith back in your own hands. It's the companion to the InSpiritInTruth devotional: true-to-life reflections for the modern Christian who can't always make it to church or read the Bible cover to cover, but still wants to stay close to it.",
       "Each week brings one devotional, written to be digested slowly rather than rushed through. And when you need something for right now, a personal, scripture-rooted devotional is written from whatever you're feeling or going through: three free for every reader, unlimited on Premium. A full in-app Bible, a daily verse or quote, bookmarks, and notes hold your practice together the rest of the week, written for where you actually are.",
     ],
-    status: "Beta",
+    status: "Live",
     platform: ["iOS", "Android"],
     // Premium is LOCKED at $7.99/mo, $59.99/yr (InSpiritInTruth
     // docs/DECISIONS.md, 2026-07-30). Mirrored on inspiritintruth.net.
@@ -374,9 +374,9 @@ export const apps: App[] = [
     },
     screenshots: [isitHome, isitDevotionals, isitPersonalise, isitBible, isitDiscover, isitProfile],
     website: { url: "https://inspiritintruth.net/", label: "Visit inspiritintruth.net" },
-    stores: { ios: null, android: null },
-    ctaLabel: "Join the Waitlist",
-    ctaHref: "#",
+    stores: { ios: "https://apps.apple.com/app/inspiritintruth-devotional/id6795657774", android: null },
+    ctaLabel: "Download on the App Store",
+    ctaHref: "https://apps.apple.com/app/inspiritintruth-devotional/id6795657774",
     seo: {
       title: "InSpiritInTruth · Take your faith into your own hands",
       description:
