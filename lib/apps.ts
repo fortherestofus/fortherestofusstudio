@@ -136,6 +136,13 @@ export interface App {
     description: string;
   };
   giving?: string; // path to the app's giving page, if it accepts gifts
+  /**
+   * Path to the app's own support page — the Support URL the stores require.
+   * It must be an http(s) page that helps a user of THAT app; /contact/ is a
+   * page for commissioning work and does not qualify, which is a standard
+   * App Review rejection.
+   */
+  support?: string;
   legal?: {
     privacy: string;
     terms: string;
@@ -482,6 +489,7 @@ export const apps: App[] = [
       description:
         "Type, speak, or snap your ingredients and get a real recipe built around your tastes: a fresh idea daily, easy scaling for guests, dietary guardrails, and offline saving.",
     },
+    support: "/apps/tapa/support/",
     legal: {
       privacy: "/apps/tapa/privacy/",
       terms: "/apps/tapa/terms/",

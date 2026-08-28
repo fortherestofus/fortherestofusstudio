@@ -274,8 +274,21 @@ export default function AppDetail({ app }: { app: App }) {
           ))}
         </div>
 
-        {app.legal && (
+        {(app.support || app.legal) && (
           <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-border pt-8 text-[0.9375rem] text-muted">
+            {app.support && (
+              <>
+                <span className="text-faint">Help</span>
+                <Link
+                  href={app.support}
+                  className="inline-flex items-center gap-1 font-medium transition-colors hover:text-ink"
+                >
+                  Support
+                </Link>
+              </>
+            )}
+            {app.legal && (
+              <>
             <span className="text-faint">Legal</span>
             <Link
               href={app.legal.privacy}
@@ -297,6 +310,8 @@ export default function AppDetail({ app }: { app: App }) {
               Terms &amp; Conditions
               {app.legal.external && <ArrowUpRight className="h-3.5 w-3.5" />}
             </Link>
+              </>
+            )}
           </div>
         )}
       </Section>
