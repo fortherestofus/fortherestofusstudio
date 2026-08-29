@@ -129,6 +129,7 @@ export default function TapaSupportPage() {
           body: [
             "Open the Profile tab, tap the gear, then Delete account. It permanently removes your account and everything in it from our servers, and it cannot be undone.",
             "Deleting does not cancel a subscription. That belongs to your Apple Account or Google account and has to be cancelled separately, using the steps at the top of this page.",
+            "Already uninstalled tapa., or locked out of your account? You can ask us to delete it instead. The full picture of what goes and what stays is at https://fortherestofus.app/apps/tapa/delete-account/.",
           ],
         },
         {

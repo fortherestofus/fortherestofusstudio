@@ -274,7 +274,7 @@ export default function AppDetail({ app }: { app: App }) {
           ))}
         </div>
 
-        {(app.support || app.legal) && (
+        {(app.support || app.deleteAccount || app.legal) && (
           <div className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-border pt-8 text-[0.9375rem] text-muted">
             {app.support && (
               <>
@@ -286,6 +286,14 @@ export default function AppDetail({ app }: { app: App }) {
                   Support
                 </Link>
               </>
+            )}
+            {app.deleteAccount && (
+              <Link
+                href={app.deleteAccount}
+                className="inline-flex items-center gap-1 font-medium transition-colors hover:text-ink"
+              >
+                Delete your account
+              </Link>
             )}
             {app.legal && (
               <>

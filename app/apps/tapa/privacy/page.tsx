@@ -131,6 +131,18 @@ export default function TapaPrivacyPage() {
               associated data. Uninstalling the app clears the copies stored on
               your device.
             </>,
+            <>
+              Uninstalled the app, or can't sign in? You can still ask us to
+              delete it. What goes, what stays, and how to request it are set
+              out at{" "}
+              <a
+                className="text-accent-deep underline"
+                href="/apps/tapa/delete-account/"
+              >
+                fortherestofus.app/apps/tapa/delete-account/
+              </a>
+              .
+            </>,
           ],
         },
         {

@@ -143,6 +143,13 @@ export interface App {
    * App Review rejection.
    */
   support?: string;
+  /**
+   * Path to the app's account-deletion page — the Data deletion URL Play
+   * Console asks for in Data safety. It has to be reachable without signing
+   * in and without the app installed, which is exactly what in-app deletion
+   * cannot do for someone who has uninstalled or is locked out.
+   */
+  deleteAccount?: string;
   legal?: {
     privacy: string;
     terms: string;
@@ -490,6 +497,7 @@ export const apps: App[] = [
         "Type, speak, or snap your ingredients and get a real recipe built around your tastes: a fresh idea daily, easy scaling for guests, dietary guardrails, and offline saving.",
     },
     support: "/apps/tapa/support/",
+    deleteAccount: "/apps/tapa/delete-account/",
     legal: {
       privacy: "/apps/tapa/privacy/",
       terms: "/apps/tapa/terms/",

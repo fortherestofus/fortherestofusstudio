@@ -27,11 +27,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  // Support, legal and giving pages hosted here (external ones are skipped).
+  // Support, deletion, legal and giving pages hosted here (external ones are skipped).
   const supportingRoutes = apps.flatMap((app) => {
     const routes: { path: string; priority: number }[] = [];
     if (app.support) {
       routes.push({ path: app.support, priority: 0.5 });
+    }
+    if (app.deleteAccount) {
+      routes.push({ path: app.deleteAccount, priority: 0.5 });
     }
     if (app.giving) {
       const giving = app.giving.endsWith("/") ? app.giving : `${app.giving}/`;
