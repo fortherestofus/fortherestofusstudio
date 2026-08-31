@@ -76,8 +76,13 @@ export const caseProofs: CaseProof[] = [
         label: "cost per thousand impressions",
         detail: "R63.16 down to R12.18",
       },
+      {
+        value: "36.6%",
+        label: "conversion on the offer that worked",
+        detail: "against 8.6% on the generic form, same audience",
+      },
     ],
-    note: "Not everything worked. The offer, not the audience, was what the channel actually rewarded: the brochure offer converted at 36.6% where the generic form managed 8.6%.",
+    note: "Not everything worked. The offer, not the audience, was what the channel actually rewarded, and that is the part worth carrying to the next campaign.",
     source:
       "Campaign reporting from the engagement; full case study at alroyndhlovu.com.",
     serviceSlugs: ["product-and-growth", "websites"],

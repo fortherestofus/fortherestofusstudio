@@ -19,10 +19,12 @@ const HOLD_MS = 2600;
 /**
  * Which proof stats to surface, in order, each with its own colour.
  *
- * Leads with lead *quality* rather than lead count: "742 leads" is a number
- * whose meaning depends entirely on the client's size and spend, neither of
- * which we publish, so it lands as trivia. "91% arriving on a work email" is
- * the same programme measured the way a business would judge it.
+ * All four are rates, not counts. A count ("742 leads") only means something
+ * next to the client's size and spend, and both of those are commercial data
+ * we do not publish, so it reads as trivia. A rate carries its own meaning.
+ *
+ * Opens on Thrifty, because the frame behind this chip is Thrifty's campaign
+ * creative — a chip and a picture from two different clients read as stock.
  */
 const PICKS: {
   proof: string;
@@ -32,7 +34,7 @@ const PICKS: {
   sub: string;
 }[] = [
   {
-    proof: "innovatr",
+    proof: "thrifty-adventures",
     stat: 3,
     bg: "var(--color-ink-surface)",
     fg: "var(--color-ink-text)",
@@ -47,7 +49,7 @@ const PICKS: {
   },
   {
     proof: "innovatr",
-    stat: 0,
+    stat: 3,
     bg: "var(--tint-lime)",
     fg: "var(--tint-lime-deep)",
     sub: "var(--tint-lime-deep)",
