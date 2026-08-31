@@ -105,7 +105,7 @@ function MarkChip({ slug, className }: { slug: string; className?: string }) {
 
 export default function CallToAction({
   title = "Have an idea worth building?",
-  body = "Tell us what you are trying to make or fix. You get a straight answer on what it takes, and if we are not the right people for it we will say so.",
+  body = "Tell us what you are trying to make or fix. We will reply with what it would take, how long, and what it costs.",
   primaryLabel = "Start a project",
   primaryHref = "/contact/",
   secondaryLabel = "See what we build",

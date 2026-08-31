@@ -396,7 +396,7 @@ export const LIFECYCLE_CHAPTERS: {
     key: "identify",
     title: "We identify",
     blurb:
-      "The problem, who it affects, and whether it is worth building for. Every project starts here, before anyone writes code.",
+      "What is not working, or what is being missed, and who it affects. Every project starts here, before anything gets built.",
     belief:
       "Most products fail because nobody needed them. Finding that out early is cheaper than finding out at launch.",
     tint: "rust",
@@ -406,7 +406,7 @@ export const LIFECYCLE_CHAPTERS: {
     key: "build",
     title: "We build",
     blurb:
-      "Apps, SaaS, and websites, with the brand around them. Product and identity ship together, from scoped idea to the thing itself.",
+      "Apps, SaaS, websites, and the systems that run behind them, with the brand around them. The product and its identity ship together.",
     belief:
       "A product only exists once someone can use it. Everything before that is a document.",
     tint: "amber",
@@ -416,7 +416,7 @@ export const LIFECYCLE_CHAPTERS: {
     key: "grow",
     title: "We grow it",
     blurb:
-      "Marketing, analytics, and automation. Being found, and running without you.",
+      "Marketing, analytics, and automation that grow the product and the business behind it. Getting found, and running without you.",
     belief:
       "Shipping is not the finish line. What you measure next decides whether any of it mattered.",
     tint: "ink",

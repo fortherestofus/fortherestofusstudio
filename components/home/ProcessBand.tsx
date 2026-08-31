@@ -60,7 +60,7 @@ const STAGES: Stage[] = [
     step: "01",
     title: "Identify",
     blurb:
-      "The problem, who it costs, and what winning looks like. No proposal until that is clear.",
+      "The problem, who it affects, and what success would look like. No proposal until that is clear.",
     tint: "bg-tint-amber",
     ink: "text-tint-amber-deep",
     line: "bg-tint-amber-deep",
@@ -241,9 +241,13 @@ export default function ProcessBand() {
                 </motion.ul>
               </AnimatePresence>
             </div>
+            {/* Kept, but cut to the shortest honest form. The faces in this
+                exchange are generated personas, and AGENTS permits them only
+                because the page says the conversation is an illustration.
+                Without the label, invented dialogue beside invented faces
+                reads as a real client. */}
             <p className="mt-3 text-[0.75rem] text-faint">
-              An illustration of how a project runs, not a real conversation.
-              Real client words are further down the page.
+              An illustration, not a real conversation.
             </p>
           </div>
 

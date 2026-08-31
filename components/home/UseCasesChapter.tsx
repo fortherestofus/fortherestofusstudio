@@ -83,7 +83,7 @@ export default function UseCasesChapter() {
           chapter={4}
           eyebrow="Our own products"
           title="Built by us. For us, and for everyone else."
-          subtitle="We went looking for ordinary problems, the kind nobody writes a brief for. Four products of our own came out of that. Each one was identified, built, and is now growing: the same process we run for clients, tested on ourselves first."
+          subtitle="We build our own products the same way we build yours. Each one started as an everyday problem: hours disappearing into the scroll, no idea what to cook tonight, writing you cannot tell a person wrote. We identified it, built it, and now we grow it. Same three steps, tested on ourselves first."
         />
       </div>
 
@@ -240,8 +240,8 @@ export default function UseCasesChapter() {
       {/* The turn back to the reader */}
       <div className="mx-auto flex w-full max-w-content flex-col items-center gap-6 px-5 pb-12 text-center sm:px-8 sm:pb-16">
         <p className="max-w-[52ch] text-pretty text-lg leading-relaxed text-ink">
-          Your business has a problem like one of these. We can build yours
-          the same way.
+          Your business has a problem like one of these. We solve it the
+          same way.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-3">
           <PillButton href="/contact/">Start a project</PillButton>

@@ -22,14 +22,14 @@ export default function Hero() {
             </EyebrowChip>
 
             <h1 className="mt-7 text-balance text-[2.5rem] font-medium leading-[1.03] tracking-[-0.035em] sm:text-[3.5rem] lg:text-[4rem]">
-              <span className="block text-ink">Products that solve</span>
-              <span className="block text-ink">real problems.</span>
+              <span className="text-ink">Products and services that solve</span>{" "}
+              <span className="text-muted">real problems.</span>
             </h1>
 
             <p className="mt-7 max-w-[46ch] text-pretty leading-relaxed text-muted sm:text-lg">
-              We identify the problem worth solving, build the product, and
-              grow it. Apps, SaaS, websites, brand, data-driven marketing, and
-              automation, from one team.
+              We identify the problem, build the solution, and grow the
+              business around it. Apps, SaaS, websites, systems, brand,
+              data-driven marketing, and automation, from one team.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center gap-3">

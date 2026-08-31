@@ -8,7 +8,7 @@
  */
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import Section, { SectionHeading } from "@/components/ui/Section";
 import ChapterMark from "@/components/ui/ChapterMark";
 import PillButton from "@/components/ui/PillButton";
@@ -102,15 +102,35 @@ function BuildArtefact() {
 
 /**
  * Identify has no artefact to photograph — it is a conversation, and the
- * house rule is real screenshots or nothing. So its card closes on the
- * question the phase actually asks, set large on the ember.
+ * house rule is real screenshots or nothing. So the card carries what the
+ * phase actually hands over, which is also the more useful answer to "what
+ * do I get". Centred in the slot rather than pinned to the bottom: the ember
+ * card is shorter than the build card beside it, and bottom-pinning left a
+ * band of dead colour through the middle.
  */
+const IDENTIFY_OUTPUTS = [
+  "A written problem statement",
+  "Scope, time, and cost",
+  "An honest recommendation, including do not build this",
+];
+
 function IdentifyArtefact() {
   return (
-    <div className="flex h-full items-end px-6 pb-7 sm:px-7">
-      <p className="text-balance text-[1.375rem] font-medium leading-snug tracking-[-0.015em] text-accent-ink opacity-90 sm:text-[1.5rem]">
-        “What is actually broken, and is it worth building for?”
+    <div className="flex h-full flex-col justify-center gap-3 px-6 pb-7 sm:px-7">
+      <p className="text-[0.6875rem] font-medium uppercase tracking-[0.12em] text-accent-ink opacity-70">
+        What you get
       </p>
+      <ul className="flex flex-col gap-2">
+        {IDENTIFY_OUTPUTS.map((item) => (
+          <li
+            key={item}
+            className="flex gap-2.5 text-[0.9375rem] leading-snug text-accent-ink opacity-90"
+          >
+            <Check className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -153,7 +173,7 @@ export default function ServicesChapter() {
         chapter={2}
         eyebrow="Services & consulting"
         title="The same process, run for you."
-        subtitle="Custom products, brand, data-driven marketing, and automation, from the same hands that ship our own. Each one opens to how it works and what it did for a real client."
+        subtitle="Custom products and systems, brand, data-driven marketing, and automation, from the same hands that ship our own."
       />
 
       <div className="mt-12 grid gap-4 sm:grid-cols-2 sm:gap-5">
@@ -233,11 +253,20 @@ export default function ServicesChapter() {
 
               {/* Real work, bleeding off the block's bottom edge. The
                   rotator sizes itself by width, so it opts out of the
-                  fixed height the stacked rows need. */}
+                  fixed height the stacked rows need.
+
+                  Identify grows into the slot instead of taking a fixed
+                  height: it is the shorter card, and grid stretches it to
+                  match the build card beside it. With a fixed height that
+                  surplus collects in the mt-auto gap and reads as a band of
+                  dead colour through the middle of the ember. */}
               <div
                 className={cn(
-                  "mt-auto",
-                  chapter.key === "grow" ? "" : "h-[200px] sm:h-[230px]"
+                  chapter.key === "identify"
+                    ? "flex-1"
+                    : chapter.key === "grow"
+                      ? "mt-auto"
+                      : "mt-auto h-[200px] sm:h-[230px]"
                 )}
               >
                 {ARTEFACTS[chapter.key]}
@@ -254,8 +283,8 @@ export default function ServicesChapter() {
             Not sure which you need?
           </h3>
           <p className="mt-1.5 max-w-[52ch] text-[0.9375rem] leading-relaxed text-muted">
-            Most projects are a mix. Send the problem and we will come back
-            with scope, time, and cost.
+            Most need more than one. Tell us the problem and we will work
+            out what it takes.
           </p>
         </div>
         <PillButton href="/contact/">Start a project</PillButton>

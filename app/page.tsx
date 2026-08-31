@@ -25,7 +25,7 @@ export default function Home() {
       <TrustBand />
       <CallToAction
         title="Bring us a real problem."
-        body="One email gets you a straight answer on what it takes. If we are not the right people for it, we will say so."
+        body="Send one email about what you need. We will reply with what it would take, how long, and what it costs."
         secondaryLabel="See the apps"
         secondaryHref="/apps/"
         scatter
