@@ -54,7 +54,7 @@ export default function TapaDeleteAccountPage() {
               tab, tap the <strong className="text-ink">gear</strong> in the
               top corner, then{" "}
               <strong className="text-ink">Delete account</strong> at the bottom
-              of Settings. You'll be asked to confirm once, and then it's done.
+              of Settings. You&rsquo;ll be asked to confirm once, and then it&rsquo;s done.
             </>,
           ],
         },
@@ -69,7 +69,7 @@ export default function TapaDeleteAccountPage() {
               </a>{" "}
               from the address on your tapa. account, with{" "}
               <strong className="text-ink">&ldquo;Delete my tapa account&rdquo;</strong>{" "}
-              as the subject. That's the whole request — you don't need to
+              as the subject. That&rsquo;s the whole request. You don&rsquo;t need to
               explain why.
             </>,
             "We reply to confirm it's done, usually within 24 hours and always within 30 days. If you write from a different address we'll ask you one question to confirm the account is yours, because otherwise anyone could delete anyone's recipes.",
@@ -118,8 +118,8 @@ export default function TapaDeleteAccountPage() {
             <>
               <strong className="text-ink">Purchase records.</strong> Apple,
               Google, and our billing provider keep a record of transactions
-              they processed, under their own terms and the tax rules they're
-              held to. We can't erase those, and neither can they on request.
+              they processed, under their own terms and the tax rules they&rsquo;re
+              held to. We can&rsquo;t erase those, and neither can they on request.
             </>,
             <>
               <strong className="text-ink">Backups.</strong> Our database is
@@ -135,7 +135,7 @@ export default function TapaDeleteAccountPage() {
           heading: "Questions before you decide",
           body: [
             <>
-              If you're deleting because something isn't working, it may be
+              If you&rsquo;re deleting because something isn&rsquo;t working, it may be
               worth reading the{" "}
               <Link className="text-accent-deep underline" href="/apps/tapa/support/">
                 support page
@@ -145,7 +145,7 @@ export default function TapaDeleteAccountPage() {
               answer.
             </>,
             <>
-              What we collect while you're using tapa. is set out in the{" "}
+              What we collect while you&rsquo;re using tapa. is set out in the{" "}
               <Link className="text-accent-deep underline" href="/apps/tapa/privacy/">
                 privacy policy
               </Link>

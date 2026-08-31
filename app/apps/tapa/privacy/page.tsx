@@ -132,7 +132,7 @@ export default function TapaPrivacyPage() {
               your device.
             </>,
             <>
-              Uninstalled the app, or can't sign in? You can still ask us to
+              Uninstalled the app, or can&rsquo;t sign in? You can still ask us to
               delete it. What goes, what stays, and how to request it are set
               out at{" "}
               <a
