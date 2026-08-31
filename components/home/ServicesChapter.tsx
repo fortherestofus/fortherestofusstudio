@@ -143,16 +143,23 @@ function IdentifyArtefact() {
 function GrowArtefact() {
   const piece = marketingWork[0];
   return (
-    <div className="grid gap-5 px-5 pt-5 md:grid-cols-2">
-      <div className="relative h-[230px] overflow-hidden rounded-t-[10px] border border-b-0 border-ink-border">
-        <Image
-          src={piece.src}
-          alt={piece.alt}
-          fill
-          sizes="(max-width: 768px) 92vw, 420px"
-          className="object-cover object-top"
-        />
-        <KpiRotator />
+    <div className="grid items-end gap-5 px-5 pt-5 md:grid-cols-2">
+      {/* Both halves are drawn to bleed off the card's bottom edge (rounded
+          top, no bottom border), so they have to sit on it. The rotator
+          sizes itself by width and bottom-aligns already; this one is a
+          fixed height, so without the wrapper it pinned to the top of a
+          taller row and left its bottom edge floating mid-card. */}
+      <div className="flex flex-col justify-end">
+        <div className="relative h-[230px] overflow-hidden rounded-t-[10px] border border-b-0 border-ink-border">
+          <Image
+            src={piece.src}
+            alt={piece.alt}
+            fill
+            sizes="(max-width: 768px) 92vw, 420px"
+            className="object-cover object-top"
+          />
+          <KpiRotator />
+        </div>
       </div>
       <ArtefactRotator pieces={automationWork} onInk className="px-0 pt-0" />
     </div>

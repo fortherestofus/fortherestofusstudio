@@ -16,7 +16,14 @@ import { caseProofs } from "@/lib/proof";
 const EASE = [0.22, 1, 0.36, 1] as const;
 const HOLD_MS = 2600;
 
-/** Which proof stats to surface, in order, each with its own colour. */
+/**
+ * Which proof stats to surface, in order, each with its own colour.
+ *
+ * Leads with lead *quality* rather than lead count: "742 leads" is a number
+ * whose meaning depends entirely on the client's size and spend, neither of
+ * which we publish, so it lands as trivia. "91% arriving on a work email" is
+ * the same programme measured the way a business would judge it.
+ */
 const PICKS: {
   proof: string;
   stat: number;
@@ -25,8 +32,8 @@ const PICKS: {
   sub: string;
 }[] = [
   {
-    proof: "thrifty-adventures",
-    stat: 0,
+    proof: "innovatr",
+    stat: 3,
     bg: "var(--color-ink-surface)",
     fg: "var(--color-ink-text)",
     sub: "var(--color-ink-text-muted)",
