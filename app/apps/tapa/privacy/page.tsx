@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "How tapa. handles your data. Your account and preferences are yours; ingredients you share are used only to generate your recipes.",
 };
 
-const LAST_UPDATED = "8 July 2026";
+const LAST_UPDATED = "1 September 2026";
 const CONTACT = LEGAL_EMAIL;
 
 export default function TapaPrivacyPage() {
@@ -44,8 +44,18 @@ export default function TapaPrivacyPage() {
           ],
           bullets: [
             "Your email address, used to sign you in and secure your account.",
+            <>
+              How you chose to sign in. If you use{" "}
+              <strong className="text-ink">Sign in with Apple</strong> or{" "}
+              <strong className="text-ink">Sign in with Google</strong>, we
+              receive your email address and, from Apple on your very first
+              sign-in only, your name. Nothing else is shared with us, and we
+              never see your Apple or Google password. If you use Apple&rsquo;s
+              Hide My Email, the relay address is all we ever hold.
+            </>,
             "An optional display name and profile picture, if you choose to add them, used to personalise the app.",
             "Your preferences: measurement system, default servings, cooking skill, dietary needs, and app settings such as theme.",
+            "Your activity in the app: recipes you save, the ratings and hearts you give them, and how many times you've marked a recipe as cooked.",
           ],
         },
         {
@@ -54,8 +64,14 @@ export default function TapaPrivacyPage() {
             "The heart of tapa. is turning what you have into something to cook. When you ask for a recipe, we send the ingredients and preferences you provide to our AI to generate it:",
           ],
           bullets: [
-            "Ingredients you add by typing or speaking them in.",
-            "Photos of your ingredients, if you use the camera feature (available on Pro). The image is sent to be read for the ingredients in it, then used to generate a recipe.",
+            <>
+              Ingredients you type in. If you dictate them instead, that is your
+              keyboard&rsquo;s own microphone button doing the work —{" "}
+              <strong className="text-ink">tapa. never records audio</strong>{" "}
+              and asks for no microphone permission at all.
+            </>,
+            "Photos of your ingredients, if you use the camera feature (available on Pro). The image is sent to be read for the ingredients in it, then used to generate a recipe. We don't keep the photo afterwards.",
+            "A photo from your photo library, only if you pick one as your profile picture.",
             "Your dietary needs, servings, cooking skill, and similar preferences, so the recipe fits how you actually cook.",
             "Recipes you save are stored on your account and on your device so you can open them again, including offline.",
           ],
@@ -71,6 +87,26 @@ export default function TapaPrivacyPage() {
               use data sent through its API to train its models. We don&rsquo;t
               send your name, email, or account identifiers to the AI along with
               your ingredients.
+            </>,
+          ],
+        },
+        {
+          heading: "Recipe history and personalisation",
+          body: [
+            "So the app can show you what you generated recently, and so Pro recipes can learn what you like, we keep a record of each recipe request on your account:",
+          ],
+          bullets: [
+            "The ingredients you asked with, any follow-up answers you gave, and the recipe that came back.",
+            "If you tapped \u201cTry another\u201d, the dish you turned down \u2014 so we don't serve you the same thing again.",
+            <>
+              On Pro, this history is what makes recipes lean toward food you
+              rate highly and away from food you rejected. It is yours alone; it
+              never shapes anyone else&rsquo;s recipes and is never used to
+              train an AI model. You can switch it off at any time under{" "}
+              <strong className="text-ink">
+                Profile → Personalisation → Personalised recipes
+              </strong>
+              , and the app stops reading your history immediately.
             </>,
           ],
         },
@@ -107,8 +143,9 @@ export default function TapaPrivacyPage() {
               subscription status.
             </>,
             <>
-              <strong className="text-ink">Apple &amp; Google</strong>: process
-              payments and distribute the app through their stores.
+              <strong className="text-ink">Apple &amp; Google</strong>: verify
+              your identity if you use Sign in with Apple or Google, process
+              payments, and distribute the app through their stores.
             </>,
           ],
         },
@@ -116,7 +153,7 @@ export default function TapaPrivacyPage() {
           heading: "What we never do",
           bullets: [
             "We never sell or rent your data to anyone.",
-            "We don't show ads or use advertising trackers.",
+            "We don't show ads, and the app contains no advertising or analytics trackers of any kind.",
             "We don't use your saved recipes or ingredients for anything other than running the app for you.",
           ],
         },
