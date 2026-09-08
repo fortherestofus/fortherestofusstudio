@@ -391,6 +391,7 @@ export const apps: App[] = [
     stores: { ios: "https://apps.apple.com/app/inspiritintruth-devotional/id6795657774", android: null },
     ctaLabel: "Download on the App Store",
     ctaHref: "https://apps.apple.com/app/inspiritintruth-devotional/id6795657774",
+    ctaExternal: true,
     seo: {
       title: "InSpiritInTruth · Take your faith into your own hands",
       description:
