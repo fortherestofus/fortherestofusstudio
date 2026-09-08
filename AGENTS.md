@@ -129,7 +129,12 @@ InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
   business, real customers) / `exploration` (no customers); every surface
   labels which it is.
 - **Keep the docs current** — update this file and `docs/REDESIGN.md` after
-  meaningful changes.
+  meaningful changes. `docs/brand-guidelines.html` is the studio's brand
+  document (the same format as tapa's, ISIT's, CaughtSlipping's and Hakkan's):
+  wordmark, tokens, type, voice, kit, imagery, measured contrast. It mirrors
+  the code rather than leading it, so when a token, copy rule or kit decision
+  changes here, change it there in the same commit. Open it from inside the
+  repo: the fonts and the wordmark load by relative path.
 - **Commit + push after a coherent change** once gates are green. Repo:
   `github.com/fortherestofus/fortherestofusstudio`.
 - **Pushing to `main` deploys the live site.** `fortherestofus.app` is a

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For The Rest Of Us — Brand Guidelines</title>
+<!-- ============================================================
+     For The Rest Of Us · Brand Guidelines
+     Compiled from AGENTS.md (the ways-of-working and design-system
+     sections), app/globals.css + tailwind.config.ts (token source of
+     truth), components/ui/* (the kit), lib/*.ts (copy registries) and
+     docs/REDESIGN-V3.md (the narrative spec). Every hex here mirrors
+     the code; every contrast figure was computed with the WCAG
+     relative-luminance formula against those hexes on 2026-09-08.
+     Fonts and the wordmark load from ../fonts and ../public — open
+     this file from inside the repo.
+     ============================================================ -->
+<style>
+  @font-face {
+    font-family: 'Apfel Grotezk';
+    src: url('../fonts/ApfelGrotezk-Regular.woff2') format('woff2');
+    font-weight: 400; font-style: normal;
+  }
+  @font-face {
+    font-family: 'Apfel Grotezk';
+    src: url('../fonts/ApfelGrotezk-Mittel.woff2') format('woff2');
+    font-weight: 500; font-style: normal;
+  }
+  @font-face {
+    font-family: 'Apfel Grotezk';
+    src: url('../fonts/ApfelGrotezk-Fett.woff2') format('woff2');
+    font-weight: 700; font-style: normal;
+  }
+
+  /* ── Tokens (mirrors app/globals.css) ────────────────────── */
+  :root {
+    --bg: #ffffff;
+    --surface: #ffffff;
+    --sunken: #f4f4f1;
+    --ink: #17150f;
+    --muted: #6f6a5e;
+    --faint: #a5a197;
+    --border: #e7e5de;
+
+    --accent: #c4552f;
+    --accent-soft: #f4e7de;
+    --accent-ink: #ffffff;
+    --accent-deep: #a8431f;
+
+    --ink-surface: #141310;
+    --ink-raised: #211e18;
+    --ink-text: #f4f2ec;
+    --ink-muted: #a49f92;
+    --ink-border: rgba(244, 242, 236, 0.12);
+
+    --tint-amber: #f8dca2; --tint-amber-deep: #7a5800;
+    --tint-olive: #cdd7a9; --tint-olive-deep: #42530e;
+    --tint-rust:  #e8b3a3; --tint-rust-deep:  #8f3517;
+    --tint-lime:  #edf9af; --tint-lime-deep:  #3a4409;
+
+    /* The wordmark's own two colours. Not site tokens: they live in the
+       mark, the OG image and the app icon, nowhere else. */
+    --mark-forest: #123524;
+    --mark-cream: #faf3e8;
+
+    --shadow-card: 0 1px 2px rgba(22,21,15,0.04), 0 6px 20px rgba(22,21,15,0.06);
+    --shadow-pill: 0 1px 2px rgba(22,21,15,0.10), 0 8px 20px rgba(22,21,15,0.14);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141310;
+      --surface: #1d1b16;
+      --sunken: #0f0e0c;
+      --ink: #f4f2ec;
+      --muted: #a49f92;
+      --faint: #6f6a5e;
+      --border: rgba(244, 242, 236, 0.1);
+
+      --accent: #e07a52;
+      --accent-soft: rgba(224, 122, 82, 0.16);
+      --accent-ink: #141310;
+      --accent-deep: #ef906a;
+
+      --ink-surface: #0b0a08;
+      --ink-raised: #191712;
+
+      --tint-amber: #47391b; --tint-amber-deep: #f4c96e;
+      --tint-olive: #34371f; --tint-olive-deep: #b1c27a;
+      --tint-rust:  #40271c; --tint-rust-deep:  #db8a70;
+      --tint-lime:  #424621; --tint-lime-deep:  #e4f683;
+
+      --shadow-card: none;
+      --shadow-pill: none;
+    }
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Apfel Grotezk', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  /* Apfel Grotezk has no italics — never synthesise them. */
+  i, em { font-style: normal; font-weight: 500; }
+  ::selection { background: var(--accent); color: var(--accent-ink); }
+  a { color: inherit; }
+
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Hero — the ink block, the site's one dark moment ─────── */
+  header.hero {
+    background: var(--ink-surface);
+    color: var(--ink-text);
+    padding: 92px 0 84px;
+    position: relative;
+    overflow: hidden;
+  }
+  header.hero::after {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none; opacity: 0.055;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.78' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+  }
+  header.hero .wrap { position: relative; z-index: 1; }
+  header.hero .eyebrow-h {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--ink-muted);
+  }
+  header.hero .eyebrow-h::before {
+    content: ''; width: 20px; height: 3px; border-radius: 999px; background: var(--ink-muted);
+  }
+  header.hero img.mark { display: block; height: 44px; width: auto; margin: 28px 0 26px; }
+  header.hero h1 {
+    font-weight: 500;
+    font-size: clamp(40px, 6.5vw, 64px);
+    line-height: 1.03;
+    letter-spacing: -0.035em;
+    max-width: 14ch;
+  }
+  header.hero h1 span { color: var(--ink-muted); }
+  header.hero p.lede {
+    margin-top: 26px;
+    font-size: 19px; line-height: 1.6;
+    color: var(--ink-muted);
+    max-width: 600px;
+  }
+
+  /* ── Section chrome ─────────────────────────────────────── */
+  section { padding: 72px 0 8px; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .eyebrow .num {
+    font-variant-numeric: tabular-nums; letter-spacing: 0.08em;
+    color: var(--faint); text-transform: none;
+  }
+  .eyebrow .tick { width: 20px; height: 3px; border-radius: 999px; background: var(--accent); }
+  h2 {
+    font-weight: 500;
+    font-size: clamp(32px, 4vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin: 20px 0 24px;
+    text-wrap: balance;
+  }
+  h3 { font-weight: 500; font-size: 20px; letter-spacing: -0.01em; margin: 36px 0 10px; }
+  p.intro { font-size: 17px; color: var(--muted); max-width: 680px; margin-bottom: 36px; line-height: 1.6; }
+  p { color: var(--muted); }
+  p strong, li strong { color: var(--ink); font-weight: 500; }
+  section p + p { margin-top: 12px; }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow-card);
+    padding: 24px;
+  }
+  .well {
+    background: var(--sunken);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    padding: 16px;
+  }
+  .grid { display: grid; gap: 16px; }
+  .grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+  .grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .grid.cols-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .grid.pair { grid-template-columns: repeat(2, 1fr); }
+  @media (max-width: 640px) { .grid.pair { grid-template-columns: 1fr; } }
+
+  /* ── Wordmark specimens ─────────────────────────────────── */
+  .markbox {
+    border-radius: 16px; border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    min-height: 150px; padding: 32px;
+  }
+  .markbox img { height: 26px; width: auto; }
+  .markbox.on-white { background: #ffffff; }
+  .markbox.on-forest { background: var(--mark-forest); border-color: transparent; }
+  .markbox.on-ink { background: var(--ink-surface); border-color: transparent; }
+  .markbox.on-sunken { background: #f4f4f1; }
+  .mark-caption { margin-top: 10px; font-size: 13.5px; color: var(--muted); }
+  .mark-caption strong { color: var(--ink); font-weight: 500; }
+
+  /* ── Swatches ───────────────────────────────────────────── */
+  .swatch { overflow: hidden; padding: 0; }
+  .swatch .chips { display: flex; height: 92px; }
+  .swatch .chip { flex: 1; display: flex; align-items: flex-end; padding: 10px 12px; }
+  .swatch .chip span {
+    font-size: 11px; letter-spacing: 0.06em; font-weight: 500;
+    text-transform: uppercase; opacity: 0.85;
+  }
+  .swatch .meta { padding: 14px 16px 16px; }
+  .swatch .meta .name { font-weight: 500; font-size: 15px; color: var(--ink); }
+  .swatch .meta .vals {
+    margin-top: 4px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12.5px; color: var(--faint);
+  }
+  .swatch .meta .role { margin-top: 6px; font-size: 13.5px; color: var(--muted); }
+
+  /* Tint cards — the one place colour is allowed as a block */
+  .tintcard {
+    border-radius: 16px; padding: 22px 22px 20px; min-height: 150px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .tintcard .n { font-size: 13px; letter-spacing: 0.08em; font-variant-numeric: tabular-nums; opacity: 0.7; }
+  .tintcard .t { font-weight: 500; font-size: 20px; letter-spacing: -0.015em; line-height: 1.15; margin-top: 28px; }
+  .tintcard .v { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; margin-top: 8px; opacity: 0.8; }
+  .tintcard.amber { background: var(--tint-amber); color: var(--tint-amber-deep); }
+  .tintcard.olive { background: var(--tint-olive); color: var(--tint-olive-deep); }
+  .tintcard.rust  { background: var(--tint-rust);  color: var(--tint-rust-deep); }
+  .tintcard.lime  { background: var(--tint-lime);  color: var(--tint-lime-deep); }
+  .tintcard.inkc  { background: var(--ink-surface); color: var(--ink-text); }
+
+  /* ── Type specimens ─────────────────────────────────────── */
+  .specimen { padding: 28px; }
+  .specimen .label {
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--faint); font-weight: 500; margin-bottom: 14px;
+  }
+  .spec-display { font-weight: 500; font-size: 40px; line-height: 1.04; letter-spacing: -0.035em; text-wrap: balance; }
+  .spec-display span { color: var(--muted); }
+  .spec-body { font-weight: 400; font-size: 17px; margin-top: 12px; color: var(--muted); }
+  .alphabet { margin-top: 16px; font-size: 15px; color: var(--faint); word-break: break-all; line-height: 1.8; }
+
+  /* ── Tables ─────────────────────────────────────────────── */
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  th {
+    text-align: left; font-weight: 500; font-size: 12.5px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--faint); padding: 10px 14px;
+    border-bottom: 1px solid var(--border); white-space: nowrap;
+  }
+  td {
+    padding: 12px 14px; border-bottom: 1px solid var(--border);
+    color: var(--muted); vertical-align: top;
+  }
+  td:first-child { color: var(--ink); font-weight: 500; white-space: nowrap; }
+  tr:last-child td { border-bottom: none; }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.9em; background: var(--sunken);
+    border-radius: 6px; padding: 1.5px 6px; color: var(--ink);
+  }
+
+  /* ── Do / Don't ─────────────────────────────────────────── */
+  .dd { padding: 22px 24px; }
+  .dd.do { border-left: 4px solid var(--ink); }
+  .dd.dont { border-left: 4px solid var(--accent); }
+  .dd .tag {
+    display: inline-block; font-size: 12px; font-weight: 500;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    border-radius: 999px; padding: 4px 12px; margin-bottom: 14px;
+  }
+  .dd.do .tag { background: var(--ink); color: var(--bg); }
+  .dd.dont .tag { background: var(--accent-soft); color: var(--accent-deep); }
+  .dd ul { list-style: none; }
+  .dd li {
+    padding-left: 22px; position: relative; margin-bottom: 10px;
+    font-size: 14.5px; color: var(--muted);
+  }
+  .dd.do li::before { content: '✓'; position: absolute; left: 0; color: var(--ink); font-weight: 500; }
+  .dd.dont li::before { content: '✕'; position: absolute; left: 0; color: var(--accent-deep); }
+
+  .note {
+    background: var(--accent-soft);
+    border: 1px solid var(--accent);
+    border-radius: 0 14px 14px 0;
+    border-left-width: 4px;
+    padding: 16px 20px; margin: 22px 0;
+    font-size: 14.5px; color: var(--muted);
+  }
+  .note strong { color: var(--accent-deep); }
+
+  .pillrow { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .pill {
+    border: 1px solid var(--border); background: var(--surface);
+    border-radius: 999px; padding: 6px 14px;
+    font-size: 13.5px; color: var(--muted);
+  }
+
+  /* ── Kit demos ──────────────────────────────────────────── */
+  .btnrow { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 8px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    border-radius: 12px; font-weight: 500; font-size: 15px;
+    padding: 8px 8px 8px 20px; text-decoration: none; cursor: default;
+  }
+  .btn .chip { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 8px; font-size: 14px; }
+  .btn.ink { background: var(--ink); color: var(--bg); }
+  .btn.ink .chip { background: var(--bg); color: var(--ink); }
+  .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--border); padding: 10px 20px; }
+  .btn.onink { background: var(--ink-text); color: var(--ink-surface); }
+  .btn.onink .chip { background: var(--ink-surface); color: var(--ink-text); }
+  .onink-bg { background: var(--ink-surface); border-radius: 16px; padding: 24px; display: inline-block; }
+
+  .eyebrow-demo { display: flex; flex-direction: column; gap: 22px; }
+  .eyebrow-demo .stack .ey { display: inline-flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .eyebrow-demo .stack .ey .n { color: var(--faint); font-variant-numeric: tabular-nums; letter-spacing: 0.08em; }
+  .eyebrow-demo .stack .ey .tick { width: 20px; height: 3px; border-radius: 999px; background: var(--accent); }
+  .eyebrow-demo .stack .hl { margin-top: 20px; font-size: 30px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.08; color: var(--ink); }
+  .eyebrow-demo .stack .sub { margin-top: 24px; font-size: 16px; color: var(--muted); max-width: 46ch; }
+
+  .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
+  .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+  .badge.live { color: #2f6b47; } .badge.beta { color: #2c5d8a; } .badge.dev { color: #8a6400; }
+  @media (prefers-color-scheme: dark) {
+    .badge.live { color: #7fc79c; } .badge.beta { color: #8fbde8; } .badge.dev { color: #e8bd77; }
+  }
+
+  .apptile { display: flex; align-items: center; gap: 14px; }
+  .apptile .tile { width: 48px; height: 48px; border-radius: 12px; flex: none; }
+  .apptile .name { font-weight: 500; color: var(--ink); }
+  .apptile .prob { font-size: 13.5px; color: var(--muted); margin-top: 2px; }
+
+  footer {
+    margin-top: 88px; border-top: 1px solid var(--border);
+    padding: 36px 0 56px; font-size: 13.5px; color: var(--faint);
+  }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: space-between; }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow-h">Brand guidelines · September 2026</div>
+    <img class="mark" src="../public/icons/logo-dark.png" alt="\fortherestofus wordmark">
+    <h1>Products and services that solve <span>real problems.</span></h1>
+    <p class="lede">For The Rest Of Us is a solutions and product development consultancy in Johannesburg. It builds (its own apps, and custom apps, SaaS and websites for clients) and it consults (product and growth direction, brand and content, business tech and automation). One story about both: identify the problem, build what solves it, grow the business around it.</p>
+  </div>
+</header>
+
+<!-- ══════════════════ FOUNDATIONS ══════════════════ -->
+<section id="foundations">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">01</span><span class="tick"></span>Foundations</div>
+    <h2>A studio with a why, told as one story</h2>
+    <p class="intro">The site is not a stack of sections. It is five numbered chapters between a promise and a single ask: why, use cases, services, process, proof. Every claim sits next to its evidence. Nothing on it is invented.</p>
+
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin-top:0">The name</h3>
+        <p><strong>For The Rest Of Us</strong> in prose, title case, four words. The wordmark is one lowercase word with a leading backslash: <strong>\fortherestofus</strong>. "FTROU" is internal shorthand only and never appears on a public surface. The studio is the <em>studio of Alroy Ndhlovu</em>; the footer says so, and the booker on <code>/contact</code> shows his name.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Two arms, one story</h3>
+        <p>The studio <strong>builds</strong> (CaughtSlipping, InSpiritInTruth, tapa., Hakkan, plus client apps, SaaS and websites) and it <strong>consults</strong> (product and growth direction, brand and content, business tech and automation). The consulting arm is called services or consulting. It is <strong>never called "advice"</strong>.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">The three beliefs</h3>
+        <p><strong>Most products fail because nobody needed them.</strong> <strong>The product and its brand are one build.</strong> <strong>A product nobody finds solves nothing.</strong> These are the why chapter on the home page and also the service architecture: identify, build, grow.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Apps are use cases, never portfolio</h3>
+        <p>Every app surface leads with its <code>problem</code> line from <code>lib/apps.ts</code>, not a feature list and never "look what we built". The apps are evidence for the thesis; the same thesis is the pitch for building a client's product.</p>
+      </div>
+    </div>
+
+    <h3>One process</h3>
+    <div class="grid cols-3">
+      <div class="tintcard rust"><div class="n">01</div><div><div class="t">We identify</div><div class="v">No services. The phase every project starts in; its column lists what it hands over.</div></div></div>
+      <div class="tintcard amber"><div class="n">02</div><div><div class="t">We build</div><div class="v">Apps &amp; SaaS · Websites · Brand, design &amp; content. Identity is not a step: it ships with the product.</div></div></div>
+      <div class="tintcard inkc"><div class="n">03</div><div><div class="t">We grow it</div><div class="v">Product &amp; growth direction · Business tech &amp; automation. Automation is not a fourth pillar.</div></div></div>
+    </div>
+    <p style="margin-top:14px">Identify takes the full-saturation ember card on both pages that show the process, which puts the first step in front. The five service slugs and URLs never change; the grouping is presentational.</p>
+  </div>
+</section>
+
+<!-- ══════════════════ WORDMARK ══════════════════ -->
+<section id="wordmark">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">02</span><span class="tick"></span>Wordmark</div>
+    <h2>One serif word, one forest green</h2>
+    <p class="intro">The mark is a lowercase serif logotype with a thin backslash in front: the one serif and the one green on a site that is otherwise a single grotesk in ink. That contrast is the point. The mark is a supplied image; it is never retyped, and the site's typeface is never used to imitate it.</p>
+
+    <div class="grid cols-2">
+      <div>
+        <div class="markbox on-white"><img src="../public/icons/logo-light.png" alt="Wordmark, forest on white"></div>
+        <p class="mark-caption"><strong>Forest on light</strong> · <code>logo-light.png</code> · #123524 · navbar</p>
+      </div>
+      <div>
+        <div class="markbox on-ink"><img src="../public/icons/logo-dark.png" alt="Wordmark, cream on ink"></div>
+        <p class="mark-caption"><strong>Cream on ink</strong> · <code>logo-dark.png</code> · #faf3e8 · footer, dark-theme navbar</p>
+      </div>
+      <div>
+        <div class="markbox on-forest"><img src="../public/icons/logo-dark.png" alt="Wordmark, cream on forest"></div>
+        <p class="mark-caption"><strong>Cream on forest</strong> · the OG image and app icon (<code>app/opengraph-image.png</code>, <code>app/icon.png</code>). Forest #123524 exists only here and in the light mark: it is not a site token and never a section colour.</p>
+      </div>
+      <div>
+        <div class="markbox on-sunken"><img src="../public/icons/logo-light.png" alt="Wordmark, forest on sunken"></div>
+        <p class="mark-caption"><strong>On the sunken well</strong> · still forest. There is no ink-black or accent version of the mark and none should be made.</p>
+      </div>
+    </div>
+
+    <h3>Sizes and clear space</h3>
+    <div class="card table-scroll" style="padding:8px 4px">
+      <table>
+        <tr><th>Placement</th><th>Height</th><th>File</th><th>Note</th></tr>
+        <tr><td>Navbar</td><td class="num">22px</td><td><code>logo-light.png</code> / <code>logo-dark.png</code> swapped on <code>.dark</code></td><td>Both files are 750×110 with the transparent padding already cropped. Never re-pad.</td></tr>
+        <tr><td>Footer brand block</td><td class="num">28px</td><td><code>logo-dark.png</code></td><td>The footer is always ink, so the cream mark is the only footer mark.</td></tr>
+        <tr><td>Guidelines hero</td><td class="num">44px</td><td><code>logo-dark.png</code></td><td>The largest the mark appears on any studio surface.</td></tr>
+        <tr><td>OG / social</td><td class="num">1200×630 · 2160²</td><td><code>app/opengraph-image.png</code></td><td>Cream mark centred on forest, generous margin. Per-app OG images are still to do.</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:14px">Clear space: at least the height of the lowercase letters on every side. The mark sits alone in its row; nothing shares its baseline. Two rules: the two supplied colourways are the only ones, and the mark is never stretched, rotated, given a shadow or set on a photograph.</p>
+  </div>
+</section>
+
+<!-- ══════════════════ COLOUR ══════════════════ -->
+<section id="colour">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">03</span><span class="tick"></span>Colour</div>
+    <h2>Monotone, with one sanctioned exception</h2>
+    <p class="intro">White canvas, ink type, ink buttons. Colour enters a page through imagery, through an app's own accent on that app's pages, and through the tint family on the story-chapter cards and stat cards. Everywhere else there is no section-level brand colour and no pastel wash. Tokens live in <code>app/globals.css</code>; Tailwind aliases in <code>tailwind.config.ts</code>. Use tokens, never raw hex.</p>
+
+    <div class="grid cols-3">
+      <div class="card swatch">
+        <div class="chips">
+          <div class="chip" style="background:#ffffff;border-bottom:1px solid #e7e5de"><span style="color:#6f6a5e">Canvas</span></div>
+          <div class="chip" style="background:#f4f4f1;border-bottom:1px solid #e7e5de"><span style="color:#6f6a5e">Sunken</span></div>
+          <div class="chip" style="background:#141310"><span style="color:#a49f92">Dark</span></div>
+        </div>
+        <div class="meta">
+          <div class="name">Canvas and surface</div>
+          <div class="vals">#ffffff · #f4f4f1 · dark #141310 / #1d1b16</div>
+          <div class="role">v3.1 moved from warm cream to plain white: the cream read as dull. Warmth now comes from imagery and the tints, not the ground. Cards are white on white, separated by a hairline #e7e5de and a barely-there shadow.</div>
+        </div>
+      </div>
+      <div class="card swatch">
+        <div class="chips">
+          <div class="chip" style="background:#17150f"><span style="color:#f4f2ec">Ink</span></div>
+          <div class="chip" style="background:#6f6a5e"><span style="color:#ffffff">Muted</span></div>
+          <div class="chip" style="background:#a5a197"><span style="color:#17150f">Faint</span></div>
+        </div>
+        <div class="meta">
+          <div class="name">Type</div>
+          <div class="vals">#17150f · #6f6a5e · #a5a197</div>
+          <div class="role">Ink is a warm near-black, not #000. Muted carries subheads and body on the second line of a headline. Faint is for chapter numerals and decoration only; it does not pass as text.</div>
+        </div>
+      </div>
+      <div class="card swatch">
+        <div class="chips">
+          <div class="chip" style="background:#c4552f"><span style="color:#ffffff">Accent</span></div>
+          <div class="chip" style="background:#a8431f"><span style="color:#ffffff">Deep</span></div>
+          <div class="chip" style="background:#f4e7de;border-bottom:1px solid #e7e5de"><span style="color:#a8431f">Soft</span></div>
+        </div>
+        <div class="meta">
+          <div class="name">Ember accent</div>
+          <div class="vals">#c4552f · #a8431f · #f4e7de</div>
+          <div class="role">Small live moments only: focus rings, hover, status dots, the eyebrow tick, text selection. Never a background, never a section. Accent-coloured <em>text</em> always uses accent-deep.</div>
+        </div>
+      </div>
+      <div class="card swatch">
+        <div class="chips">
+          <div class="chip" style="background:#141310"><span style="color:#f4f2ec">Surface</span></div>
+          <div class="chip" style="background:#211e18"><span style="color:#f4f2ec">Raised</span></div>
+          <div class="chip" style="background:#f4f2ec;border-bottom:1px solid #e7e5de"><span style="color:#141310">Text</span></div>
+        </div>
+        <div class="meta">
+          <div class="name">Ink surfaces</div>
+          <div class="vals">#141310 · #211e18 · text #f4f2ec · muted #a49f92</div>
+          <div class="role">The closing block and the footer. At most two ink moments per page and never in the same viewport; on most pages that budget is spent on exactly those two.</div>
+        </div>
+      </div>
+      <div class="card swatch">
+        <div class="chips">
+          <div class="chip" style="background:#F0B331"><span style="color:#17150f">CS</span></div>
+          <div class="chip" style="background:#90A842"><span style="color:#17150f">ISIT</span></div>
+          <div class="chip" style="background:#CC5833"><span style="color:#ffffff">tapa.</span></div>
+          <div class="chip" style="background:#D8F34E"><span style="color:#3A4409">Hakkan</span></div>
+        </div>
+        <div class="meta">
+          <div class="name">App accents</div>
+          <div class="vals">#F0B331 · #90A842 · #CC5833 · #D8F34E</div>
+          <div class="role">Each app's own colour, scoped to that app's pages by <code>AppThemeProvider</code>, which swaps the accent slot only. Global surfaces, type and ink buttons never change. Icon tiles use <code>color-mix(accent 15%, white)</code> in both themes.</div>
+        </div>
+      </div>
+      <div class="card swatch">
+        <div class="chips">
+          <div class="chip" style="background:#123524"><span style="color:#faf3e8">Forest</span></div>
+          <div class="chip" style="background:#faf3e8;border-bottom:1px solid #e7e5de"><span style="color:#123524">Cream</span></div>
+        </div>
+        <div class="meta">
+          <div class="name">Mark colours</div>
+          <div class="vals">#123524 · #faf3e8</div>
+          <div class="role">Belong to the wordmark, the OG image and the app icon. Not tokens. A forest section, button or heading would be a new brand colour, and there is not one.</div>
+        </div>
+      </div>
+    </div>
+
+    <h3>The tint family: the exception</h3>
+    <p>Four soft washes derived from the four app accents, so the "pop" is literally the products. Each pairs with a <code>-deep</code> text colour that passes contrast on the wash. Allowed <strong>only</strong> on the story chapter-card grids (use cases, services), the closing scatter, and the stat cards on <code>/contact</code> and <code>/studio</code>. A real, sourced number is the one other thing that has earned a block of colour. Both themes have their own set: dark tints fold the accent into the dark surface and lift the deep text toward white.</p>
+    <div class="grid cols-4" style="margin-top:18px">
+      <div class="tintcard amber"><div class="n">Amber</div><div><div class="t">CaughtSlipping</div><div class="v">#f8dca2 / #7a5800</div></div></div>
+      <div class="tintcard olive"><div class="n">Olive</div><div><div class="t">InSpiritInTruth</div><div class="v">#cdd7a9 / #42530e</div></div></div>
+      <div class="tintcard rust"><div class="n">Rust</div><div><div class="t">tapa.</div><div class="v">#e8b3a3 / #8f3517</div></div></div>
+      <div class="tintcard lime"><div class="n">Lime</div><div><div class="t">Hakkan</div><div class="v">#edf9af / #3a4409</div></div></div>
+    </div>
+
+    <div class="grid cols-2" style="margin-top:28px">
+      <div class="card dd do">
+        <span class="tag">Do</span>
+        <ul>
+          <li>Reach for ink first: the primary button is ink on canvas, and canvas on ink</li>
+          <li>Use <code>accent-deep</code> for any accent-coloured text or icon; raw accent fails on white (4.48:1)</li>
+          <li>Let colour arrive through a real screenshot, a photograph, or an app's accent on its own page</li>
+          <li>Keep tints on chapter cards and stat cards, with their <code>-deep</code> partner for text</li>
+          <li>Use <code>bg-ink-surface</code> for anything that must stay dark in both themes (the phone bezel); <code>ink</code> is the text token and flips to near-white</li>
+        </ul>
+      </div>
+      <div class="card dd dont">
+        <span class="tag">Don't</span>
+        <ul>
+          <li>Fill a section, hero or button with the ember accent, or with forest green</li>
+          <li>Add a pastel wash anywhere outside the sanctioned grids and stat cards</li>
+          <li>Put a borrowed research figure on a tinted stat card: stat cards are for numbers we measured</li>
+          <li>Use faint #a5a197 for anything a reader must read (2.58:1)</li>
+          <li>Type raw hex in a component; every colour goes through a token</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ TYPOGRAPHY ══════════════════ -->
+<section id="type">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">04</span><span class="tick"></span>Typography</div>
+    <h2>One grotesk, three cuts, no italics</h2>
+    <p class="intro">Apfel Grotezk (SIL Open Font License) is the only typeface, self-hosted from <code>fonts/</code> and loaded with <code>next/font/local</code>. No Google-hosted fonts. The family has no italics, so <code>globals.css</code> neutralises <code>&lt;i&gt;</code> and <code>&lt;em&gt;</code>; emphasis is a weight change, never a slant. The serif exists only inside the wordmark image.</p>
+
+    <div class="grid cols-3">
+      <div class="card specimen">
+        <div class="label">Mittel 500 · display and headings</div>
+        <div class="spec-display">Products and services that solve <span>real problems.</span></div>
+        <div class="spec-body">Every headline on the site is Mittel with tight tracking. The second line of a headline steps to muted ink: the same sentence, two weights of attention.</div>
+      </div>
+      <div class="card specimen">
+        <div class="label">Regular 400 · body</div>
+        <div class="spec-display" style="font-size:22px;line-height:1.5;letter-spacing:0;font-weight:400">We identify the problem, build the solution, and grow the business around it. Apps, SaaS, websites, systems, brand, data-driven marketing, and automation, from one team.</div>
+        <div class="spec-body">Body, subtitles, card copy. Relaxed leading, measure capped at 46 to 60 characters.</div>
+        <div class="alphabet">AaBbCcDdEeFfGgHh 0123456789</div>
+      </div>
+      <div class="card specimen">
+        <div class="label">Fett 700 · reserved</div>
+        <div class="spec-display" style="font-weight:700;font-size:30px">12+ years · 1,200+ projects</div>
+        <div class="spec-body">Loaded, rarely used. The site's headline weight is Mittel; Fett is for the odd numeral or emphasis inside a stat, never a whole heading.</div>
+      </div>
+    </div>
+
+    <h3>The type scale</h3>
+    <div class="card table-scroll" style="padding:8px 4px">
+      <table>
+        <tr><th>Role</th><th>Weight</th><th>Setting</th><th>Where</th></tr>
+        <tr><td>Page H1</td><td>500</td><td>2.5rem → 3.5rem → 4rem · leading 1.03 · tracking −0.035em</td><td>Home hero, page heroes. Second clause in muted.</td></tr>
+        <tr><td>Section H2</td><td>500</td><td>2rem → 2.75rem → 3.25rem · leading 1.08 · tracking −0.02em · balanced</td><td><code>SectionHeading</code> on every chapter</td></tr>
+        <tr><td>Band / card H3</td><td>500</td><td>1.25rem to 1.75rem · tracking −0.015 to −0.02em</td><td>Cards, app bands, testimonial leads</td></tr>
+        <tr><td>Lead paragraph</td><td>400</td><td>base → lg · leading relaxed · max-width <code>reading</code> (720px)</td><td>Section subtitles, hero sub</td></tr>
+        <tr><td>Body</td><td>400</td><td>0.9375rem to 1rem · leading relaxed</td><td>Card copy, footer links, nav</td></tr>
+        <tr><td>Eyebrow</td><td>500</td><td>0.8125rem · uppercase · tracking 0.14em · muted, with an accent tick</td><td><code>EyebrowChip</code>, footer column heads</td></tr>
+        <tr><td>Chapter numeral</td><td>400</td><td>0.8125rem · tabular · tracking 0.08em · faint</td><td><code>ChapterMark</code>, inline with the eyebrow</td></tr>
+        <tr><td>Badge</td><td>500</td><td>0.6875rem · uppercase · tracking 0.1em · live dot</td><td>Status (Live / Beta / In Development), platform</td></tr>
+        <tr><td>Stat numeral</td><td>500</td><td>display size · <code>.nums</code> tabular figures</td><td>Stat cards, hero proof line, KPI rotator</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:14px">Sentence case everywhere. Uppercase belongs to the eyebrow, the badge and the footer column heads, and nowhere else. Numbers that sit in a row use tabular figures so they do not jitter when they count up.</p>
+
+    <h3>One label layer above a headline, never three</h3>
+    <div class="card">
+      <div class="eyebrow-demo">
+        <div class="stack">
+          <div class="ey"><span class="n">02</span><span class="tick"></span>Why we build</div>
+          <div class="hl">Most products fail because nobody needed them.</div>
+          <div class="sub">Finding that out early is cheaper than finding out at launch. Every project starts here, before anything gets built.</div>
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:14px">The chapter numeral sits <strong>inline</strong> with the eyebrow, one row. Spacing between the levels is deliberately uneven (label to title 20px, title to sub 24px): equal gaps make a heading stack read as one block. An eyebrow is a <strong>category, not a mood</strong>: it earns its place when it gives the reader a keyword the headline lacks ("Why we build", "Work delivered for", "Case in point"). It is cut when it is conversational filler ("Start here", "Say hello"), which is why <code>CallToAction</code> takes no eyebrow at all, and it never restates its own headline.</p>
+  </div>
+</section>
+
+<!-- ══════════════════ VOICE ══════════════════ -->
+<section id="voice">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">05</span><span class="tick"></span>Voice</div>
+    <h2>Say the problem in the reader's words, then prove it</h2>
+    <p class="intro">Second person, active, short sentences, verb-first buttons, concrete numbers. The site keeps its wit, but rations it. It is honest to the point of saying what did not work, and it never claims a number it did not measure.</p>
+
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin-top:0">The principles</h3>
+        <p><strong>Lead with the symptom, not the service.</strong> Buyers search "why is my website not converting", not "conversion rate optimisation". Name the problem before naming what we sell.</p>
+        <p><strong>Claims never travel without proof.</strong> Every number, quote or client name sits next to the claim it verifies, never more than one scroll away.</p>
+        <p><strong>Only real numbers, only real people.</strong> <code>lib/proof.ts</code> is the sole home for result stats, each with a source note. Testimonials are real quotes from real named people, beside their organisation's logo, never a face we do not hold.</p>
+        <p><strong>Say it once.</strong> A good line has one home on the site. Reuse it on a second surface and it reads as a template.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Copy that anchors the voice</h3>
+        <p>"Products and services that solve real problems." · "You know you're doomscrolling. Nothing calls you out." · "It's 6pm and you're staring into the fridge again." · "AI made content cheap to make. And worthless to read." · "Have an idea worth building?" · "We will reply with what it would take, how long, and what it costs."</p>
+        <p style="margin-top:10px">Buttons are verbs: <em>Start a project · See the apps · Add to Chrome · Book a call.</em> The single business ask ("Start a project") appears once per page, after the proof.</p>
+        <p style="margin-top:10px">The founder note is a signed letter, three honest paragraphs, signed "Alroy". Not a bio card.</p>
+      </div>
+    </div>
+
+    <h3>Hard copy rules</h3>
+    <div class="card table-scroll" style="padding:8px 4px">
+      <table>
+        <tr><th>Rule</th><th>Detail</th></tr>
+        <tr><td>No em dashes</td><td>They were the house punctuation and the most consistent AI tell on the site. A colon when the second half explains the first, a full stop for a new thought, commas for a parenthetical. Source comments may keep them. The one survivor is "IFC — International Finance Corporation", the organisation's own name.</td></tr>
+        <tr><td>Consulting, never advice</td><td>The second arm is "services" or "consulting". "Advice" and "advise" do not appear.</td></tr>
+        <tr><td>Our results and other people's research never share a container</td><td>Borrowed research (McKinsey, Slack, Deloitte, Google, CB Insights) lives inline in prose with the source named in the sentence. Stat cards and <code>StatBand</code> are for numbers we measured. The IDC "20–30% lost to inefficiency" and "$62k average app cost" figures do not survive contact with their sources and are not used.</td></tr>
+        <tr><td>Name clients, never their commercial data</td><td>A client's name and the problem solved are fine. Their pricing, pipeline volumes, media spend or absolute acquisition costs never ship. State those as ratios or outcomes ("~3× better than the category median", "0 → live").</td></tr>
+        <tr><td>"Work delivered for"</td><td>The client rail is always headed this way, never "trusted by" or anything implying endorsement. Names as type, not logos. It sits beside the closing ask, once per page, never in the hero or footer, and ends on "and more".</td></tr>
+        <tr><td>"The tools we work with"</td><td>The tool rail is non-exhaustive and ends on "and more". Add a tool only if someone here has actually run it.</td></tr>
+        <tr><td>The honesty line lives on <code>/contact</code> only</td><td>"Tell us X and we will tell you honestly Y" was on six surfaces and read as a template. Elsewhere the ask says what happens next.</td></tr>
+        <tr><td>One quip per page</td><td>"A tiger, obviously" and the CaughtSlipping verdicts stay. Rule-of-three fragments and "not X but Y" antitheses are thinned, not purged.</td></tr>
+        <tr><td>Status is literal</td><td>Hakkan is private beta and is never described as launched. CaughtSlipping is Live on the Chrome Web Store. Giving copy is voluntary-gift only; a gift never unlocks anything.</td></tr>
+        <tr><td>Trailing slash on every internal href</td><td>The site serves with <code>trailingSlash: true</code>. A missing slash costs a 308 redirect.</td></tr>
+      </table>
+    </div>
+
+    <h3>Banned outright</h3>
+    <div class="pillrow">
+      <span class="pill">unlock</span>
+      <span class="pill">supercharge</span>
+      <span class="pill">seamless</span>
+      <span class="pill">empower</span>
+      <span class="pill">delve</span>
+      <span class="pill">"advice" / "advise" for the consulting arm</span>
+      <span class="pill">"trusted by"</span>
+      <span class="pill">"portfolio" for the apps</span>
+      <span class="pill">"FTROU" on a public surface</span>
+      <span class="pill">any number without a source in <code>lib/proof.ts</code></span>
+      <span class="pill">a rounded-up or "estimated" stat</span>
+      <span class="pill">an invented testimonial, title or company</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════ KIT ══════════════════ -->
+<section id="kit">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">06</span><span class="tick"></span>Shape, space and the kit</div>
+    <h2>Rounded white cards in a sunken well</h2>
+    <p class="intro">Clean, monotone editorial SaaS. Big grotesk headlines, white cards inside a sunken well, ink buttons with a soft-rectangle radius, one dark closing block and a dark footer. Two visual territories share the tokens and must not share a page.</p>
+
+    <h3>Buttons</h3>
+    <p><code>PillButton</code> is the primary call to action. It is a soft rectangle, not a pill: the full pill read as template UI and was squared off at Alroy's direction. The arrow lives in its own inverted chip. Hover lifts it half a pixel and adds the pill shadow. Focus is a two-pixel ink outline, offset.</p>
+    <div class="btnrow">
+      <span class="btn ink">Start a project <span class="chip">→</span></span>
+      <span class="btn ghost">See the apps</span>
+      <span class="onink-bg"><span class="btn onink">Start a project <span class="chip">→</span></span></span>
+    </div>
+    <p style="margin-top:14px">Variants: <strong>ink</strong> (default), <strong>ghost</strong> (hairline, usually without the arrow, the exploratory second action), <strong>onInk</strong> (inverted, inside the closing block), and <strong>accent</strong>, which exists for app pages where the accent slot is the app's own colour.</p>
+
+    <h3>Radii, shadows, rhythm</h3>
+    <div class="card table-scroll" style="padding:8px 4px">
+      <table>
+        <tr><th>Concern</th><th>Rule</th></tr>
+        <tr><td>Radii</td><td><code>card</code> 16px · <code>well</code> 24px · <code>block</code> 32px (the ink closing block) · buttons 12px with an 8px arrow chip · badges typographic, no border · icon tiles 12px at 48, 16px at 64</td></tr>
+        <tr><td>Shadows</td><td><code>card</code> (barely there) · <code>card-hover</code> · <code>pill</code> (under a lifted button) · <code>nav</code> (the scrolled navbar). None of them in dark mode; hairlines do the separating.</td></tr>
+        <tr><td>Grid</td><td>Content max-width 1200px, reading max-width 720px. Gutters <code>px-5</code> on mobile, <code>px-8</code> from sm. Twelve columns on lg.</td></tr>
+        <tr><td>Vertical rhythm</td><td>Section padding is the only thing that spaces sections, and adjacent paddings stack: <code>md</code> (<code>py-12 sm:py-16</code>) is a 128px boundary on desktop. Internal breaks stay visibly smaller: <code>mt-12</code> max inside a section, <code>mt-8</code> after a heading. Measure the real gap before adding space.</td></tr>
+        <tr><td>Ink budget</td><td>At most two dark moments per page, never in the same viewport. The closing <code>CallToAction</code> and the footer spend it.</td></tr>
+        <tr><td>Grain</td><td>The <code>.grain</code> SVG noise overlay (5.5% opacity) sits on ink blocks and placeholder art only.</td></tr>
+        <tr><td>Navbar</td><td>Transparent at rest over the light page top, opaque canvas with a hairline and the nav shadow once scrolled. Never translucent: ink type on a blurred dark section is unreadable.</td></tr>
+        <tr><td>Eyebrow and badge</td><td>Both typographic. The bordered-pill treatments were removed with the rest of the template chrome. A status badge is a live dot plus small caps in a semantic colour that reads on any accent.</td></tr>
+      </table>
+    </div>
+
+    <h3>Two territories</h3>
+    <div class="grid cols-2">
+      <div class="card">
+        <h3 style="margin-top:0">Studio surfaces: cards</h3>
+        <p>Home, <code>/services</code>, <code>/studio</code>, <code>/contact</code>. Numbered chapter cards on a sunken well, tint washes on the story grids, a slim numbered process strip, testimonials beside the claims they verify, one ink block to close.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">App surfaces: editorial</h3>
+        <p><code>/apps</code> and every app page. Full-bleed alternating bands, big type, real screenshots bleeding off the outer edge, a hairline spec strip, the app's own accent washed behind its frame. No card stacks. A phone shot goes in <code>PhoneFrame</code>; a browser shot in a browser frame; the extension popup in a panel.</p>
+      </div>
+    </div>
+    <p style="margin-top:14px">Keeping each language in its own territory is what stops the site reading as two designs. The apps index used to be four cards on a tray and broke this rule; it is now four editorial bands.</p>
+
+    <h3>The four products, as the site names them</h3>
+    <div class="grid pair">
+      <div class="card apptile"><span class="tile" style="background:color-mix(in srgb,#F0B331 15%,#fff)"></span><div><div class="name">CaughtSlipping <span class="badge live" style="margin-left:8px">Live</span></div><div class="prob">You know you're doomscrolling. Nothing calls you out.</div></div></div>
+      <div class="card apptile"><span class="tile" style="background:color-mix(in srgb,#90A842 15%,#fff)"></span><div><div class="name">InSpiritInTruth <span class="badge live" style="margin-left:8px">Live</span></div><div class="prob">Devotionals are written for everyone. Your walk isn't.</div></div></div>
+      <div class="card apptile"><span class="tile" style="background:color-mix(in srgb,#CC5833 15%,#fff)"></span><div><div class="name">tapa. <span class="badge beta" style="margin-left:8px">Beta</span></div><div class="prob">It's 6pm and you're staring into the fridge again.</div></div></div>
+      <div class="card apptile"><span class="tile" style="background:color-mix(in srgb,#D8F34E 15%,#fff)"></span><div><div class="name">Hakkan <span class="badge beta" style="margin-left:8px">Beta</span></div><div class="prob">AI made content cheap to make. And worthless to read.</div></div></div>
+    </div>
+    <p style="margin-top:14px">"tapa." keeps its dot and its lowercase. The other three are one word, camel-cased as their own brands write them. Each has its own guideline document in its own repo; this one governs how they appear on the studio site.</p>
+  </div>
+</section>
+
+<!-- ══════════════════ IMAGERY ══════════════════ -->
+<section id="imagery">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">07</span><span class="tick"></span>Imagery</div>
+    <h2>Real artefacts or nothing</h2>
+    <p class="intro">Every image on the site is something that exists: a screenshot of a shipped product, a photograph of work that was made, a client's own logo beside their own words. Simulated UI, generated faces and stock photography are out. Colour arrives through these images, which is why the ground stays plain.</p>
+
+    <div class="grid cols-2">
+      <div class="card dd do">
+        <span class="tag">Do</span>
+        <ul>
+          <li>Statically import screenshots in <code>lib/apps.ts</code> so a missing file breaks the build and every frame takes the capture's own aspect ratio</li>
+          <li>Frame a capture as the thing it is: phone, browser or panel. Never letterbox, never crop (the detail hero's bottom-only fold crop is the one exception)</li>
+          <li>Film websites: <code>builtSites</code> holds click-to-play walkthroughs, because a still of a website says almost nothing</li>
+          <li>Show an organisation's logo beside its testimonial at 64px, used exactly as supplied</li>
+          <li>Use Hostinger's own dark partner badge in the footer legal strip, as supplied, never recoloured</li>
+          <li>Label provenance: <code>client</code> / <code>venture</code> / <code>exploration</code> on every case, so LumiSkin never sits in a "real clients" grid</li>
+        </ul>
+      </div>
+      <div class="card dd dont">
+        <span class="tag">Don't</span>
+        <ul>
+          <li>Build miniature product UI in HTML/CSS as an illustration: the vignettes were retired for this</li>
+          <li>Generate a face for a named person. The only generated faces are the anonymous role personas in <code>ProcessBand</code>, labelled as an illustration, with no names, numbers or results</li>
+          <li>Draw a notch, buttons or a speaker grille on <code>PhoneFrame</code>: framing is fine, inventing hardware is not</li>
+          <li>Put client logos in a wall or rail. At 44px several read as a black box or three dots; the rail is type</li>
+          <li>Dim, grey or recolour anyone else's mark, including store badges</li>
+          <li>Show a store badge for a store the app is not headed to</li>
+        </ul>
+      </div>
+    </div>
+    <p style="margin-top:18px">Motion is framer-motion only, used sparingly: reveals at 0.35 to 0.5s on the <code>[0.22, 1, 0.36, 1]</code> ease, the stat count-up at 1.2s, the marquee at 38s linear. Everything checks <code>useReducedMotion</code> or <code>prefers-reduced-motion</code> and stops. No WebGL, no three, no GSAP without a specific effect that demands it.</p>
+  </div>
+</section>
+
+<!-- ══════════════════ ACCESSIBILITY ══════════════════ -->
+<section id="access">
+  <div class="wrap">
+    <div class="eyebrow"><span class="num">08</span><span class="tick"></span>Accessibility</div>
+    <h2>Measured, not eyeballed</h2>
+    <p class="intro">Every ratio below was computed with the WCAG relative-luminance formula against the token hexes in <code>globals.css</code>. When a pair fails, the token or its use changes, not the standard. Theme is a manual light/dark toggle (<code>next-themes</code>, light default, no system follow).</p>
+    <div class="card table-scroll" style="padding:8px 4px">
+      <table>
+        <tr><th>Pair</th><th>Light</th><th>Dark</th><th>Verdict</th></tr>
+        <tr><td>Text on canvas</td><td class="num">18.25</td><td class="num">16.60</td><td>AAA</td></tr>
+        <tr><td>Muted on canvas</td><td class="num">5.39</td><td class="num">7.04</td><td>AA at body size; the second line of every headline relies on this</td></tr>
+        <tr><td>Muted on sunken</td><td class="num">4.89</td><td class="num">6.52</td><td>AA</td></tr>
+        <tr><td>Faint on canvas</td><td class="num">2.58</td><td class="num">3.45</td><td>Decoration only: chapter numerals are <code>aria-hidden</code></td></tr>
+        <tr><td>Accent on canvas</td><td class="num">4.48</td><td class="num">6.26</td><td>Light fails by 0.02, which is why accent text uses accent-deep</td></tr>
+        <tr><td>Accent-deep on canvas</td><td class="num">6.02</td><td class="num">7.84</td><td>AA. The accent-as-text token</td></tr>
+        <tr><td>Accent-deep on accent-soft</td><td class="num">4.97</td><td class="num">—</td><td>AA (the "Don't" tag above)</td></tr>
+        <tr><td>Canvas on ink (button)</td><td class="num">18.25</td><td class="num">16.60</td><td>AAA</td></tr>
+        <tr><td>Ink-muted on ink-surface</td><td class="num">7.04</td><td class="num">—</td><td>AA. Footer links and closing-block body</td></tr>
+        <tr><td>Amber-deep on amber</td><td class="num">4.89</td><td class="num">7.18</td><td>AA</td></tr>
+        <tr><td>Olive-deep on olive</td><td class="num">5.61</td><td class="num">6.35</td><td>AA</td></tr>
+        <tr><td>Rust-deep on rust</td><td class="num">4.24</td><td class="num">5.17</td><td>Light passes only as large text (3:1). Use rust-deep on the rust wash at heading size, or set body copy on rust in ink (9.91)</td></tr>
+        <tr><td>Lime-deep on lime</td><td class="num">9.34</td><td class="num">8.36</td><td>AAA</td></tr>
+        <tr><td>Status: Live / Beta / In Development</td><td class="num">6.33 / 6.91 / 5.38</td><td class="num">—</td><td>AA on canvas, with a dot so the state is not colour alone</td></tr>
+        <tr><td>App accent-deep on white (CS / ISIT / tapa. / Hakkan)</td><td class="num">5.38 / 7.01 / 6.02 / 10.44</td><td class="num">—</td><td>AA. Raw CaughtSlipping gold (1.88) and Hakkan lime (1.25) are fills, never text</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:14px">Other commitments already in the code: a visible two-pixel ink focus ring on every interactive element; the nav sheet locks body scroll and closes on route change; every decorative artefact (the closing scatter, chapter numerals, the hero rotator) is hidden from assistive tech; the stat count-up leaves the real number in the server markup for search and for no-JS; images always carry alt text that names what they show; and <code>data-scroll-behavior="smooth"</code> on <code>&lt;html&gt;</code> stops route changes from smooth-scrolling to the top.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>For The Rest Of Us · studio of Alroy Ndhlovu · brand guidelines</div>
+    <div>Tokens: <code>app/globals.css</code> · Kit: <code>components/ui/</code> · Copy registries: <code>lib/apps.ts</code>, <code>lib/services.ts</code>, <code>lib/proof.ts</code> · Rules: <code>AGENTS.md</code> · Story: <code>docs/REDESIGN-V3.md</code></div>
+  </div>
+</footer>
+
+</body>
+</html>
