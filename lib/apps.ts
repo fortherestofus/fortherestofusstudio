@@ -508,14 +508,14 @@ export const apps: App[] = [
   {
     slug: "hakkan",
     name: "Hakkan",
-    category: "Research & Content",
+    category: "Content Discovery",
     tagline: "Worth listening to.",
     problem: "AI made content cheap to make. And worthless to read.",
     shortDescription:
-      "Researches the real conversation across social and the web, hands you a report with receipts, and turns it into thought leadership in your voice.",
+      "Explores the real conversation across social and the web, hands you a report with receipts, and turns it into thought leadership in your voice.",
     overview: [
-      "Most AI writing tools start from a blank page. Hakkan starts from research: sources first, then the draft. Give it a question and it reads the conversation where it actually happens, across Reddit, X, YouTube, TikTok, LinkedIn, Hacker News, reviews, news, and the open web, then returns a full report on the themes, the sentiment split, the voices, and where the evidence and the feelings diverge.",
-      "Every claim in that report carries receipts. Click any bar, theme, or line and you get the verbatim quotes with platform, author, and link. From there Hakkan turns the research into publishable work: posts, threads, carousels, blogs, newsletters, and video scripts, written in a voice profile learned from your own samples rather than a generic house style.",
+      "Most AI writing tools start from a blank page. Hakkan starts from the sources: it reads first, then drafts. Give it a question and it reads the conversation where it actually happens, across Reddit, X, YouTube, TikTok, LinkedIn, Hacker News, reviews, news, and the open web, then returns a full report on the themes, the sentiment split, the voices, and where the evidence and the feelings diverge.",
+      "Every claim in that report carries receipts. Click any bar, theme, or line and you get the verbatim quotes with platform, author, and link. From there Hakkan turns what it read into publishable work: posts, threads, carousels, blogs, newsletters, and video scripts, written in a voice profile learned from your own samples rather than a generic house style.",
     ],
     status: "Beta",
     platform: ["Web"],
@@ -529,7 +529,7 @@ export const apps: App[] = [
         icon: "Search",
         title: "One question, every platform",
         description:
-          "A single study sweeps social platforms and the open web at once, with a live pipeline showing exactly which sources were read and which failed.",
+          "A single report sweeps social platforms and the open web at once, with a live pipeline showing exactly which sources were read and which failed.",
       },
       {
         icon: "Quote",
@@ -547,7 +547,7 @@ export const apps: App[] = [
         icon: "PenTool",
         title: "Eight content formats",
         description:
-          "Turn one study into LinkedIn and X posts, threads, carousels, infographics, blog posts, newsletters, and short video scripts.",
+          "Turn one report into LinkedIn and X posts, threads, carousels, infographics, blog posts, newsletters, and short video scripts.",
       },
       {
         icon: "Mic",
@@ -559,13 +559,13 @@ export const apps: App[] = [
         icon: "Radar",
         title: "Topic Radar",
         description:
-          "Track the subjects you care about, watch interest move over time, and get a weekly shortlist of what is worth researching next.",
+          "Track the subjects you care about, watch interest move over time, and get a weekly shortlist of what is worth covering next.",
       },
       {
         icon: "Compass",
         title: "AI visibility",
         description:
-          "For brand studies, see how often AI answer engines name you and which sources those answers are citing.",
+          "For brand reports, see how often AI answer engines name you and which sources those answers are citing.",
       },
     ],
     story: [
@@ -585,8 +585,8 @@ export const apps: App[] = [
       },
       {
         eyebrow: "In your voice",
-        title: "Research becomes work you can publish.",
-        body: "Turn one study into posts, threads, carousels, blogs, newsletters, or scripts, written through a voice profile learned from your own samples rather than a generic house style.",
+        title: "The sources become work you can publish.",
+        body: "Turn one report into posts, threads, carousels, blogs, newsletters, or scripts, written through a voice profile learned from your own samples rather than a generic house style.",
         image: hakkanCreate,
         shape: "browser" as const,
       },
@@ -596,9 +596,9 @@ export const apps: App[] = [
     ctaHref: "https://hakkan.app",
     ctaExternal: true,
     seo: {
-      title: "Hakkan · Research-led thought leadership",
+      title: "Hakkan · Content-led thought leadership",
       description:
-        "Hakkan researches the real conversation across social and the web, returns a cited report you can defend, and turns it into thought leadership written in your voice.",
+        "Hakkan explores the real conversation across social and the web, returns a cited report you can defend, and turns it into thought leadership written in your voice.",
     },
     legal: {
       privacy: "https://hakkan.app/privacy",
