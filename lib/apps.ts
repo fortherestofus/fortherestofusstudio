@@ -414,7 +414,7 @@ export const apps: App[] = [
       "tapa. exists to delete one very specific kind of mental load: figuring out what to eat. Tell it what's in the fridge by typing, talking, or snapping a photo, and it hands back a real, cookable recipe built around your tastes. No food-blog life story, no twenty open tabs.",
       "It's for people tired of thinking about meals every single day: busy professionals, the ones hosting, and anyone who'd rather spend that energy elsewhere. Get a fresh idea each morning, discover new ways to cook what you already have, scale up for visitors and group dinners, and save the winners to cook again or share. Set your dietary needs once and they're enforced as hard rules, every recipe.",
     ],
-    status: "Beta",
+    status: "Live",
     platform: ["iOS", "Android"],
     price: "Free · Pro from $2.99/mo",
     icon: "/icons/tapa.png",
@@ -488,9 +488,10 @@ export const apps: App[] = [
       },
     ],
     screenshots: [tapaHome, tapaGenerate, tapaDietary, tapaRecipe, tapaCooking, tapaTimer],
-    stores: { ios: null, android: null },
-    ctaLabel: "Try It Free",
-    ctaHref: "#",
+    stores: { ios: "https://apps.apple.com/app/tapa-cook-what-you-have/id6795631556", android: null },
+    ctaLabel: "Download on the App Store",
+    ctaHref: "https://apps.apple.com/app/tapa-cook-what-you-have/id6795631556",
+    ctaExternal: true,
     seo: {
       title: "tapa. · What can I cook with this?",
       description:
