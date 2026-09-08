@@ -194,8 +194,6 @@
   .grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
   .grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
   .grid.cols-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-  .grid.pair { grid-template-columns: repeat(2, 1fr); }
-  @media (max-width: 640px) { .grid.pair { grid-template-columns: 1fr; } }
 
   /* ── Wordmark specimens ─────────────────────────────────── */
   .markbox {
@@ -333,18 +331,6 @@
   .eyebrow-demo .stack .hl { margin-top: 20px; font-size: 30px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.08; color: var(--ink); }
   .eyebrow-demo .stack .sub { margin-top: 24px; font-size: 16px; color: var(--muted); max-width: 46ch; }
 
-  .badge { display: inline-flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; }
-  .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
-  .badge.live { color: #2f6b47; } .badge.beta { color: #2c5d8a; } .badge.dev { color: #8a6400; }
-  @media (prefers-color-scheme: dark) {
-    .badge.live { color: #7fc79c; } .badge.beta { color: #8fbde8; } .badge.dev { color: #e8bd77; }
-  }
-
-  .apptile { display: flex; align-items: center; gap: 14px; }
-  .apptile .tile { width: 48px; height: 48px; border-radius: 12px; flex: none; }
-  .apptile .name { font-weight: 500; color: var(--ink); }
-  .apptile .prob { font-size: 13.5px; color: var(--muted); margin-top: 2px; }
-
   footer {
     margin-top: 88px; border-top: 1px solid var(--border);
     padding: 36px 0 56px; font-size: 13.5px; color: var(--faint);
@@ -377,7 +363,7 @@
       </div>
       <div class="card">
         <h3 style="margin-top:0">Two arms, one story</h3>
-        <p>The studio <strong>builds</strong> (CaughtSlipping, InSpiritInTruth, tapa., Hakkan, plus client apps, SaaS and websites) and it <strong>consults</strong> (product and growth direction, brand and content, business tech and automation). The consulting arm is called services or consulting. It is <strong>never called "advice"</strong>.</p>
+        <p>The second arm is called <strong>services</strong> or <strong>consulting</strong>, and is <strong>never called "advice"</strong>. The two arms are one story, not two businesses: the apps are the studio's own answers to the same question a client arrives with, and the same lifecycle runs through both.</p>
       </div>
       <div class="card">
         <h3 style="margin-top:0">The three beliefs</h3>
@@ -641,6 +627,7 @@
         <tr><th>Rule</th><th>Detail</th></tr>
         <tr><td>No em dashes</td><td>They were the house punctuation and the most consistent AI tell on the site. A colon when the second half explains the first, a full stop for a new thought, commas for a parenthetical. Source comments may keep them. The one survivor is "IFC — International Finance Corporation", the organisation's own name.</td></tr>
         <tr><td>Consulting, never advice</td><td>The second arm is "services" or "consulting". "Advice" and "advise" do not appear.</td></tr>
+        <tr><td>Product names, as their own brands write them</td><td>"tapa." keeps its dot and its lowercase. CaughtSlipping, InSpiritInTruth and Hakkan are one word each, camel-cased. Each app has its own guideline document in its own repo; this one governs only how they appear on the studio site.</td></tr>
         <tr><td>Our results and other people's research never share a container</td><td>Borrowed research (McKinsey, Slack, Deloitte, Google, CB Insights) lives inline in prose with the source named in the sentence. Stat cards and <code>StatBand</code> are for numbers we measured. The IDC "20–30% lost to inefficiency" and "$62k average app cost" figures do not survive contact with their sources and are not used.</td></tr>
         <tr><td>Name clients, never their commercial data</td><td>A client's name and the problem solved are fine. Their pricing, pipeline volumes, media spend or absolute acquisition costs never ship. State those as ratios or outcomes ("~3× better than the category median", "0 → live").</td></tr>
         <tr><td>"Work delivered for"</td><td>The client rail is always headed this way, never "trusted by" or anything implying endorsement. Names as type, not logos. It sits beside the closing ask, once per page, never in the hero or footer, and ends on "and more".</td></tr>
@@ -714,14 +701,6 @@
     </div>
     <p style="margin-top:14px">Keeping each language in its own territory is what stops the site reading as two designs. The apps index used to be four cards on a tray and broke this rule; it is now four editorial bands.</p>
 
-    <h3>The four products, as the site names them</h3>
-    <div class="grid pair">
-      <div class="card apptile"><span class="tile" style="background:color-mix(in srgb,#F0B331 15%,#fff)"></span><div><div class="name">CaughtSlipping <span class="badge live" style="margin-left:8px">Live</span></div><div class="prob">You know you're doomscrolling. Nothing calls you out.</div></div></div>
-      <div class="card apptile"><span class="tile" style="background:color-mix(in srgb,#90A842 15%,#fff)"></span><div><div class="name">InSpiritInTruth <span class="badge live" style="margin-left:8px">Live</span></div><div class="prob">Devotionals are written for everyone. Your walk isn't.</div></div></div>
-      <div class="card apptile"><span class="tile" style="background:color-mix(in srgb,#CC5833 15%,#fff)"></span><div><div class="name">tapa. <span class="badge beta" style="margin-left:8px">Beta</span></div><div class="prob">It's 6pm and you're staring into the fridge again.</div></div></div>
-      <div class="card apptile"><span class="tile" style="background:color-mix(in srgb,#D8F34E 15%,#fff)"></span><div><div class="name">Hakkan <span class="badge beta" style="margin-left:8px">Beta</span></div><div class="prob">AI made content cheap to make. And worthless to read.</div></div></div>
-    </div>
-    <p style="margin-top:14px">"tapa." keeps its dot and its lowercase. The other three are one word, camel-cased as their own brands write them. Each has its own guideline document in its own repo; this one governs how they appear on the studio site.</p>
   </div>
 </section>
 
