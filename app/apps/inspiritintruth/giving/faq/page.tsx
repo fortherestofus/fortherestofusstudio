@@ -15,7 +15,7 @@ export default function GivingFaqPage() {
   return (
     <LegalDocument
       title="Giving FAQs"
-      lastUpdated="10 July 2026"
+      lastUpdated="9 September 2026"
       backHref="/apps/inspiritintruth/giving/"
       backLabel="Back to Giving"
       intro={[
@@ -25,13 +25,13 @@ export default function GivingFaqPage() {
         {
           heading: "Where does my gift go?",
           body: [
-            "Two places. Most of it funds the work behind InSpiritInTruth: building new features, keeping the quality high, and creating the devotional content itself: the design, the writing, the servers. And 10% of all giving goes to acts of kindness: donations to people and organisations doing good for others.",
+            "Every gift splits in half. Half funds the work behind InSpiritInTruth: building and maintaining the app, the running costs behind it, and creating the devotional content itself: the design, the writing, the servers. Half goes to acts of kindness: charities and churches, and people we are pointed to who need help with living expenses, school fees, or a bill that came at the wrong time. The split is worked out on what lands after the card fee, and we publish where it goes.",
           ],
         },
         {
           heading: "Do I get anything in return?",
           body: [
-            "No, and that's the point. Giving is a gift, not a purchase: it doesn't unlock features or content. (The app does have an optional Pro subscription, unlimited AI devotionals and deeper reflections, but that's entirely separate from giving, and giving is never required for it.)",
+            "No, and that's the point. Giving is a gift, not a purchase: it doesn't unlock features or content. (The app does have an optional Premium subscription, unlimited tailored devotionals and deeper reflections, but that's entirely separate from giving, and giving is never required for it.)",
           ],
         },
         {

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "InSpiritInTruth · Giving",
     description:
-      "Giving funds the work behind InSpiritInTruth, and 10% goes to acts of kindness.",
+      "Every gift splits in half: half funds the work behind InSpiritInTruth, half goes to acts of kindness.",
     url: "/apps/inspiritintruth/giving/",
     type: "website",
   },
@@ -54,16 +54,17 @@ export default function GivingPage() {
             Where your gift goes
           </h2>
           <p className="mt-4 text-pretty leading-relaxed text-muted">
-            Every gift does two things. Most of it funds the work: building new
-            features, keeping the quality high, and creating the devotional
-            content itself: the design, the writing, the servers. And 10% of all
-            giving goes to acts of kindness: donations to people and
-            organisations doing good for others. We&rsquo;ll share where it
-            lands.
+            Every gift splits in half. Half funds the work: building and
+            maintaining the app, the running costs behind it &mdash; hosting,
+            Bible text licences, the AI &mdash; and writing every devotional.
+            Half goes to acts of kindness: charities and churches, and people
+            we are pointed to who need help with living expenses, school fees,
+            or a bill that came at the wrong time. The split is worked out on
+            what lands after the card fee, and we publish where it goes.
           </p>
 
           <div className="mt-6 flex h-4 overflow-hidden rounded-full">
-            <div className="bg-accent" style={{ flex: 9 }} />
+            <div className="bg-accent" style={{ flex: 1 }} />
             <div
               className="ml-1 rounded-full"
               style={{ flex: 1, backgroundColor: KINDNESS }}
@@ -73,9 +74,9 @@ export default function GivingPage() {
             <div className="flex items-center">
               <span className="h-2.5 w-2.5 rounded-full bg-accent" />
               <span className="ml-3 flex-1 text-ink">
-                Building the app &amp; its content
+                The work: building &amp; maintaining the app
               </span>
-              <span className="nums font-medium text-ink">90%</span>
+              <span className="nums font-medium text-ink">50%</span>
             </div>
             <div className="flex items-center">
               <span
@@ -85,7 +86,7 @@ export default function GivingPage() {
               <span className="ml-3 flex-1 text-ink">
                 Acts of kindness: helping others
               </span>
-              <span className="nums font-medium text-ink">10%</span>
+              <span className="nums font-medium text-ink">50%</span>
             </div>
           </div>
         </section>
@@ -124,9 +125,10 @@ export default function GivingPage() {
             Giving is exactly that: a gift. It doesn&rsquo;t unlock anything,
             and it isn&rsquo;t required. You give because you want to keep
             something good going, not to get something back. (If you&rsquo;d
-            rather get something in return, the app&rsquo;s optional Pro
-            subscription, unlimited AI devotionals and deeper reflections,
-            supports the work too, and is entirely separate from giving.)
+            rather get something in return, the app&rsquo;s optional Premium
+            subscription, unlimited tailored devotionals and deeper
+            reflections, supports the work too, and is entirely separate from
+            giving.)
           </p>
         </section>
 

@@ -301,6 +301,12 @@ export const apps: App[] = [
           "Tell it what you're feeling or facing and a personal, scripture-rooted devotional is written for exactly that moment. What you share is only used to create it, never stored or shared with anyone. Every reader gets three free; Premium makes them unlimited.",
       },
       {
+        icon: "Compass",
+        title: "Devotionals chosen for you",
+        description:
+          "The home screen doesn't just show the newest devotional. It leans toward the themes you keep reading and the ones you've had written for yourself, so what's next tends to fit where you are.",
+      },
+      {
         icon: "Quote",
         title: "Daily verses & quotes",
         description:
@@ -317,6 +323,12 @@ export const apps: App[] = [
         title: "Bookmarks & notes",
         description:
           "Highlight verses, save devotionals, and keep your own reflections together in one quiet library.",
+      },
+      {
+        icon: "Palette",
+        title: "Quiet by design",
+        description:
+          "A calm, unhurried reading experience: no feed, no badges, no noise. Just the devotional and the Bible.",
       },
       {
         icon: "Bell",
@@ -343,7 +355,7 @@ export const apps: App[] = [
       {
         eyebrow: "The whole Bible, in hand",
         title: "Verses, bookmarks, and notes that stay yours.",
-        body: "A full in-app Bible, a daily verse to keep you connected between devotionals, and somewhere to keep the passages and thoughts you return to. No algorithm, no ads, no pressure to perform.",
+        body: "A full in-app Bible, a daily verse to keep you connected between devotionals, and somewhere to keep the passages and thoughts you return to. No attention-chasing feed, no ads, no pressure to perform.",
         image: isitBible,
         shape: "phone" as const,
       },

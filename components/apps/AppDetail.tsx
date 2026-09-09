@@ -250,9 +250,10 @@ export default function AppDetail({ app }: { app: App }) {
               Help keep it going
             </h2>
             <p className="mt-4 text-pretty leading-relaxed text-muted">
-              Gifts fund the work behind {app.name}: new features, quality,
-              and the devotional content itself. 10% of all giving goes to acts
-              of kindness, and a gift never unlocks anything.
+              Every gift splits in half: half funds the work behind {app.name}
+              &mdash; new features, quality, and the devotional content itself
+              &mdash; and half goes to acts of kindness. A gift never unlocks
+              anything.
             </p>
             <Link
               href={app.giving}
