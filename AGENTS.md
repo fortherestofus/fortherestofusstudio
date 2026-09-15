@@ -378,9 +378,12 @@ The tapa. app shares `https://fortherestofus.app/apps/tapa/r/<code>/`
 (`code` = 12 lowercase hex). This site is the web fallback for that link.
 
 - **Routes.** `app/apps/tapa/r/[code]/page.tsx` (the recipe, rendered by
-  `components/apps/TapaRecipeShare.tsx`) and its `opengraph-image.tsx` (the
-  1200x630 card; file-based, so Next writes og:image and twitter:image
-  itself). Bad code, 404, or any upstream failure → `notFound()` on the page
+  `components/apps/TapaRecipeShare.tsx`) and `app/og/tapa/r/[code]/route.tsx`
+  (the 1200x630 card, set as og:image and twitter:image by the page). **Not
+  `opengraph-image.tsx`:** that file convention rendered locally and 503'd on
+  Hostinger on every request ("failed to pipe response"), while ISIT's route
+  handler works on the same host. The route also buffers the render, so a
+  failure is logged with its cause and falls back to a simpler card. Bad code, 404, or any upstream failure → `notFound()` on the page
   and a generic tapa. card on the image, never a 500. Both are `ƒ` routes; only
   the upstream 200 is cached (`next: { revalidate: 300 }`).
 - **Data.** `lib/tapaShare.ts` calls tapa's `recipe-share` edge function,
@@ -420,8 +423,8 @@ The tapa. app shares `https://fortherestofus.app/apps/tapa/r/<code>/`
   this list is the only record of which is which: keep it in step.
 - **`skipTrailingSlashRedirect: true`** in `next.config.mjs`. Apple's
   LinkPresentation (iMessage previews) mishandles a 308 on a share link
-  (InSpiritInTruth, Aug 2026), and the `/opengraph-image` URL Next generates
-  has no trailing slash, so both must answer 200 directly. Apple also fetches
+  (InSpiritInTruth, Aug 2026), and the `/og/tapa/r/<code>` card URL has no
+  trailing slash, so both must answer 200 directly. Apple also fetches
   the association file without following redirects; Next 16.3 already exempts
   `.well-known/` from the redirect, and the skip removes the dependence on
   that. The cost: a slashless internal link now serves a duplicate URL rather

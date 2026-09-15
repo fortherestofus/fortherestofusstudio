@@ -39,7 +39,7 @@ const nextConfig = {
   // mishandles a 308 hop on a share link: on the InSpiritInTruth site it
   // presented the share as a downloadable "Text Document" of raw markup
   // (Aug 2026). A share link that loses its slash in transit, and the
-  // /opengraph-image URL Next generates for it (which has no slash), must
+  // /og/tapa/r/<code> card URL (which has no slash), must
   // both answer 200 directly.
   //
   // Apple also fetches /.well-known/apple-app-site-association without

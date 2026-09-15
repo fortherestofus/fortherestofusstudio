@@ -12,8 +12,8 @@
  * disallow: Twitterbot and other preview crawlers honour robots.txt and would
  * stop rendering the card at all.
  *
- * The og:image comes from ./opengraph-image.tsx (file-based metadata wins over
- * generateMetadata, and twitter:image inherits it).
+ * The og:image is the rendered card at /og/tapa/r/<code> (a route handler;
+ * see that file for why it isn't opengraph-image.tsx).
  */
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -40,6 +40,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = `${recipe.title} · ${app.name}`;
   const description = recipe.description ?? recipeMetaLine(recipe);
   const path = sharePath(code);
+  const image = {
+    url: `/og/tapa/r/${code}`,
+    width: 1200,
+    height: 630,
+    alt: `${recipe.title}, a recipe shared from ${app.name}`,
+  };
 
   return {
     // absolute: the root layout's template would append "· For The Rest Of Us".
@@ -53,11 +59,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       description: description || undefined,
       siteName: app.name,
+      images: [image],
     },
     twitter: {
       card: "summary_large_image",
       title,
       description: description || undefined,
+      images: [image],
     },
   };
 }
