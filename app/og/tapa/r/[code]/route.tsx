@@ -20,8 +20,10 @@
  * Lessons carried over from InSpiritInTruth's card (app/og/d/[slug]/route.tsx
  * in that repo):
  * - Satori reads TTF/OTF/WOFF, never WOFF2, which is all the site itself
- *   ships, so the brand OTFs live in fonts/og/ (SIL OFL 1.1, licence in
- *   fonts/ApfelGrotezk-LICENSE.txt).
+ *   ships, so the brand OTFs live in public/fonts/og/ (SIL OFL 1.1, licence
+ *   in fonts/ApfelGrotezk-LICENSE.txt). In public/, not the repo-root fonts/:
+ *   Hostinger's build output ships public/ but not arbitrary root folders,
+ *   so a root fonts/og/ read ENOENT in production while working locally.
  * - Satori has no line clamp. An over-long block just grows and shoves its
  *   neighbours around, so the title shrinks with length and is trimmed on a
  *   word boundary.
@@ -61,9 +63,9 @@ let assets: Promise<Assets> | null = null;
 function loadAssets(): Promise<Assets> {
   assets ??= (async () => {
     const [regular, mittel, fett, mark] = await Promise.all([
-      readOptional("fonts", "og", "ApfelGrotezk-Regular.otf"),
-      readOptional("fonts", "og", "ApfelGrotezk-Mittel.otf"),
-      readOptional("fonts", "og", "ApfelGrotezk-Fett.otf"),
+      readOptional("public", "fonts", "og", "ApfelGrotezk-Regular.otf"),
+      readOptional("public", "fonts", "og", "ApfelGrotezk-Mittel.otf"),
+      readOptional("public", "fonts", "og", "ApfelGrotezk-Fett.otf"),
       readOptional("public", "icons", "tapa-mark.png"),
     ]);
     const fonts: Font[] = [];
@@ -108,7 +110,9 @@ function card(title: string, meta: string, fonts: Font[], mark: string | null) {
         display: "flex",
         background: CREAM,
         padding: "68px 72px",
-        fontFamily: fonts.length ? "Apfel" : undefined,
+        // Omitted, not undefined, without our fonts: Satori throws on an
+        // undefined style value ("reading 'split'").
+        ...(fonts.length ? { fontFamily: "Apfel" } : {}),
       }}
     >
       <div
@@ -189,8 +193,9 @@ export async function GET(_req: Request, { params }: { params: Promise<{ code: s
     try {
       const rendered = new ImageResponse(card(title, meta, attempt.fonts, attempt.mark), {
         ...SIZE,
-        // An empty list would replace next/og's bundled fallback font with nothing.
-        fonts: attempt.fonts.length ? attempt.fonts : undefined,
+        // Omitted when empty: an empty list would replace next/og's bundled
+        // fallback font with nothing.
+        ...(attempt.fonts.length ? { fonts: attempt.fonts } : {}),
       });
       const png = await rendered.arrayBuffer();
       if (attempt.label !== "full") console.error(`[tapa og] served the "${attempt.label}" fallback`);

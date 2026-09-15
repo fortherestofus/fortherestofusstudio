@@ -404,7 +404,11 @@ The tapa. app shares `https://fortherestofus.app/apps/tapa/r/<code>/`
   (Instagram, X, Gmail) do not hand https links to the OS. No iOS equivalent:
   tapa. has no custom URL scheme. It reads the UA on the client, since the
   page HTML is the same for everyone.
-- **OG fonts** are the brand OTFs in `fonts/og/`: Satori cannot read WOFF2.
+- **OG fonts** are the brand OTFs in `public/fonts/og/`: Satori cannot read
+  WOFF2. **They must be under `public/`.** Hostinger's build output
+  (`hbuilds/versions/<id>/nodejs`) ships `public/` but not arbitrary root
+  folders, so a root `fonts/og/` read ENOENT in production and every card
+  failed while local builds were fine.
   The mark is `public/icons/tapa-mark.png`, copied verbatim from tapa's
   `assets/brand/` (generated there, never edited here).
 - **App association files.** `app/.well-known/apple-app-site-association/route.ts`
