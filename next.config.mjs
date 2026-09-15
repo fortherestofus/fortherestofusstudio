@@ -32,6 +32,25 @@ const nextConfig = {
   // Server-mode build (so `next start` works on Hostinger / @netlify/next).
   // Add `output: "export"` here only if you want pure static files in /out instead.
   trailingSlash: true,
+  // ...but WITHOUT the automatic 308 that trailingSlash normally adds.
+  //
+  // tapa. recipe share links (/apps/tapa/r/<code>/) are opened by link-preview
+  // crawlers, and Apple's LinkPresentation (the iMessage preview card)
+  // mishandles a 308 hop on a share link: on the InSpiritInTruth site it
+  // presented the share as a downloadable "Text Document" of raw markup
+  // (Aug 2026). A share link that loses its slash in transit, and the
+  // /opengraph-image URL Next generates for it (which has no slash), must
+  // both answer 200 directly.
+  //
+  // Apple also fetches /.well-known/apple-app-site-association without
+  // following redirects. Next 16.3's built-in redirect already exempts
+  // .well-known/ paths (node_modules/next/dist/lib/load-custom-routes.js), so
+  // today that file would not 308 either way; this removes the dependence on
+  // that exemption.
+  //
+  // Duplicate paths are covered: pages declare trailing-slash canonical URLs,
+  // and trailingSlash still shapes generated links. Only the redirect goes.
+  skipTrailingSlashRedirect: true,
   // Image optimisation needs a Node runtime, which server mode gives us — sharp
   // resizes and re-encodes on demand, then caches. If this ever moves to
   // `output: "export"`, optimisation is unavailable and `unoptimized: true` has

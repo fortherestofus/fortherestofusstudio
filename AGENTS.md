@@ -350,7 +350,8 @@ product. `AppCard` survives only for the detail pages' "other apps" grid.
 
 - `app/page.tsx` — home; `app/apps/` — apps index; `app/apps/<slug>/` —
   per-app pages (`caught-slipping`, `hakkan`, `inspiritintruth` incl. giving +
-  giving-faq, `tapa` incl. privacy + terms); `app/services/` and
+  giving-faq, `tapa` incl. privacy + terms + recipe shares at `r/[code]`);
+  `app/.well-known/` (Apple association route); `app/services/` and
   `app/services/[slug]/` (five SEO detail pages from `lib/services.ts`);
   `app/studio/`, `app/contact/`; `app/not-found.tsx`, `app/sitemap.ts`,
   `app/robots.ts`.
@@ -369,7 +370,63 @@ product. `AppCard` survives only for the detail pages' "other apps" grid.
   `lib/contact.ts` (emails + cal.com links), `lib/cn.ts`.
 - `public/` — icons (`/icons/[slug].png|svg`), screenshots
   (`/screenshots/[slug]-[view].jpg`, statically imported by `lib/apps.ts`),
-  OG images.
+  OG images, `.well-known/assetlinks.json`.
+
+## tapa. recipe share pages (Sep 2026)
+
+The tapa. app shares `https://fortherestofus.app/apps/tapa/r/<code>/`
+(`code` = 12 lowercase hex). This site is the web fallback for that link.
+
+- **Routes.** `app/apps/tapa/r/[code]/page.tsx` (the recipe, rendered by
+  `components/apps/TapaRecipeShare.tsx`) and its `opengraph-image.tsx` (the
+  1200x630 card; file-based, so Next writes og:image and twitter:image
+  itself). Bad code, 404, or any upstream failure → `notFound()` on the page
+  and a generic tapa. card on the image, never a 500. Both are `ƒ` routes; only
+  the upstream 200 is cached (`next: { revalidate: 300 }`).
+- **Data.** `lib/tapaShare.ts` calls tapa's `recipe-share` edge function,
+  `GET https://zxtvtjmxllqxpsjntigy.supabase.co/functions/v1/recipe-share/<code>`
+  (no auth; 200 `{ code, recipe, createdAt }`, 404 `{ error: "not_found" }`).
+  Override the base URL with **`TAPA_SHARE_ENDPOINT`** to point at a local
+  mock. The payload is normalised field by field and rendered as plain text
+  only. It carries no `allergenWarning` or `timeNote`: the function strips
+  them as personal to the sharer, so do not add them back here.
+- **Not indexed, but still previewable.** `robots: noindex, nofollow` meta,
+  deliberately **not** a `robots.txt` disallow: Twitterbot and other preview
+  crawlers honour robots.txt and would stop rendering the card.
+- **Store buttons come from `lib/apps.ts`.** Google Play shows as "coming
+  soon" while `stores.android` is `null` (the Play listing was still 404 in
+  Sep 2026). Set the URL there and the listing and every share page light up.
+- **Android "Open in tapa."** (`components/apps/OpenInTapaButton.tsx`, the
+  only client JS on the page) is an `intent://` link, because in-app browsers
+  (Instagram, X, Gmail) do not hand https links to the OS. No iOS equivalent:
+  tapa. has no custom URL scheme. It reads the UA on the client, since the
+  page HTML is the same for everyone.
+- **OG fonts** are the brand OTFs in `fonts/og/`: Satori cannot read WOFF2.
+  The mark is `public/icons/tapa-mark.png`, copied verbatim from tapa's
+  `assets/brand/` (generated there, never edited here).
+- **App association files.** `app/.well-known/apple-app-site-association/route.ts`
+  (a route handler, so it goes out as `application/json`; an extensionless file
+  in `public/` gets no Content-Type from Hostinger's CDN) and
+  `public/.well-known/assetlinks.json`. The assetlinks
+  `sha256_cert_fingerprints` are, in order:
+  1. `86:61:B2:45…63:C1`: Play app signing, classical key used on older devices
+     (Play Console's own Digital Asset Links snippet).
+  2. `01:70:61:53…AF:74`: Play hybrid signing, classical RSA key (Android 17+).
+  3. `23:1C:E9:77…8B:E3`: Play hybrid signing, ML-DSA-65 post-quantum key.
+  4. `8B:81:36:14…F6:63`: the upload key, for EAS builds installed outside Play.
+
+  Play Console Help ("Use Play App Signing") says quantum-ready hybrid signing
+  needs all three app-signing fingerprints listed. JSON takes no comments, so
+  this list is the only record of which is which: keep it in step.
+- **`skipTrailingSlashRedirect: true`** in `next.config.mjs`. Apple's
+  LinkPresentation (iMessage previews) mishandles a 308 on a share link
+  (InSpiritInTruth, Aug 2026), and the `/opengraph-image` URL Next generates
+  has no trailing slash, so both must answer 200 directly. Apple also fetches
+  the association file without following redirects; Next 16.3 already exempts
+  `.well-known/` from the redirect, and the skip removes the dependence on
+  that. The cost: a slashless internal link now serves a duplicate URL rather
+  than redirecting, which is why every page must keep its own trailing-slash
+  canonical.
 
 ## Conventions
 
@@ -379,10 +436,11 @@ product. `AppCard` survives only for the detail pages' "other apps" grid.
   concrete numbers. Avoid "unlock / supercharge / seamless / empower / delve".
 - The site is served with `trailingSlash: true` — canonicals, `alternates`,
   OG `url`s, sitemap entries, registry paths, **and every internal `href`**
-  must end in a slash. A missing one is not cosmetic: it costs a 308 redirect
-  on the way to the page. The whole navbar, the footer's studio column, the
-  app cards and the 404 were all shipping without one, so the most-used links
-  on the site each took a redirect hop. Sweep with
+  must end in a slash. A missing one is not cosmetic. It used to cost a 308
+  redirect (the whole navbar, the footer's studio column, the app cards and
+  the 404 were all shipping without one); since `skipTrailingSlashRedirect`
+  went on for the tapa. share pages, it serves a duplicate slashless URL
+  instead, which only the page's canonical rescues. Sweep with
   `grep -rnoE 'href=\{?"/[a-z][a-z/-]*"' app components lib | grep -v '/"'`
   before a release.
 - Motion stays calm and must respect reduced-motion.

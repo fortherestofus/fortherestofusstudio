@@ -6,9 +6,11 @@ export const metadata: Metadata = {
   title: { absolute: "tapa. · Privacy Policy" },
   description:
     "How tapa. handles your data. Your account and preferences are yours; ingredients you share are used only to generate your recipes.",
+  // Its own canonical: without one it inherits the root layout's "/".
+  alternates: { canonical: "/apps/tapa/privacy/" },
 };
 
-const LAST_UPDATED = "1 September 2026";
+const LAST_UPDATED = "15 September 2026";
 const CONTACT = LEGAL_EMAIL;
 
 export default function TapaPrivacyPage() {
@@ -111,6 +113,35 @@ export default function TapaPrivacyPage() {
           ],
         },
         {
+          heading: "Sharing a recipe",
+          body: [
+            "When you tap Share on a recipe, we save a copy of that recipe and create a link to it. The copy holds the recipe itself: its title, description, ingredients, method, cook time, difficulty, servings, substitutions and estimated nutrition.",
+          ],
+          bullets: [
+            <>
+              Anyone with the link can see that recipe, in the app or on this
+              website. <strong className="text-ink">The copy doesn&rsquo;t
+              include your name, email, allergies or dietary settings.</strong>
+            </>,
+            "Shared recipe pages ask search engines not to list them.",
+            "Sharing the same recipe again reuses the same link. Deleting your account deletes the copies, and their links stop working.",
+          ],
+        },
+        {
+          heading: "Crash reports",
+          body: [
+            <>
+              If the app crashes or runs into an error, a report is sent to{" "}
+              <strong className="text-ink">Sentry</strong> so we can find and
+              fix the problem. A report holds the error and where in the app it
+              happened, the app version, and your device model and operating
+              system version. It doesn&rsquo;t include your name, email, IP
+              address, ingredients or dietary settings, and it isn&rsquo;t
+              linked to your account.
+            </>,
+          ],
+        },
+        {
           heading: "Subscriptions and payments",
           body: [
             <>
@@ -143,6 +174,10 @@ export default function TapaPrivacyPage() {
               subscription status.
             </>,
             <>
+              <strong className="text-ink">Sentry</strong>: receives crash and
+              error reports, as described above.
+            </>,
+            <>
               <strong className="text-ink">Apple &amp; Google</strong>: verify
               your identity if you use Sign in with Apple or Google, process
               payments, and distribute the app through their stores.
@@ -153,7 +188,7 @@ export default function TapaPrivacyPage() {
           heading: "What we never do",
           bullets: [
             "We never sell or rent your data to anyone.",
-            "We don't show ads, and the app contains no advertising or analytics trackers of any kind.",
+            "We don't show ads, and the app contains no advertising or analytics trackers. Crash reports, described above, are the only diagnostic data it sends.",
             "We don't use your saved recipes or ingredients for anything other than running the app for you.",
           ],
         },

@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/apps/tapa/delete-account/" },
 };
 
-const LAST_UPDATED = "29 August 2026";
+const LAST_UPDATED = "15 September 2026";
 
 export default function TapaDeleteAccountPage() {
   return (
@@ -88,6 +88,7 @@ export default function TapaDeleteAccountPage() {
           bullets: [
             "Your account itself, and the sign-in that goes with it — email, name, and profile picture.",
             "Your saved recipes and your recipe history, including the ingredients you entered and anything you rated.",
+            "Recipes you shared. Their links stop working.",
             "Your dietary preferences, allergies, and app settings.",
             "Your free-recipe count and the record of which plan you were on.",
           ],
@@ -114,6 +115,11 @@ export default function TapaDeleteAccountPage() {
                 support page
               </Link>
               .
+            </>,
+            <>
+              <strong className="text-ink">Crash reports.</strong> They carry
+              no name, email or account link, so nothing in them can be traced
+              back to you to remove.
             </>,
             <>
               <strong className="text-ink">Purchase records.</strong> Apple,

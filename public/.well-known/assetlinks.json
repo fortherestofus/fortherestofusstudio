@@ -1,0 +1,15 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.fortherestofus.tapa",
+      "sha256_cert_fingerprints": [
+        "86:61:B2:45:B6:19:A7:11:A8:8E:94:E0:94:37:D2:17:A2:3A:B0:33:9B:8B:B7:0F:20:2B:13:F9:AF:48:63:C1",
+        "01:70:61:53:29:58:4F:9A:10:49:F2:22:5A:64:42:D9:7D:A4:0C:9D:2B:3D:F1:3B:23:0B:86:5C:57:FB:AF:74",
+        "23:1C:E9:77:8A:87:19:2D:C9:5D:EB:CB:6B:30:19:48:8C:5E:51:3B:C1:14:0E:E6:27:AA:A1:4B:A1:16:8B:E3",
+        "8B:81:36:14:3F:A4:8C:C0:D4:B4:2E:82:91:82:91:25:CB:F8:2D:35:D6:32:F3:55:75:0A:85:D7:7F:41:F6:63"
+      ]
+    }
+  }
+]
