@@ -400,7 +400,10 @@ export const apps: App[] = [
     },
     screenshots: [isitHome, isitDevotionals, isitPersonalise, isitBible, isitDiscover, isitProfile],
     website: { url: "https://inspiritintruth.net/", label: "Visit inspiritintruth.net" },
-    stores: { ios: "https://apps.apple.com/app/inspiritintruth-devotional/id6795657774", android: null },
+    stores: {
+      ios: "https://apps.apple.com/app/inspiritintruth-devotional/id6795657774",
+      android: "https://play.google.com/store/apps/details?id=com.fortherestofus.inspirit",
+    },
     ctaLabel: "Download on the App Store",
     ctaHref: "https://apps.apple.com/app/inspiritintruth-devotional/id6795657774",
     ctaExternal: true,
