@@ -39,7 +39,10 @@ export default function TapaAnalytics() {
     posthog.init(KEY, {
       api_host: HOST,
       cookieless_mode: "always",
-      capture_pageview: "history_change",
+      // Left at the default (capture on page load). `history_change` was
+      // tried first and measurably did NOT fire the initial $pageview —
+      // production showed $pageleave events with no matching $pageview.
+      // See the InSpiritInTruth site, where the same fix applies.
       // Autocapture records clicks on every element including their text.
       // The store link is captured explicitly instead — it is the only
       // click here that answers a question we actually have.
