@@ -205,7 +205,10 @@ export default function TapaPrivacyPage() {
               <strong className="text-ink">PostHog</strong>: receives the usage
               events described above. It gets your account id, so a phone and a
               tablet count as one person, but not your name or email address &mdash;
-              and never your ingredients or dietary settings.
+              and never your ingredients or dietary settings. It also counts
+              visits to tapa&rsquo;s pages on this website, and there it runs
+              without cookies of any kind &mdash; nothing is stored in your
+              browser and nothing follows you between visits.
             </>,
             <>
               <strong className="text-ink">Apple &amp; Google</strong>: verify
