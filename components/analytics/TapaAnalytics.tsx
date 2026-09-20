@@ -50,6 +50,11 @@ export default function TapaAnalytics() {
       disable_session_recording: true,
       capture_heatmaps: false,
     });
+
+    // Fired explicitly — see the InSpiritInTruth site, where relying on
+    // `capture_pageview` measurably produced $pageleave events with no
+    // matching $pageview.
+    posthog.capture("$pageview");
   }, []);
 
   // The one click on this page worth measuring: it is the last thing
