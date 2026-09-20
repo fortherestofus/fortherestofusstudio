@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/apps/tapa/privacy/" },
 };
 
-const LAST_UPDATED = "15 September 2026";
+const LAST_UPDATED = "20 September 2026";
 const CONTACT = LEGAL_EMAIL;
 
 export default function TapaPrivacyPage() {
@@ -128,6 +128,30 @@ export default function TapaPrivacyPage() {
           ],
         },
         {
+          heading: "How the app is used",
+          body: [
+            <>
+              To see which parts of the app people actually use, we send
+              usage events to{" "}
+              <strong className="text-ink">PostHog</strong>: which screen you
+              opened, whether a recipe was generated or failed, whether you
+              started or finished cook mode, and whether you opened the Pro
+              page. It is a fixed list we wrote by hand, and every item on it
+              is a label, a number or a yes/no.
+            </>,
+            <>
+              It never contains anything you typed. Your ingredients are sent
+              as a <em>count</em> and your dietary settings as a{" "}
+              <em>count</em> &mdash; never the items themselves, because your
+              allergies are health information and the analytics has no
+              business holding them. We don&rsquo;t record your screen, and we
+              don&rsquo;t track you across other apps or websites. PostHog runs
+              on European servers and we have configured it to discard IP
+              addresses.
+            </>,
+          ],
+        },
+        {
           heading: "Crash reports",
           body: [
             <>
@@ -178,6 +202,12 @@ export default function TapaPrivacyPage() {
               error reports, as described above.
             </>,
             <>
+              <strong className="text-ink">PostHog</strong>: receives the usage
+              events described above. It gets your account id, so a phone and a
+              tablet count as one person, but not your name or email address &mdash;
+              and never your ingredients or dietary settings.
+            </>,
+            <>
               <strong className="text-ink">Apple &amp; Google</strong>: verify
               your identity if you use Sign in with Apple or Google, process
               payments, and distribute the app through their stores.
@@ -188,7 +218,8 @@ export default function TapaPrivacyPage() {
           heading: "What we never do",
           bullets: [
             "We never sell or rent your data to anyone.",
-            "We don't show ads, and the app contains no advertising or analytics trackers. Crash reports, described above, are the only diagnostic data it sends.",
+            "We don't show ads, and the app contains no advertising or cross-app tracking. The usage analytics described above measure how the app is used, nothing more.",
+            "We never record your screen, and we never let analytics or crash reports see what you type. Your ingredients and dietary settings are counted, never collected.",
             "We don't use your saved recipes or ingredients for anything other than running the app for you.",
           ],
         },
