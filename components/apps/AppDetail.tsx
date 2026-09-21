@@ -14,7 +14,7 @@ import { getOtherApps } from "@/lib/apps";
 import AppThemeProvider from "@/components/apps/AppThemeProvider";
 import AppStorySection from "@/components/apps/AppStorySection";
 import AppJourneySection from "@/components/apps/AppJourneySection";
-import StoreBadges from "@/components/apps/StoreBadges";
+import StoreBadges, { badgesCover } from "@/components/apps/StoreBadges";
 import AppIcon from "@/components/ui/AppIcon";
 import Badge from "@/components/ui/Badge";
 import PillButton from "@/components/ui/PillButton";
@@ -62,6 +62,7 @@ export default function AppDetail({ app }: { app: App }) {
   const heroShot = app.screenshots[0];
   const isPhoneApp = app.platform.some((p) => /iOS|Android/i.test(p));
   const isPanelApp = app.platform.some((p) => /extension/i.test(p));
+  const showCta = !badgesCover(app, app.ctaHref);
 
   /*
    * The hero deliberately crops at the fold — the screenshot rises from the
@@ -135,30 +136,37 @@ export default function AppDetail({ app }: { app: App }) {
               {app.shortDescription}
             </p>
 
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-              <PillButton
-                href={app.ctaHref}
-                external={app.ctaExternal}
-                size="lg"
-              >
-                {app.ctaLabel}
-              </PillButton>
-              {/* Apps with their own site say so here — this page is the
-                  studio's account of it, not its home. */}
-              {app.website && (
-                <PillButton
-                  href={app.website.url}
-                  external
-                  variant="ghost"
-                  size="lg"
-                >
-                  {app.website.label}
-                </PillButton>
-              )}
-            </div>
+            {/* The CTA pill is dropped when a store badge below already goes
+                there — see badgesCover. With neither pill left there is no row
+                to space, so the badges take the row's own top margin. */}
+            {(showCta || app.website) && (
+              <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+                {showCta && (
+                  <PillButton
+                    href={app.ctaHref}
+                    external={app.ctaExternal}
+                    size="lg"
+                  >
+                    {app.ctaLabel}
+                  </PillButton>
+                )}
+                {/* Apps with their own site say so here — this page is the
+                    studio's account of it, not its home. */}
+                {app.website && (
+                  <PillButton
+                    href={app.website.url}
+                    external
+                    variant="ghost"
+                    size="lg"
+                  >
+                    {app.website.label}
+                  </PillButton>
+                )}
+              </div>
+            )}
 
             {/* Store badges, for apps that ship on them */}
-            <StoreBadges app={app} className="mt-8" />
+            <StoreBadges app={app} className={showCta || app.website ? "mt-8" : "mt-9"} />
           </div>
 
           {/* Hero screenshot rising from the fold. A phone gets the device

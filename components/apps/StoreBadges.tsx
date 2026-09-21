@@ -43,6 +43,25 @@ const STORE_ART = {
 type StoreKey = keyof typeof STORE_ART;
 const ORDER: StoreKey[] = ["ios", "android", "chrome"];
 
+/**
+ * True when a live badge already points where `href` does.
+ *
+ * The hero used to render a "Download on the App Store" pill directly above
+ * the App Store badge — the same destination, twice, one under the other. The
+ * badge wins that tie: it is the owner's own artwork, it is what people scan
+ * for, and it is the one that scales to a second store without the hero
+ * growing a second pill. Once tapa. reached Play, the pill was naming one of
+ * two stores while both badges sat beneath it.
+ *
+ * Apps whose CTA goes somewhere no badge does — Hakkan's beta signup — keep
+ * their pill, which is why this asks about the destination rather than simply
+ * hiding the pill whenever badges exist.
+ */
+export function badgesCover(app: App, href: string): boolean {
+  if (!app.stores) return false;
+  return Object.values(app.stores).some((url) => url === href);
+}
+
 /** "iOS", "iOS and Android", "iOS, Android and Chrome". */
 function list(names: string[]): string {
   if (names.length <= 1) return names.join("");
