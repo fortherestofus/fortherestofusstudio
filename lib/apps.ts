@@ -504,7 +504,10 @@ export const apps: App[] = [
       },
     ],
     screenshots: [tapaHome, tapaGenerate, tapaDietary, tapaRecipe, tapaCooking, tapaTimer],
-    stores: { ios: "https://apps.apple.com/app/tapa-cook-what-you-have/id6795631556", android: null },
+    stores: {
+      ios: "https://apps.apple.com/app/tapa-cook-what-you-have/id6795631556",
+      android: "https://play.google.com/store/apps/details?id=com.fortherestofus.tapa",
+    },
     ctaLabel: "Download on the App Store",
     ctaHref: "https://apps.apple.com/app/tapa-cook-what-you-have/id6795631556",
     ctaExternal: true,
