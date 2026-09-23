@@ -80,7 +80,7 @@ const nextConfig = {
       // inspiritintruth.net when the tailored-devotional captures were swapped.
       {
         source:
-          "/((?!_next/static|_next/image|icons|fonts|\\.well-known).*)",
+          "/((?!_next/static|_next/image|icons|fonts|ingest|\\.well-known).*)",
         headers: [
           {
             key: "Cache-Control",
@@ -88,6 +88,22 @@ const nextConfig = {
           },
         ],
       },
+    ];
+  },
+
+  // PostHog, proxied through our own domain (used by tapa's pages — see
+  // components/analytics/TapaAnalytics.tsx). Ad blockers drop requests to
+  // *.posthog.com, so visits from anyone running one were missing. /ingest
+  // is excluded from the Cache-Control rule above: these are event posts
+  // and flag lookups, and the CDN must never hand one visitor's response
+  // to another. Both slash variants because trailingSlash is on. Same
+  // setup as inspiritintruth.net.
+  async rewrites() {
+    return [
+      { source: "/ingest/static/:path*", destination: "https://eu-assets.i.posthog.com/static/:path*" },
+      { source: "/ingest/static/:path*/", destination: "https://eu-assets.i.posthog.com/static/:path*" },
+      { source: "/ingest/:path*/", destination: "https://eu.i.posthog.com/:path*/" },
+      { source: "/ingest/:path*", destination: "https://eu.i.posthog.com/:path*" },
     ];
   },
 };

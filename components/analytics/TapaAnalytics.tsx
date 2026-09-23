@@ -27,17 +27,26 @@
 import { useEffect } from "react";
 import posthog from "posthog-js";
 
+import { getTrafficSource, tagPlayLink } from "@/lib/trafficSource";
+
 const KEY = "phc_kW4HvLxEsKYgbGd7JChCQCdHcUuQkMeiWU7DCgVzmMao";
-const HOST = "https://eu.i.posthog.com";
+// Our own domain, proxied to PostHog's EU ingest by the rewrites in
+// next.config.mjs — so an ad blocker doesn't silently drop the visit.
+const HOST = "/ingest";
+const UI_HOST = "https://eu.posthog.com";
 
 let started = false;
 
 export default function TapaAnalytics() {
   useEffect(() => {
+    // Read before anything else, while the landing URL still carries
+    // any ?utm_source=. The store badge listener below uses it.
+    getTrafficSource();
     if (started || process.env.NODE_ENV !== "production") return;
     started = true;
     posthog.init(KEY, {
       api_host: HOST,
+      ui_host: UI_HOST,
       cookieless_mode: "always",
       // Left at the default (capture on page load). `history_change` was
       // tried first and measurably did NOT fire the initial $pageview —
@@ -47,8 +56,13 @@ export default function TapaAnalytics() {
       // The store link is captured explicitly instead — it is the only
       // click here that answers a question we actually have.
       autocapture: false,
+      // Same reason: dead-click capture records the element's text. The
+      // project setting has it on, so it is switched off here explicitly.
+      capture_dead_clicks: false,
       disable_session_recording: true,
       capture_heatmaps: false,
+      // Page-speed numbers (LCP, CLS, INP, FCP) for the Web Vitals tab.
+      capture_performance: { web_vitals: true },
     });
 
     // Fired explicitly — see the InSpiritInTruth site, where relying on
@@ -67,11 +81,27 @@ export default function TapaAnalytics() {
     function onClick(e: MouseEvent) {
       const link = (e.target as HTMLElement | null)?.closest?.("a");
       const href = link?.getAttribute("href") ?? "";
-      if (href.includes("apps.apple.com")) {
-        posthog.capture("store_badge_clicked", { platform: "ios" });
-      } else if (href.includes("play.google.com")) {
-        posthog.capture("store_badge_clicked", { platform: "android" });
-      }
+      const platform = href.includes("apps.apple.com")
+        ? "ios"
+        : href.includes("play.google.com")
+          ? "android"
+          : null;
+      if (!link || !platform) return;
+
+      // Changed at click time, before the browser follows the link, so
+      // it only applies on tapa's pages — the badge component is shared
+      // with every app page.
+      // - Play: carry the visit's source (tiktok, instagram...) as utm
+      //   tags, which Play Console shows under Acquisition.
+      // - Both: drop `noreferrer`, so the store sees this site as the
+      //   referrer (App Store Connect's "Web Referrer" report).
+      if (platform === "android") link.href = tagPlayLink(href, "ftrou-tapa");
+      link.rel = "noopener";
+
+      posthog.capture("store_badge_clicked", {
+        platform,
+        source: getTrafficSource() ?? "direct",
+      });
     }
     document.addEventListener("click", onClick);
     return () => document.removeEventListener("click", onClick);
