@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/apps/tapa/privacy/" },
 };
 
-const LAST_UPDATED = "20 September 2026";
+const LAST_UPDATED = "24 September 2026";
 const CONTACT = LEGAL_EMAIL;
 
 export default function TapaPrivacyPage() {
@@ -57,7 +57,7 @@ export default function TapaPrivacyPage() {
             </>,
             "An optional display name and profile picture, if you choose to add them, used to personalise the app.",
             "Your preferences: measurement system, default servings, cooking skill, dietary needs, and app settings such as theme.",
-            "Your activity in the app: recipes you save, the ratings and hearts you give them, and how many times you've marked a recipe as cooked.",
+            "Your activity in the app: recipes you save, the ratings and hearts you give them, and each time you mark a meal as cooked, with the date, which the app uses to show your own cooking history and milestones.",
           ],
         },
         {
