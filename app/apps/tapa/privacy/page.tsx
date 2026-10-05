@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/apps/tapa/privacy/" },
 };
 
-const LAST_UPDATED = "24 September 2026";
+const LAST_UPDATED = "6 October 2026";
 const CONTACT = LEGAL_EMAIL;
 
 export default function TapaPrivacyPage() {
@@ -135,9 +135,13 @@ export default function TapaPrivacyPage() {
               usage events to{" "}
               <strong className="text-ink">PostHog</strong>: which screen you
               opened, whether a recipe was generated or failed, whether you
-              started or finished cook mode, and whether you opened the Pro
-              page. It is a fixed list we wrote by hand, and every item on it
-              is a label, a number or a yes/no.
+              started or finished cook mode, whether you opened or closed the
+              Pro page, and whether you signed up after opening a shared
+              recipe link. It is a fixed list we wrote by hand, and every item
+              on it is a label, a number or a yes/no. Each event also carries
+              the app version and your phone&rsquo;s model and operating
+              system version, so we can tell an iPhone problem from an
+              Android one.
             </>,
             <>
               It never contains anything you typed. Your ingredients are sent
