@@ -72,7 +72,7 @@ export default function ArtefactRotator({
                 onInk
                   ? n === i
                     ? "bg-ink-text"
-                    : "bg-ink-text/30 hover:bg-ink-text/60"
+                    : ""
                   : n === i
                     ? "bg-ink"
                     : "bg-border hover:bg-muted"

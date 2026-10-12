@@ -7,7 +7,7 @@
 <!-- ============================================================
      For The Rest Of Us · Brand Guidelines
      Compiled from AGENTS.md (the ways-of-working and design-system
-     sections), app/globals.css + tailwind.config.ts (token source of
+     sections), app/globals.css, incl. its @theme block (token source of
      truth), components/ui/* (the kit), lib/*.ts (copy registries) and
      docs/REDESIGN-V3.md (the narrative spec). Every hex here mirrors
      the code; every contrast figure was computed with the WCAG
@@ -430,7 +430,7 @@
   <div class="wrap">
     <div class="eyebrow"><span class="num">03</span><span class="tick"></span>Colour</div>
     <h2>Monotone, with one sanctioned exception</h2>
-    <p class="intro">White canvas, ink type, ink buttons. Colour enters a page through imagery, through an app's own accent on that app's pages, and through the tint family on the story-chapter cards and stat cards. Everywhere else there is no section-level brand colour and no pastel wash. Tokens live in <code>app/globals.css</code>; Tailwind aliases in <code>tailwind.config.ts</code>. Use tokens, never raw hex.</p>
+    <p class="intro">White canvas, ink type, ink buttons. Colour enters a page through imagery, through an app's own accent on that app's pages, and through the tint family on the story-chapter cards and stat cards. Everywhere else there is no section-level brand colour and no pastel wash. Tokens live in <code>app/globals.css</code>; Tailwind aliases in its <code>@theme inline</code> block. Use tokens, never raw hex.</p>
 
     <div class="grid cols-3">
       <div class="card swatch">

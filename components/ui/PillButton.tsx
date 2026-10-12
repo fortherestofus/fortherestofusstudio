@@ -43,7 +43,7 @@ const SIZES_NO_ARROW: Record<Size, string> = {
 
 const ARROW_CHIP: Record<Variant, string> = {
   ink: "bg-bg text-ink",
-  accent: "bg-accent-ink/90 text-accent",
+  accent: "text-accent",
   ghost: "bg-ink text-bg",
   onInk: "bg-ink-surface text-ink-text",
 };
@@ -62,7 +62,7 @@ export default function PillButton({
   const classes = cn(
     "inline-flex items-center justify-center rounded-[12px] font-medium",
     "transition-all duration-200 hover:-translate-y-0.5",
-    "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
+    "focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
     VARIANTS[variant],
     withArrow ? SIZES[size] : SIZES_NO_ARROW[size],
     className

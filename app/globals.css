@@ -1,6 +1,88 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* Tailwind 4. Scanning is limited to the same folders the v3 config listed,
+   so docs/ and Design Reference/ never leak classes into the build. */
+@import "tailwindcss" source(none);
+@source "../app";
+@source "../components";
+@source "../lib";
+
+/* next-themes puts `.dark` on <html>; this is v3's `darkMode: "class"`. */
+@custom-variant dark (&:is(.dark *));
+
+/* Token → utility map (was tailwind.config.ts). `inline` makes each utility
+   read the variable below directly (`bg-bg` → var(--color-bg)) instead of
+   re-declaring a theme variable of the same name, which for --color-bg,
+   --color-border and the accent group would point at itself. */
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-sunken: var(--color-surface-sunken);
+  --color-ink: var(--color-text);
+  --color-muted: var(--color-text-muted);
+  --color-faint: var(--color-text-faint);
+  --color-border: var(--color-border);
+
+  /* Accent — overridden per app page */
+  --color-accent: var(--color-accent);
+  --color-accent-soft: var(--color-accent-soft);
+  --color-accent-ink: var(--color-accent-ink);
+  --color-accent-deep: var(--color-accent-deep);
+
+  /* Ink surfaces (dark CTA block, footer) */
+  --color-ink-surface: var(--color-ink-surface);
+  --color-ink-raised: var(--color-ink-surface-raised);
+  --color-ink-text: var(--color-ink-text);
+  --color-ink-muted: var(--color-ink-text-muted);
+  --color-ink-border: var(--color-ink-border);
+
+  /* Tint family — chapter-card washes only (see the token note below) */
+  --color-tint-amber: var(--tint-amber);
+  --color-tint-amber-deep: var(--tint-amber-deep);
+  --color-tint-olive: var(--tint-olive);
+  --color-tint-olive-deep: var(--tint-olive-deep);
+  --color-tint-rust: var(--tint-rust);
+  --color-tint-rust-deep: var(--tint-rust-deep);
+  --color-tint-lime: var(--tint-lime);
+  --color-tint-lime-deep: var(--tint-lime-deep);
+
+  /* One family sitewide. Aliases kept so legacy classes resolve to Apfel. */
+  --font-sans: var(--font-apfel), system-ui, sans-serif;
+  --font-display: var(--font-apfel), system-ui, sans-serif;
+  --font-heading: var(--font-apfel), system-ui, sans-serif;
+  --font-body: var(--font-apfel), system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+@theme {
+  --radius-card: 16px;
+  --radius-well: 24px;
+  --radius-block: 32px;
+
+  --shadow-card: 0 1px 2px rgba(22, 21, 15, 0.04), 0 6px 20px rgba(22, 21, 15, 0.06);
+  --shadow-card-hover: 0 2px 6px rgba(22, 21, 15, 0.06), 0 14px 36px rgba(22, 21, 15, 0.1);
+  --shadow-pill: 0 1px 2px rgba(22, 21, 15, 0.1), 0 8px 20px rgba(22, 21, 15, 0.14);
+  --shadow-nav: 0 1px 2px rgba(22, 21, 15, 0.04), 0 8px 30px rgba(22, 21, 15, 0.08);
+
+  --container-content: 1200px;
+  --container-reading: 720px;
+}
+
+/* v3 → v4 preflight differences, restored so nothing moves:
+   v4 defaults borders to currentColor (v3: gray-200) and gives buttons the
+   default cursor (v3: pointer). */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: #e5e7eb;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
 
 /* ============================================================
    DESIGN TOKENS — monotone system
@@ -153,27 +235,25 @@
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@utility text-balance {
+  text-wrap: balance;
+}
 
-  .text-pretty {
-    text-wrap: pretty;
-  }
+@utility text-pretty {
+  text-wrap: pretty;
+}
 
-  /* Tabular figures for stats and step numerals */
-  .nums {
-    font-variant-numeric: tabular-nums;
-    font-feature-settings: "tnum";
-  }
+/* Tabular figures for stats and step numerals */
+@utility nums {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
 
-  /* SVG feTurbulence noise — used on placeholder art and ink blocks only */
-  .grain {
-    position: relative;
-  }
+/* SVG feTurbulence noise — used on placeholder art and ink blocks only */
+@utility grain {
+  position: relative;
 
-  .grain::after {
+  &::after {
     content: "";
     position: absolute;
     inset: 0;
@@ -183,13 +263,13 @@
     background-size: 180px 180px;
     z-index: 0;
   }
+}
 
-  .no-scrollbar::-webkit-scrollbar {
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
     display: none;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
   }
 }

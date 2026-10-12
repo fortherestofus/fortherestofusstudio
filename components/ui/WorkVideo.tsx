@@ -53,7 +53,7 @@ export default function WorkVideo({
           <button
             type="button"
             onClick={() => setPlaying(true)}
-            className="group absolute inset-0 h-full w-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+            className="group absolute inset-0 h-full w-full focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
           >
             <Image
               src={poster}
@@ -62,11 +62,7 @@ export default function WorkVideo({
               sizes="(max-width: 1024px) 92vw, 640px"
               className="object-cover object-top"
             />
-            <span
-              aria-hidden
-              className="absolute inset-0 bg-ink-surface/25 transition-colors duration-300 group-hover:bg-ink-surface/15"
-            />
-            <span className="absolute left-1/2 top-1/2 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-[18px] bg-ink-text/95 shadow-card transition-transform duration-300 group-hover:scale-105">
+            <span className="absolute left-1/2 top-1/2 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-[18px] shadow-card transition-transform duration-300 group-hover:scale-105">
               <Play className="h-6 w-6 translate-x-[1px] fill-ink text-ink" />
             </span>
             <span className="sr-only">{label}</span>

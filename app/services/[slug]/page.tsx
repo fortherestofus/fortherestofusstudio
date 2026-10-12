@@ -121,7 +121,7 @@ export default async function ServiceDetailPage({
                 <span className="text-ink">{service.page.title}</span>{" "}
                 <span className="text-muted">{service.page.titleMuted}</span>
               </h1>
-              <p className="mt-6 max-w-reading text-pretty leading-relaxed text-muted sm:text-lg">
+              <p className="mt-6 max-w-reading text-pretty leading-relaxed text-muted sm:text-lg sm:leading-7">
                 {service.page.lead}
               </p>
               <div className="mt-9">

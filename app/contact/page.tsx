@@ -62,7 +62,7 @@ export default function ContactPage() {
                   We will tell you what it takes.
                 </span>
               </h1>
-              <p className="mt-6 max-w-[48ch] text-pretty leading-relaxed text-muted sm:text-lg">
+              <p className="mt-6 max-w-[48ch] text-pretty leading-relaxed text-muted sm:text-lg sm:leading-7">
                 Email or book a call. Either one reaches the person who would
                 do the work, and you get a straight answer on scope, time and
                 cost. If we are not the right fit, we will point you somewhere
@@ -124,7 +124,7 @@ export default function ContactPage() {
                       >
                         {stat.value}
                       </dd>
-                      <dt className="mt-3 text-pretty text-[0.9375rem] leading-snug text-ink/75">
+                      <dt className="mt-3 text-pretty text-[0.9375rem] leading-snug">
                         {stat.label}
                         {stat.detail && (
                           <span className={`mt-1 block text-[0.8125rem] ${deep}`}>

@@ -139,7 +139,7 @@ export default function AppBand({
                 </span>
               </div>
 
-              <p className="mt-5 max-w-[46ch] text-pretty leading-relaxed text-muted sm:text-lg">
+              <p className="mt-5 max-w-[46ch] text-pretty leading-relaxed text-muted sm:text-lg sm:leading-7">
                 {app.shortDescription}
               </p>
 

@@ -327,7 +327,7 @@ export default function CalBooking({
           href={fallbackHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-[12px] bg-ink px-6 py-3 font-medium text-bg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-pill focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
+          className="inline-flex items-center gap-2 rounded-[12px] bg-ink px-6 py-3 font-medium text-bg transition-all duration-200 hover:-translate-y-0.5 hover:shadow-pill focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink"
         >
           {fallbackLabel}
           <ArrowUpRight className="h-4 w-4" aria-hidden />

@@ -50,7 +50,7 @@ over vague claims. No em dashes in site copy, no exclamation marks, no
 The Design Reference and Hakkan's marketing system converge on the same language.
 We adopt it as the studio system so every fortherestofus surface matches.
 
-### Tokens (CSS vars in `globals.css`, mapped in `tailwind.config.ts`)
+### Tokens (CSS vars in `globals.css`, mapped by its `@theme inline` block)
 
 | Token | Light | Notes |
 |---|---|---|

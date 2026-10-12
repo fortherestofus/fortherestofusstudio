@@ -122,7 +122,7 @@ export default function StatBand({
             >
               <Value value={stat.value} />
             </dd>
-            <dt className="mt-4 text-pretty text-[1.0625rem] leading-snug text-ink/75">
+            <dt className="mt-4 text-pretty text-[1.0625rem] leading-snug">
               {stat.label}
               {stat.detail && (
                 <span className={cn("mt-1.5 block text-[0.875rem]", tint.deep)}>

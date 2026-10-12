@@ -26,7 +26,7 @@ export default function Hero() {
               <span className="text-muted">real problems.</span>
             </h1>
 
-            <p className="mt-7 max-w-[46ch] text-pretty leading-relaxed text-muted sm:text-lg">
+            <p className="mt-7 max-w-[46ch] text-pretty leading-relaxed text-muted sm:text-lg sm:leading-7">
               We identify the problem, build the solution, and grow the
               business around it. Apps, SaaS, websites, systems, brand,
               data-driven marketing, and automation, from one team.

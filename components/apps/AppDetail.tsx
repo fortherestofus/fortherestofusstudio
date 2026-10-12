@@ -132,7 +132,7 @@ export default function AppDetail({ app }: { app: App }) {
             <h1 className="mt-4 text-balance text-[2.25rem] font-medium leading-[1.05] tracking-[-0.03em] text-ink sm:text-[3.25rem]">
               {app.tagline}
             </h1>
-            <p className="mx-auto mt-6 max-w-[52ch] text-pretty leading-relaxed text-muted sm:text-lg">
+            <p className="mx-auto mt-6 max-w-[52ch] text-pretty leading-relaxed text-muted sm:text-lg sm:leading-7">
               {app.shortDescription}
             </p>
 

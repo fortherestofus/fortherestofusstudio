@@ -149,9 +149,30 @@ InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
 
 ## Stack
 
-- **Next.js 16 App Router** (`app/`), React 19, TypeScript, **Tailwind 3**
-  (`tailwind.config.ts`), `next-themes` for light/dark (manual toggle,
-  `enableSystem: false`, light default).
+- **Next.js 16 App Router** (`app/`), React 19, TypeScript, **Tailwind 4**
+  (CSS-first: no `tailwind.config.ts`; config lives at the top of
+  `app/globals.css`, built by `@tailwindcss/postcss`), `next-themes` for
+  light/dark (manual toggle, `enableSystem: false`, light default).
+- **Tailwind 4 rules this codebase depends on** (Oct 2026 upgrade from v3,
+  verified pixel-identical on 15 pages × light/dark × desktop/mobile):
+  - The token map is `@theme inline`, not `@theme`. Several utility names
+    match the variable they read (`--color-bg`, `--color-border`, the accent
+    group), and a plain `@theme` would re-declare each as `var()` of itself.
+  - Scanning is `source(none)` plus `@source` for `app`, `components`, `lib`,
+    the same scope the v3 config had. Without it v4 scans the whole repo,
+    `docs/` and `Design Reference/` included.
+  - Opacity modifiers on our colours (`text-ink/75`) **now work**. Under v3
+    they silently produced no CSS, because v3 cannot fade a `var()` colour;
+    21 of them sat in the code unseen and were removed at the upgrade so the
+    live look did not change. A new one will render, so check it on screen.
+  - A named size no longer resets a base leading: `leading-relaxed
+    sm:text-lg` keeps 1.625 at `sm`, where v3 dropped to text-lg's 28px. The
+    intro paragraphs that relied on that carry `sm:leading-7` explicitly.
+  - Two classes setting the same property on one element (`hidden` against
+    a component's own `inline-flex`) resolve by v4's ordering, not v3's. Use
+    a variant to override instead (`max-sm:hidden`, as the navbar does).
+  - Base layer restores v3's gray-200 default border colour and pointer
+    cursor on buttons; v4 changed both. Write `outline-solid`, not `outline`.
 - **Bundlers differ between dev and build, deliberately.** `next dev` uses the
   Next 16 default (Turbopack); `next build` is pinned to **`--webpack`** in
   `package.json`. That flag is load-bearing for production: the Hostinger build
@@ -161,13 +182,12 @@ InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
   The deploy log is full of those SWC warnings on every successful build — they
   are expected, not a regression. There is still no webpack *config* file, and
   adding one is a separate question from the flag.
-- **`overrides` in `package.json` are security pins.** Most stay inside the
-  parent's range; one does not: `postcss-selector-parser` is forced to v7
-  (Tailwind 3 asks for v6, and the quadratic-parse fix only exists in 7.1.6).
-  It was verified by compiling `app/globals.css` before and after: the CSS was
-  byte-identical. Re-check that way if Tailwind or the override moves. `braces`
-  (via Tailwind 3's chokidar/micromatch) still audits as high with no patched
-  release; it is build-time only and clears when we move to Tailwind 4.
+- **`overrides` in `package.json` are security pins** for transitive
+  dependencies (sharp, source-map-js, dompurify and others). `braces` still
+  audits as high with no patched release: it now arrives only through
+  `eslint-config-next`'s fast-glob, so it is lint-time only and never ships.
+  Tailwind 4's native binaries (`@tailwindcss/oxide`, `lightningcss`) need
+  only glibc 2.14, so the old Hostinger build image runs them natively.
 - React's `react-hooks` rules run at **error** level via `eslint-config-next`,
   including `set-state-in-effect`. Don't reach for `useEffect` + `setState` to
   derive state: adjust it during render, or use `useSyncExternalStore` to read
@@ -212,7 +232,8 @@ restrained ember kept for small live moments (focus rings, hover, status
 dots) — never a background.
 
 Tokens live as CSS variables in `app/globals.css` and are mapped to Tailwind
-colors in `tailwind.config.ts`. Use tokens, never raw palette hex.
+colors by the `@theme inline` block at the top of the same file. Use tokens,
+never raw palette hex.
 
 - Surfaces: `bg` (cream canvas), `surface` (white cards), `sunken` (section
   tint / wells), `ink-surface` + `ink-raised` (dark blocks and footer).

@@ -62,7 +62,7 @@ export default function PhoneFrame({
       {!cropped && (
         <div
           aria-hidden
-          className="absolute inset-x-5 -bottom-1 h-8 rounded-[50%] bg-ink-surface/20 blur-2xl"
+          className="absolute inset-x-5 -bottom-1 h-8 rounded-[50%] blur-2xl"
         />
       )}
 

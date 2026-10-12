@@ -28,7 +28,7 @@ export default function AppCard({ app, className }: AppCardProps) {
       className={cn(
         "group relative flex flex-col overflow-hidden rounded-card border border-border bg-surface p-6",
         "shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
+        "focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
         className
       )}
     >

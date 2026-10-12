@@ -53,7 +53,7 @@ export default function PlaceholderBlock({
       />
       {label && (
         <div className="absolute inset-0 z-10 grid place-items-center p-4">
-          <span className="text-center text-[0.8125rem] font-medium text-ink/45">
+          <span className="text-center text-[0.8125rem] font-medium">
             {label}
           </span>
         </div>

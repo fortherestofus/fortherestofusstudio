@@ -46,7 +46,7 @@ export default function OpenInTapaButton({
       className={cn(
         "inline-flex items-center justify-center gap-2 rounded-[12px] bg-ink px-6 py-3 text-base font-medium text-bg",
         "transition-all duration-200 hover:-translate-y-0.5 hover:shadow-pill",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
+        "focus-visible:outline-solid focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
         className,
       )}
     >

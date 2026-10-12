@@ -56,7 +56,7 @@ function FooterColumn({
 }) {
   return (
     <div>
-      <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-ink-text/45">
+      <h3 className="text-xs font-medium uppercase tracking-[0.14em]">
         {title}
       </h3>
       <ul className="mt-5 space-y-3.5">{children}</ul>
@@ -116,7 +116,7 @@ export default function Footer() {
                   {...(href.startsWith("http")
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
-                  className="grid h-10 w-10 place-items-center rounded-full border border-ink-border text-ink-muted transition-colors hover:border-ink-text/30 hover:text-ink-text"
+                  className="grid h-10 w-10 place-items-center rounded-full border border-ink-border text-ink-muted transition-colors hover:text-ink-text"
                 >
                   <Mark className="h-4 w-4" />
                 </a>
@@ -153,7 +153,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col gap-4 border-t border-ink-border pt-8 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-ink-text/40">
+          <p className="text-sm">
             © {year} For The Rest Of Us. Built in Johannesburg.
           </p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-4">
@@ -175,7 +175,7 @@ export default function Footer() {
                 className="h-[30px] w-auto"
               />
             </a>
-            <p className="text-sm text-ink-text/40">
+            <p className="text-sm">
               Studio of{" "}
               <a
                 href={`mailto:${HELLO_EMAIL}`}

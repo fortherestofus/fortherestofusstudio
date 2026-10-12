@@ -72,7 +72,7 @@ export default function ServicesPage() {
                 <span className="block text-ink">Identify. Build.</span>
                 <span className="block text-muted">Grow.</span>
               </h1>
-              <p className="mt-6 max-w-[50ch] text-pretty leading-relaxed text-muted sm:text-lg">
+              <p className="mt-6 max-w-[50ch] text-pretty leading-relaxed text-muted sm:text-lg sm:leading-7">
                 Three steps, in the order they happen. Most projects need all
                 three. Whatever already works, we keep.
               </p>
@@ -115,12 +115,12 @@ export default function ServicesPage() {
                   >
                     {chapter.title}
                   </h2>
-                  <p className="mt-3 max-w-[38ch] text-pretty leading-relaxed text-ink/75">
+                  <p className="mt-3 max-w-[38ch] text-pretty leading-relaxed">
                     {chapter.blurb}
                   </p>
                   <p
                     className={cn(
-                      "mt-6 max-w-[40ch] border-t border-ink/10 pt-5 text-pretty text-[1.0625rem] font-medium leading-relaxed",
+                      "mt-6 max-w-[40ch] border-t pt-5 text-pretty text-[1.0625rem] font-medium leading-relaxed",
                       pillar.deep
                     )}
                   >

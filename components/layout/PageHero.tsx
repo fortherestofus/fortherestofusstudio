@@ -57,7 +57,7 @@ export default function PageHero({
           {lead && (
             <p
               className={cn(
-                "mt-6 max-w-reading text-pretty text-base leading-relaxed text-muted sm:text-lg",
+                "mt-6 max-w-reading text-pretty text-base leading-relaxed text-muted sm:text-lg sm:leading-7",
                 align === "center" && "mx-auto"
               )}
             >

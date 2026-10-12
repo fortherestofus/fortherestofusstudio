@@ -108,7 +108,7 @@ export default function ProcessChapter({ chapter }: ProcessChapterProps) {
               sizes="260px"
               className="object-cover"
             />
-            <span className="absolute inset-x-0 bottom-0 bg-ink-surface/70 px-2.5 py-1.5 text-[0.625rem] font-medium text-ink-text">
+            <span className="absolute inset-x-0 bottom-0 px-2.5 py-1.5 text-[0.625rem] font-medium text-ink-text">
               {tile.label}
             </span>
           </div>
@@ -176,7 +176,7 @@ export default function ProcessChapter({ chapter }: ProcessChapterProps) {
                       "group w-full rounded-card border p-5 text-left transition-all duration-300 sm:p-6",
                       isActive
                         ? "border-border bg-surface shadow-card"
-                        : "border-transparent hover:bg-surface/60"
+                        : "border-transparent"
                     )}
                   >
                     <div className="flex items-baseline justify-between gap-4">

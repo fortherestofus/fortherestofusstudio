@@ -112,7 +112,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-2">
           <DarkModeToggle />
-          <PillButton href="/contact/" className="hidden sm:inline-flex">
+          <PillButton href="/contact/" className="max-sm:hidden">
             Start a project
           </PillButton>
           <button

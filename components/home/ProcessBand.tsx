@@ -263,7 +263,7 @@ export default function ProcessBand() {
                     aria-current={on ? "step" : undefined}
                     className={cn(
                       "w-full rounded-card p-5 text-left transition-all duration-500",
-                      on ? cn(s.tint, "shadow-card") : "bg-surface/60"
+                      on && cn(s.tint, "shadow-card")
                     )}
                   >
                     <div className="flex items-baseline gap-3">
@@ -287,7 +287,7 @@ export default function ProcessBand() {
                     <p
                       className={cn(
                         "mt-2 pl-8 text-[0.875rem] leading-relaxed transition-colors",
-                        on ? "text-ink/75" : "text-faint"
+                        !on && "text-faint"
                       )}
                     >
                       {s.blurb}
@@ -295,7 +295,7 @@ export default function ProcessBand() {
                     {/* Progress through the stage */}
                     <span
                       aria-hidden
-                      className="mt-4 ml-8 block h-[3px] overflow-hidden rounded-full bg-ink/10"
+                      className="mt-4 ml-8 block h-[3px] overflow-hidden rounded-full"
                     >
                       <motion.span
                         className={cn("block h-full origin-left", s.line)}
