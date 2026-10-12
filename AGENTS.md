@@ -161,6 +161,13 @@ InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
   The deploy log is full of those SWC warnings on every successful build — they
   are expected, not a regression. There is still no webpack *config* file, and
   adding one is a separate question from the flag.
+- **`overrides` in `package.json` are security pins.** Most stay inside the
+  parent's range; one does not: `postcss-selector-parser` is forced to v7
+  (Tailwind 3 asks for v6, and the quadratic-parse fix only exists in 7.1.6).
+  It was verified by compiling `app/globals.css` before and after: the CSS was
+  byte-identical. Re-check that way if Tailwind or the override moves. `braces`
+  (via Tailwind 3's chokidar/micromatch) still audits as high with no patched
+  release; it is build-time only and clears when we move to Tailwind 4.
 - React's `react-hooks` rules run at **error** level via `eslint-config-next`,
   including `set-state-in-effect`. Don't reach for `useEffect` + `setState` to
   derive state: adjust it during render, or use `useSyncExternalStore` to read
