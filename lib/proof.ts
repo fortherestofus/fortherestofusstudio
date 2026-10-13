@@ -58,7 +58,8 @@ export const caseProofs: CaseProof[] = [
     slug: "thrifty-adventures",
     kind: "client",
     client: "Thrifty Adventures",
-    engagement: "LinkedIn paid media for a South African travel brand, from zero",
+    engagement:
+      "LinkedIn paid media from zero, plus organic TikTok, for a South African travel brand",
     period: "Jul 2025 – Jan 2026",
     stats: [
       {
@@ -81,10 +82,15 @@ export const caseProofs: CaseProof[] = [
         label: "conversion on the offer that worked",
         detail: "against 8.6% on the generic form, same audience",
       },
+      {
+        value: "38%",
+        label: "of organic TikTok views came from search",
+        detail: "3.1M views, Jun 2025 to Jan 2026",
+      },
     ],
     note: "Not everything worked. The offer, not the audience, was what the channel actually rewarded, and that is the part worth carrying to the next campaign.",
     source:
-      "Campaign reporting from the engagement; full case study at alroyndhlovu.com.",
+      "Campaign reporting from the engagement, plus TikTok Studio for the organic figures (1 Jun 2025 to 19 Jan 2026); full case study at alroyndhlovu.com.",
     serviceSlugs: ["product-and-growth", "websites"],
   },
   {
@@ -114,9 +120,15 @@ export const caseProofs: CaseProof[] = [
         label: "of leads arriving on a work email",
         detail: "the lead quality the programme was built to reach",
       },
+      {
+        value: "2.9×",
+        label: "higher click-through as video than as carousel",
+        detail: "the same message, 0.68% against 0.24%",
+      },
     ],
+    note: "Not everything worked. The nurture emails earned strong opens and clicks but no direct replies: the gap was a person, not another email.",
     source:
-      "Platform and CRM reporting from the engagement. Absolute cost-per-lead and pipeline volumes are held back deliberately: they are the client's commercial data. Full case study at alroyndhlovu.com.",
+      "Platform and CRM reporting from the engagement. The 2.9× is the ratio of two measured click-through rates (0.677% and 0.235%). Absolute cost-per-lead and pipeline volumes are held back deliberately: they are the client's commercial data. Full case study at alroyndhlovu.com.",
     serviceSlugs: ["brand-and-content", "product-and-growth"],
   },
   {
