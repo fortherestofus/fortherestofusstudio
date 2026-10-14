@@ -73,6 +73,25 @@ export function getTrafficSource(): string | null {
 }
 
 /**
+ * The studio's App Store Connect provider token. It identifies the
+ * developer ACCOUNT, not an app — tapa's and InSpiritInTruth's generated
+ * campaign links carry the same one. Apple only issues it inside a link
+ * generated in App Store Connect. Public by design: it's in every link.
+ */
+const APPLE_PROVIDER_TOKEN = "129230101";
+
+/**
+ * An App Store link with a campaign token, which App Store Connect reports
+ * under Acquisition → Campaigns (first-time downloads within 24 h of the
+ * tap). Built by hand so a space becomes %20 as in Apple's own links —
+ * URLSearchParams would write "+", which Apple could keep in the name.
+ */
+export function tagAppStoreLink(href: string, campaign: string): string {
+  const base = href.split("?")[0];
+  return `${base}?pt=${APPLE_PROVIDER_TOKEN}&ct=${encodeURIComponent(campaign)}&mt=8`;
+}
+
+/**
  * A Google Play link with the source attached as utm tags, which Play
  * Console reports under Acquisition. `utm_campaign` names the page, so a
  * direct visit still shows up rather than nothing.

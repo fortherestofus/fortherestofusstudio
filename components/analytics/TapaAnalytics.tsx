@@ -28,7 +28,14 @@ import { useEffect } from "react";
 import { usePathname } from "next/navigation";
 import posthog from "posthog-js";
 
-import { getTrafficSource, tagPlayLink } from "@/lib/trafficSource";
+import { getTrafficSource, tagAppStoreLink, tagPlayLink } from "@/lib/trafficSource";
+
+/**
+ * tapa's App Store Connect campaign, exactly as created there (Alroy,
+ * 2026-10-14). One campaign for every tapa page: Apple hides a campaign
+ * until 5 people have downloaded through it.
+ */
+const APP_STORE_CAMPAIGN = "tapa. PostHog";
 
 const KEY = "phc_kW4HvLxEsKYgbGd7JChCQCdHcUuQkMeiWU7DCgVzmMao";
 // Our own domain, proxied to PostHog's EU ingest by the rewrites in
@@ -107,9 +114,14 @@ export default function TapaAnalytics() {
       // with every app page.
       // - Play: carry the visit's source (tiktok, instagram...) as utm
       //   tags, which Play Console shows under Acquisition.
+      // - App Store: tapa's campaign token, which App Store Connect shows
+      //   under Acquisition → Campaigns.
       // - Both: drop `noreferrer`, so the store sees this site as the
       //   referrer (App Store Connect's "Web Referrer" report).
-      if (platform === "android") link.href = tagPlayLink(href, "ftrou-tapa");
+      link.href =
+        platform === "android"
+          ? tagPlayLink(href, "ftrou-tapa")
+          : tagAppStoreLink(href, APP_STORE_CAMPAIGN);
       link.rel = "noopener";
 
       posthog.capture("store_badge_clicked", {
