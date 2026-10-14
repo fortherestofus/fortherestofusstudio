@@ -25,6 +25,7 @@
  */
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import posthog from "posthog-js";
 
 import { getTrafficSource, tagPlayLink } from "@/lib/trafficSource";
@@ -48,10 +49,17 @@ export default function TapaAnalytics() {
       api_host: HOST,
       ui_host: UI_HOST,
       cookieless_mode: "always",
-      // Left at the default (capture on page load). `history_change` was
-      // tried first and measurably did NOT fire the initial $pageview —
-      // production showed $pageleave events with no matching $pageview.
-      // See the InSpiritInTruth site, where the same fix applies.
+      // OFF: the pathname effect below sends every $pageview. The default
+      // (capture on load) PLUS an explicit capture sent TWO per load,
+      // ~5 ms apart — measured 2026-10-14 — and `history_change` was
+      // tried before that and did not fire the initial one at all. This
+      // also covers client-side moves between tapa's pages, which a
+      // load-time capture never saw.
+      capture_pageview: false,
+      // Off too. PostHog stays initialised after someone leaves tapa's
+      // pages for the rest of the studio site, so a $pageleave would
+      // report other apps' URLs into tapa's project.
+      capture_pageleave: false,
       // Autocapture records clicks on every element including their text.
       // The store link is captured explicitly instead — it is the only
       // click here that answers a question we actually have.
@@ -62,14 +70,20 @@ export default function TapaAnalytics() {
       disable_session_recording: true,
       capture_heatmaps: false,
       // Page-speed numbers (LCP, CLS, INP, FCP) for the Web Vitals tab.
+      // The SDK sends them 5 s after the first paint and NOT on leaving,
+      // so a visit shorter than that reports none — expect few.
       capture_performance: { web_vitals: true },
     });
-
-    // Fired explicitly — see the InSpiritInTruth site, where relying on
-    // `capture_pageview` measurably produced $pageleave events with no
-    // matching $pageview.
-    posthog.capture("$pageview");
   }, []);
+
+  // One $pageview per tapa page, first load and client-side moves alike.
+  // Runs after the init effect above (effects run in order), so the
+  // first page is counted once the client exists.
+  const pathname = usePathname();
+  useEffect(() => {
+    if (!started) return;
+    posthog.capture("$pageview");
+  }, [pathname]);
 
   // The one click on this page worth measuring: it is the last thing
   // visible before an install, which carries no referrer of its own.
