@@ -183,9 +183,11 @@ InSpiritInTruth's Giving + Giving FAQ. Next.js 16 (App Router), React 19.
   are expected, not a regression. There is still no webpack *config* file, and
   adding one is a separate question from the flag.
 - **`overrides` in `package.json` are security pins** for transitive
-  dependencies (sharp, source-map-js, dompurify and others). `braces` still
-  audits as high with no patched release: it now arrives only through
-  `eslint-config-next`'s fast-glob, so it is lint-time only and never ships.
+  dependencies (sharp, source-map-js, dompurify and others). `npm audit` is
+  clean as of 2026-10-29 (Next 16.4.3, dompurify ^3.4.17); `braces`, which
+  used to audit high through `eslint-config-next`'s fast-glob, now resolves
+  to a patched 3.0.3. Next and eslint-config-next are pinned EXACTLY, so
+  `npm audit fix` cannot move them: bump both together by hand.
   Tailwind 4's native binaries (`@tailwindcss/oxide`, `lightningcss`) need
   only glibc 2.14, so the old Hostinger build image runs them natively.
 - React's `react-hooks` rules run at **error** level via `eslint-config-next`,

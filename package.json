@@ -15,7 +15,7 @@
     "@types/react-dom": "^19.2.4",
     "framer-motion": "^12.40.0",
     "lucide-react": "^1.16.0",
-    "next": "16.4.0",
+    "next": "16.4.3",
     "next-themes": "^0.4.6",
     "postcss": "^8.5.18",
     "posthog-js": "^1.434.2",
@@ -31,10 +31,10 @@
     "browserslist": "^4.28.7",
     "sharp": "^0.35.5",
     "source-map-js": "^1.2.2",
-    "dompurify": "^3.4.16"
+    "dompurify": "^3.4.17"
   },
   "devDependencies": {
     "eslint": "^9",
-    "eslint-config-next": "16.4.0"
+    "eslint-config-next": "16.4.3"
   }
 }
